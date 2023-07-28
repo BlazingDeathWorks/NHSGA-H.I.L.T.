@@ -119,9 +119,6 @@ public class LevelGenerator : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        if (Input.GetKey(KeyCode.D)) Camera.main.gameObject.transform.position += Vector3.right * 25 * Time.deltaTime;
-        if (Input.GetKey(KeyCode.A)) Camera.main.gameObject.transform.position += Vector3.left * 25 * Time.deltaTime;
-        if (Input.GetKey(KeyCode.W)) Camera.main.gameObject.transform.position += Vector3.up * 25 * Time.deltaTime;
-        if (Input.GetKey(KeyCode.S)) Camera.main.gameObject.transform.position += Vector3.down * 25 * Time.deltaTime;
+        Camera.main.transform.position = GameObject.Find("Player").transform.position + new Vector3(0, 0, -10);
     }
 }

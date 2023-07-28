@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class EnemyProjectileController : MonoBehaviour
 {
-    public float damage;
-    public float speed;
+    [SerializeField]
+    private float damage;
+    [SerializeField]
+    private float speed;
+
+    private Rigidbody2D rb;
+    private GameObject cam;
     
     void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = transform.forward * speed;
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = Mathf.Sign(transform.right.x) * Vector2.right * speed;
+        cam = Camera.main.gameObject;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
         Destroy(gameObject);
     }

@@ -73,12 +73,13 @@ public class EnemyController : MonoBehaviour
                         case 0:
                             float thisX = transform.position.x;
                             float playerX = player.transform.position.x;
-                            if(Mathf.Abs(aggroGoalX-thisX) > .1f)
+                            if(Mathf.Abs(aggroGoalX-thisX) > .2f)
                             {
                                 dir = Mathf.Sign(aggroGoalX - thisX);
-                                rb.velocity = Vector3.right * speed * dir / 2f;
+                                rb.velocity = Vector2.right * speed * dir / 2f;
                             } else
                             {
+                                rb.velocity = Vector2.zero;
                                 dir = Mathf.Sign(playerX - thisX);
                             }
                             if(Time.time > aggroTime)
@@ -102,7 +103,8 @@ public class EnemyController : MonoBehaviour
                     {
                         case 0:
                             Instantiate(projectilePrefab, projectileOrigin.transform.position, 
-                                dir > 0 ? Quaternion.identity : Quaternion.Euler(0, 0, 180));
+                                dir > 0 ? Quaternion.Euler(0, 0, 42) : Quaternion.Euler(0, 0, 222));
+                            nextAttack = Time.time + attackCooldown;
                             state = State.aggro;
                             break;
                     }
@@ -116,21 +118,22 @@ public class EnemyController : MonoBehaviour
 
     private void FindPlayer(bool ShouldChangeState)
     {
-        bool canSeePlayer = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance).collider.Equals(playerCollider);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance);
+        bool canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
         if (canSeePlayer)
         {
-            aggroTime = Time.time + 1.5f;
             if(nextAttack < Time.time)
             {
                 aggroGoalX = Mathf.Clamp(player.transform.position.x + 
                     aggroFollowDistance * (transform.position.x < player.transform.position.x ? -1 : 1), leftBound, rightBound);
-                nextAttack = Time.time + attackCooldown;
+                nextAttack = Time.time + attackCooldown * (Time.time < aggroTime ? .4f : 1);
             }
             if (ShouldChangeState)
             {
                 anim.SetTrigger("aggro");
                 state = State.aggro;
             }
+            aggroTime = Time.time + 1.5f;
         }
 
     }
@@ -141,8 +144,8 @@ public class EnemyController : MonoBehaviour
         //set patrol bounds
         if (leftBound == -100 && dir < 0)
         {
-            bool isStopped = !Physics2D.OverlapCircle(transform.position + Vector3.left * 2, .1f, tileMask) ||
-                Physics2D.OverlapPoint(transform.position + new Vector3(-2, .5f), tileMask);
+            bool isStopped = !Physics2D.OverlapCircle(transform.position + Vector3.left, .1f, tileMask) ||
+                Physics2D.OverlapPoint(transform.position + new Vector3(-1, .5f), tileMask);
             if (isStopped)
             {
                 leftBound = transform.position.x;
@@ -150,8 +153,8 @@ public class EnemyController : MonoBehaviour
         }
         if (rightBound == -100 && dir > 0)
         {
-            bool isStopped = !Physics2D.OverlapCircle(transform.position + Vector3.right * 2, .1f, tileMask) ||
-                Physics2D.OverlapPoint(transform.position + new Vector3(2, .5f), tileMask);
+            bool isStopped = !Physics2D.OverlapCircle(transform.position + Vector3.right, .1f, tileMask) ||
+                Physics2D.OverlapPoint(transform.position + new Vector3(1, .5f), tileMask);
             if (isStopped)
             {
                 rightBound = transform.position.x;
