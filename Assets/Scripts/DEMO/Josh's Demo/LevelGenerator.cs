@@ -36,6 +36,8 @@ public class LevelGenerator : MonoBehaviour
         {
             layoutSeed[i] = i;
         }
+
+        //randomize layouts
         for (int i = 0; i < layoutCount; i++)
         {
             int randIndex = Random.Range(i, layoutSeed.Length);
@@ -50,40 +52,55 @@ public class LevelGenerator : MonoBehaviour
             Tilemap tilemap = layout.GetComponent<Tilemap>();
             Tilemap bgTilemap = layout.GetComponentsInChildren<Tilemap>()[1];
             BoundsInt bounds = tilemap.cellBounds;
+
+            //copy from layout
             for (int r = bounds.min.x; r <= bounds.max.x; r++)
             {
                 for (int c = bounds.min.y; c <= bounds.max.y; c++)
                 {
-                    Vector3Int tempPos = new Vector3Int(r, c);
-                    if (bgTilemap.GetTile(tempPos) == bgTile)
-                    {
-                        bgMap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), bgTile);
-                    }
-                    for (int i = 0; i < ruleTiles.Length; i++)
-                    {
-                        if (tilemap.GetTile(tempPos) == ruleTiles[i])
-                        {
-                            maps[i].SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), ruleTiles[i]);
-                            continue;
-                        }
-                    }
-                    for (int i = 0; i < enemyTiles.Length; i++)
-                    {
-                        if (tilemap.GetTile(tempPos) == enemyTiles[i])
-                        {
-                            Instantiate(enemyPrefabs[i], tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), Quaternion.identity);
-                            continue;
-                        }
-                    }
+                    bounds = GenerateTile(tilemap, bgTilemap, bounds, r, c);
                 }
             }
             layoutPos += bounds.size.x;
         }
+
+        //Create side walls and floor
         BoxFill(maps[0], ruleTiles[0], -30, -10, -40, 40);
         BoxFill(maps[0], ruleTiles[0], -10, 0, -40, 0);
         BoxFill(maps[0], ruleTiles[0], 0, layoutPos, -40, -14);
         BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 40);
     }
+
+    private BoundsInt GenerateTile(Tilemap tilemap, Tilemap bgTilemap, BoundsInt bounds, int r, int c)
+    {
+        Vector3Int tempPos = new Vector3Int(r, c);
+        //check background
+        if (bgTilemap.GetTile(tempPos) == bgTile)
+        {
+            bgMap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), bgTile);
+        }
+        //check main tiles
+        for (int i = 0; i < ruleTiles.Length; i++)
+        {
+            if (tilemap.GetTile(tempPos) == ruleTiles[i])
+            {
+                maps[i].SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), ruleTiles[i]);
+                continue;
+            }
+        }
+        //check enemy tiles
+        for (int i = 0; i < enemyTiles.Length; i++)
+        {
+            if (tilemap.GetTile(tempPos) == enemyTiles[i])
+            {
+                Instantiate(enemyPrefabs[i], tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), Quaternion.identity);
+                continue;
+            }
+        }
+
+        return bounds;
+    }
+
     private void BoxFill(Tilemap map, TileBase tile, int startX, int endX, int startY, int endY)
     {
         for (var x = startX; x < endX; x++)
