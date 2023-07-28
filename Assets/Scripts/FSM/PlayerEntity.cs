@@ -15,10 +15,13 @@ public class PlayerEntity : MonoBehaviour
     public bool IsGrounded { get; private set; } = true;
     public bool FinishedAttacking { get; set; }
     public float JumpPower => jumpPower;
+    public float PlatformRaycastDistance => platformRaycastDistance;
+    public Transform[] GroundRaycastPositions => groundRaycastPositions;
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpPower = 3;
     [SerializeField] private Transform[] groundRaycastPositions;
-    [SerializeField] private float raycastDistance = 0.2f;
+    [SerializeField] private float groundRaycastDistance = 0.2f;
+    [SerializeField] private float platformRaycastDistance = 1;
     private float x;
 
     //Player Animation States (STEP #1)
@@ -76,7 +79,7 @@ public class PlayerEntity : MonoBehaviour
     {
         for (int i = 0; i < groundRaycastPositions.Length; i++)
         {
-            RaycastHit2D hitInfo = Physics2D.Raycast(groundRaycastPositions[i].position, Vector2.down, raycastDistance);
+            RaycastHit2D hitInfo = Physics2D.Raycast(groundRaycastPositions[i].position, Vector2.down, groundRaycastDistance);
             if (hitInfo && (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Ground") || hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Platform")))
             {
                 IsGrounded = true;
@@ -97,7 +100,8 @@ public class PlayerEntity : MonoBehaviour
         if (groundRaycastPositions == null || groundRaycastPositions.Length <= 0) return;
         for (int i = 0; i < groundRaycastPositions.Length; i++)
         {
-            Gizmos.DrawLine(groundRaycastPositions[i].position, (Vector2)groundRaycastPositions[i].position + Vector2.down * raycastDistance);
+            Gizmos.DrawLine(groundRaycastPositions[i].position, (Vector2)groundRaycastPositions[i].position + Vector2.down * groundRaycastDistance);
+            Gizmos.DrawLine(groundRaycastPositions[i].position, (Vector2)groundRaycastPositions[i].position + Vector2.up * platformRaycastDistance);
         }
     }
 

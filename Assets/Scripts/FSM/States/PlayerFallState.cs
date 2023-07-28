@@ -19,4 +19,17 @@ public class PlayerFallState : PlayerAirAttackControllerState
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerIdleState);
         }
     }
+
+    public override void OnFixedUpdate()
+    {
+        base.OnFixedUpdate();
+        for (int i = 0; i < PlayerEntity.GroundRaycastPositions.Length; i++)
+        {
+            RaycastHit2D hitInfo = Physics2D.Raycast(PlayerEntity.GroundRaycastPositions[i].position, Vector2.up, PlayerEntity.PlatformRaycastDistance);
+            if (hitInfo && hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Platform"))
+            {
+                PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Player");
+            }
+        }
+    }
 }

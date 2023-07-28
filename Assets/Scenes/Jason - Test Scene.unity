@@ -1536,7 +1536,8 @@ MonoBehaviour:
   groundRaycastPositions:
   - {fileID: 1118396160}
   - {fileID: 1516192236}
-  raycastDistance: 0.15
+  groundRaycastDistance: 0.2
+  platformRaycastDistance: 2.7
 --- !u!95 &1356841508
 Animator:
   serializedVersion: 5
