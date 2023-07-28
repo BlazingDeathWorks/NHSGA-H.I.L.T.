@@ -19,7 +19,7 @@ public class PlayerEntity : MonoBehaviour
     [SerializeField] private float jumpPower = 3;
     [SerializeField] private Transform[] groundRaycastPositions;
     [SerializeField] private float raycastDistance = 0.2f;
-    private float x, y;
+    private float x;
 
     //Player Animation States (STEP #1)
     public PlayerIdleState PlayerIdleState { get; private set; }
@@ -53,7 +53,6 @@ public class PlayerEntity : MonoBehaviour
     private void Update()
     {
         x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
 
         if (x != 0)
         {
@@ -65,7 +64,7 @@ public class PlayerEntity : MonoBehaviour
             IsRunning = false;
         }
 
-        if (y == 1 && IsGrounded)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && IsGrounded)
         {
             IsJumping = true;
         }
