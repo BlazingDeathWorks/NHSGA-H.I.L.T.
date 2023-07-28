@@ -77,7 +77,8 @@ public class PlayerEntity : MonoBehaviour
     {
         for (int i = 0; i < groundRaycastPositions.Length; i++)
         {
-            if (Physics2D.Raycast(groundRaycastPositions[i].position, Vector2.down, raycastDistance, 1 << LayerMask.NameToLayer("Ground")))
+            RaycastHit2D hitInfo = Physics2D.Raycast(groundRaycastPositions[i].position, Vector2.down, raycastDistance);
+            if (hitInfo && (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Ground") || hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Platform")))
             {
                 IsGrounded = true;
                 break;

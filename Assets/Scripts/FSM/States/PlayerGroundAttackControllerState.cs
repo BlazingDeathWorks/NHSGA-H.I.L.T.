@@ -24,7 +24,7 @@ public abstract class PlayerGroundAttackControllerState : State
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerBaseAttackState);
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerThreeHitAttackState);
         }
