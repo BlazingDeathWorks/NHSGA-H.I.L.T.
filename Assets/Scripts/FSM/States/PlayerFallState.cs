@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFallState : MonoBehaviour
+public class PlayerFallState : PlayerAirAttackControllerState
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override string StringToHash => "Fall";
+
+    public PlayerFallState(PlayerEntity playerEntity, FiniteStateMachine finiteStateMachine) : base(playerEntity, finiteStateMachine)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnUpdate()
     {
-        
+        base.OnUpdate();
+        if (PlayerEntity.IsGrounded)
+        {
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerIdleState);
+        }
     }
 }

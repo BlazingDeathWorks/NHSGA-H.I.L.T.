@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : MonoBehaviour
+public class PlayerIdleState : PlayerGroundAttackControllerState
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override string StringToHash => "Idle";
+
+    public PlayerIdleState(PlayerEntity playerEntity, FiniteStateMachine finiteStateMachine) : base(playerEntity, finiteStateMachine)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnUpdate()
     {
-        
+        base.OnUpdate();
+        if (PlayerEntity.IsRunning)
+        {
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerRunState);
+        }
     }
 }

@@ -4,22 +4,23 @@ using UnityEngine;
 
 public abstract class State
 {
-    //Return with Animator.StringToHash(StateName)
-    protected abstract int StateHashName { get; }
+    protected abstract string StringToHash { get; }
+    protected readonly int StateHash;
 
     protected readonly FiniteStateMachine FiniteStateMachine;
     protected readonly PlayerEntity PlayerEntity;
 
-    public State(FiniteStateMachine finiteStateMachine, PlayerEntity playerEntity)
+    public State(PlayerEntity playerEntity, FiniteStateMachine finiteStateMachine)
     {
-        FiniteStateMachine = finiteStateMachine;
         PlayerEntity = playerEntity;
+        FiniteStateMachine = finiteStateMachine;
+        StateHash = Animator.StringToHash(StringToHash);
     }
 
     //For Crossfade
     public virtual void OnEnter()
     {
-        PlayerEntity.Animator.CrossFade(StateHashName, 0, 0);
+        PlayerEntity.Animator.CrossFade(StateHash, 0, 0);
     }
 
     //Reset Parameters

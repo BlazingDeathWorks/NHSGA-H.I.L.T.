@@ -10,15 +10,25 @@ public class PlayerEntity : MonoBehaviour
 
     //Player Movement
     public bool IsRunning { get; private set; }
-    public bool IsJumping { get; private set; }
+    public bool IsJumping { get; set; }
     public bool IsFalling { get; private set; }
     public bool IsGrounded { get; private set; } = true;
+    public bool FinishedAttacking { get; set; }
+    public float JumpPower => jumpPower;
     [SerializeField] private float speed = 1;
+    [SerializeField] private float jumpPower = 3;
     [SerializeField] private Transform[] groundRaycastPositions;
     [SerializeField] private float raycastDistance = 0.2f;
     private float x, y;
 
-    //Player Animation States
+    //Player Animation States (STEP #1)
+    public PlayerIdleState PlayerIdleState { get; private set; }
+    public PlayerRunState PlayerRunState { get; private set; }
+    public PlayerJumpState PlayerJumpState { get; private set; }
+    public PlayerFallState PlayerFallState { get; private set; }
+    public PlayerBaseAttackState PlayerBaseAttackState { get; private set; }
+    public PlayerBaseAirAttackState PlayerBaseAirAttackState { get; private set; }
+    public PlayerThreeHitAttackState PlayerThreeHitAttackState { get; private set; }
 
     private void Awake()
     {
@@ -26,8 +36,18 @@ public class PlayerEntity : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
 
         FiniteStateMachine = new FiniteStateMachine();
-        //Initialize Player Animation States
-        //FiniteStateMachine.Initialize();
+
+        //Initialize Player Animation States (STEP #2)
+        PlayerIdleState = new PlayerIdleState(this, FiniteStateMachine);
+        PlayerRunState = new PlayerRunState(this, FiniteStateMachine);
+        PlayerJumpState = new PlayerJumpState(this, FiniteStateMachine);
+        PlayerFallState = new PlayerFallState(this, FiniteStateMachine);
+        PlayerBaseAttackState = new PlayerBaseAttackState(this, FiniteStateMachine);
+        PlayerBaseAirAttackState = new PlayerBaseAirAttackState(this, FiniteStateMachine);
+        PlayerThreeHitAttackState = new PlayerThreeHitAttackState(this, FiniteStateMachine);
+
+        //Initialize Current State
+        FiniteStateMachine.Initialize(PlayerIdleState);
     }
 
     private void Update()
@@ -49,6 +69,8 @@ public class PlayerEntity : MonoBehaviour
         {
             IsJumping = true;
         }
+
+        FiniteStateMachine.CurrentState.OnUpdate();
     }
 
     private void FixedUpdate()
@@ -66,6 +88,8 @@ public class PlayerEntity : MonoBehaviour
         Rb.velocity = new Vector2(x * speed, Rb.velocity.y);
 
         IsFalling = Rb.velocity.y < -0.2f;
+
+        FiniteStateMachine.CurrentState.OnFixedUpdate();
     }
 
     private void OnDrawGizmos()
@@ -82,5 +106,8 @@ public class PlayerEntity : MonoBehaviour
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(x), transform.localScale.y, transform.localScale.z);
     }
 
-
+    public void FinishAttack()
+    {
+        FinishedAttacking = true;
+    }
 }

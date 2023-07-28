@@ -2,17 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumpState : MonoBehaviour
+public class PlayerJumpState : PlayerAirAttackControllerState
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override string StringToHash => "Jump";
+
+    public PlayerJumpState(PlayerEntity playerEntity, FiniteStateMachine finiteStateMachine) : base(playerEntity, finiteStateMachine)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnUpdate()
     {
-        
+        base.OnUpdate();
+        if (PlayerEntity.IsFalling)
+        {
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerFallState);
+        }
+    }
+
+    public override void OnFixedUpdate()
+    {
+        base.OnFixedUpdate();
+        if (PlayerEntity.IsJumping)
+        {
+            PlayerEntity.IsJumping = false;
+            PlayerEntity.Rb.velocity = new Vector2(PlayerEntity.Rb.velocity.x, PlayerEntity.JumpPower);
+        }
     }
 }

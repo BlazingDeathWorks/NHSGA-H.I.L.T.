@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FiniteStateMachine
 {
-    protected State CurrentState { get; private set; }
+    public State CurrentState { get; private set; }
 
     public void Initialize(State state)
     {

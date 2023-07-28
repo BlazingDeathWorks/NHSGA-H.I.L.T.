@@ -2,16 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Base class for Idle and Run as they can execute attacks
 public abstract class PlayerAttackState : State
 {
-    protected PlayerAttackState(FiniteStateMachine finiteStateMachine, PlayerEntity playerEntity) : base(finiteStateMachine, playerEntity)
-    {
+    //Make sure this is sealed on sub abstract class
+    protected abstract State TransitionState { get; }
+    private AnimatorStateInfo animatorStateInfo;
 
+    protected PlayerAttackState(PlayerEntity playerEntity, FiniteStateMachine finiteStateMachine) : base(playerEntity, finiteStateMachine)
+    {
+        animatorStateInfo = PlayerEntity.Animator.GetCurrentAnimatorStateInfo(0);
     }
 
-    //protected override void OnUpdate()
-    //{
-
-    //}
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+        if (PlayerEntity.FinishedAttacking)
+        {
+            PlayerEntity.FinishedAttacking = false;
+            FiniteStateMachine.ChangeState(TransitionState);
+        }
+    }
 }
