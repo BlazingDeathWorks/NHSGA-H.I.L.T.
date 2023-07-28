@@ -23,9 +23,9 @@ public class PlayerFallState : PlayerAirAttackControllerState
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        for (int i = 0; i < PlayerEntity.GroundRaycastPositions.Length; i++)
+        for (int i = 0; i < PlayerEntity.PlatformRaycastPositions.Length; i++)
         {
-            RaycastHit2D hitInfo = Physics2D.Raycast(PlayerEntity.GroundRaycastPositions[i].position, Vector2.up, PlayerEntity.PlatformRaycastDistance);
+            RaycastHit2D hitInfo = Physics2D.Raycast((Vector2)PlayerEntity.PlatformRaycastPositions[i].position, Vector2.up, PlayerEntity.PlatformRaycastDistance);
             if (hitInfo && hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Platform"))
             {
                 PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Player");

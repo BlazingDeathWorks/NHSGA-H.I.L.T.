@@ -17,9 +17,11 @@ public class PlayerEntity : MonoBehaviour
     public float JumpPower => jumpPower;
     public float PlatformRaycastDistance => platformRaycastDistance;
     public Transform[] GroundRaycastPositions => groundRaycastPositions;
+    public Transform[] PlatformRaycastPositions => platformRaycastPositions;
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpPower = 3;
     [SerializeField] private Transform[] groundRaycastPositions;
+    [SerializeField] private Transform[] platformRaycastPositions;
     [SerializeField] private float groundRaycastDistance = 0.2f;
     [SerializeField] private float platformRaycastDistance = 1;
     private float x;
@@ -101,7 +103,12 @@ public class PlayerEntity : MonoBehaviour
         for (int i = 0; i < groundRaycastPositions.Length; i++)
         {
             Gizmos.DrawLine(groundRaycastPositions[i].position, (Vector2)groundRaycastPositions[i].position + Vector2.down * groundRaycastDistance);
-            Gizmos.DrawLine(groundRaycastPositions[i].position, (Vector2)groundRaycastPositions[i].position + Vector2.up * platformRaycastDistance);
+        }
+
+        if (platformRaycastPositions == null || platformRaycastPositions.Length <= 0) return;
+        for (int i = 0; i < platformRaycastPositions.Length; i++)
+        {
+            Gizmos.DrawLine(platformRaycastPositions[i].position, (Vector2)platformRaycastPositions[i].position + Vector2.up * platformRaycastDistance);
         }
     }
 
