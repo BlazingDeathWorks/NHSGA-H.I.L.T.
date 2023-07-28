@@ -14,11 +14,15 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private Tilemap[] maps;
     [SerializeField]
+    private Tilemap bgMap;
+    [SerializeField]
+    private RuleTile bgTile;
+    [SerializeField]
     private RuleTile[] enemyTiles;
     [SerializeField]
     private GameObject[] enemyPrefabs;
     [SerializeField]
-    private Tilemap[] layouts;
+    private GameObject[] layouts;
 
     private int layoutPos;
     private int[] layoutSeed;
@@ -42,13 +46,19 @@ public class LevelGenerator : MonoBehaviour
         layoutSeedIndex = 0;
         while (layoutCount-- > 0)
         {
-            Tilemap tilemap = layouts[layoutSeed[layoutSeedIndex++]].GetComponent<Tilemap>();
+            GameObject layout = layouts[layoutSeed[layoutSeedIndex++]];
+            Tilemap tilemap = layout.GetComponent<Tilemap>();
+            Tilemap bgTilemap = layout.GetComponentsInChildren<Tilemap>()[1];
             BoundsInt bounds = tilemap.cellBounds;
             for (int r = bounds.min.x; r <= bounds.max.x; r++)
             {
                 for (int c = bounds.min.y; c <= bounds.max.y; c++)
                 {
                     Vector3Int tempPos = new Vector3Int(r, c);
+                    if (bgTilemap.GetTile(tempPos) == bgTile)
+                    {
+                        bgMap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), bgTile);
+                    }
                     for (int i = 0; i < ruleTiles.Length; i++)
                     {
                         if (tilemap.GetTile(tempPos) == ruleTiles[i])
@@ -76,9 +86,9 @@ public class LevelGenerator : MonoBehaviour
     }
     private void BoxFill(Tilemap map, TileBase tile, int startX, int endX, int startY, int endY)
     {
-        for (var x = startX; x <= endX; x++)
+        for (var x = startX; x < endX; x++)
         {
-            for (var y = startY; y <= endY; y++)
+            for (var y = startY; y < endY; y++)
             {
                 var tilePos = new Vector3Int(x, y, 0);
                 map.SetTile(tilePos, tile);
