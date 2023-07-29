@@ -20,11 +20,13 @@ public class PlayerEntity : MonoBehaviour
     public Transform[] PlatformRaycastPositions => platformRaycastPositions;
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpPower = 3;
+    [SerializeField] private float coyoteTime = 0.45f;
     [SerializeField] private Transform[] groundRaycastPositions;
     [SerializeField] private Transform[] platformRaycastPositions;
     [SerializeField] private float groundRaycastDistance = 0.2f;
     [SerializeField] private float platformRaycastDistance = 1;
     private float x;
+    private float timeSinceJumpPressed;
 
     //Player Animation States (STEP #1)
     public PlayerIdleState PlayerIdleState { get; private set; }
@@ -39,6 +41,8 @@ public class PlayerEntity : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody2D>();
+
+        timeSinceJumpPressed = coyoteTime;
 
         FiniteStateMachine = new FiniteStateMachine();
 
@@ -69,10 +73,15 @@ public class PlayerEntity : MonoBehaviour
             IsRunning = false;
         }
 
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && IsGrounded)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || timeSinceJumpPressed < coyoteTime) && IsGrounded)
         {
             IsJumping = true;
         }
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !IsGrounded)
+        {
+            timeSinceJumpPressed = 0;
+        }
+        timeSinceJumpPressed += Time.deltaTime;
 
         FiniteStateMachine.CurrentState.OnUpdate();
     }

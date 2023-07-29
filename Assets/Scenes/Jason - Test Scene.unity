@@ -1597,6 +1597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 13.7
   jumpPower: 22
+  coyoteTime: 0.1
   groundRaycastPositions:
   - {fileID: 1118396160}
   - {fileID: 1516192236}
@@ -1753,6 +1754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06aa8acbdc994dda8863bc2b06c7392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
 --- !u!1 &1430449129
 GameObject:
   m_ObjectHideFlags: 0
