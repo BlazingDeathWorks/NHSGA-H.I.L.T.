@@ -10,6 +10,12 @@ public abstract class PlayerGroundAttackControllerState : State
 
     }
 
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        PlayerEntity.TimeSinceStartFall = 0;
+    }
+
     public override void OnUpdate()
     {
         if (PlayerEntity.IsJumping)

@@ -11,10 +11,16 @@ public class PlayerJumpState : PlayerAirAttackControllerState
 
     }
 
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        PlayerEntity.TimeSinceStartFall = PlayerEntity.CoyoteTime;
+    }
+
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if (PlayerEntity.IsFalling)
+        if (PlayerEntity.IsFalling && !PlayerEntity.IsCoyoteTime)
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerFallState);
         }
@@ -26,6 +32,7 @@ public class PlayerJumpState : PlayerAirAttackControllerState
         if (PlayerEntity.IsJumping)
         {
             PlayerEntity.IsJumping = false;
+            PlayerEntity.IsCoyoteTime = false;
             PlayerEntity.Rb.velocity = new Vector2(PlayerEntity.Rb.velocity.x, PlayerEntity.JumpPower);
         }
     }

@@ -1597,7 +1597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 13.7
   jumpPower: 22
-  coyoteTime: 0.1
+  jumpBuffer: 0.1
   groundRaycastPositions:
   - {fileID: 1118396160}
   - {fileID: 1516192236}

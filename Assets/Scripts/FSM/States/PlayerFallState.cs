@@ -18,6 +18,14 @@ public class PlayerFallState : PlayerAirAttackControllerState
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerIdleState);
         }
+
+        PlayerEntity.TimeSinceStartFall += Time.deltaTime;
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && PlayerEntity.TimeSinceStartFall < PlayerEntity.CoyoteTime)
+        {
+            PlayerEntity.IsCoyoteTime = true;
+            PlayerEntity.IsJumping = true;
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerJumpState);
+        }
     }
 
     public override void OnFixedUpdate()

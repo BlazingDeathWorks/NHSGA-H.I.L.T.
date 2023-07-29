@@ -14,13 +14,17 @@ public class PlayerEntity : MonoBehaviour
     public bool IsFalling { get; private set; }
     public bool IsGrounded { get; private set; } = true;
     public bool FinishedAttacking { get; set; }
+    public bool IsCoyoteTime { get; set; }
+    public float TimeSinceStartFall { get; set; }
     public float JumpPower => jumpPower;
     public float PlatformRaycastDistance => platformRaycastDistance;
+    public float CoyoteTime => coyoteTime;
     public Transform[] GroundRaycastPositions => groundRaycastPositions;
     public Transform[] PlatformRaycastPositions => platformRaycastPositions;
     [SerializeField] private float speed = 1;
     [SerializeField] private float jumpPower = 3;
-    [SerializeField] private float coyoteTime = 0.45f;
+    [SerializeField] private float jumpBuffer = 0.45f;
+    [SerializeField] private float coyoteTime = 0.1f;
     [SerializeField] private Transform[] groundRaycastPositions;
     [SerializeField] private Transform[] platformRaycastPositions;
     [SerializeField] private float groundRaycastDistance = 0.2f;
@@ -42,7 +46,7 @@ public class PlayerEntity : MonoBehaviour
         Animator = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody2D>();
 
-        timeSinceJumpPressed = coyoteTime;
+        timeSinceJumpPressed = jumpBuffer;
 
         FiniteStateMachine = new FiniteStateMachine();
 
@@ -73,11 +77,11 @@ public class PlayerEntity : MonoBehaviour
             IsRunning = false;
         }
 
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || timeSinceJumpPressed < coyoteTime) && IsGrounded)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || timeSinceJumpPressed < jumpBuffer) && IsGrounded)
         {
             IsJumping = true;
         }
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !IsGrounded)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !IsGrounded && IsFalling)
         {
             timeSinceJumpPressed = 0;
         }
