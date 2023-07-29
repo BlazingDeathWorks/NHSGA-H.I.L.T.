@@ -14,10 +14,6 @@ public class PlayerIdleState : PlayerGroundAttackControllerState
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if (PlayerEntity.IsFalling)
-        {
-            FiniteStateMachine.ChangeState(PlayerEntity.PlayerFallState);
-        }
         if (PlayerEntity.IsRunning)
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerRunState);

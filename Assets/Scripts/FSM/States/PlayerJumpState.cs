@@ -31,7 +31,11 @@ public class PlayerJumpState : PlayerAirAttackControllerState
         {
             timeSinceJump += Time.deltaTime;
         }
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            timeSinceJump = PlayerEntity.MaxJumpTime;
+        }
+        else
         {
             timeSinceJump = PlayerEntity.MaxJumpTime;
         }

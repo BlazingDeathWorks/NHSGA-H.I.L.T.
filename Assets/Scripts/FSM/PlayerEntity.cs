@@ -16,6 +16,8 @@ public class PlayerEntity : MonoBehaviour
     public bool FinishedAttacking { get; set; }
     public bool IsCoyoteTime { get; set; }
     public float TimeSinceStartFall { get; set; }
+    public float SlideSpeed => slideSpeed;
+    public float MaxSlideTime => maxSlideTime;
     public float JumpPower => jumpPower;
     public float PlatformRaycastDistance => platformRaycastDistance;
     public float CoyoteTime => coyoteTime;
@@ -23,6 +25,8 @@ public class PlayerEntity : MonoBehaviour
     public Transform[] GroundRaycastPositions => groundRaycastPositions;
     public Transform[] PlatformRaycastPositions => platformRaycastPositions;
     [SerializeField] private float speed = 1;
+    [SerializeField] private float slideSpeed = 1;
+    [SerializeField] private float maxSlideTime = 1;
     [SerializeField] private float jumpPower = 3;
     [SerializeField] private float jumpBuffer = 0.45f;
     [SerializeField] private float coyoteTime = 0.1f;
@@ -42,6 +46,7 @@ public class PlayerEntity : MonoBehaviour
     public PlayerBaseAttackState PlayerBaseAttackState { get; private set; }
     public PlayerBaseAirAttackState PlayerBaseAirAttackState { get; private set; }
     public PlayerThreeHitAttackState PlayerThreeHitAttackState { get; private set; }
+    public PlayerSlideState PlayerSlideState { get; private set; }
 
     private void Awake()
     {
@@ -60,6 +65,7 @@ public class PlayerEntity : MonoBehaviour
         PlayerBaseAttackState = new PlayerBaseAttackState(this, FiniteStateMachine);
         PlayerBaseAirAttackState = new PlayerBaseAirAttackState(this, FiniteStateMachine);
         PlayerThreeHitAttackState = new PlayerThreeHitAttackState(this, FiniteStateMachine);
+        PlayerSlideState = new PlayerSlideState(this, FiniteStateMachine);
 
         //Initialize Current State
         FiniteStateMachine.Initialize(PlayerIdleState);

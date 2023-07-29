@@ -1595,11 +1595,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f835bfde689411382bb9ec388b9749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 13.7
+  speed: 16
+  slideSpeed: 25
+  maxSlideTime: 0.5
   jumpPower: 13.5
   jumpBuffer: 0.1
   coyoteTime: 0.1
-  maxJumpTime: 0.32
+  maxJumpTime: 0.3
   groundRaycastPositions:
   - {fileID: 1118396160}
   - {fileID: 1516192236}

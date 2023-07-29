@@ -18,6 +18,11 @@ public abstract class PlayerGroundAttackControllerState : State
 
     public override void OnUpdate()
     {
+        if (PlayerEntity.IsFalling)
+        {
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerFallState);
+        }
+
         if (PlayerEntity.IsJumping)
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerJumpState);
