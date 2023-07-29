@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerJumpState : PlayerAirAttackControllerState
 {
     protected override string StringToHash => "Jump";
+    private float timeSinceJump;
 
     public PlayerJumpState(PlayerEntity playerEntity, FiniteStateMachine finiteStateMachine) : base(playerEntity, finiteStateMachine)
     {
@@ -15,6 +16,7 @@ public class PlayerJumpState : PlayerAirAttackControllerState
     {
         base.OnEnter();
         PlayerEntity.TimeSinceStartFall = PlayerEntity.CoyoteTime;
+        timeSinceJump = 0;
     }
 
     public override void OnUpdate()
@@ -24,6 +26,15 @@ public class PlayerJumpState : PlayerAirAttackControllerState
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerFallState);
         }
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            timeSinceJump += Time.deltaTime;
+        }
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            timeSinceJump = PlayerEntity.MaxJumpTime;
+        }
     }
 
     public override void OnFixedUpdate()
@@ -31,9 +42,9 @@ public class PlayerJumpState : PlayerAirAttackControllerState
         base.OnFixedUpdate();
         if (PlayerEntity.IsJumping)
         {
-            PlayerEntity.IsJumping = false;
-            PlayerEntity.IsCoyoteTime = false;
-            PlayerEntity.Rb.velocity = new Vector2(PlayerEntity.Rb.velocity.x, PlayerEntity.JumpPower);
+            PlayerEntity.IsJumping = timeSinceJump < PlayerEntity.MaxJumpTime;
+            PlayerEntity.IsCoyoteTime = PlayerEntity.IsJumping;
+            PlayerEntity.Rb.velocity = new Vector2(PlayerEntity.Rb.velocity.x, PlayerEntity.JumpPower + timeSinceJump * 4);
         }
     }
 }
