@@ -19,7 +19,7 @@ public class EnemyProjectileController : MonoBehaviour
         cam = Camera.main.gameObject;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

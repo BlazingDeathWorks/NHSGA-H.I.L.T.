@@ -30,6 +30,9 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
+        //TODO CHANGE THIS
+        Physics2D.IgnoreLayerCollision(8, 8);
+
         layoutPos = 0;
         layoutSeed = new int[layouts.Length];
         for (int i = 0; i < layoutSeed.Length; i++)
@@ -58,7 +61,14 @@ public class LevelGenerator : MonoBehaviour
             {
                 for (int c = bounds.min.y; c <= bounds.max.y; c++)
                 {
-                    bounds = GenerateTile(tilemap, bgTilemap, bounds, r, c);
+                    GenerateTile(tilemap, bgTilemap, bounds, r, c);
+                }
+            }
+            for (int r = bounds.min.x; r <= bounds.max.x; r++)
+            {
+                for (int c = bounds.min.y; c <= bounds.max.y; c++)
+                {
+                    GenerateEnemy(tilemap, bounds, r, c);
                 }
             }
             layoutPos += bounds.size.x;
@@ -71,7 +81,7 @@ public class LevelGenerator : MonoBehaviour
         BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 40);
     }
 
-    private BoundsInt GenerateTile(Tilemap tilemap, Tilemap bgTilemap, BoundsInt bounds, int r, int c)
+    private void GenerateTile(Tilemap tilemap, Tilemap bgTilemap, BoundsInt bounds, int r, int c)
     {
         Vector3Int tempPos = new Vector3Int(r, c);
         //check background
@@ -88,6 +98,10 @@ public class LevelGenerator : MonoBehaviour
                 continue;
             }
         }
+    }
+    private void GenerateEnemy(Tilemap tilemap, BoundsInt bounds, int r, int c)
+    {
+        Vector3Int tempPos = new Vector3Int(r, c);
         //check enemy tiles
         for (int i = 0; i < enemyTiles.Length; i++)
         {
@@ -97,8 +111,6 @@ public class LevelGenerator : MonoBehaviour
                 continue;
             }
         }
-
-        return bounds;
     }
 
     private void BoxFill(Tilemap map, TileBase tile, int startX, int endX, int startY, int endY)

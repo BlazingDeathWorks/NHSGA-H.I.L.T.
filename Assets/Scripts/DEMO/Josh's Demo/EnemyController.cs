@@ -32,9 +32,9 @@ public class EnemyController : MonoBehaviour
     private float leftBound;
     private float rightBound;
     private State state;
-    private float aggroTime;
     private float nextAttack;
     private float aggroGoalX;
+    private bool attackDelayed;
 
     public enum State
     {
@@ -49,7 +49,36 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         active = false;
         dir = Random.Range(0, 2) * 2 - 1;
-        leftBound = rightBound = -100;
+        rightBound = leftBound = -100;
+        Invoke("SetPatrolBounds", 0.01f);
+    }
+
+    private void SetPatrolBounds()
+    {
+        float posCheck = 1.5f;
+        while (leftBound == -100 || rightBound == -100)
+        { 
+            if (leftBound == -100)
+            {
+                bool isEdge = !Physics2D.OverlapCircle(transform.position + new Vector3(-posCheck, 0), 0.1f, tileMask);
+                bool isWall = Physics2D.OverlapPoint(transform.position + new Vector3(-posCheck, .5f), tileMask);
+                if (isEdge || isWall)
+                {
+                    leftBound = transform.position.x - (posCheck - 1);
+                }
+            }
+            if (rightBound == -100)
+            {
+                bool isStopped = !Physics2D.OverlapCircle(transform.position + new Vector3(posCheck, 0), .1f, tileMask) ||
+                    Physics2D.OverlapCircle(transform.position + new Vector3(posCheck, .5f), .1f, tileMask);
+                if (isStopped)
+                {
+                    rightBound = transform.position.x + (posCheck - 1);
+                }
+            }
+            posCheck += 1;
+            if (posCheck > 100) break;
+        }
     }
 
     void Update()
@@ -64,105 +93,129 @@ public class EnemyController : MonoBehaviour
             {
                 case State.idle:
                     Patrol();
-                    FindPlayer(true);
+                    FindPlayer();
                     break;
 
                 case State.aggro:
                     switch (aiType)
                     {
                         case 0:
-                            float thisX = transform.position.x;
-                            float playerX = player.transform.position.x;
-                            if(Mathf.Abs(aggroGoalX-thisX) > .2f)
+                            MoveToAggro();
+                            if (Time.time > nextAttack)
                             {
-                                dir = Mathf.Sign(aggroGoalX - thisX);
-                                rb.velocity = Vector2.right * speed * dir / 2f;
-                            } else
-                            {
-                                rb.velocity = Vector2.zero;
-                                dir = Mathf.Sign(playerX - thisX);
+                                dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+                                state = State.attacking;
+                                anim.SetTrigger("attack");
+                                Invoke("AttackRanged", .2f);
                             }
-                            if(Time.time > aggroTime)
+                            break;
+                        case 1:
+                            MoveToAggro();
+                            aggroGoalX = Mathf.Clamp(player.transform.position.x +
+                                aggroFollowDistance * (transform.position.x < player.transform.position.x ? -1 : 1), leftBound, rightBound);
+                            if (Time.time > nextAttack)
                             {
-                                state = State.idle;
-                                anim.SetTrigger("idle");
+                                dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+                                state = State.attacking;
+                                anim.SetTrigger("attack");
+                                rb.velocity = Vector2.zero;
+                                //TODO CHANGE
+                                Invoke("Attack", .2f);
+                            }
+                            break;
+                        case 2:
+                            if (!FindPlayer() && !attackDelayed)
+                            {
+                                nextAttack = Time.time + 1f;
+                                attackDelayed = true;
                             }
                             if (Time.time > nextAttack)
                             {
-                                dir = Mathf.Sign(playerX - thisX);
-                                anim.SetTrigger("attack");
+                                dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+                                rb.velocity = Vector2.right * dir * speed * 5f;
                                 state = State.attacking;
+                                anim.SetTrigger("attack");
+                                //TODO CHANGE
+                                Invoke("Attack", .2f);
                             }
                             break;
                     }
-                    FindPlayer(false);
                     break;
 
                 case State.attacking:
                     switch (aiType)
                     {
-                        case 0:
-                            Instantiate(projectilePrefab, projectileOrigin.transform.position, 
-                                dir > 0 ? Quaternion.Euler(0, 0, 42) : Quaternion.Euler(0, 0, 222));
-                            nextAttack = Time.time + attackCooldown;
-                            state = State.aggro;
+                        case 2:
+                            if(dir < 0)
+                            {
+                                if(transform.position.x - player.transform.position.x < -2)
+                                {
+                                    anim.SetTrigger("attack");
+                                    state = State.idle;
+                                }
+                            } else
+                            {
+                                if (transform.position.x - player.transform.position.x > 2)
+                                {
+                                    anim.SetTrigger("attack");
+                                    state = State.idle;
+                                }
+                            }
                             break;
                     }
                     break;
             }
         }
-        projectileOrigin.transform.localPosition = new Vector3(Mathf.Abs(projectileOrigin.transform.localPosition.x) * 
+        projectileOrigin.transform.localPosition = new Vector3(Mathf.Abs(projectileOrigin.transform.localPosition.x) *
             dir < 0 ? -1 : 1, projectileOrigin.transform.localPosition.y);
         sprite.flipX = dir < 0;
     }
 
-    private void FindPlayer(bool ShouldChangeState)
+    private void MoveToAggro()
+    {
+        float thisX = transform.position.x;
+        float playerX = player.transform.position.x;
+        if (Mathf.Abs(aggroGoalX - thisX) > .2f)
+        {
+            dir = Mathf.Sign(aggroGoalX - thisX);
+            rb.velocity = Vector2.right * speed * dir * 1.5f;
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+            dir = Mathf.Sign(playerX - thisX);
+        }
+    }
+
+    private void AttackRanged()
+    {
+        Instantiate(projectilePrefab, projectileOrigin.transform.position, dir > 0 ? Quaternion.Euler(0, 0, 42) : Quaternion.Euler(0, 0, 222));
+        state = State.idle;
+    }
+
+    private bool FindPlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance);
         bool canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
         if (canSeePlayer)
         {
-            if(nextAttack < Time.time)
-            {
-                aggroGoalX = Mathf.Clamp(player.transform.position.x + 
-                    aggroFollowDistance * (transform.position.x < player.transform.position.x ? -1 : 1), leftBound, rightBound);
-                nextAttack = Time.time + attackCooldown * (Time.time < aggroTime ? .4f : 1);
-            }
-            if (ShouldChangeState)
-            {
-                anim.SetTrigger("aggro");
-                state = State.aggro;
-            }
-            aggroTime = Time.time + 1.5f;
+            aggroGoalX = Mathf.Clamp(player.transform.position.x +
+                aggroFollowDistance * (transform.position.x < player.transform.position.x ? -1 : 1), leftBound, rightBound);
+            nextAttack = Time.time + attackCooldown * Random.Range(.75f, 1.25f);
+            anim.SetTrigger("aggro");
+            state = State.aggro;
+            attackDelayed = false;
         }
+        return canSeePlayer;
 
     }
 
     private void Patrol()
     {
         rb.velocity = Vector3.right * speed * dir;
-        //set patrol bounds
-        if (leftBound == -100 && dir < 0)
-        {
-            bool isStopped = !Physics2D.OverlapCircle(transform.position + Vector3.left, .1f, tileMask) ||
-                Physics2D.OverlapPoint(transform.position + new Vector3(-1, .5f), tileMask);
-            if (isStopped)
-            {
-                leftBound = transform.position.x;
-            }
-        }
-        if (rightBound == -100 && dir > 0)
-        {
-            bool isStopped = !Physics2D.OverlapCircle(transform.position + Vector3.right, .1f, tileMask) ||
-                Physics2D.OverlapPoint(transform.position + new Vector3(1, .5f), tileMask);
-            if (isStopped)
-            {
-                rightBound = transform.position.x;
-            }
-        }
 
         //flip at bounds
-        if (leftBound != -100 && transform.position.x < leftBound) dir = 1;
-        if (rightBound != -100 && transform.position.x > rightBound) dir = -1;
+        if (transform.position.x < leftBound) dir = 1;
+        if (transform.position.x > rightBound) dir = -1;
     }
 }

@@ -207,14 +207,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiType: 0
   speed: 4
-  attackCooldown: 3
+  attackCooldown: 2
   tileMask:
     serializedVersion: 2
     m_Bits: 192
   projectilePrefab: {fileID: 3475208761378775674, guid: 81d818934e29b5743937f7379105e9d0, type: 3}
   projectileOrigin: {fileID: 8566113222722918490}
-  aggroFollowDistance: 7
-  aggroDistance: 7
+  aggroFollowDistance: 9
+  aggroDistance: 5
 --- !u!50 &8566113223726364299
 Rigidbody2D:
   serializedVersion: 4
