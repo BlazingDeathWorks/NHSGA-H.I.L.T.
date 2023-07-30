@@ -8,7 +8,9 @@ public class EnemyProjectileController : MonoBehaviour
     private float damage;
     [SerializeField]
     private float speed;
-
+    [SerializeField]
+    private bool noDestroy;
+    
     private Rigidbody2D rb;
     private GameObject cam;
     
@@ -25,6 +27,12 @@ public class EnemyProjectileController : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
-        Destroy(gameObject);
+        if (noDestroy)
+        {
+            GetComponent<Collider2D>().enabled = false;
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 }

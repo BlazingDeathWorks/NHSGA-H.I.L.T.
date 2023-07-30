@@ -35,6 +35,7 @@ public class EnemyController : MonoBehaviour
     private float nextAttack;
     private float aggroGoalX;
     private bool attackDelayed;
+    private GameObject activeHitbox;
 
     public enum State
     {
@@ -93,24 +94,23 @@ public class EnemyController : MonoBehaviour
             {
                 case State.idle:
                     Patrol();
-                    FindPlayer();
+                    FindPlayer(true);
                     break;
 
                 case State.aggro:
                     switch (aiType)
                     {
                         case 0:
-                            MoveToAggro();
+                            MoveToAggro(1.5f);
                             if (Time.time > nextAttack)
                             {
                                 dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                                 state = State.attacking;
                                 anim.SetTrigger("attack");
-                                Invoke("AttackRanged", .2f);
                             }
                             break;
                         case 1:
-                            MoveToAggro();
+                            if (MoveToAggro(2f)) nextAttack = Time.time - 1f;
                             aggroGoalX = Mathf.Clamp(player.transform.position.x +
                                 aggroFollowDistance * (transform.position.x < player.transform.position.x ? -1 : 1), leftBound, rightBound);
                             if (Time.time > nextAttack)
@@ -119,14 +119,13 @@ public class EnemyController : MonoBehaviour
                                 state = State.attacking;
                                 anim.SetTrigger("attack");
                                 rb.velocity = Vector2.zero;
-                                //TODO CHANGE
-                                Invoke("Attack", .2f);
                             }
                             break;
                         case 2:
-                            if (!FindPlayer() && !attackDelayed)
+                            rb.velocity = Vector2.zero;
+                            if (!FindPlayer(false) && !attackDelayed)
                             {
-                                nextAttack = Time.time + 1f;
+                                nextAttack = Time.time + .8f;
                                 attackDelayed = true;
                             }
                             if (Time.time > nextAttack)
@@ -135,8 +134,7 @@ public class EnemyController : MonoBehaviour
                                 rb.velocity = Vector2.right * dir * speed * 5f;
                                 state = State.attacking;
                                 anim.SetTrigger("attack");
-                                //TODO CHANGE
-                                Invoke("Attack", .2f);
+                                SpawnHitbox();
                             }
                             break;
                     }
@@ -146,18 +144,22 @@ public class EnemyController : MonoBehaviour
                     switch (aiType)
                     {
                         case 2:
+                            activeHitbox.transform.position = projectileOrigin.transform.position;
+                            float thisX = transform.position.x;
                             if(dir < 0)
                             {
-                                if(transform.position.x - player.transform.position.x < -2)
+                                if(thisX - player.transform.position.x < -2 || thisX < leftBound)
                                 {
-                                    anim.SetTrigger("attack");
+                                    anim.SetTrigger("idle");
+                                    DespawnHitbox();
                                     state = State.idle;
                                 }
                             } else
                             {
-                                if (transform.position.x - player.transform.position.x > 2)
+                                if (thisX - player.transform.position.x > 2 || thisX > rightBound)
                                 {
-                                    anim.SetTrigger("attack");
+                                    anim.SetTrigger("idle");
+                                    DespawnHitbox();
                                     state = State.idle;
                                 }
                             }
@@ -167,23 +169,25 @@ public class EnemyController : MonoBehaviour
             }
         }
         projectileOrigin.transform.localPosition = new Vector3(Mathf.Abs(projectileOrigin.transform.localPosition.x) *
-            dir < 0 ? -1 : 1, projectileOrigin.transform.localPosition.y);
+            (dir < 0 ? -1 : 1), projectileOrigin.transform.localPosition.y);
         sprite.flipX = dir < 0;
     }
 
-    private void MoveToAggro()
+    private bool MoveToAggro(float speedMod)
     {
         float thisX = transform.position.x;
         float playerX = player.transform.position.x;
         if (Mathf.Abs(aggroGoalX - thisX) > .2f)
         {
             dir = Mathf.Sign(aggroGoalX - thisX);
-            rb.velocity = Vector2.right * speed * dir * 1.5f;
+            rb.velocity = Vector2.right * speed * dir * speedMod;
+            return false;
         }
         else
         {
             rb.velocity = Vector2.zero;
             dir = Mathf.Sign(playerX - thisX);
+            return true;
         }
     }
 
@@ -193,11 +197,22 @@ public class EnemyController : MonoBehaviour
         state = State.idle;
     }
 
-    private bool FindPlayer()
+    private void SpawnHitbox()
+    {
+        activeHitbox = Instantiate(projectilePrefab, projectileOrigin.transform.position, Quaternion.identity);
+    }
+
+    private void DespawnHitbox()
+    {
+        Destroy(activeHitbox);
+        state = State.idle;
+    }
+
+    private bool FindPlayer(bool setAttack)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance);
         bool canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
-        if (canSeePlayer)
+        if (canSeePlayer && setAttack)
         {
             aggroGoalX = Mathf.Clamp(player.transform.position.x +
                 aggroFollowDistance * (transform.position.x < player.transform.position.x ? -1 : 1), leftBound, rightBound);
