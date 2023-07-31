@@ -104,10 +104,9 @@ public class EnemyController : MonoBehaviour
                     switch (aiType)
                     {
                         case 0:
-                            MoveToAggro(1.5f);
+                            if(MoveToAggro(1.5f)) dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                             if (Time.time > nextAttack)
                             {
-                                dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                                 state = State.attacking;
                                 anim.SetTrigger("attack");
                             }
@@ -126,14 +125,14 @@ public class EnemyController : MonoBehaviour
                             break;
                         case 2:
                             rb.velocity = Vector2.zero;
+                            dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                             if (!FindPlayer(false) && !attackDelayed)
                             {
-                                nextAttack = Time.time + .8f;
+                                nextAttack = Time.time + .75f;
                                 attackDelayed = true;
                             }
                             if (Time.time > nextAttack)
                             {
-                                dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                                 rb.velocity = Vector2.right * dir * speed * 5f;
                                 state = State.attacking;
                                 anim.SetTrigger("attack");
@@ -214,6 +213,11 @@ public class EnemyController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance);
         bool canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
+        if (!canSeePlayer)
+        {
+            hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.left * dir, 2f);
+            canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
+        }
         if (canSeePlayer && setAttack)
         {
             aggroGoalX = Mathf.Clamp(player.transform.position.x +

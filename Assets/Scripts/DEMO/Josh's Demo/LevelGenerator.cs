@@ -75,10 +75,10 @@ public class LevelGenerator : MonoBehaviour
         }
 
         //Create side walls and floor
-        BoxFill(maps[0], ruleTiles[0], -30, -10, -40, 40);
+        BoxFill(maps[0], ruleTiles[0], -30, -10, -40, 60);
         BoxFill(maps[0], ruleTiles[0], -10, 0, -40, 0);
         BoxFill(maps[0], ruleTiles[0], 0, layoutPos, -40, -14);
-        BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 40);
+        BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 60);
     }
 
     private void GenerateTile(Tilemap tilemap, Tilemap bgTilemap, BoundsInt bounds, int r, int c)
