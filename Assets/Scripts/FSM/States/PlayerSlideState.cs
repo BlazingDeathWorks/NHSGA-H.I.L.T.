@@ -27,7 +27,7 @@ public class PlayerSlideState : State
         }
 
         timeSinceSlide += Time.deltaTime;
-        if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow) || timeSinceSlide >= PlayerEntity.MaxSlideTime)
+        if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.LeftShift) || timeSinceSlide >= PlayerEntity.MaxSlideTime)
         {
             FiniteStateMachine.ChangeState(PlayerEntity.IsRunning ? PlayerEntity.PlayerRunState : PlayerEntity.PlayerIdleState);
         }

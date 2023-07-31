@@ -20,7 +20,7 @@ public class PlayerFallState : PlayerAirAttackControllerState
         }
 
         PlayerEntity.TimeSinceStartFall += Time.deltaTime;
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && PlayerEntity.TimeSinceStartFall < PlayerEntity.CoyoteTime)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) && PlayerEntity.TimeSinceStartFall < PlayerEntity.CoyoteTime)
         {
             PlayerEntity.IsCoyoteTime = true;
             PlayerEntity.IsJumping = true;

@@ -85,11 +85,11 @@ public class PlayerEntity : MonoBehaviour
             IsRunning = false;
         }
 
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || timeSinceJumpPressed < jumpBuffer) && IsGrounded)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || timeSinceJumpPressed < jumpBuffer) && IsGrounded)
         {
             IsJumping = true;
         }
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !IsGrounded && IsFalling)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) && !IsGrounded && IsFalling)
         {
             timeSinceJumpPressed = 0;
         }

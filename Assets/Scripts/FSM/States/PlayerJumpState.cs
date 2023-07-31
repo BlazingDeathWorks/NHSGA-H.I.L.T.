@@ -27,11 +27,11 @@ public class PlayerJumpState : PlayerAirAttackControllerState
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerFallState);
         }
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
         {
             timeSinceJump += Time.deltaTime;
         }
-        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.Space))
         {
             timeSinceJump = PlayerEntity.MaxJumpTime;
         }
