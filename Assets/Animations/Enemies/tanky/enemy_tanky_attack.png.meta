@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 81f0aea547a6c744c9afde740f52b0c6
+guid: 8c18de428bdb9734f8361e120dc8ceaa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 500
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enemy_meele_attack_0
+      name: enemy_tanky_attack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 250
         width: 1200
-        height: 1200
+        height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e0b6e298568794438e02007e981803d
-      internalID: 583965435
+      spriteID: d9425c2e2141d6b42958193e08885726
+      internalID: 1177112153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_meele_attack_1
+      name: enemy_tanky_attack_1
       rect:
         serializedVersion: 2
         x: 1200
-        y: 0
+        y: 250
         width: 1200
-        height: 1200
+        height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba99f477cb2967a46890a8d2b76c5ac4
-      internalID: -273859770
+      spriteID: 6565e805bafb44442876970cb932f43a
+      internalID: 584765900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_meele_attack_2
+      name: enemy_tanky_attack_2
       rect:
         serializedVersion: 2
         x: 2400
-        y: 0
+        y: 250
         width: 1200
-        height: 1200
+        height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57c1ac5265497974393ddd0aa9122a48
-      internalID: -1016877998
+      spriteID: c8514b4045183af428dc73275efd0f7b
+      internalID: -1172936761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_meele_attack_3
+      name: enemy_tanky_attack_3
       rect:
         serializedVersion: 2
         x: 3600
-        y: 0
+        y: 250
         width: 1200
-        height: 1200
+        height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cfa72e193188ff4391cf4b8dba0ac0a
-      internalID: -233139899
+      spriteID: 7c3aae3d6ef297e44a770e91feee08f8
+      internalID: 1290003766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_meele_attack_4
+      name: enemy_tanky_attack_4
       rect:
         serializedVersion: 2
         x: 4800
-        y: 0
+        y: 250
         width: 1200
-        height: 1200
+        height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba4f5d0290080af40bb0b596d8efe24e
-      internalID: -955758773
+      spriteID: 5d68f1b5cdb36034a980a8a9e5a83cf2
+      internalID: 343764553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_meele_attack_5
+      name: enemy_tanky_attack_5
       rect:
         serializedVersion: 2
         x: 6000
-        y: 0
+        y: 250
         width: 1200
-        height: 1200
+        height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ff0ef981a87d1a44923458845235b79
-      internalID: 1389574092
+      spriteID: 0cd1c9187d476e3489554483d10f5083
+      internalID: -387980534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_meele_attack_6
+      name: enemy_tanky_attack_6
       rect:
         serializedVersion: 2
         x: 7200
-        y: 0
+        y: 250
         width: 1200
-        height: 1200
+        height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e027887442a2cce42ac7ec2188aa702c
-      internalID: 1371616160
+      spriteID: 47b9e6ddbc46f3541bb33f3d4bb2f347
+      internalID: 1269920670
       vertices: []
       indices: 
       edges: []
@@ -274,13 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      enemy_meele_attack_0: 583965435
-      enemy_meele_attack_1: -273859770
-      enemy_meele_attack_2: -1016877998
-      enemy_meele_attack_3: -233139899
-      enemy_meele_attack_4: -955758773
-      enemy_meele_attack_5: 1389574092
-      enemy_meele_attack_6: 1371616160
+      enemy_tanky_attack_0: 1177112153
+      enemy_tanky_attack_1: 584765900
+      enemy_tanky_attack_2: -1172936761
+      enemy_tanky_attack_3: 1290003766
+      enemy_tanky_attack_4: 343764553
+      enemy_tanky_attack_5: -387980534
+      enemy_tanky_attack_6: 1269920670
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

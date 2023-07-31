@@ -35,7 +35,6 @@ public class EnemyController : MonoBehaviour
     private float nextAttack;
     private float aggroGoalX;
     private bool attackDelayed;
-    private GameObject activeHitbox;
 
     public enum State
     {
@@ -52,6 +51,10 @@ public class EnemyController : MonoBehaviour
         dir = Random.Range(0, 2) * 2 - 1;
         rightBound = leftBound = -100;
         Invoke("SetPatrolBounds", 0.01f);
+        if (aiType == 1 || aiType == 2)
+        {
+            projectilePrefab.GetComponent<Collider2D>().enabled = false;
+        }
     }
 
     private void SetPatrolBounds()
@@ -144,7 +147,6 @@ public class EnemyController : MonoBehaviour
                     switch (aiType)
                     {
                         case 2:
-                            activeHitbox.transform.position = projectileOrigin.transform.position;
                             float thisX = transform.position.x;
                             if(dir < 0)
                             {
@@ -199,12 +201,12 @@ public class EnemyController : MonoBehaviour
 
     private void SpawnHitbox()
     {
-        activeHitbox = Instantiate(projectilePrefab, projectileOrigin.transform.position, Quaternion.identity);
+        projectilePrefab.GetComponent<Collider2D>().enabled = true;
     }
 
     private void DespawnHitbox()
     {
-        Destroy(activeHitbox);
+        projectilePrefab.GetComponent<Collider2D>().enabled = false;
         state = State.idle;
     }
 
