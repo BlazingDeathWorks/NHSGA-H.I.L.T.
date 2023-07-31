@@ -24,6 +24,7 @@ public class Blade_ht : MonoBehaviour
                 currentBlade = blades[i];
             }
         }
+        //Change the hue with a reference to the volume and use a tween to make it look nicer
     }
 
     //Hardcode Strategy for faster production
@@ -53,6 +54,9 @@ public struct Blade
 {
     public string BladeName => bladeName;
     [SerializeField] private string bladeName;
+
+    public int HueShiftValue => hueShiftValue;
+    [SerializeField] private int hueShiftValue;
 
     //Slash Variables Expand As More Moves Are Created
     public Slash BaseAttackSlash => baseAttackSlash;
