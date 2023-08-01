@@ -52,4 +52,9 @@ public class PropertyNavigationButton : MonoBehaviour
         onCodeBlockDisabled.Invoke();
         isClicked = false;
     }
+
+    public bool CheckShade()
+    {
+        return shade.gameObject.activeInHierarchy;
+    }
 }
