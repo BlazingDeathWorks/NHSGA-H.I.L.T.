@@ -14,6 +14,11 @@ public abstract class PlayerAirAttackControllerState : State
     {
         base.OnUpdate();
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerSlideState);
+        }
+
         //STEP #1 - Create a new input for the new air attack
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

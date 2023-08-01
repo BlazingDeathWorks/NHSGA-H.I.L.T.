@@ -12,6 +12,12 @@ public class PlayerSlideState : State
 
     }
 
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        if (PlayerEntity.IsGrounded) PlayerEntity.Rb.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
+    }
+
     public override void OnExit()
     {
         base.OnEnter();
@@ -21,13 +27,9 @@ public class PlayerSlideState : State
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if (PlayerEntity.IsFalling)
-        {
-            FiniteStateMachine.ChangeState(PlayerEntity.PlayerFallState);
-        }
 
         timeSinceSlide += Time.deltaTime;
-        if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.LeftShift) || timeSinceSlide >= PlayerEntity.MaxSlideTime)
+        if (timeSinceSlide >= PlayerEntity.MaxSlideTime)
         {
             FiniteStateMachine.ChangeState(PlayerEntity.IsRunning ? PlayerEntity.PlayerRunState : PlayerEntity.PlayerIdleState);
         }
@@ -36,6 +38,6 @@ public class PlayerSlideState : State
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        PlayerEntity.Rb.velocity = new Vector2(PlayerEntity.SlideSpeed * Mathf.Sign(PlayerEntity.gameObject.transform.localScale.x), 0);
+        PlayerEntity.Rb.velocity = new Vector2(PlayerEntity.SlideSpeed * Mathf.Sign(PlayerEntity.gameObject.transform.localScale.x), PlayerEntity.Rb.velocity.y);
     }
 }
