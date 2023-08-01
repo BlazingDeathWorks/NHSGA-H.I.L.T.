@@ -9,6 +9,7 @@ public class ClassNavigationButton : MonoBehaviour
     [SerializeField] private PropertyNavigationButton[] propertyNavigationButtons;
     [SerializeField] private CodeBlock[] linesOfCode;
     private Button button;
+    private PropertyNavigationButton activePropNavButton;
 
     private void Awake()
     {
@@ -18,5 +19,15 @@ public class ClassNavigationButton : MonoBehaviour
         }
         button = GetComponent<Button>();
         button.onClick.AddListener(() => IDEManager.Instance.SetCurrentClass(this));
+    }
+
+    public void SetActivatePNB(PropertyNavigationButton pnb)
+    {
+        activePropNavButton = pnb;
+        for (int i = 0; i < propertyNavigationButtons.Length; i++)
+        {
+            if (propertyNavigationButtons[i] == activePropNavButton) continue;
+            propertyNavigationButtons[i].OnButtonUnClick();
+        }
     }
 }

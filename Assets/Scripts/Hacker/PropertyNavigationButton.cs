@@ -31,6 +31,7 @@ public class PropertyNavigationButton : MonoBehaviour
         if (isClicked) return;
         onCodeBlockEnabled.Invoke();
         lineOfCode?.ReplaceCodeFragment(codeFragment);
+        Parent.SetActivatePNB(this);
         IDEManager.Instance.SetCurrentClass(Parent);
         isClicked = true;
     }
