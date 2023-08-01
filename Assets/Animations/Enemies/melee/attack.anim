@@ -25,13 +25,13 @@ AnimationClip:
       value: {fileID: -273859770, guid: 81f0aea547a6c744c9afde740f52b0c6, type: 3}
     - time: 0.06666667
       value: {fileID: -1016877998, guid: 81f0aea547a6c744c9afde740f52b0c6, type: 3}
-    - time: 0.1
+    - time: 0.38333333
       value: {fileID: -233139899, guid: 81f0aea547a6c744c9afde740f52b0c6, type: 3}
-    - time: 0.13333334
+    - time: 0.41666666
       value: {fileID: -955758773, guid: 81f0aea547a6c744c9afde740f52b0c6, type: 3}
-    - time: 0.16666667
+    - time: 0.45
       value: {fileID: 1389574092, guid: 81f0aea547a6c744c9afde740f52b0c6, type: 3}
-    - time: 0.2
+    - time: 0.48333332
       value: {fileID: 1371616160, guid: 81f0aea547a6c744c9afde740f52b0c6, type: 3}
     attribute: m_Sprite
     path: 
@@ -64,7 +64,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.21666667
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -84,14 +84,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.1
+  - time: 0.38333333
     functionName: SpawnHitbox
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.2
+  - time: 0.48333332
     functionName: DespawnHitbox
     data: 
     objectReferenceParameter: {fileID: 0}

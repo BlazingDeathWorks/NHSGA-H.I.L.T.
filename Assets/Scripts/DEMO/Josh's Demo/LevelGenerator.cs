@@ -27,6 +27,8 @@ public class LevelGenerator : MonoBehaviour
     private int layoutPos;
     private int[] layoutSeed;
     private int layoutSeedIndex;
+    private float holdLayoutCount;
+    private List<GameObject> enemiesInLayout;
 
     void Start()
     {
@@ -34,6 +36,7 @@ public class LevelGenerator : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 8);
 
         layoutPos = 0;
+        holdLayoutCount = layoutCount * 2;
         layoutSeed = new int[layouts.Length];
         for (int i = 0; i < layoutSeed.Length; i++)
         {
@@ -51,6 +54,7 @@ public class LevelGenerator : MonoBehaviour
         layoutSeedIndex = 0;
         while (layoutCount-- > 0)
         {
+            enemiesInLayout = new List<GameObject>();
             GameObject layout = layouts[layoutSeed[layoutSeedIndex++]];
             Tilemap tilemap = layout.GetComponent<Tilemap>();
             Tilemap bgTilemap = layout.GetComponentsInChildren<Tilemap>()[1];
@@ -62,15 +66,14 @@ public class LevelGenerator : MonoBehaviour
                 for (int c = bounds.min.y; c <= bounds.max.y; c++)
                 {
                     GenerateTile(tilemap, bgTilemap, bounds, r, c);
-                }
-            }
-            for (int r = bounds.min.x; r <= bounds.max.x; r++)
-            {
-                for (int c = bounds.min.y; c <= bounds.max.y; c++)
-                {
                     GenerateEnemy(tilemap, bounds, r, c);
                 }
             }
+
+            //set elite
+            if(enemiesInLayout.Count > 0) enemiesInLayout[Random.Range(0, enemiesInLayout.Count)].GetComponent<EnemyController>().SetElite();
+
+            //set up next layout
             layoutPos += bounds.size.x;
         }
 
@@ -107,7 +110,19 @@ public class LevelGenerator : MonoBehaviour
         {
             if (tilemap.GetTile(tempPos) == enemyTiles[i])
             {
-                Instantiate(enemyPrefabs[i], tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), Quaternion.identity);
+                //randomize existence
+                if (Random.Range(0f, 1f) > layoutCount / holdLayoutCount)
+                {
+                    //randomize type
+                    int randType = Mathf.FloorToInt(i + enemyPrefabs.Length + Random.Range(-.1f, 1.1f)) % enemyPrefabs.Length;
+                    //instantiate
+                    GameObject holdEnemy = Instantiate(enemyPrefabs[randType], 
+                        tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), Quaternion.identity);
+                    //randomize stats
+                    holdEnemy.GetComponent<EnemyController>().SetStats(layoutCount / holdLayoutCount);
+                    //add to elite calculation
+                    enemiesInLayout.Add(holdEnemy);
+                }
                 continue;
             }
         }
