@@ -1349,7 +1349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 3
-  jumpTime: 2
+  jumpTime: 1
   jumpHeight: 10
 --- !u!61 &849776835
 BoxCollider2D:

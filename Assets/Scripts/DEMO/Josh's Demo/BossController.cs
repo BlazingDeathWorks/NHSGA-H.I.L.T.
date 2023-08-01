@@ -54,9 +54,9 @@ public class BossController : MonoBehaviour
                 }
                 break;
             case State.jumping:
-                if((dir < 0 && transform.position.x <= goalPos) || (dir > 0 && transform.position.x >= goalPos))
+                if(transform.position.y <= goalHeight && rb.velocity.y < 0)
                 {
-                    rb.velocity = new Vector2(0, rb.velocity.y);
+                    rb.velocity = Vector2.zero;
                     nextAttack = Time.time + attackCooldown;
                     state = State.idle;
                 }
