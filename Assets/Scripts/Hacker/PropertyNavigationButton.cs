@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class PropertyNavigationButton : MonoBehaviour
 {
+    public ClassNavigationButton Parent { get; set; }
     [SerializeField] private string codeFragment;
     [SerializeField] private CodeBlock lineOfCode;
     [SerializeField] private UnityEvent onCodeBlockEnabled;
@@ -30,6 +31,7 @@ public class PropertyNavigationButton : MonoBehaviour
         if (isClicked) return;
         onCodeBlockEnabled.Invoke();
         lineOfCode?.ReplaceCodeFragment(codeFragment);
+        IDEManager.Instance.SetCurrentClass(Parent);
         isClicked = true;
     }
 

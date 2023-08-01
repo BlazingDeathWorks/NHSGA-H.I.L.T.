@@ -16,7 +16,6 @@ public class CodeBlock : MonoBehaviour
 
         //Format: Tabs and Create highlight wrap
         if (string.IsNullOrEmpty(codeTemplate)) return;
-        //string originalCodeTemplate = codeTemplate;
         string newCodeTemplate = "";
         bool finishedWrap = true;
 
