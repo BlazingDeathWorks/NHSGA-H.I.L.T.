@@ -124,6 +124,7 @@ MonoBehaviour:
   damage: 10
   speed: 20
   noDestroy: 0
+  offsetRot: 1
 --- !u!95 &9138406015850174478
 Animator:
   serializedVersion: 5
