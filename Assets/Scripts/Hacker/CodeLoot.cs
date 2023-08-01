@@ -23,7 +23,7 @@ public class CodeLoot : MonoBehaviour
 
             for (int i = 0; i < loots[randomIndex].CheckSequence.Length; i++)
             {
-                if (loots[randomIndex].CheckSequence[i].CheckShade())
+                if (!loots[randomIndex].CheckSequence[i].CheckActive())
                 {
                     pass = false;
                     break;

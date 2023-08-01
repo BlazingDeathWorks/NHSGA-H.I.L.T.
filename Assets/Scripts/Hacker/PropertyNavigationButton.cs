@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class PropertyNavigationButton : MonoBehaviour
 {
     public ClassNavigationButton Parent { get; set; }
-    [SerializeField] private Image shade;
     [SerializeField] [Tooltip("If true, PNB will be unlocked at the beginning")] private bool defaultButton = false;
     [SerializeField] private string codeFragment;
     [SerializeField] private CodeBlock lineOfCode;
@@ -26,14 +25,12 @@ public class PropertyNavigationButton : MonoBehaviour
             UnlockButton();
             return;
         }
-        shade.gameObject.SetActive(true);
-        button.interactable = false;
+        gameObject.SetActive(false);
     }
 
     public void UnlockButton()
     {
-        shade.gameObject.SetActive(false);
-        button.interactable = true;
+        gameObject.SetActive(true);
     }
 
     //Nothing has to be added to Unity's Button Component OnClick()
@@ -53,8 +50,8 @@ public class PropertyNavigationButton : MonoBehaviour
         isClicked = false;
     }
 
-    public bool CheckShade()
+    public bool CheckActive()
     {
-        return shade.gameObject.activeInHierarchy;
+        return gameObject.activeInHierarchy;
     }
 }

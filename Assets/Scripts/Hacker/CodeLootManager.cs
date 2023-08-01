@@ -21,7 +21,7 @@ public class CodeLootManager : MonoBehaviour
     public void GetRandomCollection(List<Loot> loots)
     {
         int randomCollectionAmount = Random.Range(min, max + 1);
-        int[] indexesUsed = new int[randomCollectionAmount];
+        List<int> indexesUsed = new();
         for (int i = 0; i < randomCollectionAmount; i++)
         {
             if (this.loots == null || this.loots.Length < randomCollectionAmount) return;
@@ -30,7 +30,7 @@ public class CodeLootManager : MonoBehaviour
             do
             {
                 pass = true;
-                for (int j = 0; j < indexesUsed.Length; j++)
+                for (int j = 0; j < indexesUsed.Count; j++)
                 {
                     if (indexesUsed[i] == index)
                     {
@@ -40,6 +40,7 @@ public class CodeLootManager : MonoBehaviour
                 }
             } while (pass == false);
             loots.Add(this.loots[index]);
+            indexesUsed.Add(index);
         }
     }
 }
