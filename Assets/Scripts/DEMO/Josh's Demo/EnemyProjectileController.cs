@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyProjectileController : MonoBehaviour
 {
-    [SerializeField]
-    private float damage;
+    public float damage;
+
     [SerializeField]
     private float speed;
     [SerializeField]

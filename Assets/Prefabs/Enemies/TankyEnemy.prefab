@@ -209,11 +209,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiType: 2
   speed: 4
+  damage: 35
   attackCooldown: 2
   tileMask:
     serializedVersion: 2
     m_Bits: 192
-  projectilePrefab: {fileID: 4836321338461502838}
+  projectilePrefab: {fileID: 1420976464752425674}
   projectileOrigin: {fileID: 3214143978277299033}
   aggroFollowDistance: 0
   aggroDistance: 10
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15335b0f9b24bad42bc286ebd9639e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 150
 --- !u!1 &4836321338461502838
 GameObject:
   m_ObjectHideFlags: 0

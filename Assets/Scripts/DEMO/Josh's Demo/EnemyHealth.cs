@@ -15,4 +15,9 @@ public class EnemyHealth : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void MultiplyHealth(float val)
+    {
+        health *= val;
+    }
 }

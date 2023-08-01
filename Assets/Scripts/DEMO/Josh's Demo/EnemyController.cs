@@ -10,11 +10,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float speed;
     [SerializeField]
+    private float damage;
+    [SerializeField]
     private float attackCooldown;
     [SerializeField]
     private LayerMask tileMask;
     [SerializeField]
-    private GameObject projectilePrefab;
+    private EnemyProjectileController projectilePrefab;
     [SerializeField]
     private GameObject projectileOrigin;
     [SerializeField]
@@ -54,6 +56,7 @@ public class EnemyController : MonoBehaviour
         if (aiType == 1 || aiType == 2)
         {
             projectilePrefab.GetComponent<Collider2D>().enabled = false;
+            projectilePrefab.damage = damage;
         }
     }
 
@@ -87,7 +90,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (!active && (player.transform.position - transform.position).magnitude < 50f)
+        if (!active && (player.transform.position - transform.position).magnitude < 25f)
         {
             active = true;
         }
@@ -192,9 +195,27 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void SetStats(float scaler)
+    {
+        scaler = 1.2f - scaler;
+        damage *= scaler;
+        speed *= scaler * Random.Range(.9f, 1.1f);
+        GetComponent<EnemyHealth>().MultiplyHealth(scaler);
+    }
+
+    public void SetElite()
+    {
+        damage *= 1.5f;
+        speed *= 1.5f;
+        GetComponent<EnemyHealth>().MultiplyHealth(2f);
+        GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
     private void AttackRanged()
     {
-        Instantiate(projectilePrefab, projectileOrigin.transform.position, dir > 0 ? Quaternion.Euler(0, 0, 42) : Quaternion.Euler(0, 0, 222));
+        Quaternion angle = dir > 0 ? Quaternion.Euler(0, 0, 42) : Quaternion.Euler(0, 0, 222);
+        EnemyProjectileController projectile = Instantiate(projectilePrefab, projectileOrigin.transform.position, angle);
+        projectile.damage = damage;
         state = State.idle;
     }
 
