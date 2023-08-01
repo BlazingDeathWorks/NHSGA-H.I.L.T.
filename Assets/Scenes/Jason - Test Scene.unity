@@ -2551,6 +2551,10 @@ PrefabInstance:
       propertyPath: codeFragment
       value: BaseBlade
       objectReference: {fileID: 0}
+    - target: {fileID: 448217058830448107, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
+      propertyPath: defaultButton
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3034274056610847710, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Text
       value: Base Blade
