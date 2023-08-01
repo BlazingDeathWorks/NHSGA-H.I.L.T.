@@ -29,6 +29,11 @@ public abstract class PlayerGroundAttackControllerState : State
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerJumpState);
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerSlideState);
+        }
+
         //STEP #1 - Create a new input for the new ground attack
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

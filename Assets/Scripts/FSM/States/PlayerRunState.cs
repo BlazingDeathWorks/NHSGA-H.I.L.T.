@@ -18,9 +18,5 @@ public class PlayerRunState : PlayerGroundAttackControllerState
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerIdleState);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            FiniteStateMachine.ChangeState(PlayerEntity.PlayerSlideState);
-        }
     }
 }
