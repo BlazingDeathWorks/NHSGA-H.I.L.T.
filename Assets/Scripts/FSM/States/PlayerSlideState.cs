@@ -15,6 +15,7 @@ public class PlayerSlideState : State
     public override void OnEnter()
     {
         base.OnEnter();
+        PlayerEntity.CanSlide = false;
         if (PlayerEntity.IsGrounded) PlayerEntity.Rb.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
     }
 
@@ -31,6 +32,11 @@ public class PlayerSlideState : State
         timeSinceSlide += Time.deltaTime;
         if (timeSinceSlide >= PlayerEntity.MaxSlideTime)
         {
+            if (!PlayerEntity.IsGrounded)
+            {
+                FiniteStateMachine.ChangeState(PlayerEntity.PlayerFallState);
+                return;
+            }
             FiniteStateMachine.ChangeState(PlayerEntity.IsRunning ? PlayerEntity.PlayerRunState : PlayerEntity.PlayerIdleState);
         }
     }

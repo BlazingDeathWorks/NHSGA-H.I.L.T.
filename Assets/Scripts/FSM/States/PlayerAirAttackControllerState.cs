@@ -14,7 +14,7 @@ public abstract class PlayerAirAttackControllerState : State
     {
         base.OnUpdate();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerEntity.CanSlide)
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerSlideState);
         }

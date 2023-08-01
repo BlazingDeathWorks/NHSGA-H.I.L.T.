@@ -14,6 +14,7 @@ public abstract class PlayerGroundAttackControllerState : State
     {
         base.OnEnter();
         PlayerEntity.TimeSinceStartFall = 0;
+        PlayerEntity.CanSlide = true;
     }
 
     public override void OnUpdate()

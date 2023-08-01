@@ -13,6 +13,7 @@ public class PlayerEntity : MonoBehaviour
     public bool IsJumping { get; set; }
     public bool IsFalling { get; private set; }
     public bool IsGrounded { get; private set; } = true;
+    public bool CanSlide { get; set; }
     public bool FinishedAttacking { get; set; }
     public bool IsCoyoteTime { get; set; }
     public float TimeSinceStartFall { get; set; }
