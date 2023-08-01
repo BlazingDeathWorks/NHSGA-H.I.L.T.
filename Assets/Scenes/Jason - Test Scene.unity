@@ -311,13 +311,13 @@ RectTransform:
   m_Children:
   - {fileID: 767813319}
   - {fileID: 175504601}
-  m_Father: {fileID: 799189179}
-  m_RootOrder: 2
+  m_Father: {fileID: 1540780423}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 565, y: 830}
-  m_SizeDelta: {x: 2327.1, y: 157.4}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 565, y: -212}
+  m_SizeDelta: {x: 2327.1, y: 157.40002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &205709622
 MonoBehaviour:
@@ -1034,15 +1034,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1540780423}
-  - {fileID: 1752055402}
-  - {fileID: 205709621}
   m_Father: {fileID: 234800222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: -3740, y: -2060}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &898198757
 GameObject:
@@ -2695,7 +2693,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1752055402}
+  - {fileID: 205709621}
   m_Father: {fileID: 799189179}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2801,12 +2801,12 @@ RectTransform:
   - {fileID: 1816010501}
   - {fileID: 1077266665}
   - {fileID: 1792776604}
-  m_Father: {fileID: 799189179}
-  m_RootOrder: 1
+  m_Father: {fileID: 1540780423}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1570, y: 865}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -1570, y: -177}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752055403

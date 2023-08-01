@@ -19,6 +19,7 @@ public class PropertyNavigationButton : MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
+        button.onClick.AddListener(() => IDEManager.Instance.SetCurrentClass(Parent));
 
         if (defaultButton || lineOfCode == null)
         {
@@ -40,7 +41,6 @@ public class PropertyNavigationButton : MonoBehaviour
         onCodeBlockEnabled.Invoke();
         lineOfCode?.ReplaceCodeFragment(codeFragment);
         Parent.SetActivatePNB(this);
-        IDEManager.Instance.SetCurrentClass(Parent);
         isClicked = true;
     }
 
