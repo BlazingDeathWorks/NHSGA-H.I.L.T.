@@ -345,7 +345,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -468,16 +468,16 @@ CompositeCollider2D:
     m_ColliderPaths:
     - - X: -80000000
         Y: -30000000
-      - X: 20000000
+      - X: 240000000
         Y: -30000000
-      - X: 20000000
+      - X: 240000000
         Y: -20000000
       - X: -80000000
         Y: -20000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 1.9999708, y: -3}
-      - {x: 1.9999708, y: -2}
+    - - {x: 23.999971, y: -3}
+      - {x: 23.999971, y: -2}
       - {x: -8, y: -2.0000293}
       - {x: -7.9999704, y: -3}
   m_VertexDistance: 0.0005
@@ -1545,7 +1545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8883f9417c7ad4798ca12c1466473a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 2236177067489537697, guid: 03991d07e35e3694ab4e3749b856fa18, type: 3}
+  map: {fileID: 2398005177629965578, guid: 2a781f8bb99eb304aae2c1e2a7d37988, type: 3}
 --- !u!4 &972075514
 Transform:
   m_ObjectHideFlags: 0
@@ -2045,6 +2045,15 @@ MonoBehaviour:
   - {fileID: 5713788471649584104, guid: c169bd52fa760ac4d8e940c16d2ea084, type: 3}
   - {fileID: 5776331299644779394, guid: 4346fe218602e01489496c616cf95dcd, type: 3}
   - {fileID: 2080548360460379402, guid: d4a5e42ec7004fd43a369e3911ac967a, type: 3}
+  - {fileID: 2679668482006707728, guid: b03fa1a7016a566448d8f8c6ae03cf9d, type: 3}
+  - {fileID: 3203377134554476113, guid: 4ce7fd5d4e5f5f440a13e18f971f3d1b, type: 3}
+  - {fileID: 6688387399276525105, guid: f8a873ce86f4d9349bfe139374ca9fc3, type: 3}
+  - {fileID: 7974358262809203202, guid: 443399b6ce34d9d4c9d0cf0c66a78893, type: 3}
+  - {fileID: 2836060812194297550, guid: 7af3e2292f53c7747ab614b09debc120, type: 3}
+  - {fileID: 4933752881097898497, guid: 62a9ed1e9c013d743beceb68d0f3d9fc, type: 3}
+  - {fileID: 5828440380519592603, guid: 25505e2608dcabd468b51f3386bd5c31, type: 3}
+  - {fileID: 8241528268371964432, guid: 2a781f8bb99eb304aae2c1e2a7d37988, type: 3}
+  - {fileID: 7100485554665957061, guid: 07832bfd739b6e547b65938b37ec1d7e, type: 3}
 --- !u!1 &1504226554
 GameObject:
   m_ObjectHideFlags: 0
