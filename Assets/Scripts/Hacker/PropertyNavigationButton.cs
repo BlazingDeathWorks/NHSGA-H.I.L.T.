@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class PropertyNavigationButton : MonoBehaviour
 {
     public ClassNavigationButton Parent { get; set; }
+    [SerializeField] private Image shade;
+    [SerializeField] [Tooltip("If true, PNB will be unlocked at the beginning")] private bool defaultButton = false;
     [SerializeField] private string codeFragment;
     [SerializeField] private CodeBlock lineOfCode;
     [SerializeField] private UnityEvent onCodeBlockEnabled;
@@ -18,10 +20,19 @@ public class PropertyNavigationButton : MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
+
+        if (defaultButton || lineOfCode == null)
+        {
+            UnlockButton();
+            return;
+        }
+        shade.gameObject.SetActive(true);
+        button.interactable = false;
     }
 
     public void UnlockButton()
     {
+        shade.gameObject.SetActive(false);
         button.interactable = true;
     }
 

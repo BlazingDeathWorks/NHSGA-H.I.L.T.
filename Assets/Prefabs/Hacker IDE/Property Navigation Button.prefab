@@ -280,6 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655d5fe98a9db46eb9d63fb83c301d25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shade: {fileID: 2740603084418317119}
+  defaultButton: 0
   codeFragment: 
   lineOfCode: {fileID: 0}
   onCodeBlockEnabled:
