@@ -15,6 +15,7 @@ public class PlayerSlideState : State
     public override void OnEnter()
     {
         base.OnEnter();
+        PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Invincible");
         PlayerEntity.CanSlide = false;
         if (PlayerEntity.IsGrounded) PlayerEntity.Rb.AddForce(new Vector2(0, 10f), ForceMode2D.Impulse);
     }
@@ -23,6 +24,7 @@ public class PlayerSlideState : State
     {
         base.OnEnter();
         timeSinceSlide = 0;
+        PlayerEntity.StartCoroutine(ReturnToPlayerLayer());
     }
 
     public override void OnUpdate()
@@ -45,5 +47,11 @@ public class PlayerSlideState : State
     {
         base.OnFixedUpdate();
         PlayerEntity.Rb.velocity = new Vector2(PlayerEntity.SlideSpeed * Mathf.Sign(PlayerEntity.gameObject.transform.localScale.x), PlayerEntity.Rb.velocity.y);
+    }
+
+    private IEnumerator ReturnToPlayerLayer()
+    {
+        yield return new WaitForSecondsRealtime(0.15f);
+        PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 }
