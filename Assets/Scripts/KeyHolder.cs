@@ -8,4 +8,9 @@ public class KeyHolder : MonoBehaviour
     {
         Door.Instance.RegisterNewKey();
     }
+
+    private void OnDestroy()
+    {
+        Door.Instance.CollectKey();
+    }
 }
