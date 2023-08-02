@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ActionBlock : MonoBehaviour
+public abstract class ActionBlock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool Error { get; private set; } = true;
+    private Button button;
+
+    private void Awake()
     {
-        
+        button = GetComponentInChildren<Button>();
+        button.onClick.AddListener(() => Destroy(gameObject));
+        button.onClick.AddListener(() =>
+        {
+            Ultimate_ht.Instance.Actions -= Execute;
+            Ultimate_ht.Instance.ActionBlocks.Remove(this);
+        });
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Ultimate_ht.Instance.ActionBlocks.Add(this);
     }
+
+    private void Update()
+    {
+        if (!Error) return;
+        Error = CheckInputs();
+    }
+
+    protected abstract bool CheckInputs();
+
+    public abstract void Execute(GameObject enemy);
 }
