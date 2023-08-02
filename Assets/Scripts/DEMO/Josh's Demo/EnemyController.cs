@@ -29,6 +29,7 @@ public class EnemyController : MonoBehaviour
     private AudioClip attackSound;
 
     private GameObject player;
+    private float patrolY;
     private AudioManager audioManager;
     private Collider2D playerCollider;
     private SpriteRenderer sprite;
@@ -77,7 +78,7 @@ public class EnemyController : MonoBehaviour
             if (leftBound == -100)
             {
                 bool isEdge = !Physics2D.OverlapCircle(transform.position + new Vector3(-posCheck, 0), 0.1f, tileMask);
-                bool isWall = Physics2D.OverlapPoint(transform.position + new Vector3(-posCheck, .5f), tileMask);
+                bool isWall = Physics2D.OverlapCircle(transform.position + new Vector3(-posCheck, .5f), .3f, tileMask);
                 if (isEdge || isWall)
                 {
                     leftBound = transform.position.x - (posCheck - 1);
@@ -86,19 +87,24 @@ public class EnemyController : MonoBehaviour
             if (rightBound == -100)
             {
                 bool isStopped = !Physics2D.OverlapCircle(transform.position + new Vector3(posCheck, 0), .1f, tileMask) ||
-                    Physics2D.OverlapCircle(transform.position + new Vector3(posCheck, .5f), .1f, tileMask);
+                    Physics2D.OverlapCircle(transform.position + new Vector3(posCheck, .5f), .3f, tileMask);
                 if (isStopped)
                 {
                     rightBound = transform.position.x + (posCheck - 1);
                 }
             }
-            posCheck += 1;
+            posCheck += .2f;
             if (posCheck > 100) break;
         }
+        patrolY = transform.position.y;
     }
 
     void Update()
     {
+        if(Mathf.Abs(transform.position.y-patrolY) > .05f)
+        {
+            SetPatrolBounds();
+        }
         if (!active && (player.transform.position - transform.position).magnitude < 25f)
         {
             active = true;
