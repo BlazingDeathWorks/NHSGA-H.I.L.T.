@@ -16,7 +16,7 @@ public class Slash : MonoBehaviour
         if (collision.TryGetComponent(out EnemyHealth enemyHealth))
         {
             enemyHealth.TakeDamage(Weapon_ht.Instance.Damage);
-            Debug.Log("DAMAGE ENEMY");
+            Ultimate_ht.Instance.InvokeActions(enemyHealth.gameObject);
             //Call stuff like enemyHealth.Stun() and so on for each effect
         }
     }

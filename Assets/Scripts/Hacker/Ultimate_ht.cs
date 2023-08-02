@@ -6,6 +6,9 @@ using System;
 public class Ultimate_ht : MonoBehaviour
 {
     public static Ultimate_ht Instance { get; private set; }
+    //Remote Events
+    public event Action OnUpdate;
+    public event Action OnFixedUpdate;
     //Might change GameObject to something more specific later
     public event Action<GameObject> Actions;
     public List<ActionBlock> ActionBlocks { get; private set; } = new();
@@ -20,6 +23,16 @@ public class Ultimate_ht : MonoBehaviour
         Instance = this;
     }
 
+    private void Update()
+    {
+        OnUpdate?.Invoke();
+    }
+
+    private void FixedUpdate()
+    {
+        OnFixedUpdate?.Invoke();
+    }
+
     public void InvokeActions(GameObject enemy)
     {
         Actions?.Invoke(enemy);
@@ -29,9 +42,8 @@ public class Ultimate_ht : MonoBehaviour
     {
         for (int i = 0; i < ActionBlocks.Count; i++)
         {
-            Actions -= ActionBlocks[i].Execute;
+            ActionBlocks[i].RemoveListener();
         }
-        ActionBlocks.Clear();
 
         for (int i = 0; i < ActionBlocks.Count; i++)
         {
