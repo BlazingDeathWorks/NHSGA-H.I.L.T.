@@ -14,6 +14,10 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private Tilemap[] maps;
     [SerializeField]
+    private Tilemap minimap;
+    [SerializeField]
+    private RuleTile[] minimapTiles;
+    [SerializeField]
     private Tilemap bgMap;
     [SerializeField]
     private RuleTile bgTile;
@@ -82,6 +86,11 @@ public class LevelGenerator : MonoBehaviour
         BoxFill(maps[0], ruleTiles[0], -10, 0, -40, 0);
         BoxFill(maps[0], ruleTiles[0], 0, layoutPos, -40, -14);
         BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 60);
+
+        BoxFill(minimap, minimapTiles[0], -60, -10, -60, 60);
+        BoxFill(minimap, minimapTiles[0], -10, 0, -60, 0);
+        BoxFill(minimap, minimapTiles[0], 0, layoutPos, -60, -14);
+        BoxFill(minimap, minimapTiles[0], layoutPos, layoutPos + 60, -60, 60);
     }
 
     private void GenerateTile(Tilemap tilemap, Tilemap bgTilemap, BoundsInt bounds, int r, int c)
@@ -91,6 +100,7 @@ public class LevelGenerator : MonoBehaviour
         if (bgTilemap.GetTile(tempPos) == bgTile)
         {
             bgMap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), bgTile);
+            minimap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), minimapTiles[3]);
         }
         //check main tiles
         for (int i = 0; i < ruleTiles.Length; i++)
@@ -98,6 +108,7 @@ public class LevelGenerator : MonoBehaviour
             if (tilemap.GetTile(tempPos) == ruleTiles[i])
             {
                 maps[i].SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), ruleTiles[i]);
+                minimap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), minimapTiles[i]);
                 continue;
             }
         }
