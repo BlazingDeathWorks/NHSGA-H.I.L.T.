@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 8566113223726364299}
   - component: {fileID: -7937474437757286391}
   - component: {fileID: 5297902362998563988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RangedEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +218,8 @@ MonoBehaviour:
   projectileOrigin: {fileID: 8566113222722918490}
   aggroFollowDistance: 9
   aggroDistance: 5
+  aggroSound: {fileID: 8300000, guid: 3ba0929809f385349b3b1076da60d919, type: 3}
+  attackSound: {fileID: 8300000, guid: a9dcda5abcff1bd45a6b754bb7bac6b5, type: 3}
 --- !u!50 &8566113223726364299
 Rigidbody2D:
   serializedVersion: 4

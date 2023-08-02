@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 3214143979280698760}
   - component: {fileID: 3049351768872262500}
   - component: {fileID: 2747200936821576852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TankyEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,6 +219,8 @@ MonoBehaviour:
   projectileOrigin: {fileID: 3214143978277299033}
   aggroFollowDistance: 0
   aggroDistance: 10
+  aggroSound: {fileID: 8300000, guid: 3ba0929809f385349b3b1076da60d919, type: 3}
+  attackSound: {fileID: 8300000, guid: 587ca7b2cf5ebab4b82215ebad10ac2a, type: 3}
 --- !u!50 &3214143979280698760
 Rigidbody2D:
   serializedVersion: 4
