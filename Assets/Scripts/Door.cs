@@ -22,7 +22,7 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.F)) Open();
+            Open();
         }
     }
 
