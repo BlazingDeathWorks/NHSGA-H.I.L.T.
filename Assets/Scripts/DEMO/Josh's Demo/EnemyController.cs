@@ -42,6 +42,7 @@ public class EnemyController : MonoBehaviour
     private float nextAttack;
     private float aggroGoalX;
     private bool attackDelayed;
+    private Collider2D hitboxCollider;
 
     public enum State
     {
@@ -64,6 +65,7 @@ public class EnemyController : MonoBehaviour
         {
             projectilePrefab.GetComponent<Collider2D>().enabled = false;
             projectilePrefab.damage = damage;
+            hitboxCollider = projectilePrefab.GetComponent<Collider2D>();
         }
     }
 
@@ -159,6 +161,7 @@ public class EnemyController : MonoBehaviour
                     switch (aiType)
                     {
                         case 2:
+                            hitboxCollider.enabled = true;
                             float thisX = transform.position.x;
                             if(dir < 0)
                             {

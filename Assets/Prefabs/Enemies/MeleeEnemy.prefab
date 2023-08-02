@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15335b0f9b24bad42bc286ebd9639e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 80
 --- !u!61 &2529343920590529804
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 5111541374022742809}
   - component: {fileID: 2883470481716459408}
   - component: {fileID: 2441699903672680945}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SwordHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -42,7 +42,7 @@ public class LevelGenerator : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 8);
 
         layoutPos = 0;
-        holdLayoutCount = layoutCount * 2;
+        holdLayoutCount = layoutCount;
         layoutSeed = new int[layouts.Length];
         for (int i = 0; i < layoutSeed.Length; i++)
         {
@@ -132,7 +132,7 @@ public class LevelGenerator : MonoBehaviour
             if (tilemap.GetTile(tempPos) == enemyTiles[i])
             {
                 //randomize existence
-                if (Random.Range(0f, 1f) > layoutCount / holdLayoutCount)
+                if (Random.Range(0f, 1f) > layoutCount / holdLayoutCount * .7f)
                 {
                     //randomize type
                     int randType = Mathf.FloorToInt(i + enemyPrefabs.Length + Random.Range(-.1f, 1.1f)) % enemyPrefabs.Length;
@@ -140,7 +140,7 @@ public class LevelGenerator : MonoBehaviour
                     GameObject holdEnemy = Instantiate(enemyPrefabs[randType], 
                         tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), Quaternion.identity);
                     //randomize stats
-                    holdEnemy.GetComponent<EnemyController>().SetStats(layoutCount / holdLayoutCount);
+                    holdEnemy.GetComponent<EnemyController>().SetStats(layoutCount / holdLayoutCount / 2f);
                     //add to elite calculation
                     enemiesInLayout.Add(holdEnemy);
                 }
