@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Blade_ht : MonoBehaviour
 {
+    [SerializeField] private Volume volume;
     [SerializeField] private string currentBladeName;
     [SerializeField] private Transform slashSpawnPoint;
     [SerializeField] private Blade[] blades;
     private Blade currentBlade;
+    private Vector2 originalPos;
 
     private void Awake()
     {
@@ -24,7 +28,10 @@ public class Blade_ht : MonoBehaviour
                 currentBlade = blades[i];
             }
         }
-        //Change the hue with a reference to the volume and use a tween to make it look nicer
+        if (volume.profile.TryGet(out ColorAdjustments colorAdjustments))
+        {
+            colorAdjustments.hueShift.value = currentBlade.HueShiftValue;
+        }
     }
 
     //Hardcode Strategy for faster production
@@ -37,15 +44,27 @@ public class Blade_ht : MonoBehaviour
     //Instantiate Slash Methods Expand As More Moves Are Created
     public void BaseAttackSlash()
     {
-        Instantiate(currentBlade.BaseAttackSlash, slashSpawnPoint.position, Quaternion.identity);
+        if (currentBlade.BaseAttackSlash == null) return;
+        Slash instance = Instantiate(currentBlade.BaseAttackSlash);
+        originalPos = instance.transform.position;
+        instance.transform.parent = slashSpawnPoint;
+        instance.transform.localPosition = originalPos;
     }
     public void ThreeHitAttackSlash()
     {
-        Instantiate(currentBlade.ThreeHitAttackSlash, slashSpawnPoint.position, Quaternion.identity);
+        if (currentBlade.ThreeHitAttackSlash == null) return;
+        Slash instance = Instantiate(currentBlade.ThreeHitAttackSlash);
+        originalPos = instance.transform.position;
+        instance.transform.parent = slashSpawnPoint;
+        instance.transform.localPosition = originalPos;
     }
     public void AirAttackSlash()
     {
-        Instantiate(currentBlade.AirAttackSlash, slashSpawnPoint.position, Quaternion.identity);
+        if (currentBlade.AirAttackSlash == null) return;
+        Slash instance = Instantiate(currentBlade.AirAttackSlash);
+        originalPos = instance.transform.position;
+        instance.transform.parent = slashSpawnPoint;
+        instance.transform.localPosition = originalPos;
     }
 }
 

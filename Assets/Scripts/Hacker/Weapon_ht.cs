@@ -7,7 +7,7 @@ public class Weapon_ht : MonoBehaviour
     public static Weapon_ht Instance { get; private set; }
 
     //STEP #1 - Create a variable that its value will be referenced in another script
-    public int Damage { get; private set; } = 1;
+    public int Damage { get; private set; } = 10;
     public float Knockback { get; private set; } = 0;
     public float StunTime { get; private set; } = 0;
 
