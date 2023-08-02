@@ -54,6 +54,5 @@ public class ForceActionBlock : ActionBlock
 
         Ultimate_ht.Instance.OnUpdate += OnUpdate;
         Ultimate_ht.Instance.OnFixedUpdate += OnFixedUpdate;
-        Debug.Log("Registered");
     }
 }
