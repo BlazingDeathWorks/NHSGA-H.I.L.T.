@@ -30,6 +30,6 @@ public class CodeLoot : MonoBehaviour
                 }
             }
         } while (pass == false);
-        loots[randomIndex].PNB.UnlockButton();
+        loots[randomIndex].NV.UnlockButton();
     }
 }

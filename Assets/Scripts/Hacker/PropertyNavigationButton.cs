@@ -4,24 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class PropertyNavigationButton : MonoBehaviour
+public class NavigationButton : MonoBehaviour
 {
-    public ClassNavigationButton Parent { get; set; }
-    [SerializeField] [Tooltip("If true, PNB will be unlocked at the beginning")] private bool defaultButton = false;
-    [SerializeField] private string codeFragment;
-    [SerializeField] private CodeBlock lineOfCode;
-    [SerializeField] private UnityEvent onCodeBlockEnabled;
-    [SerializeField] private UnityEvent onCodeBlockDisabled;
-    private bool isClicked = false;
-    private Button button;
+    [SerializeField][Tooltip("If true, PNB will be unlocked at the beginning")] private bool defaultButton = false;
+    [SerializeField] protected CodeBlock LineOfCode;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(OnButtonClick);
-        button.onClick.AddListener(() => IDEManager.Instance.SetCurrentClass(Parent));
-
-        if (defaultButton || lineOfCode == null)
+        if (defaultButton || LineOfCode == null)
         {
             UnlockButton();
             return;
@@ -34,12 +24,36 @@ public class PropertyNavigationButton : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public bool CheckActive()
+    {
+        return gameObject.activeInHierarchy;
+    }
+}
+
+public class PropertyNavigationButton : NavigationButton
+{
+    public ClassNavigationButton Parent { get; set; }
+    [SerializeField] private string codeFragment;
+    [SerializeField] private UnityEvent onCodeBlockEnabled;
+    [SerializeField] private UnityEvent onCodeBlockDisabled;
+    private bool isClicked = false;
+    private Button button;
+
+    protected override void Awake()
+    {
+        button = GetComponent<Button>();
+        button.onClick.AddListener(OnButtonClick);
+        button.onClick.AddListener(() => IDEManager.Instance.SetCurrentClass(Parent));
+
+        base.Awake();
+    }
+
     //Nothing has to be added to Unity's Button Component OnClick()
     public void OnButtonClick()
     {
         if (isClicked) return;
         onCodeBlockEnabled.Invoke();
-        lineOfCode?.ReplaceCodeFragment(codeFragment);
+        LineOfCode?.ReplaceCodeFragment(codeFragment);
         Parent.SetActivatePNB(this);
         isClicked = true;
     }
@@ -48,10 +62,5 @@ public class PropertyNavigationButton : MonoBehaviour
     {
         onCodeBlockDisabled.Invoke();
         isClicked = false;
-    }
-
-    public bool CheckActive()
-    {
-        return gameObject.activeInHierarchy;
     }
 }

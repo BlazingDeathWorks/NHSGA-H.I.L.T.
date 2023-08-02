@@ -48,8 +48,8 @@ public class CodeLootManager : MonoBehaviour
 [System.Serializable]
 public class Loot
 {
-    public PropertyNavigationButton PNB => propertyNavigationButton;
-    public PropertyNavigationButton[] CheckSequence => checkSequence;
-    [SerializeField] private PropertyNavigationButton propertyNavigationButton;
-    [SerializeField] private PropertyNavigationButton[] checkSequence;
+    public NavigationButton NV => navigationButton;
+    public NavigationButton[] CheckSequence => checkSequence;
+    [SerializeField] private NavigationButton navigationButton;
+    [SerializeField] private NavigationButton[] checkSequence;
 }
