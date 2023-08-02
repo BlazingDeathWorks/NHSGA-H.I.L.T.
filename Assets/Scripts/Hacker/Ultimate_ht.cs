@@ -20,21 +20,24 @@ public class Ultimate_ht : MonoBehaviour
         Instance = this;
     }
 
-    //public void ResetCode()
-    //{
-    //    for (int i = 0; i < ActionBlocks.Count; i++)
-    //    {
-    //        Actions -= ActionBlocks[i].Execute;
-    //    }
-    //    ActionBlocks.Clear();
-    //}
+    public void InvokeActions(GameObject enemy)
+    {
+        Actions?.Invoke(enemy);
+    }
 
     public void Compile()
     {
         for (int i = 0; i < ActionBlocks.Count; i++)
         {
+            Actions -= ActionBlocks[i].Execute;
+        }
+        ActionBlocks.Clear();
+
+        for (int i = 0; i < ActionBlocks.Count; i++)
+        {
             if (ActionBlocks[i] == null || ActionBlocks[i].Error) continue;
             Actions += ActionBlocks[i].Execute;
+            Debug.Log("Successful Compiling");
         }
     }
 }
