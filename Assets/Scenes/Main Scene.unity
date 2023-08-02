@@ -3324,6 +3324,7 @@ MonoBehaviour:
   - {fileID: 5828440380519592603, guid: 25505e2608dcabd468b51f3386bd5c31, type: 3}
   - {fileID: 8241528268371964432, guid: 2a781f8bb99eb304aae2c1e2a7d37988, type: 3}
   - {fileID: 7100485554665957061, guid: 07832bfd739b6e547b65938b37ec1d7e, type: 3}
+  doorPrefab: {fileID: 5604249527335759141, guid: 289a019a0acd1fb48bb78d7293af4746, type: 3}
 --- !u!1 &1496700492
 GameObject:
   m_ObjectHideFlags: 0
@@ -6151,6 +6152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c5f4dd77a34f4ab406d0ac9d99f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volume: {fileID: 0}
   currentBladeName: Base Blade
   slashSpawnPoint: {fileID: 1744013493}
   blades: []

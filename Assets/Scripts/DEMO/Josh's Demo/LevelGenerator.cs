@@ -27,6 +27,8 @@ public class LevelGenerator : MonoBehaviour
     private GameObject[] enemyPrefabs;
     [SerializeField]
     private GameObject[] layouts;
+    [SerializeField]
+    private GameObject doorPrefab;
 
     private int layoutPos;
     private int[] layoutSeed;
@@ -75,7 +77,12 @@ public class LevelGenerator : MonoBehaviour
             }
 
             //set elite
-            if(enemiesInLayout.Count > 0) enemiesInLayout[Random.Range(0, enemiesInLayout.Count)].GetComponent<EnemyController>().SetElite();
+            if (enemiesInLayout.Count > 0)
+            {
+                int randEnemy = Random.Range(0, enemiesInLayout.Count);
+                enemiesInLayout[randEnemy].GetComponent<EnemyController>().SetElite();
+                enemiesInLayout[randEnemy].AddComponent<KeyHolder>();
+            }
 
             //set up next layout
             layoutPos += bounds.size.x;
@@ -85,12 +92,15 @@ public class LevelGenerator : MonoBehaviour
         BoxFill(maps[0], ruleTiles[0], -30, -10, -40, 60);
         BoxFill(maps[0], ruleTiles[0], -10, 0, -40, 0);
         BoxFill(maps[0], ruleTiles[0], 0, layoutPos, -40, -14);
-        BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 60);
+        BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 0);
+        BoxFill(maps[0], ruleTiles[0], layoutPos + 20, layoutPos + 40, -40, 60);
+        Instantiate(doorPrefab, new Vector3(layoutPos + 10, 1.5f), Quaternion.identity);
 
         BoxFill(minimap, minimapTiles[0], -60, -10, -60, 60);
         BoxFill(minimap, minimapTiles[0], -10, 0, -60, 0);
         BoxFill(minimap, minimapTiles[0], 0, layoutPos, -60, -14);
-        BoxFill(minimap, minimapTiles[0], layoutPos, layoutPos + 60, -60, 60);
+        BoxFill(minimap, minimapTiles[0], layoutPos, layoutPos + 20, -60, 0);
+        BoxFill(minimap, minimapTiles[0], layoutPos + 20, layoutPos + 80, -60, 60);
     }
 
     private void GenerateTile(Tilemap tilemap, Tilemap bgTilemap, BoundsInt bounds, int r, int c)

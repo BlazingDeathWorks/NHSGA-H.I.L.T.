@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,9 +121,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
-        width: 8
-        height: 8
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0a774d5ce3c17a47a09bafb635a1e65
-      internalID: 2144865558
+      spriteID: fd095e5a9fddade4aaa56b4b067561f5
+      internalID: -1846504824
       vertices: []
       indices: 
       edges: []
@@ -142,9 +142,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 8
-        width: 8
-        height: 8
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 923fefb5c684ce8469ad408a287d1507
-      internalID: 1349036053
+      spriteID: 9a5fdd4d61b4eb3428d8f020774235e4
+      internalID: -199944682
       vertices: []
       indices: 
       edges: []
@@ -164,8 +164,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 8
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a32419832b0f2ab48bdfcc03324fcc03
-      internalID: 699318203
+      spriteID: acbe138a6a1aed040a614e8bb2c9600c
+      internalID: 1573391503
       vertices: []
       indices: 
       edges: []
@@ -190,9 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PlatformTile_0: 2144865558
-      PlatformTile_1: 1349036053
-      PlatformTile_2: 699318203
+      PlatformTile_0: -1846504824
+      PlatformTile_1: -199944682
+      PlatformTile_2: 1573391503
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
