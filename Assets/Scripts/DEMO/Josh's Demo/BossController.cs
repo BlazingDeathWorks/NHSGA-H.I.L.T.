@@ -29,7 +29,7 @@ public class BossController : MonoBehaviour
 
     public enum State
     {
-        inactive, idle, jumping, attacking, defeated, staggered
+        inactive, idle, jumping, attacking, bomb, defeated, staggered
     };
 
     private State state;
@@ -88,7 +88,7 @@ public class BossController : MonoBehaviour
                     else if (randAttack <= .75f)
                     {
                         anim.Play("throw");
-                        state = State.attacking;
+                        state = State.bomb;
                     }
                     else
                     {
@@ -114,15 +114,21 @@ public class BossController : MonoBehaviour
 
     private void SetIdle()
     {
-        nextAttack = Time.time + attackCooldown;
+        nextAttack = Time.time + attackCooldown + (state == State.bomb ? bombTime : 0);
         state = State.idle;
         anim.SetTrigger("idle");
     }
 
     public void SpawnBomb()
     {
+        //TODO create more bombs at lower health
+        CreateBomb(); CreateBomb(); CreateBomb(); CreateBomb(); CreateBomb(); CreateBomb(); CreateBomb(); CreateBomb();
+    }
+
+    private void CreateBomb()
+    {
         GameObject bomb = Instantiate(bombPrefab, bombOrigin.transform.position, Quaternion.identity);
-        Vector2 target = new Vector2(arenaX + Random.Range(-5f, 5f), transform.position.y + 5 + Random.Range(-3f, 3f));
+        Vector2 target = new Vector2(arenaX + Random.Range(-8f, 8f), transform.position.y + 5 + Random.Range(-3f, 7f));
         float velocityX = (target.x - bombOrigin.transform.position.x) / bombTime;
         float velocityY = ((target.y - bombOrigin.transform.position.y) + 4.9f * bombTime * bombTime) / bombTime;
         bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityX, velocityY);
