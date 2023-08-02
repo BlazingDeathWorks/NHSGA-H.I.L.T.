@@ -493,7 +493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 18.300049, y: 12.98999}
+  m_AnchoredPosition: {x: 18.299805, y: 12.98999}
   m_SizeDelta: {x: 800, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &140278635
@@ -5840,7 +5840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.9899902, y: 4.9300537}
+  m_AnchoredPosition: {x: -1.9902344, y: 4.930176}
   m_SizeDelta: {x: 99.999756, y: 99.999756}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1822375039
@@ -6448,9 +6448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f835bfde689411382bb9ec388b9749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 16
-  slideSpeed: 25
-  maxSlideTime: 0.4
+  speed: 12
+  slideSpeed: 20
+  maxSlideTime: 0.3
   jumpPower: 13.5
   jumpBuffer: 0.1
   coyoteTime: 0.1
