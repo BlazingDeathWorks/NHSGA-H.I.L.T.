@@ -14,7 +14,7 @@ public abstract class ActionBlock : MonoBehaviour
         button.onClick.AddListener(() => Destroy(gameObject));
         button.onClick.AddListener(() =>
         {
-            Ultimate_ht.Instance.Actions -= Execute;
+            RemoveListener();
             Ultimate_ht.Instance.ActionBlocks.Remove(this);
         });
     }
@@ -26,8 +26,12 @@ public abstract class ActionBlock : MonoBehaviour
 
     private void Update()
     {
-        if (!Error) return;
         Error = CheckInputs();
+    }
+
+    public void RemoveListener()
+    {
+        Ultimate_ht.Instance.Actions -= Execute;
     }
 
     protected abstract bool CheckInputs();
