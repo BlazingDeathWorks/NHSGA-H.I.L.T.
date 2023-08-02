@@ -4223,12 +4223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c5f4dd77a34f4ab406d0ac9d99f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: {fileID: 0}
+  volume: {fileID: 1441910075}
   currentBladeName: Base Blade
   slashSpawnPoint: {fileID: 909467947}
   blades:
   - bladeName: Base Blade
-    hueShiftValue: 0
+    hueShiftValue: 100
     baseAttackSlash: {fileID: 747045673914548547, guid: 5c9bfb145999e497c8a4d2824d5a8db8, type: 3}
     threeHitAttackSlash: {fileID: 5374996938754738995, guid: 752ca316b0d9c40d886c5a940f650e76, type: 3}
     airAttackSlash: {fileID: 2201147196554176385, guid: 913540f527ede499ebefb4d84d788771, type: 3}
