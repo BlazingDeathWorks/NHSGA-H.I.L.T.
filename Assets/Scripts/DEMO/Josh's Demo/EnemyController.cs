@@ -59,7 +59,6 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         active = false;
         dir = Random.Range(0, 2) * 2 - 1;
-        rightBound = leftBound = -100;
         Invoke("SetPatrolBounds", 0.01f);
         if (aiType == 1 || aiType == 2)
         {
@@ -71,6 +70,7 @@ public class EnemyController : MonoBehaviour
 
     private void SetPatrolBounds()
     {
+        rightBound = leftBound = -100;
         float posCheck = 1.5f;
         while (leftBound == -100 || rightBound == -100)
         { 
@@ -135,11 +135,11 @@ public class EnemyController : MonoBehaviour
                                 dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                                 state = State.attacking;
                                 anim.SetTrigger("attack");
-                                rb.velocity = Vector2.zero;
+                                rb.velocity = new Vector2(0, rb.velocity.y);
                             }
                             break;
                         case 2:
-                            rb.velocity = Vector2.zero;
+                            rb.velocity = new Vector2(0, rb.velocity.y);
                             dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                             if (!FindPlayer(false) && !attackDelayed)
                             {
@@ -148,7 +148,7 @@ public class EnemyController : MonoBehaviour
                             }
                             if (Time.time > nextAttack)
                             {
-                                rb.velocity = Vector2.right * dir * speed * 5f;
+                                rb.velocity = new Vector2(dir * speed * 5f, rb.velocity.y);
                                 state = State.attacking;
                                 anim.SetTrigger("attack");
                                 SpawnHitbox();
@@ -185,9 +185,7 @@ public class EnemyController : MonoBehaviour
                     break;
             }
         }
-        projectileOrigin.transform.localPosition = new Vector3(Mathf.Abs(projectileOrigin.transform.localPosition.x) *
-            (dir < 0 ? -1 : 1), projectileOrigin.transform.localPosition.y);
-        sprite.flipX = dir < 0;
+        transform.localScale = new Vector3(dir, 1, 1);
     }
 
     private bool MoveToAggro(float speedMod)
@@ -197,12 +195,12 @@ public class EnemyController : MonoBehaviour
         if (Mathf.Abs(aggroGoalX - thisX) > .2f)
         {
             dir = Mathf.Sign(aggroGoalX - thisX);
-            rb.velocity = Vector2.right * speed * dir * speedMod;
+            rb.velocity = new Vector2(speed * dir * speedMod, rb.velocity.y);
             return false;
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.velocity = new Vector2(0, rb.velocity.y);
             dir = Mathf.Sign(playerX - thisX);
             return true;
         }
@@ -277,7 +275,7 @@ public class EnemyController : MonoBehaviour
 
     private void Patrol()
     {
-        rb.velocity = Vector3.right * speed * dir;
+        rb.velocity = new Vector3(speed * dir, rb.velocity.y);
 
         //flip at bounds
         if (transform.position.x < leftBound) dir = 1;

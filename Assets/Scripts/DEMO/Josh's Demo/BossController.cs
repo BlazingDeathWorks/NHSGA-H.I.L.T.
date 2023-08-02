@@ -122,7 +122,7 @@ public class BossController : MonoBehaviour
     public void SpawnBomb()
     {
         //TODO create more bombs at lower health
-        CreateBomb(); CreateBomb(); CreateBomb(); CreateBomb(); CreateBomb(); CreateBomb(); CreateBomb(); CreateBomb();
+        CreateBomb(); CreateBomb(); CreateBomb(); 
     }
 
     private void CreateBomb()
