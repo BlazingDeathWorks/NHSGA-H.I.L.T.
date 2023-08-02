@@ -23,8 +23,13 @@ public class EnemyController : MonoBehaviour
     private float aggroFollowDistance;
     [SerializeField]
     private float aggroDistance;
+    [SerializeField]
+    private AudioClip aggroSound;
+    [SerializeField]
+    private AudioClip attackSound;
 
     private GameObject player;
+    private AudioManager audioManager;
     private Collider2D playerCollider;
     private SpriteRenderer sprite;
     private Animator anim;
@@ -45,7 +50,9 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         playerCollider = player.GetComponent<Collider2D>();
+        Physics2D.IgnoreCollision(playerCollider, GetComponent<Collider2D>());
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -100,7 +107,10 @@ public class EnemyController : MonoBehaviour
             {
                 case State.idle:
                     Patrol();
-                    FindPlayer(true);
+                    if (FindPlayer(true) && aiType == 2)
+                    {
+                        PlayAggroSound();
+                    }
                     break;
 
                 case State.aggro:
@@ -210,7 +220,14 @@ public class EnemyController : MonoBehaviour
         GetComponent<EnemyHealth>().MultiplyHealth(2f);
         GetComponent<SpriteRenderer>().color = Color.red;
     }
-
+    private void PlayAggroSound()
+    {
+        audioManager.PlayOneShot(aggroSound);
+    }
+    private void PlayAttackSound()
+    {
+        audioManager.PlayOneShot(attackSound);
+    }
     private void AttackRanged()
     {
         Quaternion angle = dir > 0 ? Quaternion.Euler(0, 0, 42) : Quaternion.Euler(0, 0, 222);
@@ -222,11 +239,14 @@ public class EnemyController : MonoBehaviour
     private void SpawnHitbox()
     {
         projectilePrefab.GetComponent<Collider2D>().enabled = true;
+        PlayAttackSound();
+        Physics2D.IgnoreCollision(playerCollider, projectilePrefab.GetComponent<Collider2D>(), false);
     }
 
     private void DespawnHitbox()
     {
         projectilePrefab.GetComponent<Collider2D>().enabled = false;
+        Physics2D.IgnoreCollision(playerCollider, GetComponent<Collider2D>());
         state = State.idle;
     }
 
