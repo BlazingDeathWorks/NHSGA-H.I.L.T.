@@ -303,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hackerInterfaceOpenInput: 101
   hackerIDE: {fileID: 0}
+  miniMap: {fileID: 0}
 --- !u!114 &4698473581178981678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hackerInterfaceOpenInput: 113
   hackerIDE: {fileID: 0}
+  miniMap: {fileID: 0}
 --- !u!1 &4698473581332646319
 GameObject:
   m_ObjectHideFlags: 0

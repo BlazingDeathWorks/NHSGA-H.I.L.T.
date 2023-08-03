@@ -11,6 +11,12 @@ public class EnemyHealth : MonoBehaviour
     private Slider healthbar;
     [SerializeField]
     private float healthbarSpeed;
+    private CodeLoot codeLoot;
+
+    private void Awake()
+    {
+        codeLoot = GetComponent<CodeLoot>();
+    }
 
     void Start()
     {
@@ -41,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
         health -= damage;
         if (health < 0)
         {
+            codeLoot.Pull();
             Destroy(gameObject);
         }
     }

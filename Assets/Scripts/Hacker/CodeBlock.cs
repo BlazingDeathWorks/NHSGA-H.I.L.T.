@@ -56,6 +56,7 @@ public class CodeBlock : MonoBehaviour
     //Call on PNB
     public void ReplaceCodeFragment(string newFragment)
     {
+        if (lineOfCode == null) return;
         lineOfCode.text = GenerateCode(newFragment);
     }
 }

@@ -21,12 +21,14 @@ public class NavigationButton : MonoBehaviour
 
     public void UnlockButton()
     {
-        gameObject.SetActive(true);
+        if (gameObject == null) return;
+        gameObject?.SetActive(true);
     }
 
     public bool CheckActive()
     {
-        return gameObject.activeInHierarchy;
+        if (gameObject == null) return true;
+        return gameObject.activeSelf;
     }
 }
 

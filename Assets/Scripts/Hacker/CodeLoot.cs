@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.ShaderData;
 
 public class CodeLoot : MonoBehaviour
 {
@@ -14,22 +15,15 @@ public class CodeLoot : MonoBehaviour
     //Call when the enemy dies
     public void Pull()
     {
-        int randomIndex;
-        bool pass;
-        do
-        {
-            randomIndex = Random.Range(0, loots.Count);
-            pass = true;
+        int randomIndex = Random.Range(0, loots.Count);
 
-            for (int i = 0; i < loots[randomIndex].CheckSequence.Length; i++)
+        for (int i = 0; i < loots[randomIndex].CheckSequence.Length; i++)
+        {
+            if (!loots[randomIndex].CheckSequence[i].CheckActive())
             {
-                if (!loots[randomIndex].CheckSequence[i].CheckActive())
-                {
-                    pass = false;
-                    break;
-                }
+                return;
             }
-        } while (pass == false);
-        loots[randomIndex].NV.UnlockButton();
+        }
+        loots[randomIndex].NV?.UnlockButton();
     }
 }
