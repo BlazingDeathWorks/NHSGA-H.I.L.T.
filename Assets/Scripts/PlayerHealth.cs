@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
         immuneTime = Time.time + 1f;
         if(health < 0)
         {
-            Debug.Log("You died lol");
+            SceneController.Instance.ReloadScene();
         }
     }
 }

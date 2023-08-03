@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Scene.unity
     guid: 699bb802d85e84e299d29d862a4a9033
   - enabled: 1
-    path: Assets/Scenes/Jason - Test Scene.unity
-    guid: 354535e013537499181a0e103529886c
+    path: Assets/Scenes/Boss Scene.unity
+    guid: e0cf9696263ac834bab743aea4d91354
   m_configObjects: {}
