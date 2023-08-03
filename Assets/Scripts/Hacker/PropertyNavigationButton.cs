@@ -57,6 +57,9 @@ public class PropertyNavigationButton : NavigationButton
         onCodeBlockEnabled.Invoke();
         LineOfCode?.ReplaceCodeFragment(codeFragment);
         Parent.SetActivatePNB(this);
+
+        //Only set isClicked to true if we are currently on Class (Works because we're getting called before changing classes to this)
+        if (IDEManager.Instance.CurrentClass != Parent) return;
         isClicked = true;
     }
 
