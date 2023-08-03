@@ -31,6 +31,7 @@ public class Door : MonoBehaviour
         if (keysCollected >= keysNeeded)
         {
             Destroy(gameObject);
+            SceneController.Instance.ReloadScene();
         }
     }
 
