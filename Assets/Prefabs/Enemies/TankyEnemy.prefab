@@ -389,7 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiType: 2
   speed: 4
-  damage: 35
+  damage: 20
   attackCooldown: 2
   tileMask:
     serializedVersion: 2

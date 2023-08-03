@@ -509,7 +509,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2354,7 +2354,7 @@ MonoBehaviour:
   m_Follow: {fileID: 4698473581063697511}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -4792,9 +4792,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 390945795}
     - target: {fileID: 4698473581178981676, guid: cbbabe900373140ed88ef05623caa775, type: 3}
+      propertyPath: health
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698473581178981676, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 140278635}
+    - target: {fileID: 4698473581178981677, guid: cbbabe900373140ed88ef05623caa775, type: 3}
+      propertyPath: speed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698473581178981677, guid: cbbabe900373140ed88ef05623caa775, type: 3}
+      propertyPath: slideSpeed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698473581178981677, guid: cbbabe900373140ed88ef05623caa775, type: 3}
+      propertyPath: maxSlideTime
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4698473581178981678, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: volume
       value: 
