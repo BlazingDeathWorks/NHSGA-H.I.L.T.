@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 4698473581178981676}
   - component: {fileID: 4698473581178981679}
   - component: {fileID: 4698473581178981678}
-  - component: {fileID: 4698473581178981665}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -260,9 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f835bfde689411382bb9ec388b9749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 16
-  slideSpeed: 25
-  maxSlideTime: 0.4
+  speed: 12
+  slideSpeed: 18
+  maxSlideTime: 0.3
   jumpPower: 13.5
   jumpBuffer: 0.1
   coyoteTime: 0.1
@@ -286,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06aa8acbdc994dda8863bc2b06c7392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 400
   healthbar: {fileID: 0}
   healthbarSpeed: 70
 --- !u!114 &4698473581178981679
@@ -335,21 +334,6 @@ MonoBehaviour:
     baseAttackSlash: {fileID: 0}
     threeHitAttackSlash: {fileID: 0}
     airAttackSlash: {fileID: 0}
---- !u!114 &4698473581178981665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4698473581178981664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 174dd6a20db5e4eb9b8485c0d625f6ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hackerInterfaceOpenInput: 113
-  hackerIDE: {fileID: 0}
-  miniMap: {fileID: 0}
 --- !u!1 &4698473581332646319
 GameObject:
   m_ObjectHideFlags: 0
