@@ -10,6 +10,8 @@ public class Weapon_ht : MonoBehaviour
     public int Damage { get; private set; } = 10;
     public float Knockback { get; private set; } = 0;
     public float StunTime { get; private set; } = 0;
+    public float PoisonDamage { get; private set; } = 0;
+    public float PoisonRate { get; private set; } = 5;
 
     private void Awake()
     {
@@ -35,5 +37,15 @@ public class Weapon_ht : MonoBehaviour
     public void SetStunTime(float stunTime)
     {
         StunTime = stunTime;
+    }
+
+    public void SetPoisonDamage(float damage)
+    {
+        PoisonDamage = damage;
+    }
+
+    public void SetPoisonRate(float rate)
+    {
+        PoisonRate = rate;
     }
 }

@@ -143,4 +143,15 @@ public class PlayerEntity : MonoBehaviour
     {
         FinishedAttacking = true;
     }
+
+    //Upgrades
+    public void SetMaxSlideTime(float maxSlideTime)
+    {
+        this.maxSlideTime = maxSlideTime;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        this.speed = speed;
+    }
 }
