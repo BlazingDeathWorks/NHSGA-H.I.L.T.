@@ -5,7 +5,7 @@ using UnityEngine;
 public class RollDamager : MonoBehaviour
 {
     private PlayerEntity playerEntity;
-    private float rollDamage = 5;
+    private float rollDamage = 0;
 
     private void Awake()
     {
