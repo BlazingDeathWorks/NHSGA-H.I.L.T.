@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     private Slider healthbar;
     [SerializeField]
     private float healthbarSpeed;
+    [SerializeField] private LootCard lootCard;
     private CodeLoot codeLoot;
 
     private void Awake()
@@ -47,7 +48,9 @@ public class EnemyHealth : MonoBehaviour
         health -= damage;
         if (health < 0)
         {
-            codeLoot.Pull();
+            //Instantiate the loot object
+            LootCard instance = Instantiate(lootCard, transform.position, Quaternion.identity);
+            instance.nb = codeLoot.Pull();
             Destroy(gameObject);
         }
     }

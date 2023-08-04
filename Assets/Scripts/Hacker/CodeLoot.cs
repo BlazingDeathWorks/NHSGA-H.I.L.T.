@@ -13,7 +13,7 @@ public class CodeLoot : MonoBehaviour
     }
 
     //Call when the enemy dies
-    public void Pull()
+    public NavigationButton Pull()
     {
         int randomIndex = Random.Range(0, loots.Count);
 
@@ -21,9 +21,10 @@ public class CodeLoot : MonoBehaviour
         {
             if (!loots[randomIndex].CheckSequence[i].CheckActive())
             {
-                return;
+                return null;
             }
         }
-        loots[randomIndex].NV?.UnlockButton();
+        return loots[randomIndex].NV;
+        //loots[randomIndex].NV?.UnlockButton();
     }
 }
