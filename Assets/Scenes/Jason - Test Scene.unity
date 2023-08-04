@@ -151,22 +151,6 @@ PrefabInstance:
       propertyPath: onCodeBlockEnabled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1964100005}
-    - target: {fileID: 341649131892541692, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 341649131892541692, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 341649131892541692, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 341649131892541692, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 341649131924080256, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -259,22 +243,6 @@ PrefabInstance:
       propertyPath: onCodeBlockEnabled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 750300091}
-    - target: {fileID: 6993802814892232832, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993802814892232832, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993802814892232832, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993802814892232832, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6998983535160478848, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
       propertyPath: onCodeBlockEnabled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
