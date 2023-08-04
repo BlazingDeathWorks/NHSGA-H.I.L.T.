@@ -40,9 +40,6 @@ public class RangedEnemy : Enemy
             dir *= -1;
         }
         transform.localScale = new Vector3(dir, 1, 1);
-
-        flashRenderer.sprite = sprite.sprite;
-        flashRenderer.color -= new Color(0, 0, 0, 2f * Time.deltaTime);
     }
     
     private void PlayWarningSound()

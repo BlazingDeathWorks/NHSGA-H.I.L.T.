@@ -40,7 +40,7 @@ public abstract class Enemy : MonoBehaviour
 
     public enum State
     {
-        idle, attacking
+        idle, attacking, dead
     };
 
     void Start()
@@ -62,6 +62,8 @@ public abstract class Enemy : MonoBehaviour
         {
             active = (player.transform.position - transform.position).magnitude < 25f;
         }
+        flashRenderer.sprite = sprite.sprite;
+        if(flashRenderer.color.a > 0) flashRenderer.color = new Color(.75f, .75f, .75f, flashRenderer.color.a - 2 * Time.deltaTime);
     }
 
 
@@ -78,5 +80,22 @@ public abstract class Enemy : MonoBehaviour
         speed *= 1.5f;
         GetComponent<EnemyHealth>().MultiplyHealth(2f);
         GetComponent<SpriteRenderer>().color = new Color(1, .2f, .2f);
+    }
+
+    public SpriteRenderer GetFlashRenderer()
+    {
+        return flashRenderer;
+    }
+
+    public void Die()
+    {
+        anim.Play("death");
+        state = State.dead;
+        enabled = false;
+    }
+
+    public void DeleteObject()
+    {
+        Destroy(gameObject);
     }
 }

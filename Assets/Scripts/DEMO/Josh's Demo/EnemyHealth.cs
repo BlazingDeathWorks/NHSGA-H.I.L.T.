@@ -17,6 +17,8 @@ public class EnemyHealth : MonoBehaviour
     private float healthbarOffsetX;
     [SerializeField]
     private float healthbarOffsetY;
+    [SerializeField]
+    private DamageNumber damageTextPrefab;
 
     private float timeSinceExecuted;
     private bool onUpdate = false;
@@ -31,11 +33,11 @@ public class EnemyHealth : MonoBehaviour
     public float poisonTime = 0;
     public float poisonDamage = 0;
     public float knockback = 10;
-    private MeleeEnemy meleeScript;
-    private RangedEnemy rangedScript;
-    private TankEnemy tankScript;
+    private Enemy enemyScript;
     private Rigidbody2D rb;
     private GameObject player;
+    private SpriteRenderer flashRenderer;
+    private ParticleSystem hitParticles;
 
     private void Awake()
     {
@@ -50,12 +52,9 @@ public class EnemyHealth : MonoBehaviour
         healthbar.minValue = 0;
         healthbar.maxValue = health;
         healthbar.value = health;
-        TryGetComponent(out MeleeEnemy melee);
-        if (melee != null) meleeScript = melee;
-        TryGetComponent(out RangedEnemy ranged);
-        if (ranged != null) rangedScript = ranged;
-        TryGetComponent(out TankEnemy tank);
-        if (tank != null) tankScript = tank;
+        enemyScript = GetComponent<Enemy>();
+        flashRenderer = enemyScript.GetFlashRenderer();
+        hitParticles = GetComponentInChildren<ParticleSystem>();
     }
     void Update()
     {
@@ -74,9 +73,7 @@ public class EnemyHealth : MonoBehaviour
         //reset stun
         if (Time.time > stunTimer)
         {
-            if (meleeScript != null) meleeScript.enabled = true;
-            if (rangedScript != null) rangedScript.enabled = true;
-            if (tankScript != null) tankScript.enabled = true;
+            enemyScript.enabled = true;
         }
         //do knockback
         if (onUpdate)
@@ -84,9 +81,6 @@ public class EnemyHealth : MonoBehaviour
             timeSinceExecuted += Time.deltaTime;
             if (timeSinceExecuted >= 0.1f)
             {
-                //if (meleeScript != null) meleeScript.enabled = true;
-                //if (rangedScript != null) rangedScript.enabled = true;
-                //if (tankScript != null) tankScript.enabled = true;
                 timeSinceExecuted = 0;
                 onUpdate = false;
                 onFixedUpdate = false;
@@ -110,46 +104,33 @@ public class EnemyHealth : MonoBehaviour
     }
     private void LateUpdate()
     {
-        Invoke(nameof(UpdateHealthBar), 0.001f);
+        healthbar.transform.position = transform.position + new Vector3(transform.localScale.x * healthbarOffsetX, healthbarOffsetY);
     }
     private void FixedUpdate()
     {
         if (!onFixedUpdate) return;
         rb.AddForce(Vector2.right * knockback * Mathf.Sign(transform.position.x - player.transform.position.x), ForceMode2D.Impulse);
-        //rb.velocity = Vector2.right * knockback * Mathf.Sign(transform.position.x - player.transform.position.x);
-    }
-
-    private void OnDestroy()
-    {
-        if(healthbar != null) Destroy(healthbar.gameObject);
-    }
-
-    private void UpdateHealthBar()
-    {
-        healthbar.transform.position = transform.position + new Vector3(transform.localScale.x * healthbarOffsetX, healthbarOffsetY);
     }
 
     private void ExecuteKnockback()
     {
-        //if (meleeScript != null) meleeScript.enabled = false;
-        //if (rangedScript != null) rangedScript.enabled = false;
-        //if (tankScript != null) tankScript.enabled = false;
-
         onUpdate = true;
         onFixedUpdate = true;
     }
 
     public void TakeDamage(float damage)
     {
+        DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("EnemyHealthbars").transform);
+        holdNum.SetText(damage);
+        holdNum.transform.position = transform.position + Vector3.up * 1.5f;
         health -= damage;
+        flashRenderer.color = new Color(.75f, .75f, .75f, 1);
 
         //set stun
         if (Time.time > stunCooldown)
         {
             stunTimer = Time.time + stunTime;
-            if (meleeScript != null) meleeScript.enabled = false;
-            if (rangedScript != null) rangedScript.enabled = false;
-            if (tankScript != null) tankScript.enabled = false;
+            enemyScript.enabled = false;
             rb.velocity = new Vector2(0, rb.velocity.y);
             stunCooldown = Time.time + 5f;
         }
@@ -163,7 +144,11 @@ public class EnemyHealth : MonoBehaviour
             //Instantiate the loot object
             LootCard instance = Instantiate(lootCard, transform.position, Quaternion.identity);
             instance.nb = codeLoot.Pull();
-            Destroy(gameObject);
+            enemyScript.Die();
+            if(healthbar != null) Destroy(healthbar.gameObject);
+            enabled = false;
+            flashRenderer.color = new Color(0, 0, 0, 0);
+            hitParticles.Play();
         }
     }
 
