@@ -7,6 +7,7 @@ public class PlayerEntity : MonoBehaviour
     public FiniteStateMachine FiniteStateMachine { get; private set; }
     public Animator Animator { get; private set; }
     public Rigidbody2D Rb { get; private set; }
+    public BulletBurst BulletBurst { get; private set; }
 
     //Player Movement
     public bool IsRunning { get; private set; }
@@ -53,6 +54,7 @@ public class PlayerEntity : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody2D>();
+        BulletBurst = GetComponent<BulletBurst>();
 
         timeSinceJumpPressed = jumpBuffer;
 
