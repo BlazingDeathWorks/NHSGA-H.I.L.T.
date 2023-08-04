@@ -2,68 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedEnemy : MonoBehaviour, Enemy
+public class RangedEnemy : Enemy
 {
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float damage;
-    [SerializeField]
-    private float dashSpeed;
-    [SerializeField]
-    private float attackCooldown;
-    [SerializeField]
-    private float aggroDistance;
+   
     [SerializeField]
     private float dashRange;
-    [SerializeField]
-    private LayerMask tileMask;
-    [SerializeField]
-    private LayerMask visionMask;
     [SerializeField]
     private EnemyProjectileController laserPrefab;
     [SerializeField]
     private GameObject projectileOrigin;
     [SerializeField]
-    private AudioClip warningSound;
-    [SerializeField]
     private AudioClip shootSound;
-    [SerializeField]
-    private AudioClip dashSound;
-
-    private GameObject player;
-    private Collider2D playerCollider;
-    private AudioManager audioManager;
-    private Animator anim;
-    private Rigidbody2D rb;
-    private bool active;
-    private float dir;
-    private State state;
-    private float nextAttack;
-    private float aggroTime;
-
-    public enum State
+   
+    public override void Update()
     {
-        idle, attacking
-    };
-    void Start()
-    {
-        player = GameObject.Find("Player");
-        playerCollider = player.GetComponent<Collider2D>();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        Physics2D.IgnoreCollision(playerCollider, GetComponent<Collider2D>());
-        anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
-        active = false;
-        dir = Random.Range(0, 2) * 2 - 1;
-    }
-
-    void Update()
-    {
-        if (!active)
-        {
-            active = (player.transform.position - transform.position).magnitude < 25f;
-        }
+        base.Update();
         if (active)
         {
             switch (state)
@@ -87,21 +40,11 @@ public class RangedEnemy : MonoBehaviour, Enemy
             dir *= -1;
         }
         transform.localScale = new Vector3(dir, 1, 1);
-    }
-    public void SetStats(float scaler)
-    {
-        scaler = 1.2f - scaler;
-        damage *= scaler;
-        GetComponent<EnemyHealth>().MultiplyHealth(scaler);
-    }
 
-    public void SetElite()
-    {
-        damage *= 1.5f;
-        speed *= 1.5f;
-        GetComponent<EnemyHealth>().MultiplyHealth(2f);
-        GetComponent<SpriteRenderer>().color = new Color(1, .2f, .2f);
+        flashRenderer.sprite = sprite.sprite;
+        flashRenderer.color -= new Color(0, 0, 0, 2f * Time.deltaTime);
     }
+    
     private void PlayWarningSound()
     {
         audioManager.PlayOneShot(warningSound);
@@ -140,7 +83,7 @@ public class RangedEnemy : MonoBehaviour, Enemy
 
     private void FindPlayer()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance, visionMask);
         bool canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
         if (!canSeePlayer)
         {
@@ -170,4 +113,5 @@ public class RangedEnemy : MonoBehaviour, Enemy
         }
 
     }
+
 }
