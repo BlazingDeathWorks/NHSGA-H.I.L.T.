@@ -70,4 +70,14 @@ public class PlayerHealth : MonoBehaviour
             SceneController.Instance.ReloadScene();
         }
     }
+
+    public void SetHealAmount(float amount)
+    {
+        healAmount = amount;
+    }
+
+    public void SetHealRate(float rate)
+    {
+        healRate = rate;
+    }
 }
