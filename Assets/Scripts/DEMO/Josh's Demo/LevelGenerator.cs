@@ -140,7 +140,10 @@ public class LevelGenerator : MonoBehaviour
                     GameObject holdEnemy = Instantiate(enemyPrefabs[randType], 
                         tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), Quaternion.identity);
                     //randomize stats
-                    holdEnemy.GetComponent<EnemyController>().SetStats(layoutCount / holdLayoutCount / 2f);
+                    holdEnemy.TryGetComponent(out EnemyController controller);
+                    holdEnemy.TryGetComponent(out MeleeEnemy melee);
+                    controller?.SetStats(layoutCount / holdLayoutCount / 2f);
+                    melee?.SetStats(layoutCount / holdLayoutCount / 2f);
                     //add to elite calculation
                     enemiesInLayout.Add(holdEnemy);
                 }
