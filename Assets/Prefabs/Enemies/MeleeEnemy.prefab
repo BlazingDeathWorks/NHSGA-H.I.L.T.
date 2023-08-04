@@ -355,7 +355,7 @@ MonoBehaviour:
   speed: 3.5
   damage: 20
   dashSpeed: 15
-  attackCooldown: 3
+  attackCooldown: 2
   aggroDistance: 10
   meleeRange: 3
   tileMask:

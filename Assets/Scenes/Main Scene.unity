@@ -1117,6 +1117,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1367821321}
     m_Modifications:
+    - target: {fileID: 113373717, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 555.55554
+      objectReference: {fileID: 0}
+    - target: {fileID: 113373717, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 555.55554
+      objectReference: {fileID: 0}
+    - target: {fileID: 113373717, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 113373718, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -869067964, guid: 586a333e11c334329a7805f053a0f687, type: 3}
     - target: {fileID: 181739483969957170, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
       propertyPath: onCodeBlockEnabled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1261,6 +1277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IDE Package
       objectReference: {fileID: 0}
+    - target: {fileID: 556774836216579476, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 602f3321fea3f40549481049c22351bd, type: 2}
     - target: {fileID: 2624619876336696171, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2551,6 +2571,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!95 &1130436135 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 556774836216579476, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+  m_PrefabInstance: {fileID: 390945793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292132554
 GameObject:
   m_ObjectHideFlags: 0
@@ -4952,6 +4977,10 @@ PrefabInstance:
       propertyPath: volume
       value: 
       objectReference: {fileID: 1732752654}
+    - target: {fileID: 4698473581178981678, guid: cbbabe900373140ed88ef05623caa775, type: 3}
+      propertyPath: bladeAnimator
+      value: 
+      objectReference: {fileID: 1130436135}
     - target: {fileID: 4698473581178981679, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: miniMap
       value: 

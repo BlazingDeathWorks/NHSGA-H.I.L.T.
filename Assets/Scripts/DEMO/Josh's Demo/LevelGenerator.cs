@@ -80,10 +80,7 @@ public class LevelGenerator : MonoBehaviour
             if (enemiesInLayout.Count > 0)
             {
                 int randEnemy = Random.Range(0, enemiesInLayout.Count);
-                enemiesInLayout[randEnemy].TryGetComponent(out EnemyController controller);
-                enemiesInLayout[randEnemy].TryGetComponent(out MeleeEnemy melee);
-                controller?.SetElite();
-                melee?.SetElite();
+                enemiesInLayout[randEnemy].GetComponent<Enemy>().SetElite();
                 enemiesInLayout[randEnemy].AddComponent<KeyHolder>();
             }
 
@@ -143,10 +140,7 @@ public class LevelGenerator : MonoBehaviour
                     GameObject holdEnemy = Instantiate(enemyPrefabs[randType], 
                         tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), Quaternion.identity);
                     //randomize stats
-                    holdEnemy.TryGetComponent(out EnemyController controller);
-                    holdEnemy.TryGetComponent(out MeleeEnemy melee);
-                    controller?.SetStats(layoutCount / holdLayoutCount / 2f);
-                    melee?.SetStats(layoutCount / holdLayoutCount / 2f);
+                    holdEnemy.GetComponent<Enemy>().SetStats(layoutCount / holdLayoutCount / 2f);
                     //add to elite calculation
                     enemiesInLayout.Add(holdEnemy);
                 }

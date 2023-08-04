@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : MonoBehaviour
+public class MeleeEnemy : MonoBehaviour, Enemy
 {
     [SerializeField]
     private float speed;
@@ -73,7 +73,7 @@ public class MeleeEnemy : MonoBehaviour
             }
         }
 
-        rb.AddForce(Vector2.up * .02f, ForceMode2D.Force);
+        rb.AddForce(Vector2.up * .1f, ForceMode2D.Force);
 
         //stop at walls and cliffs
         float checkX = Mathf.Sign(rb.velocity.x) * 1.5f;
@@ -122,9 +122,9 @@ public class MeleeEnemy : MonoBehaviour
     }
     private void DashAttack()
     {
-        rb.velocity = Vector2.right * dir * dashSpeed;
+        rb.velocity = new Vector2(1 * dir * dashSpeed, rb.velocity.y);
         dashHitbox.enabled = true;
-        PlayMeleeSound();
+        PlayDashSound();
     }
 
     private void StopAttack()
@@ -133,16 +133,16 @@ public class MeleeEnemy : MonoBehaviour
         meleeHitbox.enabled = false;
         dashHitbox.enabled = false;
         state = State.idle;
+        nextAttack = Time.time + attackCooldown * Random.Range(.75f, 1.25f);
     }
 
     private void FindPlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance);
-        Debug.DrawRay(transform.position + Vector3.up, Vector2.right * dir * aggroDistance, Color.red);
         bool canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
         if (!canSeePlayer)
         {
-            hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.left * dir, 2f);
+            hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.left * dir, 3f);
             canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
         }
         if (canSeePlayer && Time.time > nextAttack)
@@ -159,7 +159,6 @@ public class MeleeEnemy : MonoBehaviour
                 {
                     anim.Play("dash");
                 }
-                nextAttack = Time.time + attackCooldown * Random.Range(.75f, 1.25f);
             }
         } else
         {
