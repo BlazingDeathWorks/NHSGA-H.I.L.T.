@@ -18,15 +18,19 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private float healthbarOffsetY;
 
+    private float timeSinceExecuted;
+    private bool onUpdate = false;
+    private bool onFixedUpdate = false;
+
     private Slider healthbar;
     private float stunTimer;
     private float stunCooldown;
     private float poisonTimer;
     private float knockbackTimer;
-    public float stunTime = 3;
-    public float poisonTime = 3;
-    public float poisonDamage = 20;
-    public float knockback = 20;
+    public float stunTime = 0;
+    public float poisonTime = 0;
+    public float poisonDamage = 0;
+    public float knockback = 10;
     private MeleeEnemy meleeScript;
     private RangedEnemy rangedScript;
     private TankEnemy tankScript;
@@ -75,9 +79,18 @@ public class EnemyHealth : MonoBehaviour
             if (tankScript != null) tankScript.enabled = true;
         }
         //do knockback
-        if (Time.time < knockbackTimer)
+        if (onUpdate)
         {
-            rb.AddForce(Vector2.right * Mathf.Sign(transform.position.x - player.transform.position.x) * knockback, ForceMode2D.Force);
+            timeSinceExecuted += Time.deltaTime;
+            if (timeSinceExecuted >= 0.1f)
+            {
+                //if (meleeScript != null) meleeScript.enabled = true;
+                //if (rangedScript != null) rangedScript.enabled = true;
+                //if (tankScript != null) tankScript.enabled = true;
+                timeSinceExecuted = 0;
+                onUpdate = false;
+                onFixedUpdate = false;
+            }
         }
 
         //smooth healthbar value change
@@ -99,6 +112,12 @@ public class EnemyHealth : MonoBehaviour
     {
         Invoke(nameof(UpdateHealthBar), 0.001f);
     }
+    private void FixedUpdate()
+    {
+        if (!onFixedUpdate) return;
+        rb.AddForce(Vector2.right * knockback * Mathf.Sign(transform.position.x - player.transform.position.x), ForceMode2D.Impulse);
+        //rb.velocity = Vector2.right * knockback * Mathf.Sign(transform.position.x - player.transform.position.x);
+    }
 
     private void OnDestroy()
     {
@@ -108,6 +127,16 @@ public class EnemyHealth : MonoBehaviour
     private void UpdateHealthBar()
     {
         healthbar.transform.position = transform.position + new Vector3(transform.localScale.x * healthbarOffsetX, healthbarOffsetY);
+    }
+
+    private void ExecuteKnockback()
+    {
+        //if (meleeScript != null) meleeScript.enabled = false;
+        //if (rangedScript != null) rangedScript.enabled = false;
+        //if (tankScript != null) tankScript.enabled = false;
+
+        onUpdate = true;
+        onFixedUpdate = true;
     }
 
     public void TakeDamage(float damage)
@@ -127,7 +156,7 @@ public class EnemyHealth : MonoBehaviour
         //set poison
         poisonTimer = Time.time + poisonTime;
         //set knockback
-        knockbackTimer += .1f;
+        ExecuteKnockback();
         
         if (health < 0)
         {

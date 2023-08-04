@@ -152,9 +152,9 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 6933023865531380391, guid: 9cc9bf10a0e58d8408e4ff9b4ade2a75, type: 3}
   healthbarOffsetX: -0.1
   healthbarOffsetY: 2
-  stunTime: 3
-  poisonTime: 3
-  poisonDamage: 20
+  stunTime: 0
+  poisonTime: 0
+  poisonDamage: 0
   knockback: 20
 --- !u!61 &2747200936821576852
 BoxCollider2D:

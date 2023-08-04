@@ -44,6 +44,7 @@ public class Weapon_ht : MonoBehaviour
         PoisonDamage = damage;
     }
 
+    //How long it lasts
     public void SetPoisonRate(float rate)
     {
         PoisonRate = rate;
