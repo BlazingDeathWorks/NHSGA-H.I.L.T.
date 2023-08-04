@@ -22,14 +22,6 @@ public class ConsoleManager : MonoBehaviour
         rect = GetComponent<RectTransform>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            RequestMessage("I Love Men");
-        }
-    }
-
     public void RequestMessage(string message)
     {
         if (currentNotification)
