@@ -80,7 +80,10 @@ public class LevelGenerator : MonoBehaviour
             if (enemiesInLayout.Count > 0)
             {
                 int randEnemy = Random.Range(0, enemiesInLayout.Count);
-                enemiesInLayout[randEnemy].GetComponent<EnemyController>().SetElite();
+                enemiesInLayout[randEnemy].TryGetComponent(out EnemyController controller);
+                enemiesInLayout[randEnemy].TryGetComponent(out MeleeEnemy melee);
+                controller?.SetElite();
+                melee?.SetElite();
                 enemiesInLayout[randEnemy].AddComponent<KeyHolder>();
             }
 

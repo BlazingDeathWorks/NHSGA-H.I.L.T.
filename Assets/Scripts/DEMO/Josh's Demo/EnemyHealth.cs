@@ -59,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        healthbar.transform.position = transform.position;
+        healthbar.transform.position = transform.position + new Vector3(transform.localScale.x * healthbarOffsetX, healthbarOffsetY);
     }
 
     public void TakeDamage(float damage)

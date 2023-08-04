@@ -9,6 +9,8 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField]
     private float damage;
     [SerializeField]
+    private float dashSpeed;
+    [SerializeField]
     private float attackCooldown;
     [SerializeField]
     private float aggroDistance;
@@ -17,11 +19,9 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField]
     private LayerMask tileMask;
     [SerializeField]
-    private LayerMask playerMask;
+    private Collider2D meleeHitbox;
     [SerializeField]
-    private GameObject meleeHitbox;
-    [SerializeField]
-    private GameObject dashHitbox;
+    private Collider2D dashHitbox;
     [SerializeField]
     private AudioClip warningSound;
     [SerializeField]
@@ -30,6 +30,7 @@ public class MeleeEnemy : MonoBehaviour
     private AudioClip dashSound;
 
     private GameObject player;
+    private Collider2D playerCollider;
     private AudioManager audioManager;
     private Animator anim;
     private Rigidbody2D rb;
@@ -46,8 +47,8 @@ public class MeleeEnemy : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        playerCollider = player.GetComponent<Collider2D>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        Collider2D playerCollider = player.GetComponent<Collider2D>();
         Physics2D.IgnoreCollision(playerCollider, GetComponent<Collider2D>());
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -71,6 +72,8 @@ public class MeleeEnemy : MonoBehaviour
                     break;
             }
         }
+
+        rb.AddForce(Vector2.up * .02f, ForceMode2D.Force);
 
         //stop at walls and cliffs
         float checkX = Mathf.Sign(rb.velocity.x) * 1.5f;
@@ -114,49 +117,53 @@ public class MeleeEnemy : MonoBehaviour
 
     private void MeleeAttack()
     {
-        meleeHitbox.SetActive(true);
+        meleeHitbox.enabled = true;
         PlayMeleeSound();
     }
     private void DashAttack()
     {
-        dashHitbox.SetActive(true);
+        rb.velocity = Vector2.right * dir * dashSpeed;
+        dashHitbox.enabled = true;
         PlayMeleeSound();
     }
 
     private void StopAttack()
     {
-        meleeHitbox.SetActive(false);
-        dashHitbox.SetActive(false);
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        meleeHitbox.enabled = false;
+        dashHitbox.enabled = false;
         state = State.idle;
     }
 
     private void FindPlayer()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance, playerMask);
-        bool canSeePlayer = hit.collider != null;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance);
+        Debug.DrawRay(transform.position + Vector3.up, Vector2.right * dir * aggroDistance, Color.red);
+        bool canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
         if (!canSeePlayer)
         {
-            hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.left * dir, 2f, playerMask);
-            canSeePlayer = hit.collider != null;
+            hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.left * dir, 2f);
+            canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
         }
         if (canSeePlayer && Time.time > nextAttack)
         {
             if(aggroTime < Time.time)
             {
                 state = State.attacking;
+                rb.velocity = new Vector2(0, rb.velocity.y);
                 dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                 if (hit.distance < meleeRange)
                 {
-                    anim.Play("Melee");
+                    anim.Play("melee");
                 } else
                 {
-                    anim.Play("Dash");
+                    anim.Play("dash");
                 }
                 nextAttack = Time.time + attackCooldown * Random.Range(.75f, 1.25f);
             }
         } else
         {
-            aggroTime = Time.time + .5f;
+            aggroTime = Time.time + .3f;
         }
 
     }
