@@ -120,9 +120,9 @@ TextureImporter:
       name: enemy_tanky_idle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 350
-        width: 1000
+        x: 236
+        y: 0
+        width: 800
         height: 850
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -141,9 +141,9 @@ TextureImporter:
       name: enemy_tanky_idle_1
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 350
-        width: 1000
+        x: 1440
+        y: 0
+        width: 800
         height: 850
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -154,27 +154,6 @@ TextureImporter:
       bones: []
       spriteID: 98fd75ef250669e46a6222bdc55c1f96
       internalID: -530721051
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enemy_tanky_idle_2
-      rect:
-        serializedVersion: 2
-        x: 2400
-        y: 350
-        width: 1000
-        height: 850
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f182d1f73e84d584492c82e3dc818617
-      internalID: -509430631
       vertices: []
       indices: 
       edges: []

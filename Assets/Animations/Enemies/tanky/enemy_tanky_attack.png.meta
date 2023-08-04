@@ -120,9 +120,9 @@ TextureImporter:
       name: enemy_tanky_attack_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 250
-        width: 1200
+        x: 100
+        y: 0
+        width: 1100
         height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -141,9 +141,9 @@ TextureImporter:
       name: enemy_tanky_attack_1
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 250
-        width: 1200
+        x: 1300
+        y: 0
+        width: 1100
         height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -162,9 +162,9 @@ TextureImporter:
       name: enemy_tanky_attack_2
       rect:
         serializedVersion: 2
-        x: 2400
-        y: 250
-        width: 1200
+        x: 2500
+        y: 0
+        width: 1100
         height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -183,9 +183,9 @@ TextureImporter:
       name: enemy_tanky_attack_3
       rect:
         serializedVersion: 2
-        x: 3600
-        y: 250
-        width: 1200
+        x: 3700
+        y: 0
+        width: 1100
         height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -196,69 +196,6 @@ TextureImporter:
       bones: []
       spriteID: 7c3aae3d6ef297e44a770e91feee08f8
       internalID: 1290003766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enemy_tanky_attack_4
-      rect:
-        serializedVersion: 2
-        x: 4800
-        y: 250
-        width: 1200
-        height: 950
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5d68f1b5cdb36034a980a8a9e5a83cf2
-      internalID: 343764553
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enemy_tanky_attack_5
-      rect:
-        serializedVersion: 2
-        x: 6000
-        y: 250
-        width: 1200
-        height: 950
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0cd1c9187d476e3489554483d10f5083
-      internalID: -387980534
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enemy_tanky_attack_6
-      rect:
-        serializedVersion: 2
-        x: 7200
-        y: 250
-        width: 1200
-        height: 950
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47b9e6ddbc46f3541bb33f3d4bb2f347
-      internalID: 1269920670
       vertices: []
       indices: 
       edges: []
