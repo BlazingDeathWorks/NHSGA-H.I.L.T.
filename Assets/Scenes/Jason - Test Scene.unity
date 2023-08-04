@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &113373720 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 556774836216579476, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+  m_PrefabInstance: {fileID: 117357728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &117357728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,6 +135,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 726522119}
     m_Modifications:
+    - target: {fileID: 113373717, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 555.55554
+      objectReference: {fileID: 0}
+    - target: {fileID: 113373717, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 555.55554
+      objectReference: {fileID: 0}
     - target: {fileID: 181739483969957170, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
       propertyPath: onCodeBlockEnabled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -269,6 +282,14 @@ PrefabInstance:
     - target: {fileID: 341649131924080257, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
       propertyPath: m_Name
       value: IDE Package
+      objectReference: {fileID: 0}
+    - target: {fileID: 556774836216579476, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 602f3321fea3f40549481049c22351bd, type: 2}
+    - target: {fileID: 2949228276258042349, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -394.56006
       objectReference: {fileID: 0}
     - target: {fileID: 3313234306611384048, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4335,6 +4356,10 @@ PrefabInstance:
       propertyPath: volume
       value: 
       objectReference: {fileID: 209086637}
+    - target: {fileID: 4698473581178981678, guid: cbbabe900373140ed88ef05623caa775, type: 3}
+      propertyPath: bladeAnimator
+      value: 
+      objectReference: {fileID: 113373720}
     - target: {fileID: 4698473581178981679, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: miniMap
       value: 

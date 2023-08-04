@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEditor.Animations;
 
 public class Blade_ht : MonoBehaviour
 {
+    [SerializeField] private Animator bladeAnimator;
     [SerializeField] private Volume volume;
     [SerializeField] private string currentBladeName;
     [SerializeField] private Transform slashSpawnPoint;
@@ -32,6 +34,7 @@ public class Blade_ht : MonoBehaviour
         {
             colorAdjustments.hueShift.value = currentBlade.HueShiftValue;
         }
+        bladeAnimator.runtimeAnimatorController = currentBlade.Ac;
     }
 
     //Hardcode Strategy for faster production
@@ -76,6 +79,9 @@ public struct Blade
 
     public int HueShiftValue => hueShiftValue;
     [SerializeField] private int hueShiftValue;
+
+    public AnimatorController Ac => ac;
+    [SerializeField] private AnimatorController ac;
 
     //Slash Variables Expand As More Moves Are Created
     public Slash BaseAttackSlash => baseAttackSlash;
