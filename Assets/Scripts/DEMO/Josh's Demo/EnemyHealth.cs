@@ -8,11 +8,17 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private float health;
     [SerializeField]
-    private Slider healthbar;
-    [SerializeField]
     private float healthbarSpeed;
     [SerializeField] private LootCard lootCard;
     private CodeLoot codeLoot;
+    [SerializeField]
+    private Slider healthBarPrefab;
+    [SerializeField]
+    private float healthbarOffsetX;
+    [SerializeField]
+    private float healthbarOffsetY;
+
+    private Slider healthbar;
 
     private void Awake()
     {
@@ -21,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
+        healthbar = Instantiate(healthBarPrefab, GameObject.Find("EnemyHealthbars").transform);
         healthbar.minValue = 0;
         healthbar.maxValue = health;
         healthbar.value = health;
@@ -39,8 +46,20 @@ public class EnemyHealth : MonoBehaviour
             if (healthbarVal < health) healthbarVal = health;
         }
         healthbar.value = healthbarVal;
+    }
+    private void LateUpdate()
+    {
+        Invoke(nameof(UpdateHealthBar), 0.001f);
+    }
 
-        healthbar.gameObject.transform.localScale = transform.localScale;
+    private void OnDestroy()
+    {
+        if(healthbar != null) Destroy(healthbar.gameObject);
+    }
+
+    private void UpdateHealthBar()
+    {
+        healthbar.transform.position = transform.position;
     }
 
     public void TakeDamage(float damage)
