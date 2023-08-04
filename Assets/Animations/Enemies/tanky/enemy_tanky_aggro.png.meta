@@ -120,9 +120,9 @@ TextureImporter:
       name: enemy_tanky_aggro_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 250
-        width: 1200
+        x: 100
+        y: 0
+        width: 1100
         height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -141,9 +141,9 @@ TextureImporter:
       name: enemy_tanky_aggro_1
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 250
-        width: 1200
+        x: 1300
+        y: 0
+        width: 1100
         height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -162,9 +162,9 @@ TextureImporter:
       name: enemy_tanky_aggro_2
       rect:
         serializedVersion: 2
-        x: 2400
-        y: 250
-        width: 1200
+        x: 2500
+        y: 0
+        width: 1100
         height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -183,9 +183,9 @@ TextureImporter:
       name: enemy_tanky_aggro_3
       rect:
         serializedVersion: 2
-        x: 3600
-        y: 250
-        width: 1200
+        x: 3700
+        y: 0
+        width: 1100
         height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -204,9 +204,9 @@ TextureImporter:
       name: enemy_tanky_aggro_4
       rect:
         serializedVersion: 2
-        x: 4800
-        y: 250
-        width: 1200
+        x: 4900
+        y: 0
+        width: 1100
         height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -225,9 +225,9 @@ TextureImporter:
       name: enemy_tanky_aggro_5
       rect:
         serializedVersion: 2
-        x: 6000
-        y: 250
-        width: 1200
+        x: 6100
+        y: 0
+        width: 1100
         height: 950
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -238,27 +238,6 @@ TextureImporter:
       bones: []
       spriteID: 88e04a317a4ce444d9c08e9da0b7d54b
       internalID: 1134082956
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enemy_tanky_aggro_6
-      rect:
-        serializedVersion: 2
-        x: 7200
-        y: 250
-        width: 1200
-        height: 950
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd7a49710a0d0414b9fee42eefa9e6f6
-      internalID: -1914389258
       vertices: []
       indices: 
       edges: []

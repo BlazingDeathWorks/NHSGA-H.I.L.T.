@@ -106,7 +106,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 3.6666667, y: 3.1666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -151,6 +151,10 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 6933023865531380391, guid: 9cc9bf10a0e58d8408e4ff9b4ade2a75, type: 3}
   healthbarOffsetX: -0.1
   healthbarOffsetY: 2
+  stunTime: 3
+  poisonTime: 3
+  poisonDamage: 20
+  knockback: 20
 --- !u!61 &2747200936821576852
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -164,18 +168,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17364481, y: 1.0197636}
+  m_Offset: {x: -0.026967525, y: 0.9006285}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 3.3333333, y: 2.8333333}
-    newSize: {x: 2, y: 2}
+    oldSize: {x: 2.6666667, y: 2.8333333}
+    newSize: {x: 3.6666667, y: 3.1666667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.618583, y: 2.0395272}
+  m_Size: {x: 1.7443063, y: 1.6743256}
   m_EdgeRadius: 0
 --- !u!114 &4718982051615367485
 MonoBehaviour:
@@ -349,7 +353,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.105677634, y: -0.0384596}
+  m_Offset: {x: 0.22407183, y: -0.10892293}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -360,5 +364,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9221323, y: 1.4038254}
+  m_Size: {x: 0.9033397, y: 1.1809015}
   m_EdgeRadius: 0
