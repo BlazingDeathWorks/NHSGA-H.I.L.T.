@@ -15,6 +15,12 @@ public class PlayerHealth : MonoBehaviour
     private float immuneTime;
     private bool immune;
 
+    //Default - 0
+    private float healAmount = 10;
+    //Default - 15
+    private float healRate = 5;
+    private float timeSinceLastHeal;
+
     void Start()
     {
         healthbar.minValue = 0;
@@ -23,6 +29,14 @@ public class PlayerHealth : MonoBehaviour
     }
     void Update()
     {
+        timeSinceLastHeal += Time.deltaTime;
+        if (timeSinceLastHeal >= healRate)
+        {
+            timeSinceLastHeal = 0;
+            health += healAmount;
+        }
+        health = Mathf.Clamp(health, 0, healthbar.maxValue);
+
         float healthbarVal = healthbar.value;
         if (health > healthbarVal)
         {
