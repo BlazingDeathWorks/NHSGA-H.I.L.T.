@@ -447,7 +447,7 @@ MonoBehaviour:
   speed: 3.5
   damage: 20
   dashSpeed: 15
-  attackCooldown: 2
+  attackCooldown: 1
   aggroDistance: 10
   tileMask:
     serializedVersion: 2
