@@ -1906,6 +1906,7 @@ GameObject:
   - component: {fileID: 505098827}
   - component: {fileID: 505098829}
   - component: {fileID: 505098828}
+  - component: {fileID: 505098830}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1983,6 +1984,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &505098830
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505098826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: e9ce97b7a206dc64d90931ea044e0c72, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &550313331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,6 +2363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 708952650}
   - component: {fileID: 708952649}
+  - component: {fileID: 708952651}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -2406,6 +2425,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &708952651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708952648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2972045d923c44ab6b6a0c5ce7a351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &972075512
 GameObject:
   m_ObjectHideFlags: 0
@@ -4955,7 +4986,7 @@ PrefabInstance:
       objectReference: {fileID: 390945795}
     - target: {fileID: 4698473581178981676, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: health
-      value: 400
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4698473581178981676, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: healthbar

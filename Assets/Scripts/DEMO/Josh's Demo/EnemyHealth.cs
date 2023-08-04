@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -101,6 +102,7 @@ public class EnemyHealth : MonoBehaviour
         }
 
         healthbar.value = healthbarVal;
+
     }
     private void LateUpdate()
     {
@@ -125,6 +127,7 @@ public class EnemyHealth : MonoBehaviour
         holdNum.transform.position = transform.position + Vector3.up * 1.5f;
         health -= damage;
         flashRenderer.color = new Color(.75f, .75f, .75f, 1);
+        ScreenShake.Instance.noise.m_AmplitudeGain = 5;
 
         //set stun
         if (Time.time > stunCooldown)
