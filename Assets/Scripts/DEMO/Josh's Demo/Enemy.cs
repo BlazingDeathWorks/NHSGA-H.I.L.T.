@@ -65,8 +65,31 @@ public abstract class Enemy : MonoBehaviour
         flashRenderer.sprite = sprite.sprite;
         if(flashRenderer.color.a > 0) flashRenderer.color = new Color(.75f, .75f, .75f, flashRenderer.color.a - 2 * Time.deltaTime);
     }
-
-
+    public virtual void DoAttack(RaycastHit2D hit) { }
+    protected void FindPlayer()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance, visionMask);
+        bool canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
+        if (!canSeePlayer)
+        {
+            hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.left * dir, 3f, visionMask);
+            canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
+        }
+        if (canSeePlayer && Time.time > nextAttack)
+        {
+            if (aggroTime < Time.time)
+            {
+                state = State.attacking;
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+                DoAttack(hit);
+            }
+        }
+        else
+        {
+            aggroTime = Time.time + .2f;
+        }
+    }
     public void SetStats(float scaler)
     {
         scaler = 1.2f - scaler;

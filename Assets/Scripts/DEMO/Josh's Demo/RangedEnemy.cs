@@ -78,37 +78,15 @@ public class RangedEnemy : Enemy
         dir = Mathf.Sign(player.transform.position.x - transform.position.x);
     }
 
-    private void FindPlayer()
+    public override void DoAttack(RaycastHit2D hit)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.right * dir, aggroDistance, visionMask);
-        bool canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
-        if (!canSeePlayer)
+        if (hit.distance < dashRange)
         {
-            hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.left * dir, 3f, visionMask);
-            canSeePlayer = hit.collider != null && hit.collider.Equals(playerCollider);
-        }
-        if (canSeePlayer && Time.time > nextAttack)
-        {
-            if (aggroTime < Time.time)
-            {
-                state = State.attacking;
-                rb.velocity = new Vector2(0, rb.velocity.y);
-                dir = Mathf.Sign(player.transform.position.x - transform.position.x);
-                if (hit.distance < dashRange)
-                {
-                    anim.Play("dash");
-                }
-                else
-                {
-                    anim.Play("attack");
-                }
-            }
+            anim.Play("dash");
         }
         else
         {
-            aggroTime = Time.time + .3f;
+            anim.Play("attack");
         }
-
     }
-
 }
