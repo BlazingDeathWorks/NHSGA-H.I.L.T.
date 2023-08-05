@@ -1204,7 +1204,7 @@ PrefabInstance:
       objectReference: {fileID: 8541980810579227533}
     - target: {fileID: 448217058830448107, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: codeFragment
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 448217058830448107, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: defaultButton
@@ -1240,7 +1240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3034274056610847710, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Text
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3034274057030949048, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Name
@@ -3840,7 +3840,7 @@ PrefabInstance:
       objectReference: {fileID: 8541980811308010715}
     - target: {fileID: 448217058830448107, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: codeFragment
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 448217058830448107, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: defaultButton
@@ -3876,7 +3876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3034274056610847710, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Text
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3034274057030949048, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Name
@@ -4001,7 +4001,7 @@ PrefabInstance:
       objectReference: {fileID: 8541980811308010715}
     - target: {fileID: 448217058830448107, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: codeFragment
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 448217058830448107, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: defaultButton
@@ -4037,7 +4037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3034274056610847710, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Text
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3034274057030949048, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Name
@@ -8805,7 +8805,7 @@ PrefabInstance:
       objectReference: {fileID: 8541980810579227533}
     - target: {fileID: 448217058830448107, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: codeFragment
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 448217058830448107, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: defaultButton
@@ -8841,7 +8841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3034274056610847710, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Text
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3034274057030949048, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Name
