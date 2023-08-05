@@ -16,10 +16,7 @@ public class PlayerHealth : MonoBehaviour
     private bool immune;
 
     //Default - 0
-    private float healAmount = 10;
-    //Default - 15
-    private float healRate = 5;
-    private float timeSinceLastHeal;
+    private float healAmount = 0;
 
     void Start()
     {
@@ -29,14 +26,6 @@ public class PlayerHealth : MonoBehaviour
     }
     void Update()
     {
-        //timeSinceLastHeal += Time.deltaTime;
-        //if (timeSinceLastHeal >= healRate)
-        //{
-        //    timeSinceLastHeal = 0;
-        //    health += healAmount;
-        //}
-        //health = Mathf.Clamp(health, 0, healthbar.maxValue);
-
         float healthbarVal = healthbar.value;
         if (health > healthbarVal)
         {
@@ -76,8 +65,9 @@ public class PlayerHealth : MonoBehaviour
         healAmount = amount;
     }
 
-    public void SetHealRate(float rate)
+    public void Lifesteal()
     {
-        healRate = rate;
+        health += healAmount;
+        health = Mathf.Clamp(health, 0, healthbar.maxValue);
     }
 }

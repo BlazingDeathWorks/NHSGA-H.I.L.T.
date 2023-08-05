@@ -175,6 +175,7 @@ public class EnemyHealth : MonoBehaviour
         if (health < 0)
         {
             //Instantiate the loot object
+            player.GetComponent<PlayerHealth>().Lifesteal();
             LootCard instance = Instantiate(lootCard, transform.position, Quaternion.identity);
             instance.nb = codeLoot.Pull();
             enemyScript.Die();
