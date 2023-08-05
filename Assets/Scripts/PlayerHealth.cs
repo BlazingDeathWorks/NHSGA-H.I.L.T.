@@ -29,13 +29,13 @@ public class PlayerHealth : MonoBehaviour
     }
     void Update()
     {
-        timeSinceLastHeal += Time.deltaTime;
-        if (timeSinceLastHeal >= healRate)
-        {
-            timeSinceLastHeal = 0;
-            health += healAmount;
-        }
-        health = Mathf.Clamp(health, 0, healthbar.maxValue);
+        //timeSinceLastHeal += Time.deltaTime;
+        //if (timeSinceLastHeal >= healRate)
+        //{
+        //    timeSinceLastHeal = 0;
+        //    health += healAmount;
+        //}
+        //health = Mathf.Clamp(health, 0, healthbar.maxValue);
 
         float healthbarVal = healthbar.value;
         if (health > healthbarVal)
