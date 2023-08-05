@@ -29,7 +29,7 @@ public class EnemyHealth : MonoBehaviour
     private float stunTimer;
     private float stunCooldown;
     private float poisonTimer;
-    private float knockbackTimer;
+    //private float knockbackTimer;
     public float stunTime = 0;
     public float poisonTime = 0;
     public float poisonDamage = 0;
@@ -47,6 +47,16 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
+        Weapon_ht.Instance.OnSetKnockback += SetKnockback;
+        Weapon_ht.Instance.OnSetStunTime += SetStunTime;
+        Weapon_ht.Instance.OnSetPoisonDamage += SetPoisonDamage;
+        Weapon_ht.Instance.OnSetPoisonRate += SetPoisonTime;
+
+        knockback = Weapon_ht.Instance.Knockback;
+        stunTime = Weapon_ht.Instance.StunTime;
+        poisonDamage = Weapon_ht.Instance.PoisonDamage;
+        poisonTime = Weapon_ht.Instance.PoisonRate;
+
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         healthbar = Instantiate(healthBarPrefab, GameObject.Find("EnemyHealthbars").transform);
@@ -112,6 +122,26 @@ public class EnemyHealth : MonoBehaviour
     {
         if (!onFixedUpdate) return;
         rb.AddForce(Vector2.right * knockback * Mathf.Sign(transform.position.x - player.transform.position.x), ForceMode2D.Impulse);
+    }
+
+    private void SetKnockback(float value)
+    {
+        knockback = value;
+    }
+
+    private void SetStunTime(float value)
+    {
+        stunTime = value;
+    }
+
+    private void SetPoisonDamage(float value)
+    {
+        poisonDamage = value;
+    }
+
+    private void SetPoisonTime(float value)
+    {
+        poisonTime = value;
     }
 
     private void ExecuteKnockback()
