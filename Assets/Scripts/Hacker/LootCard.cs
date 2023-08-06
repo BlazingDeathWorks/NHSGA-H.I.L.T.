@@ -18,42 +18,49 @@ public class LootCard : MonoBehaviour
         boxCollider.isTrigger = false;
     }
 
+    private IEnumerator Start()
+    {
+        yield return new WaitForSecondsRealtime(5f);
+        boxCollider.isTrigger = true;
+        gameObject.layer = LayerMask.NameToLayer("Invincible");
+        launched = false;
+    }
+
     private void FixedUpdate()
     { 
         if (!launched && !oneFrame)
         {
             rb.AddForce(ForceVector, ForceMode2D.Impulse);
             oneFrame = true;
+            launched = true;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (launched)
         {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy") || collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+            if (rb.velocity.y < 0 && collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                boxCollider.isTrigger = true;
+                gameObject.layer = LayerMask.NameToLayer("Invincible");
+                launched = false;
+                return;
+            }
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy") || collision.gameObject.layer == LayerMask.NameToLayer("Player") || (rb.velocity.y > 0 && collision.gameObject.layer == LayerMask.NameToLayer("Ground")))
             {
                 return;
             }
             boxCollider.isTrigger = true;
             gameObject.layer = LayerMask.NameToLayer("Invincible");
+            launched = false;
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy") || collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            return;
-        }
-        launched = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Trigger");
             Nb?.UnlockButton();
             Destroy(gameObject);
         }
