@@ -199,7 +199,7 @@ public class BossController : MonoBehaviour
     public void AddStagger()
     {
         staggerHitCount++;
-        if(staggerHitCount > hitsToStagger && state != State.staggered && Mathf.Abs(transform.position.x - arenaX) < 1f){
+        if(staggerHitCount > hitsToStagger && state != State.staggered && state != State.jumping && Mathf.Abs(transform.position.x - arenaX) < 1f){
             anim.Play("stagger");
             state = State.staggered;
         }
