@@ -13,6 +13,13 @@ public class MeleeEnemy : Enemy
     [SerializeField]
     private AudioClip meleeSound;
 
+    public override void Start()
+    {
+        base.Start();
+        meleeHitbox.enabled = false;
+        dashHitbox.enabled = false;
+    }
+
     public override void Update()
     {
         base.Update();

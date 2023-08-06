@@ -6,7 +6,11 @@ public class TankEnemy : Enemy
 {
     [SerializeField]
     private Collider2D dashHitbox;
-
+    public override void Start()
+    {
+        base.Start();
+        dashHitbox.enabled = false;
+    }
     public override void Update()
     {
         base.Update();

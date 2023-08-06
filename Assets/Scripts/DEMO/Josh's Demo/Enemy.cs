@@ -43,7 +43,7 @@ public abstract class Enemy : MonoBehaviour
         idle, attacking, dead
     };
 
-    void Start()
+    public virtual void Start()
     {
         player = GameObject.Find("Player");
         playerCollider = player.GetComponent<Collider2D>();
