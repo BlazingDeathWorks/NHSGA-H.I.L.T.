@@ -7,6 +7,7 @@ public class Notification : MonoBehaviour
 {
     private Text text;
     private Image image;
+    private float timeSinceAlive;
 
     private void Awake()
     {
@@ -14,15 +15,21 @@ public class Notification : MonoBehaviour
         image = GetComponentInChildren<Image>();
     }
 
-    private void Start()
-    {
-        Destroy(gameObject, 6.5f);
-    }
-
     private void Update()
     {
-        text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a + 2 * Time.deltaTime);
-        image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a + 5 * Time.deltaTime);
+        timeSinceAlive += Time.deltaTime;
+
+        if (timeSinceAlive >= 3f)
+        {
+            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - 6 * Time.deltaTime);
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - 6 * Time.deltaTime);
+            if (text.color.a <= 0 || image.color.a <= 0) Destroy(gameObject);
+        }
+        else
+        {
+            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a + 5 * Time.deltaTime);
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a + 5 * Time.deltaTime);
+        }
     }
 
     public void SetMessage(string message)

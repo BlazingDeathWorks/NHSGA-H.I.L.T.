@@ -22,8 +22,12 @@ public abstract class PlayerAirAttackControllerState : State
         //STEP #1 - Create a new input for the new air attack
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            //STEP #2 - Change to that air attack state
-            FiniteStateMachine.ChangeState(PlayerEntity.PlayerBaseAirAttackState);
+            if (PlayerEntity.TimeSinceLastAirAttack >= PlayerEntity.AirAttackCooldown)
+            {
+                PlayerEntity.TimeSinceLastAirAttack = 0;
+                //STEP #2 - Change to that air attack state
+                FiniteStateMachine.ChangeState(PlayerEntity.PlayerBaseAirAttackState);
+            }
         }
     }
 }

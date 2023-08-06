@@ -9,6 +9,14 @@ public class PlayerEntity : MonoBehaviour
     public Rigidbody2D Rb { get; private set; }
     public BulletBurst BulletBurst { get; private set; }
 
+    //Player Attack Cooldowns
+    public float BaseGroundAttackCooldown { get; set; } = 0.3f;
+    public float TimeSinceLastBaseGroundAttack { get; set; }
+    public float AirAttackCooldown { get; set; } = 0.4f;
+    public float TimeSinceLastAirAttack { get; set; }
+    public float SpecialGroundAttackCooldown { get; set; } = 1;
+    public float TimeSinceLastSpecialGroundAttack { get; set; }
+
     //Player Movement
     public bool CanMove { get; set; }
     public bool IsRunning { get; private set; }
@@ -79,6 +87,10 @@ public class PlayerEntity : MonoBehaviour
     {
         if (CanMove) x = Input.GetAxisRaw("Horizontal");
         else x = 0;
+
+        TimeSinceLastBaseGroundAttack += Time.deltaTime;
+        TimeSinceLastAirAttack += Time.deltaTime;
+        TimeSinceLastSpecialGroundAttack += Time.deltaTime;
 
         if (x != 0)
         {

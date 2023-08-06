@@ -37,13 +37,21 @@ public abstract class PlayerGroundAttackControllerState : State
         //STEP #1 - Create a new input for the new ground attack
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            //STEP #2 - Change to that ground attack state
-            FiniteStateMachine.ChangeState(PlayerEntity.PlayerBaseAttackState);
+            if (PlayerEntity.TimeSinceLastBaseGroundAttack >= PlayerEntity.BaseGroundAttackCooldown)
+            {
+                PlayerEntity.TimeSinceLastBaseGroundAttack = 0;
+                //STEP #2 - Change to that ground attack state
+                FiniteStateMachine.ChangeState(PlayerEntity.PlayerBaseAttackState);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            FiniteStateMachine.ChangeState(PlayerEntity.PlayerThreeHitAttackState);
+            if (PlayerEntity.TimeSinceLastSpecialGroundAttack >= PlayerEntity.SpecialGroundAttackCooldown)
+            {
+                PlayerEntity.TimeSinceLastSpecialGroundAttack = 0;
+                FiniteStateMachine.ChangeState(PlayerEntity.PlayerThreeHitAttackState);
+            }
         }
     }
 }
