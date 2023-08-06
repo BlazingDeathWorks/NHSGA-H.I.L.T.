@@ -81,7 +81,6 @@ public class LevelGenerator : MonoBehaviour
             {
                 int randEnemy = Random.Range(0, enemiesInLayout.Count);
                 enemiesInLayout[randEnemy].GetComponent<Enemy>().SetElite();
-                enemiesInLayout[randEnemy].AddComponent<KeyHolder>();
             }
 
             //set up next layout

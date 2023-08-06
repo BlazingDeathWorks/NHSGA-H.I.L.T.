@@ -103,6 +103,7 @@ public abstract class Enemy : MonoBehaviour
         speed *= 1.5f;
         GetComponent<EnemyHealth>().MultiplyHealth(2f);
         GetComponent<SpriteRenderer>().color = new Color(1, .2f, .2f);
+        gameObject.AddComponent<KeyHolder>();
     }
 
     public SpriteRenderer GetFlashRenderer()

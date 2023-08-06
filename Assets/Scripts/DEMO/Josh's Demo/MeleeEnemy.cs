@@ -18,6 +18,7 @@ public class MeleeEnemy : Enemy
         base.Start();
         meleeHitbox.enabled = false;
         dashHitbox.enabled = false;
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), dashHitbox);
     }
 
     public override void Update()
