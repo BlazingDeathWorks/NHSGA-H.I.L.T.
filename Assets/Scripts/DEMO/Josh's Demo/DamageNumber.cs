@@ -19,8 +19,14 @@ public class DamageNumber : MonoBehaviour
         text.text = ""+Mathf.CeilToInt(val);
     }
 
+    public void SetColor(Color color)
+    {
+        text.color = color;
+    }
+
     void Update()
     {
-        text.color = new Color(1, 1, 1, text.color.a - 2 * Time.deltaTime);
+        text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - 2 * Time.deltaTime);
+        if (text.color.a < 0) Destroy(gameObject);
     }
 }

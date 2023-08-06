@@ -11,9 +11,15 @@ public class PlayerHealth : MonoBehaviour
     private Slider healthbar;
     [SerializeField]
     private float healthbarSpeed;
+    [SerializeField]
+    private SpriteRenderer flashRenderer;
+    [SerializeField]
+    private DamageNumber damageTextPrefab;
 
     private float immuneTime;
     private bool immune;
+    private SpriteRenderer playerSprite;
+    private int immuneIndicatorDirection;
 
     //Default - 0
     private float healAmount = 0;
@@ -23,9 +29,11 @@ public class PlayerHealth : MonoBehaviour
         healthbar.minValue = 0;
         healthbar.maxValue = health;
         healthbar.value = health;
+        playerSprite = GetComponent<SpriteRenderer>();
     }
     void Update()
     {
+        //move healthbar smoothly
         float healthbarVal = healthbar.value;
         if (health > healthbarVal)
         {
@@ -39,22 +47,54 @@ public class PlayerHealth : MonoBehaviour
         }
         healthbar.value = healthbarVal;
 
-        if(Time.time < immuneTime && !immune)
-        {
-            gameObject.layer = LayerMask.NameToLayer("Invincible");
-            immune = true;
-        } else if (Time.time > immuneTime && immune)
+        //control immunity
+        if (Time.time > immuneTime && immune)
         {
             gameObject.layer = LayerMask.NameToLayer("Player");
             immune = false;
         }
+
+        //control flash
+        flashRenderer.sprite = playerSprite.sprite;
+        if (Time.time > immuneTime)
+        {
+            flashRenderer.color = new Color(1, 1, 1, 0);
+        } else
+        {
+            flashRenderer.color = new Color(1, 1, 1, flashRenderer.color.a + 4 * Time.deltaTime * immuneIndicatorDirection);
+            if(flashRenderer.color.a < 0)
+            {
+                flashRenderer.color = new Color(1, 1, 1, 0);
+                immuneIndicatorDirection = 1;
+            }
+            if (flashRenderer.color.a > .5f)
+            {
+                flashRenderer.color = new Color(1, 1, 1, .5f);
+                immuneIndicatorDirection = -1;
+            }
+        }
+
     }
 
     public void TakeDamage(float damage)
     {
+        if (immune) return;
+        //do damage number
+        DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
+        holdNum.SetText(damage);
+        holdNum.SetColor(Color.red);
+        holdNum.transform.position = transform.position + Vector3.up * 1.5f;
+
+        //do screen shake
+        ScreenShake.Instance.noise.m_AmplitudeGain = 5f;
+
         health -= damage;
+        flashRenderer.color = new Color(1, 1, 1, 1);
+        immuneIndicatorDirection = -1;
         immuneTime = Time.time + 1f;
-        if(health < 0)
+        gameObject.layer = LayerMask.NameToLayer("Invincible");
+        immune = true;
+        if(health <= 0)
         {
             SceneController.Instance.ReloadScene();
         }

@@ -29,12 +29,14 @@ public class EnemyHealth : MonoBehaviour
     private float stunTimer;
     private float stunCooldown;
     private float poisonTimer;
+    private bool isDead;
     //private float knockbackTimer;
     public float stunTime = 0;
     public float poisonTime = 0;
     public float poisonDamage = 0;
     public float knockback = 10;
     private Enemy enemyScript;
+    private BossController bossScript;
     private Rigidbody2D rb;
     private GameObject player;
     private SpriteRenderer flashRenderer;
@@ -59,18 +61,27 @@ public class EnemyHealth : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
-        healthbar = Instantiate(healthBarPrefab, GameObject.Find("EnemyHealthbars").transform);
+        TryGetComponent(out enemyScript);
+        TryGetComponent(out bossScript);
+        if (enemyScript)
+        {
+            healthbar = Instantiate(healthBarPrefab, GameObject.Find("EnemyHealthbars").transform);
+            flashRenderer = enemyScript.GetFlashRenderer();
+        }
+        if (bossScript)
+        {
+            healthbar = healthBarPrefab;
+            flashRenderer = bossScript.GetFlashRenderer();
+        }
         healthbar.minValue = 0;
         healthbar.maxValue = health;
         healthbar.value = health;
-        enemyScript = GetComponent<Enemy>();
-        flashRenderer = enemyScript.GetFlashRenderer();
         hitParticles = GetComponentInChildren<ParticleSystem>();
     }
     void Update()
     {
         //do poison damage
-        if (Time.time < poisonTimer)
+        if (Time.time < poisonTimer && !isDead)
         {
             health -= poisonDamage * Time.deltaTime;
             if (health < 0)
@@ -84,7 +95,8 @@ public class EnemyHealth : MonoBehaviour
         //reset stun
         if (Time.time > stunTimer)
         {
-            enemyScript.enabled = true;
+            if (enemyScript) enemyScript.enabled = true;
+            if (bossScript) bossScript.enabled = true;
         }
         //do knockback
         if (onUpdate)
@@ -116,7 +128,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void LateUpdate()
     {
-        healthbar.transform.position = transform.position + new Vector3(transform.localScale.x * healthbarOffsetX, healthbarOffsetY);
+        if(enemyScript && healthbar) healthbar.transform.position = transform.position + new Vector3(transform.localScale.x * healthbarOffsetX, healthbarOffsetY);
     }
     private void FixedUpdate()
     {
@@ -152,38 +164,52 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("EnemyHealthbars").transform);
+        if (isDead) return;
+        DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
         holdNum.SetText(damage);
         holdNum.transform.position = transform.position + Vector3.up * 1.5f;
         health -= damage;
         flashRenderer.color = new Color(.75f, .75f, .75f, 1);
-        ScreenShake.Instance.noise.m_AmplitudeGain = 5;
+        ScreenShake.Instance.noise.m_AmplitudeGain = 2.5f;
+
+        if (bossScript) bossScript.AddStagger();
 
         //set stun
         if (Time.time > stunCooldown)
         {
             stunTimer = Time.time + stunTime;
-            enemyScript.enabled = false;
+            if (enemyScript) enemyScript.enabled = false;
+            if (bossScript) bossScript.enabled = false;
             rb.velocity = new Vector2(0, rb.velocity.y);
             stunCooldown = Time.time + 5f;
         }
         //set poison
-        poisonTimer = Time.time + poisonTime;
+        if(poisonDamage != 0) poisonTimer = Time.time + poisonTime;
         //set knockback
         ExecuteKnockback();
         
-        if (health < 0)
+        if (health <= 0)
         {
             //Instantiate the loot object
+            ScreenShake.Instance.noise.m_AmplitudeGain = 5;
             player.GetComponent<PlayerHealth>().Lifesteal();
-            LootCard instance = Instantiate(lootCard, transform.position, Quaternion.identity);
-            instance.nb = codeLoot.Pull();
-            enemyScript.Die();
-            if(healthbar != null) Destroy(healthbar.gameObject);
-            enabled = false;
+            if (enemyScript)
+            {
+                LootCard instance = Instantiate(lootCard, transform.position, Quaternion.identity);
+                instance.nb = codeLoot.Pull();
+                enemyScript.Die();
+            }
+            if (bossScript) bossScript.Die();
+            if (healthbar != null) Destroy(healthbar.gameObject);
             flashRenderer.color = new Color(0, 0, 0, 0);
             hitParticles.Play();
+            isDead = true;
         }
+    }
+
+    public float GetPortionHealth()
+    {
+        return health / healthbar.maxValue;
     }
 
     public void MultiplyHealth(float val)
