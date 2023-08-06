@@ -36,6 +36,8 @@ public class PlayerEntity : MonoBehaviour
     public Transform[] GroundRaycastPositions => groundRaycastPositions;
     public Transform[] PlatformRaycastPositions => platformRaycastPositions;
     [SerializeField] private float speed = 1;
+    [SerializeField] private float maxSpeed = 20;
+    [SerializeField] private float accelerationRate = 0.2f;
     [SerializeField] private float slideSpeed = 1;
     [SerializeField] private float maxSlideTime = 1;
     [SerializeField] private float jumpPower = 3;
@@ -47,6 +49,7 @@ public class PlayerEntity : MonoBehaviour
     [SerializeField] private float groundRaycastDistance = 0.2f;
     [SerializeField] private float platformRaycastDistance = 1;
     private float x;
+    private float originalSpeed;
     private float timeSinceJumpPressed;
 
     //Player Animation States (STEP #1)
@@ -65,6 +68,8 @@ public class PlayerEntity : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
         BulletBurst = GetComponent<BulletBurst>();
 
+        speed = speed - 6;
+        originalSpeed = speed;
         timeSinceJumpPressed = jumpBuffer;
 
         FiniteStateMachine = new FiniteStateMachine();
@@ -85,7 +90,12 @@ public class PlayerEntity : MonoBehaviour
 
     private void Update()
     {
-        if (CanMove) x = Input.GetAxisRaw("Horizontal");
+        if (CanMove)
+        {
+            x = Input.GetAxisRaw("Horizontal");
+            speed += accelerationRate * Time.deltaTime;
+            speed = Mathf.Clamp(speed, originalSpeed, maxSpeed);
+        }
         else x = 0;
 
         TimeSinceLastBaseGroundAttack += Time.deltaTime;
@@ -99,6 +109,7 @@ public class PlayerEntity : MonoBehaviour
         }
         else
         {
+            speed = originalSpeed;
             IsRunning = false;
         }
 
@@ -128,7 +139,7 @@ public class PlayerEntity : MonoBehaviour
             IsGrounded = false;
         }
 
-        Rb.velocity = new Vector2(x * speed, Rb.velocity.y);
+        Rb.velocity = new Vector2(x * speed/10 * 0.5f * ((maxSpeed - speed + 0.1f) * (maxSpeed - speed + 0.1f))/16, Rb.velocity.y);
 
         IsFalling = Rb.velocity.y < -0.2f;
 
