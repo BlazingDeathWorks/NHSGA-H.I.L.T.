@@ -27,7 +27,10 @@ public class EnemyProjectileController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            PlayerHealth health = collision.gameObject.GetComponent<PlayerHealth>();
+            health.GetComponent<PlayerEntity>().enabled = false;
+            health.ForceVector = new Vector2(Mathf.Sign(collision.transform.position.x - transform.position.x) * 87.5f, 5);
+            health.TakeDamage(damage);
         }
         if (noDestroy)
         {

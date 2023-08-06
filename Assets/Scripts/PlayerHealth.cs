@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Vector2 ForceVector { get; set; }
     [SerializeField]
     private float health;
     [SerializeField]
@@ -20,9 +21,18 @@ public class PlayerHealth : MonoBehaviour
     private bool immune;
     private SpriteRenderer playerSprite;
     private int immuneIndicatorDirection;
+    private Rigidbody2D rb;
+    private PlayerEntity playerEntity;
 
     //Default - 0
     private float healAmount = 0;
+    private bool knockback = false;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        playerEntity = GetComponent<PlayerEntity>();
+    }
 
     void Start()
     {
@@ -76,6 +86,16 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        if (knockback)
+        {
+            knockback = false;
+            rb.AddForce(ForceVector, ForceMode2D.Impulse);
+            playerEntity.enabled = true;
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         if (immune) return;
@@ -94,6 +114,9 @@ public class PlayerHealth : MonoBehaviour
         immuneTime = Time.time + 1f;
         gameObject.layer = LayerMask.NameToLayer("Invincible");
         immune = true;
+
+        knockback = true;
+
         if(health <= 0)
         {
             SceneController.Instance.ReloadScene();
