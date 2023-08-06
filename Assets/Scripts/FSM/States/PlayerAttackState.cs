@@ -12,6 +12,12 @@ public abstract class PlayerAttackState : State
         
     }
 
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        PlayerEntity.CanMove = false;
+    }
+
     public override void OnUpdate()
     {
         base.OnUpdate();
@@ -25,5 +31,11 @@ public abstract class PlayerAttackState : State
             PlayerEntity.FinishedAttacking = false;
             FiniteStateMachine.ChangeState(TransitionState);
         }
+    }
+
+    public override void OnExit()
+    {
+        base.OnExit();
+        PlayerEntity.CanMove = true;
     }
 }

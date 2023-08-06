@@ -10,6 +10,7 @@ public class PlayerEntity : MonoBehaviour
     public BulletBurst BulletBurst { get; private set; }
 
     //Player Movement
+    public bool CanMove { get; set; }
     public bool IsRunning { get; private set; }
     public bool IsJumping { get; set; }
     public bool IsFalling { get; private set; }
@@ -76,7 +77,8 @@ public class PlayerEntity : MonoBehaviour
 
     private void Update()
     {
-        x = Input.GetAxisRaw("Horizontal");
+        if (CanMove) x = Input.GetAxisRaw("Horizontal");
+        else x = 0;
 
         if (x != 0)
         {
