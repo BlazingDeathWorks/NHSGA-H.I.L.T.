@@ -64,7 +64,7 @@ public class LootCard : MonoBehaviour
         {
             PropertyNavigationButton propertyNavigationButton = (PropertyNavigationButton)Nb;
             if (propertyNavigationButton) ConsoleManager.Instance.RequestMessage($"New Upgrade For {propertyNavigationButton?.Parent.GetComponentInChildren<Text>().text}");
-            else ConsoleManager.Instance.RequestMessage("Copy of Code Collected");
+            else ConsoleManager.Instance.RequestMessage("Known or Sealed Code Found");
             Nb?.UnlockButton();
             Destroy(gameObject);
         }
