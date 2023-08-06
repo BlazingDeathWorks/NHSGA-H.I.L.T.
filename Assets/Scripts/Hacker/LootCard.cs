@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LootCard : MonoBehaviour
 {
@@ -61,6 +62,9 @@ public class LootCard : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            PropertyNavigationButton propertyNavigationButton = (PropertyNavigationButton)Nb;
+            if (propertyNavigationButton) ConsoleManager.Instance.RequestMessage($"New Upgrade For {propertyNavigationButton?.Parent.GetComponentInChildren<Text>().text}");
+            else ConsoleManager.Instance.RequestMessage("Copy of Code Collected");
             Nb?.UnlockButton();
             Destroy(gameObject);
         }
