@@ -88,7 +88,7 @@ public class EnemyHealth : MonoBehaviour
             {
                 //Instantiate the loot object
                 LootCard instance = Instantiate(lootCard, transform.position, Quaternion.identity);
-                instance.nb = codeLoot.Pull();
+                instance.Nb = codeLoot.Pull();
                 Destroy(gameObject);
             }
         }
@@ -196,7 +196,8 @@ public class EnemyHealth : MonoBehaviour
             if (enemyScript)
             {
                 LootCard instance = Instantiate(lootCard, transform.position, Quaternion.identity);
-                instance.nb = codeLoot.Pull();
+                instance.ForceVector = new Vector2(Mathf.Sign(transform.position.x - player.transform.position.x) * 3.5f, 13);
+                instance.Nb = codeLoot.Pull();
                 enemyScript.Die();
             }
             if (bossScript) bossScript.Die();

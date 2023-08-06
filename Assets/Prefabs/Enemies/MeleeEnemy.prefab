@@ -384,7 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   healthbarSpeed: 80
-  lootCard: {fileID: 4817853980688138410, guid: 9a033d224c0c64785b27d35ae625a6ca, type: 3}
+  lootCard: {fileID: 7885912597910007451, guid: 9a033d224c0c64785b27d35ae625a6ca, type: 3}
   healthBarPrefab: {fileID: 6933023865531380391, guid: 9cc9bf10a0e58d8408e4ff9b4ade2a75, type: 3}
   healthbarOffsetX: -0.3
   healthbarOffsetY: 2
