@@ -84,8 +84,6 @@ public class BossController : MonoBehaviour
 
     void Start()
     {
-        //TODO CHANGE THIS
-        Physics2D.IgnoreLayerCollision(8, 8);
 
         state = State.inactive;
         player = GameObject.Find("Player");

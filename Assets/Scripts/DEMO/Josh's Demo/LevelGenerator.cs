@@ -40,8 +40,6 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        //TODO CHANGE THIS
-        Physics2D.IgnoreLayerCollision(8, 8);
 
         layoutPos = 0;
         holdLayoutCount = layoutCount;
