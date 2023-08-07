@@ -35,7 +35,6 @@ public abstract class Enemy : MonoBehaviour
     protected float nextAttack;
     protected SpriteRenderer sprite;
     protected float aggroTime;
-
     protected bool active;
 
     public enum State
@@ -101,7 +100,7 @@ public abstract class Enemy : MonoBehaviour
         damage *= 1.5f;
         speed *= 1.5f;
         GetComponent<EnemyHealth>().MultiplyHealth(2f);
-        GetComponent<SpriteRenderer>().color = new Color(1, .2f, .2f);
+        transform.localScale = new Vector3(Mathf.Sign(transform.localScale.x) * 1.2f, 1.2f, 1.2f);
         gameObject.AddComponent<KeyHolder>();
     }
 

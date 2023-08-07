@@ -154,6 +154,7 @@ MonoBehaviour:
   healthbarOffsetX: -0.1
   healthbarOffsetY: 2
   damageTextPrefab: {fileID: 1190030877641413292, guid: 4919bd1dfa2d5ac4f8e409a9e9f7dc5a, type: 3}
+  explosionEffect: {fileID: 1631708467410315458, guid: f7f0eeeac915704419357c4cd3dcee70, type: 3}
   stunTime: 0
   poisonTime: 0
   poisonDamage: 0

@@ -389,6 +389,7 @@ MonoBehaviour:
   healthbarOffsetX: -0.3
   healthbarOffsetY: 2
   damageTextPrefab: {fileID: 1190030877641413292, guid: 4919bd1dfa2d5ac4f8e409a9e9f7dc5a, type: 3}
+  explosionEffect: {fileID: 1631708467410315458, guid: f7f0eeeac915704419357c4cd3dcee70, type: 3}
   stunTime: 0
   poisonTime: 0
   poisonDamage: 0
@@ -457,7 +458,6 @@ MonoBehaviour:
     m_Bits: 576
   warningSound: {fileID: 8300000, guid: 3ba0929809f385349b3b1076da60d919, type: 3}
   dashSound: {fileID: 8300000, guid: 0c5842f4738bf2c40a3c4c3416bd9300, type: 3}
-  isElite: 0
   meleeRange: 2
   meleeHitbox: {fileID: 5883802211081742636}
   dashHitbox: {fileID: 4313385260509572685}

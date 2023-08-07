@@ -20,6 +20,8 @@ public class EnemyHealth : MonoBehaviour
     private float healthbarOffsetY;
     [SerializeField]
     private DamageNumber damageTextPrefab;
+    [SerializeField]
+    private ParticleSystem explosionEffect;
 
     private float timeSinceExecuted;
     private bool onUpdate = false;
@@ -77,6 +79,7 @@ public class EnemyHealth : MonoBehaviour
         healthbar.maxValue = health;
         healthbar.value = health;
         hitParticles = GetComponentInChildren<ParticleSystem>();
+        explosionEffect = Instantiate(explosionEffect, transform);
     }
     void Update()
     {
@@ -84,6 +87,13 @@ public class EnemyHealth : MonoBehaviour
         if (Time.time < poisonTimer && !isDead)
         {
             health -= poisonDamage * Time.deltaTime;
+            if (poisonDamage != 0)
+            {
+                DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
+                holdNum.SetText(poisonDamage * Time.deltaTime);
+                holdNum.SetColor(Color.green);
+                holdNum.transform.position = transform.position + Vector3.up * 1.5f;
+            }
             if (health < 0)
             {
                 //Instantiate the loot object
@@ -165,12 +175,18 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (isDead) return;
+        bool isExplosion = PlayerComboManager.Instance.ComboAdd();
+        if (isExplosion)
+        {
+            explosionEffect.Play();
+            damage *= 2;
+        }
         DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
         holdNum.SetText(damage);
         holdNum.transform.position = transform.position + Vector3.up * 1.5f;
         health -= damage;
         flashRenderer.color = new Color(.75f, .75f, .75f, 1);
-        ScreenShake.Instance.noise.m_AmplitudeGain = 2.5f;
+        ScreenShake.Instance.noise.m_AmplitudeGain = 2.5f * (isExplosion ? 2 : 1);
 
         if (bossScript) bossScript.AddStagger();
 
