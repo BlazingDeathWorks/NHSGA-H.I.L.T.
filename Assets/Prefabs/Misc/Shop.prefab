@@ -189,7 +189,7 @@ MonoBehaviour:
   coinParticles: {fileID: 4924731175634984691}
   buySound: {fileID: 8300000, guid: 9ba1222ea64f3484aab9de4d50ce96ee, type: 3}
   errorSound: {fileID: 8300000, guid: cc034c3b81b697047a458c96fe5cc523, type: 3}
-  cost: 100
+  cost: 300
   flashRenderer: {fileID: 1349652611141061496}
 --- !u!61 &4941861733737513272
 BoxCollider2D:

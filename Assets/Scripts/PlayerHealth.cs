@@ -133,6 +133,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void Lifesteal()
     {
+        if(healAmount > 0)
+        {
+            DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("DamageNumbers").transform);
+            holdNum.SetText(healAmount);
+            holdNum.SetColor(Color.green);
+            holdNum.transform.position = transform.position + Vector3.up * 1.5f;
+        }
         health += healAmount;
         health = Mathf.Clamp(health, 0, healthbar.maxValue);
     }

@@ -28,6 +28,10 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private GameObject[] layouts;
     [SerializeField]
+    private RuleTile pickupTile;
+    [SerializeField]
+    private GameObject pickupPrefab;
+    [SerializeField]
     private GameObject doorPrefab;
     [SerializeField]
     private GameObject ShopPrefab;
@@ -130,6 +134,11 @@ public class LevelGenerator : MonoBehaviour
                 minimap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), minimapTiles[i]);
                 continue;
             }
+        }
+        //check pickup tile
+        if (tilemap.GetTile(tempPos) == pickupTile && Random.Range(0f, 1f) < .85f)
+        {
+            Instantiate(pickupPrefab, tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), Quaternion.identity);
         }
     }
     private void GenerateEnemy(Tilemap tilemap, BoundsInt bounds, int r, int c)
