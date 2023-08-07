@@ -30,6 +30,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private GameObject doorPrefab;
     [SerializeField]
+    private GameObject ShopPrefab;
+    [SerializeField]
     private float ScalerIncrease;
 
     private int layoutPos;
@@ -85,6 +87,13 @@ public class LevelGenerator : MonoBehaviour
 
             //set up next layout
             layoutPos += bounds.size.x;
+            if(layoutCount == 1)
+            {
+                BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 0);
+                BoxFill(minimap, minimapTiles[0], layoutPos, layoutPos + 20, -40, 0);
+                Instantiate(ShopPrefab, new Vector3(layoutPos + 10, 0), Quaternion.identity);
+                layoutPos += 20;
+            }
         }
 
         //Create side walls and floor
@@ -95,6 +104,7 @@ public class LevelGenerator : MonoBehaviour
         BoxFill(maps[0], ruleTiles[0], layoutPos + 20, layoutPos + 40, -40, 60);
         Instantiate(doorPrefab, new Vector3(layoutPos + 10, 0), Quaternion.identity);
 
+        //put it on minimap
         BoxFill(minimap, minimapTiles[0], -60, -10, -60, 60);
         BoxFill(minimap, minimapTiles[0], -10, 0, -60, 0);
         BoxFill(minimap, minimapTiles[0], 0, layoutPos, -60, -14);

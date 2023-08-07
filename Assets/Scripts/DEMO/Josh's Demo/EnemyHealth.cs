@@ -91,11 +91,11 @@ public class EnemyHealth : MonoBehaviour
             if (poisonDamage != 0 && Time.time > poisonNumTime)
             {
                 DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
-                holdNum.SetText(poisonDamage / 2f);
+                holdNum.SetText(poisonDamage / 10f);
                 holdNum.SetColor(Color.magenta);
                 holdNum.transform.position = transform.position + Vector3.up * 1.5f;
                 flashRenderer.color = new Color(.75f, .75f, .75f, 1);
-                poisonNumTime += .5f;
+                poisonNumTime += .1f;
             }
             Die();
         }
@@ -180,7 +180,7 @@ public class EnemyHealth : MonoBehaviour
         }
         DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("DamageNumbers").transform);
         holdNum.SetText(damage);
-        if (isExplosion) holdNum.SetColor(Color.yellow);
+        if (isExplosion) holdNum.SetColor(new Color(1, .6f, 0f));
         holdNum.transform.position = transform.position + Vector3.up * 1.5f;
         health -= damage;
         flashRenderer.color = new Color(.75f, .75f, .75f, 1);
@@ -200,7 +200,7 @@ public class EnemyHealth : MonoBehaviour
         //set poison
         if (poisonDamage != 0)
         {
-            poisonNumTime = Time.time + .5f;
+            poisonNumTime = Time.time + .1f;
             poisonTimer = Time.time + poisonTime;
         }
         //set knockback
