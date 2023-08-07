@@ -11,7 +11,7 @@ public class ClassNavigationButton : MonoBehaviour
     private Button button;
     private PropertyNavigationButton activePropNavButton;
 
-    private void Awake()
+    public void Init()
     {
         for (int i = 0; i < propertyNavigationButtons.Length; i++)
         {

@@ -63,8 +63,10 @@ public class LootCard : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PropertyNavigationButton propertyNavigationButton = (PropertyNavigationButton)Nb;
-            Debug.Log(propertyNavigationButton.Parent);
-            if (propertyNavigationButton) ConsoleManager.Instance.RequestMessage($"New Upgrade For {propertyNavigationButton?.Parent.GetComponentInChildren<Text>().text}");
+            if (propertyNavigationButton)
+            {
+                ConsoleManager.Instance.RequestMessage($"New Upgrade For {propertyNavigationButton?.Parent.GetComponentInChildren<Text>().text}");
+            }
             else ConsoleManager.Instance.RequestMessage("Known or Sealed Code Found");
             Nb?.UnlockButton();
             Destroy(gameObject);
