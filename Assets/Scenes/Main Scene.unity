@@ -5117,6 +5117,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1130436135}
     - target: {fileID: 4698473581178981679, guid: cbbabe900373140ed88ef05623caa775, type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 1732752654}
+    - target: {fileID: 4698473581178981679, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: miniMap
       value: 
       objectReference: {fileID: 144880}
