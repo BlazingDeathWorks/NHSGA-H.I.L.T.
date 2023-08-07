@@ -18,7 +18,7 @@ public class PlayerEntity : MonoBehaviour
     public float TimeSinceLastSpecialGroundAttack { get; set; }
 
     //Player Movement
-    public bool CanMove { get; set; }
+    public bool CanMove { get; set; } = true;
     public bool IsRunning { get; private set; }
     public bool IsJumping { get; set; }
     public bool IsFalling { get; private set; }
