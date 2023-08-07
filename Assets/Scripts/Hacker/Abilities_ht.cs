@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class Abilities_ht : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public KeyCode Input => input;
+    [SerializeField] private KeyCode input;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }
