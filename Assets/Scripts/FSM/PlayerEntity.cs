@@ -121,6 +121,7 @@ public class PlayerEntity : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || timeSinceJumpPressed < jumpBuffer) && IsGrounded)
         {
             IsJumping = true;
+            timeSinceJumpPressed = 0;
         }
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) && !IsGrounded && IsFalling)
         {

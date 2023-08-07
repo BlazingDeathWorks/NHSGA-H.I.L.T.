@@ -41,6 +41,12 @@ public class PlayerJumpState : PlayerAirAttackControllerState
         }
     }
 
+    public override void OnExit()
+    {
+        base.OnExit();
+        PlayerEntity.IsJumping = false;
+    }
+
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
