@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &97612744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 97612746}
+  - component: {fileID: 97612745}
+  m_Layer: 0
+  m_Name: ComboManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &97612745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97612744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459ae82efe20cbb42a2b9b1c594092f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSounds:
+  - {fileID: 8300000, guid: 5325237a588b66b4895aef994402d7fd, type: 3}
+  - {fileID: 8300000, guid: 6f233997b43e2f044b080d87236a5428, type: 3}
+  - {fileID: 8300000, guid: 7eaa18c4b608a2a459f01df854c4d05e, type: 3}
+  - {fileID: 8300000, guid: 77b4ce5158fb4084db58ad65deece136, type: 3}
+  - {fileID: 8300000, guid: fb81ac6a9f1bf194b83c65fd39780af2, type: 3}
+--- !u!4 &97612746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97612744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &135178088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2596,6 +2646,7 @@ MonoBehaviour:
   healthbarOffsetX: 0
   healthbarOffsetY: 0
   damageTextPrefab: {fileID: 1190030877641413292, guid: 4919bd1dfa2d5ac4f8e409a9e9f7dc5a, type: 3}
+  explosionEffect: {fileID: 1631708467410315458, guid: f7f0eeeac915704419357c4cd3dcee70, type: 3}
   stunTime: 0
   poisonTime: 0
   poisonDamage: 0

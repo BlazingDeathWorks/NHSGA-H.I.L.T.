@@ -55,7 +55,7 @@ public class TankEnemy : Enemy
             rb.velocity = new Vector2(0, rb.velocity.y);
             dir *= -1;
         }
-        transform.localScale = new Vector3(dir, 1, 1);
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * dir, transform.localScale.y, transform.localScale.z);
 
         flashRenderer.sprite = sprite.sprite;
         flashRenderer.color -= new Color(0, 0, 0, 2f * Time.deltaTime);

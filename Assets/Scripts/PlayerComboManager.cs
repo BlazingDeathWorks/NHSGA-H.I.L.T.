@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Add this component to a GameObject and attach the main music to the audio source
-[RequireComponent(typeof(AudioSource))]
+
 public class PlayerComboManager : MonoBehaviour
 {
     public static PlayerComboManager Instance { get; private set; }
     [SerializeField]
-    private static AudioClip[] hitSounds;
+    private AudioClip[] hitSounds;
 
     private GameObject player;
-    private static int comboStage;
-    private static float nextComboReset;
+    private int comboStage;
+    private float nextComboReset;
 
     private void Awake()
     {
@@ -32,10 +31,11 @@ public class PlayerComboManager : MonoBehaviour
         }
     }
 
-    public static bool ComboAdd()
+    public bool ComboAdd()
     {
         AudioManager.Instance.PlayOneShot(hitSounds[comboStage++]);
-        if(comboStage == 4)
+        nextComboReset = Time.time + 1.5f;
+        if (comboStage == 5)
         {
             comboStage = 0;
             return true;

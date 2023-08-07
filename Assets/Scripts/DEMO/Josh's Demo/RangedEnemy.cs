@@ -42,9 +42,10 @@ public class RangedEnemy : Enemy
             rb.velocity = new Vector2(0, rb.velocity.y);
             dir *= -1;
         }
-        transform.localScale = new Vector3(dir, 1, 1);
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * dir, transform.localScale.y, transform.localScale.z);
+
     }
-    
+
     private void PlayWarningSound()
     {
         audioManager.PlayOneShot(warningSound);
