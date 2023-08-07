@@ -34,6 +34,11 @@ public abstract class PlayerGroundAttackControllerState : State
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerSlideState);
         }
 
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Reverse One Way Player");
+        }
+
         //STEP #1 - Create a new input for the new ground attack
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

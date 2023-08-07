@@ -9786,7 +9786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7328256585157296748, guid: 6e88d93eca0fb4aa08ba123d8a5c6d43, type: 3}
       propertyPath: m_Text
-      value: "\t<color=#FF0094>float</color> Poison_Rate = 5"
+      value: "\t<color=#FF0094>float</color> Poison_Rate = 1"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e88d93eca0fb4aa08ba123d8a5c6d43, type: 3}

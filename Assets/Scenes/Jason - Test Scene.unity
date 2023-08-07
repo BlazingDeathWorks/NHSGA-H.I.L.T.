@@ -1984,6 +1984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c7eaba31c3e4de4b03ceb8a310d6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxSource: {fileID: 0}
+  musicSource: {fileID: 0}
 --- !u!82 &493966417
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4717,6 +4719,7 @@ MonoBehaviour:
   - {fileID: 8241528268371964432, guid: 2a781f8bb99eb304aae2c1e2a7d37988, type: 3}
   - {fileID: 7100485554665957061, guid: 07832bfd739b6e547b65938b37ec1d7e, type: 3}
   doorPrefab: {fileID: 5604249527335759141, guid: 289a019a0acd1fb48bb78d7293af4746, type: 3}
+  ScalerIncrease: 0
 --- !u!114 &1735001902 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5083328524168463977, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}

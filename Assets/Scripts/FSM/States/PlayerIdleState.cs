@@ -18,10 +18,5 @@ public class PlayerIdleState : PlayerGroundAttackControllerState
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerRunState);
         }
-
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Reverse One Way Player");
-        }
     }
 }
