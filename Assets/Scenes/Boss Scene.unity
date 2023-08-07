@@ -2520,7 +2520,7 @@ MonoBehaviour:
   shotOrigin: {fileID: 1479048119}
   bombTime: 1.5
   healthbar: {fileID: 925899368}
-  staggerTime: 1.8
+  staggerTime: 2.2
   hitsToStagger: 13
   passiveAttackSpeed: 11.5
   passiveAttackRange: 30

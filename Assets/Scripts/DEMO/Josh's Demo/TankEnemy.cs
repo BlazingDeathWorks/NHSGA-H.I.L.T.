@@ -23,7 +23,9 @@ public class TankEnemy : Enemy
                     FindPlayer();
                     break;
                 case State.attacking:
-                    if(rb.velocity.magnitude < .2f) dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+                    dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+                    break;
+                case State.dashing:
                     float checkX1 = Mathf.Sign(rb.velocity.x) * 1.5f;
                     bool isStopped1 = !Physics2D.OverlapCircle(transform.position + new Vector3(checkX1, 0), .1f, tileMask) ||
                                 Physics2D.OverlapCircle(transform.position + new Vector3(checkX1, .5f), .3f, tileMask);
@@ -36,6 +38,7 @@ public class TankEnemy : Enemy
                     {
                         if (transform.position.x - player.transform.position.x > 2) StopAttack();
                     }
+                    rb.velocity = new Vector2(1 * dir * dashSpeed, rb.velocity.y);
                     break;
             }
         }
@@ -67,6 +70,7 @@ public class TankEnemy : Enemy
     }
     private void DashAttack()
     {
+        state = State.dashing;
         rb.velocity = new Vector2(1 * dir * dashSpeed, rb.velocity.y);
         dashHitbox.enabled = true;
         PlayDashSound();
@@ -94,5 +98,6 @@ public class TankEnemy : Enemy
     public override void DoAttack(RaycastHit2D hit)
     {
         anim.Play("dash");
+        state = State.attacking;
     }
 }

@@ -29,6 +29,8 @@ public class LevelGenerator : MonoBehaviour
     private GameObject[] layouts;
     [SerializeField]
     private GameObject doorPrefab;
+    [SerializeField]
+    private float ScalerIncrease;
 
     private int layoutPos;
     private int[] layoutSeed;
@@ -139,7 +141,7 @@ public class LevelGenerator : MonoBehaviour
                     GameObject holdEnemy = Instantiate(enemyPrefabs[randType], 
                         tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), Quaternion.identity);
                     //randomize stats
-                    holdEnemy.GetComponent<Enemy>().SetStats(layoutCount / holdLayoutCount / 2f);
+                    holdEnemy.GetComponent<Enemy>().SetStats(ScalerIncrease + (.5f-layoutCount / holdLayoutCount / 2f));
                     //add to elite calculation
                     enemiesInLayout.Add(holdEnemy);
                 }
