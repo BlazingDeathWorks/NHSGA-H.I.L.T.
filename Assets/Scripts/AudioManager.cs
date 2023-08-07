@@ -7,7 +7,10 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
-    private AudioSource audioSource;
+    [SerializeField]
+    private AudioSource sfxSource;
+    [SerializeField]
+    private AudioSource musicSource;
 
     private void Awake()
     {
@@ -17,12 +20,16 @@ public class AudioManager : MonoBehaviour
             return;
         }
         Instance = this;
-
-        audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayOneShot(AudioClip clip)
+    public void PlayOneShot(AudioClip clip, bool SFX = true)
     {
-        audioSource.PlayOneShot(clip);
+        if (SFX)
+        {
+            sfxSource.PlayOneShot(clip);
+        } else
+        {
+            musicSource.PlayOneShot(clip);
+        }
     }
 }
