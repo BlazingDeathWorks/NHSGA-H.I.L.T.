@@ -90,6 +90,11 @@ public class PlayerEntity : MonoBehaviour
 
     private void Update()
     {
+        if (gameObject.layer == LayerMask.NameToLayer("Reverse One Way Player"))
+        {
+            StartCoroutine(ReturnToPlayerLayer());
+        }
+
         if (CanMove)
         {
             x = Input.GetAxisRaw("Horizontal");
@@ -159,6 +164,12 @@ public class PlayerEntity : MonoBehaviour
         {
             Gizmos.DrawLine(platformRaycastPositions[i].position, (Vector2)platformRaycastPositions[i].position + Vector2.up * platformRaycastDistance);
         }
+    }
+
+    private IEnumerator ReturnToPlayerLayer()
+    {
+        yield return new WaitForSecondsRealtime(0.4f);
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     private void FlipPlayer()
