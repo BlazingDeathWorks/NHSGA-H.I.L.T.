@@ -34,7 +34,7 @@ public abstract class PlayerGroundAttackControllerState : State
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerSlideState);
         }
 
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Reverse One Way Player");
         }

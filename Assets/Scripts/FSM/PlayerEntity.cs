@@ -51,6 +51,7 @@ public class PlayerEntity : MonoBehaviour
     private float x;
     private float originalSpeed;
     private float timeSinceJumpPressed;
+    private float timeSinceReverseOneWay;
 
     //Player Animation States (STEP #1)
     public PlayerIdleState PlayerIdleState { get; private set; }
@@ -92,7 +93,16 @@ public class PlayerEntity : MonoBehaviour
     {
         if (gameObject.layer == LayerMask.NameToLayer("Reverse One Way Player"))
         {
-            StartCoroutine(ReturnToPlayerLayer());
+            timeSinceReverseOneWay += Time.deltaTime;
+            if (timeSinceReverseOneWay >= 0.4f)
+            {
+                timeSinceReverseOneWay = 0;
+                gameObject.layer = LayerMask.NameToLayer("Player");
+            }
+        }
+        else
+        {
+            timeSinceReverseOneWay = 0;
         }
 
         if (CanMove)
@@ -165,12 +175,6 @@ public class PlayerEntity : MonoBehaviour
         {
             Gizmos.DrawLine(platformRaycastPositions[i].position, (Vector2)platformRaycastPositions[i].position + Vector2.up * platformRaycastDistance);
         }
-    }
-
-    private IEnumerator ReturnToPlayerLayer()
-    {
-        yield return new WaitForSecondsRealtime(0.4f);
-        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     private void FlipPlayer()
