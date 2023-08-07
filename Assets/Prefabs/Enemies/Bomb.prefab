@@ -143,3 +143,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explodeTime: 0
   shotPrefab: {fileID: 8409121214960785547, guid: 72a8cd54d91995742bcad9249b2c8fa4, type: 3}
+  explosionSound: {fileID: 8300000, guid: cc034c3b81b697047a458c96fe5cc523, type: 3}

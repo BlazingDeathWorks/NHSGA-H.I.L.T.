@@ -40,6 +40,22 @@ public class BossController : MonoBehaviour
     private GameObject passiveAttack;
     [SerializeField]
     private AudioClip warningSound;
+    [SerializeField]
+    private AudioClip spawnSound;
+    [SerializeField]
+    private AudioClip meleeSound;
+    [SerializeField]
+    private AudioClip landSound;
+    [SerializeField]
+    private AudioClip jumpSound;
+    [SerializeField]
+    private AudioClip throwSound;
+    [SerializeField]
+    private AudioClip laserSound;
+    [SerializeField]
+    private AudioClip deathSound;
+    [SerializeField]
+    private AudioClip explosionSound;
 
     public enum State
     {
@@ -145,6 +161,7 @@ public class BossController : MonoBehaviour
     {
         if (transform.position.y <= goalPosY && rb.velocity.y < 0)
         {
+            audioManager.PlayOneShot(landSound);
             rb.velocity = Vector2.zero;
             transform.position = new Vector3(transform.position.x, goalPosY);
             Instantiate(shotPrefab, transform.position + new Vector3(0, .5f), Quaternion.Euler(0, 0, 0));
@@ -223,6 +240,7 @@ public class BossController : MonoBehaviour
 
     private void Activate()
     {
+        audioManager.PlayOneShot(spawnSound);
         anim.enabled = true;
         rb.gravityScale = 2 * jumpHeight / Mathf.Pow(jumpTime / 2, 2) / 9.8f;
         state = State.staggered;
@@ -239,6 +257,8 @@ public class BossController : MonoBehaviour
 
     public void SpawnBomb()
     {
+        audioManager.PlayOneShot(throwSound);
+        Invoke("PlayExplosionSound", bombTime);
         int bombCount = 5 - Mathf.FloorToInt(healthScript.GetPortionHealth()*3) * 2;
         for (int i = 0; i < bombCount; i++)
         {
@@ -255,9 +275,14 @@ public class BossController : MonoBehaviour
         bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityX, velocityY);
         bomb.GetComponent<BombController>().explodeTime = Time.time + bombTime;
     }
+    private void PlayExplosionSound()
+    {
+        audioManager.PlayOneShot(explosionSound);
+    }
 
     public void SpawnLasers()
     {
+        audioManager.PlayOneShot(laserSound);
         float randOffset = Random.Range(-5f, 5f);
         for (int i = -90; i < 0; i += 10)
         {
@@ -270,6 +295,7 @@ public class BossController : MonoBehaviour
     }
     public void Die()
     {
+        audioManager.PlayOneShot(deathSound);
         anim.Play("death");
         passiveAttack.SetActive(false);
         sideWalls.SetActive(false);
@@ -287,6 +313,7 @@ public class BossController : MonoBehaviour
     }
     private void Jump()
     {
+        audioManager.PlayOneShot(jumpSound);
         anim.Play("jump");
         state = State.jumping;
         goalPosY = transform.position.y - (Mathf.Abs(transform.position.y - arenaY) > 1f ? 6f : 0);

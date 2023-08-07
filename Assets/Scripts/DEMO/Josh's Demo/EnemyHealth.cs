@@ -170,7 +170,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (isDead) return;
+        if (isDead || damage == 0) return;
         bool isExplosion = PlayerComboManager.Instance.ComboAdd();
         if (isExplosion)
         {

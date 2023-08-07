@@ -4,8 +4,12 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class MainMenuController : MenuController
+public class PauseMenuManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject launchPanel;
+    [SerializeField]
+    private AudioClip clickSound;
     [SerializeField]
     private GameObject mainPanel;
     [SerializeField]
@@ -19,11 +23,11 @@ public class MainMenuController : MenuController
     [SerializeField]
     private Slider sfxSlider;
 
-    public override void Start()
+    private GameObject minimap;
+    private bool minimapState;
+
+    void Start()
     {
-        base.Start();
-        mainPanel.SetActive(true);
-        optionsPanel.SetActive(false);
         masterSlider.value = PlayerPrefs.GetFloat("masterVolume", .5f);
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume", 1f);
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume", 1f);
@@ -58,5 +62,30 @@ public class MainMenuController : MenuController
         AudioManager.Instance.PlayOneShot(clickSound);
         mainPanel.SetActive(false);
         optionsPanel.SetActive(true);
+    }
+    public void Activate(GameObject map, bool mapState)
+    {
+        minimap = map;
+        minimapState = mapState;
+        minimap.SetActive(false);
+        mainPanel.SetActive(false);
+        optionsPanel.SetActive(false);
+        launchPanel.SetActive(true);
+        Invoke("EnableSystem", .22f);
+    }
+    public void SetInactive()
+    {
+        minimap.SetActive(minimapState);
+        mainPanel.SetActive(false);
+        optionsPanel.SetActive(false);
+        launchPanel.SetActive(false);
+        Time.timeScale = 1;
+        gameObject.SetActive(false);
+    }
+    public void EnableSystem()
+    {
+        if(gameObject.activeInHierarchy) Time.timeScale = 0;
+        mainPanel.SetActive(true);
+        launchPanel.SetActive(false);
     }
 }

@@ -23,7 +23,7 @@ public class HackerController : MonoBehaviour
         {
             hackerIDE.SetActive(!hackerIDE.activeInHierarchy);
             miniMap.SetActive(!hackerIDE.activeInHierarchy);
-            chromAb.active = !chromAb.active;
+            chromAb.active = !hackerIDE.activeInHierarchy;
         }
     }
 }

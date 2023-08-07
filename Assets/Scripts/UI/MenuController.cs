@@ -10,6 +10,7 @@ public abstract class MenuController : MonoBehaviour
     protected AudioClip clickSound;
     public virtual void Start()
     {
+        Time.timeScale = 1;
         launchPanel.SetActive(true);
         Invoke("EnableSystem", 1f);
     }
