@@ -43,6 +43,7 @@ public class EnemyHealth : MonoBehaviour
     private GameObject player;
     private SpriteRenderer flashRenderer;
     private ParticleSystem hitParticles;
+    private float poisonNumTime;
 
     private void Awake()
     {
@@ -87,20 +88,15 @@ public class EnemyHealth : MonoBehaviour
         if (Time.time < poisonTimer && !isDead)
         {
             health -= poisonDamage * Time.deltaTime;
-            if (poisonDamage != 0)
+            if (poisonDamage != 0 && Time.time > poisonNumTime)
             {
                 DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
-                holdNum.SetText(poisonDamage * Time.deltaTime);
-                holdNum.SetColor(Color.green);
+                holdNum.SetText(poisonDamage / 2f);
                 holdNum.transform.position = transform.position + Vector3.up * 1.5f;
+                flashRenderer.color = new Color(.75f, .75f, .75f, 1);
+                poisonNumTime += .5f;
             }
-            if (health < 0)
-            {
-                //Instantiate the loot object
-                LootCard instance = Instantiate(lootCard, transform.position, Quaternion.identity);
-                instance.Nb = codeLoot.Pull();
-                Destroy(gameObject);
-            }
+            Die();
         }
         //reset stun
         if (Time.time > stunTimer)
@@ -200,10 +196,19 @@ public class EnemyHealth : MonoBehaviour
             stunCooldown = Time.time + 5f;
         }
         //set poison
-        if(poisonDamage != 0) poisonTimer = Time.time + poisonTime;
+        if (poisonDamage != 0)
+        {
+            poisonNumTime = Time.time + .5f;
+            poisonTimer = Time.time + poisonTime;
+        }
         //set knockback
         ExecuteKnockback();
-        
+
+        Die();
+    }
+
+    private void Die()
+    {
         if (health <= 0)
         {
             //Instantiate the loot object

@@ -41,7 +41,7 @@ public class MeleeEnemy : Enemy
         rb.AddForce(Vector2.up * .1f, ForceMode2D.Force);
 
         //stop at walls and cliffs
-        float checkX = Mathf.Sign(rb.velocity.x) * 1.5f;
+        float checkX = Mathf.Sign(rb.velocity.x) * .5f;
         bool isStopped = !Physics2D.OverlapCircle(transform.position + new Vector3(checkX, 0), .1f, tileMask) ||
                     Physics2D.OverlapCircle(transform.position + new Vector3(checkX, .5f), .3f, tileMask);
         if (isStopped)

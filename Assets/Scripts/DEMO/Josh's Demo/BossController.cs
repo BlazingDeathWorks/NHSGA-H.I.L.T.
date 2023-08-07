@@ -52,6 +52,7 @@ public class BossController : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private float arenaX;
+    private float arenaY;
     private float goalPosX;
     private float dir;
     private float goalPosY;
@@ -78,6 +79,7 @@ public class BossController : MonoBehaviour
         healthScript = GetComponent<EnemyHealth>();
         handHitboxCollider = handHitbox.GetComponent<Collider2D>();
         arenaX = transform.position.x;
+        arenaY = transform.position.y;
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
         attackCounts = new int[3];
@@ -179,7 +181,7 @@ public class BossController : MonoBehaviour
                     break;
                 case 1:
                     PlayWarningSound();
-                    if (Mathf.Abs(transform.position.x - arenaX) < 1f)
+                    if (Mathf.Abs(transform.position.y - arenaY) < 1f)
                     {
                         anim.Play("hand");
                         handHitbox.Play("handHitbox");
@@ -201,7 +203,7 @@ public class BossController : MonoBehaviour
     public void AddStagger()
     {
         staggerHitCount++;
-        if(staggerHitCount > hitsToStagger && state != State.staggered && state != State.jumping && Mathf.Abs(transform.position.x - arenaX) < 1f){
+        if(staggerHitCount > hitsToStagger && state != State.staggered && state != State.jumping && Mathf.Abs(transform.position.y - arenaY) < 1f){
             anim.Play("stagger");
             handHitboxCollider.enabled = false;
             handHitbox.Play("start");
@@ -287,8 +289,8 @@ public class BossController : MonoBehaviour
     {
         anim.Play("jump");
         state = State.jumping;
-        goalPosY = transform.position.y - (Mathf.Abs(transform.position.x - arenaX) > 1f ? 6f : 0);
-        goalPosX = arenaX + (Mathf.Abs(transform.position.x - arenaX) < 1f ? (1 + Random.Range(-1, 1) * 2) * 11: 0);
+        goalPosY = transform.position.y - (Mathf.Abs(transform.position.y - arenaY) > 1f ? 6f : 0);
+        goalPosX = arenaX + (Mathf.Abs(transform.position.y - arenaY) < 1f ? (1 + Random.Range(-1, 1) * 2) * 11: 0);
         if(goalPosX != arenaX) goalPosY += 6f;
         dir = Mathf.Sign(goalPosX - transform.position.x);
         transform.localScale = new Vector3(dir, 1, 1);
