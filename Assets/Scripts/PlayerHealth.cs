@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer flashRenderer;
     [SerializeField]
     private DamageNumber damageTextPrefab;
+    [SerializeField]
+    private GameObject deathPanel;
 
     private float immuneTime;
     private bool immune;
@@ -100,7 +102,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (immune) return;
         //do damage number
-        DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
+        DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("DamageNumbers").transform);
         holdNum.SetText(damage);
         holdNum.SetColor(Color.red);
         holdNum.transform.position = transform.position + Vector3.up * 1.5f;
@@ -119,7 +121,8 @@ public class PlayerHealth : MonoBehaviour
 
         if(health <= 0)
         {
-            SceneController.Instance.ReloadScene();
+            Time.timeScale = 0;
+            deathPanel.SetActive(true);
         }
     }
 

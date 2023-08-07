@@ -178,7 +178,7 @@ public class EnemyHealth : MonoBehaviour
             explosionEffect.Play();
             damage *= 2;
         }
-        DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
+        DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("DamageNumbers").transform);
         holdNum.SetText(damage);
         if (isExplosion) holdNum.SetColor(Color.yellow);
         holdNum.transform.position = transform.position + Vector3.up * 1.5f;

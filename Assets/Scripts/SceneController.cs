@@ -19,16 +19,19 @@ public class SceneController : MonoBehaviour
 
     public void NextScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void StartScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
     public void ReloadScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
