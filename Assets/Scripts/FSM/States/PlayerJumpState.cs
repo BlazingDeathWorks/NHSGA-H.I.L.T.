@@ -17,19 +17,22 @@ public class PlayerJumpState : PlayerAirAttackControllerState
         base.OnEnter();
         PlayerEntity.TimeSinceStartFall = PlayerEntity.CoyoteTime;
         timeSinceJump = 0;
+        //PlayerEntity.Rb.velocity = new Vector2(PlayerEntity.Rb.velocity.x, PlayerEntity.JumpPower);
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if (PlayerEntity.IsFalling && !PlayerEntity.IsCoyoteTime)
+        if (PlayerEntity.IsFalling && !PlayerEntity.IsCoyoteTime && !PlayerEntity.IsDoubleJumping)
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerFallState);
+            PlayerEntity.IsJumping = false;
         }
 
         if (PlayerEntity.IsGrounded && timeSinceJump >= PlayerEntity.MaxJumpTime)
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerIdleState);
+            PlayerEntity.IsJumping = false;
         }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
@@ -49,7 +52,6 @@ public class PlayerJumpState : PlayerAirAttackControllerState
     public override void OnExit()
     {
         base.OnExit();
-        PlayerEntity.IsJumping = false;
     }
 
     public override void OnFixedUpdate()
@@ -59,6 +61,7 @@ public class PlayerJumpState : PlayerAirAttackControllerState
         {
             PlayerEntity.IsJumping = timeSinceJump < PlayerEntity.MaxJumpTime;
             PlayerEntity.IsCoyoteTime = PlayerEntity.IsJumping;
+            PlayerEntity.IsDoubleJumping = PlayerEntity.IsJumping;
             PlayerEntity.Rb.velocity = new Vector2(PlayerEntity.Rb.velocity.x, PlayerEntity.JumpPower + timeSinceJump * 4);
         }
     }

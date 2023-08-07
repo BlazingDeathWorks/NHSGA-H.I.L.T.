@@ -214,6 +214,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             //Instantiate the loot object
+            CurrencyManager.Instance.AddCoins((int)healthbar.maxValue * 10);
             ScreenShake.Instance.noise.m_AmplitudeGain = 5;
             player.GetComponent<PlayerHealth>().Lifesteal();
             if (enemyScript)

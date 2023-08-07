@@ -21,6 +21,7 @@ public class PlayerEntity : MonoBehaviour
     public bool CanMove { get; set; } = true;
     public bool IsRunning { get; private set; }
     public bool IsJumping { get; set; }
+    public bool IsDoubleJumping { get; set; }
     public bool IsFalling { get; private set; }
     public bool IsGrounded { get; private set; } = true;
     public bool CanSlide { get; set; }
@@ -52,6 +53,8 @@ public class PlayerEntity : MonoBehaviour
     private float originalSpeed;
     private float timeSinceJumpPressed;
     private float timeSinceReverseOneWay;
+    private bool canDoubleJump = true;
+    private bool allowDoubleJump = false;
 
     //Player Animation States (STEP #1)
     public PlayerIdleState PlayerIdleState { get; private set; }
@@ -91,6 +94,11 @@ public class PlayerEntity : MonoBehaviour
 
     private void Update()
     {
+        if (IsGrounded)
+        {
+            canDoubleJump = allowDoubleJump;
+        }
+
         if (gameObject.layer == LayerMask.NameToLayer("Reverse One Way Player"))
         {
             timeSinceReverseOneWay += Time.deltaTime;
@@ -133,7 +141,15 @@ public class PlayerEntity : MonoBehaviour
             IsJumping = true;
             timeSinceJumpPressed = 0;
         }
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) && !IsGrounded && IsFalling)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) && !IsGrounded && IsFalling && canDoubleJump)
+        {
+            IsJumping = true;
+            timeSinceJumpPressed = 0;
+            canDoubleJump = false;
+            IsDoubleJumping = true;
+            Debug.Log("hoop");
+        }
+        else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) && !IsGrounded && IsFalling)
         {
             timeSinceJumpPressed = 0;
         }
@@ -202,5 +218,10 @@ public class PlayerEntity : MonoBehaviour
     public void SetSpeed(float speed)
     {
         this.speed = speed;
+    }
+
+    public void SetDoubleJump(bool value)
+    {
+        allowDoubleJump = value;
     }
 }

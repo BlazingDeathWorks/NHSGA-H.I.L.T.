@@ -22,6 +22,11 @@ public class PlayerFallState : PlayerAirAttackControllerState
     {
         base.OnUpdate();
 
+        if (PlayerEntity.IsJumping)
+        {
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerJumpState);
+        }
+
         if (PlayerEntity.IsGrounded)
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerIdleState);
@@ -46,6 +51,11 @@ public class PlayerFallState : PlayerAirAttackControllerState
             {
                 PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Player");
             }
+        }
+
+        if (PlayerEntity.Rb.velocity.y <= -20)
+        {
+            PlayerEntity.Rb.velocity = new Vector2(PlayerEntity.Rb.velocity.x, -20);
         }
     }
 }
