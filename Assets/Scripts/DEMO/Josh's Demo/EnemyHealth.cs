@@ -92,6 +92,7 @@ public class EnemyHealth : MonoBehaviour
             {
                 DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
                 holdNum.SetText(poisonDamage / 2f);
+                holdNum.SetColor(Color.magenta);
                 holdNum.transform.position = transform.position + Vector3.up * 1.5f;
                 flashRenderer.color = new Color(.75f, .75f, .75f, 1);
                 poisonNumTime += .5f;
@@ -134,7 +135,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if(enemyScript && healthbar) healthbar.transform.position = transform.position + new Vector3(transform.localScale.x * healthbarOffsetX, healthbarOffsetY);
+        if(enemyScript && healthbar) healthbar.transform.position = transform.position + new Vector3(transform.localScale.x * healthbarOffsetX, healthbarOffsetY * transform.localScale.y);
     }
     private void FixedUpdate()
     {
@@ -179,6 +180,7 @@ public class EnemyHealth : MonoBehaviour
         }
         DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
         holdNum.SetText(damage);
+        if (isExplosion) holdNum.SetColor(Color.yellow);
         holdNum.transform.position = transform.position + Vector3.up * 1.5f;
         health -= damage;
         flashRenderer.color = new Color(.75f, .75f, .75f, 1);

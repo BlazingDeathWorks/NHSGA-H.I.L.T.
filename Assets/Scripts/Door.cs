@@ -30,7 +30,7 @@ public class Door : MonoBehaviour
     {
         if (keysCollected >= keysNeeded)
         {
-            Destroy(gameObject);
+            GetComponent<Collider2D>().enabled = false;
             SceneController.Instance.NextScene();
         }
     }
