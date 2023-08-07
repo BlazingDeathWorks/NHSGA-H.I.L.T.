@@ -22,7 +22,7 @@ public class PlayerSlideState : State
 
     public override void OnExit()
     {
-        base.OnEnter();
+        base.OnExit();
         timeSinceSlide = 0;
         PlayerEntity.StartCoroutine(ReturnToPlayerLayer());
     }
