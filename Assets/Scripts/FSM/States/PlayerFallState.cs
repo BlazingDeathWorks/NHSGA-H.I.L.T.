@@ -21,6 +21,7 @@ public class PlayerFallState : PlayerAirAttackControllerState
     public override void OnUpdate()
     {
         base.OnUpdate();
+
         if (PlayerEntity.IsGrounded)
         {
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerIdleState);

@@ -27,6 +27,11 @@ public class PlayerJumpState : PlayerAirAttackControllerState
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerFallState);
         }
 
+        if (PlayerEntity.IsGrounded && timeSinceJump >= PlayerEntity.MaxJumpTime)
+        {
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerIdleState);
+        }
+
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
         {
             timeSinceJump += Time.deltaTime;

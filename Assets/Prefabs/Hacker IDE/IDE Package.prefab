@@ -6486,7 +6486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3034274056610847710, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Text
-      value: AntiGravity
+      value: TimeSlow
       objectReference: {fileID: 0}
     - target: {fileID: 3034274056610847710, guid: 46bfa1df2730848c29161bd5d4c335d3, type: 3}
       propertyPath: m_Color.b
@@ -11480,7 +11480,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -993327008779048062, guid: 6e88d93eca0fb4aa08ba123d8a5c6d43, type: 3}
       propertyPath: codeTemplate
-      value: '*int* Anti_Gravity = !'
+      value: '*int* TimeSlow = !'
       objectReference: {fileID: 0}
     - target: {fileID: -993327008779048062, guid: 6e88d93eca0fb4aa08ba123d8a5c6d43, type: 3}
       propertyPath: initialTabCount
@@ -11564,7 +11564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7328256585157296739, guid: 6e88d93eca0fb4aa08ba123d8a5c6d43, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1582.3
+      value: -293.5
       objectReference: {fileID: 0}
     - target: {fileID: 7328256585157296739, guid: 6e88d93eca0fb4aa08ba123d8a5c6d43, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11580,7 +11580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7328256585157296748, guid: 6e88d93eca0fb4aa08ba123d8a5c6d43, type: 3}
       propertyPath: m_Text
-      value: "\t<color=#FF0094>int</color> Anti_Gravity = 0"
+      value: "\t<color=#FF0094>int</color> TimeSlow = 0"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e88d93eca0fb4aa08ba123d8a5c6d43, type: 3}
