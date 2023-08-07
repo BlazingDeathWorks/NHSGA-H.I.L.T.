@@ -95,7 +95,7 @@ public class LevelGenerator : MonoBehaviour
         BoxFill(maps[0], ruleTiles[0], 0, layoutPos, -40, -14);
         BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 0);
         BoxFill(maps[0], ruleTiles[0], layoutPos + 20, layoutPos + 40, -40, 60);
-        Instantiate(doorPrefab, new Vector3(layoutPos + 10, 1.5f), Quaternion.identity);
+        Instantiate(doorPrefab, new Vector3(layoutPos + 10, 0), Quaternion.identity);
 
         BoxFill(minimap, minimapTiles[0], -60, -10, -60, 60);
         BoxFill(minimap, minimapTiles[0], -10, 0, -60, 0);
