@@ -278,7 +278,6 @@ GameObject:
   - component: {fileID: 4698473581178981676}
   - component: {fileID: 4698473581178981679}
   - component: {fileID: 4698473581178981678}
-  - component: {fileID: 4771227316050786313}
   - component: {fileID: 5693530175168760992}
   - component: {fileID: 4061155926804917803}
   - component: {fileID: 6220159434078933314}
@@ -475,6 +474,7 @@ MonoBehaviour:
   healthbarSpeed: 70
   flashRenderer: {fileID: 3869465641745288760}
   damageTextPrefab: {fileID: 1190030877641413292, guid: 4919bd1dfa2d5ac4f8e409a9e9f7dc5a, type: 3}
+  deathPanel: {fileID: 0}
 --- !u!114 &4698473581178981679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,19 +526,6 @@ MonoBehaviour:
     baseAttackSlash: {fileID: 747045673914548547, guid: 5c9bfb145999e497c8a4d2824d5a8db8, type: 3}
     threeHitAttackSlash: {fileID: 5374996938754738995, guid: 752ca316b0d9c40d886c5a940f650e76, type: 3}
     airAttackSlash: {fileID: 2201147196554176385, guid: 913540f527ede499ebefb4d84d788771, type: 3}
---- !u!114 &4771227316050786313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4698473581178981664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 355e2089b95ef404e9db479dbeec80d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: 0
 --- !u!114 &5693530175168760992
 MonoBehaviour:
   m_ObjectHideFlags: 0
