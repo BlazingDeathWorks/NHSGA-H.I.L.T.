@@ -11,6 +11,13 @@ public class PlayerFallState : PlayerAirAttackControllerState
 
     }
 
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        PlayerEntity.Rb.gravityScale = 0;
+        PlayerEntity.StartCoroutine(PlayerEntity.ReturnGravity());
+    }
+
     public override void OnUpdate()
     {
         base.OnUpdate();

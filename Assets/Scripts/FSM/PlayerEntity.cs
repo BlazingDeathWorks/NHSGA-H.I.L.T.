@@ -166,6 +166,12 @@ public class PlayerEntity : MonoBehaviour
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(x), transform.localScale.y, transform.localScale.z);
     }
 
+    public IEnumerator ReturnGravity()
+    {
+        yield return new WaitForSecondsRealtime(0.05f);
+        Rb.gravityScale = 6;
+    }
+
     public void FinishAttack()
     {
         FinishedAttacking = true;
