@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 4698473581178981678}
   - component: {fileID: 4771227316050786313}
   - component: {fileID: 5693530175168760992}
+  - component: {fileID: 4061155926804917803}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -488,6 +489,7 @@ MonoBehaviour:
   hackerInterfaceOpenInput: 101
   hackerIDE: {fileID: 0}
   miniMap: {fileID: 0}
+  volume: {fileID: 0}
 --- !u!114 &4698473581178981678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,6 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355e2089b95ef404e9db479dbeec80d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: 0
 --- !u!114 &5693530175168760992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +553,19 @@ MonoBehaviour:
   slashSpawnPos: {fileID: 4698473581883932132}
   projectilePrefab: {fileID: 1850765866392464340, guid: 2ee3b4ab80e51437791beaa33866fb4b, type: 3}
   offset: {x: 1, y: 0}
+--- !u!114 &4061155926804917803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4698473581178981664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355e2089b95ef404e9db479dbeec80d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: 304
 --- !u!1 &4698473581332646319
 GameObject:
   m_ObjectHideFlags: 0

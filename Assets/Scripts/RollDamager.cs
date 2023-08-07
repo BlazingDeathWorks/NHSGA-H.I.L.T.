@@ -14,11 +14,13 @@ public class RollDamager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.TryGetComponent(out EnemyHealth enemyHealth))
-        //{
-        //    //Check if we are sliding rn
-        //    enemyHealth.TakeDamage(rollDamage);
-        //}
+        if (collision.TryGetComponent(out EnemyHealth enemyHealth))
+        {
+            //Check if we are sliding rn
+            if (playerEntity.CanSlide) return;
+            enemyHealth.TakeDamage(rollDamage);
+            Debug.Log("bruh");
+        }
     }
 
     public void SetRollDamage(float rollDamage)
