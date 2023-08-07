@@ -32,6 +32,9 @@ public class MeleeEnemy : Enemy
                     rb.velocity = new Vector3(speed * dir, rb.velocity.y);
                     FindPlayer();
                     break;
+                case State.dashing:
+                    rb.velocity = new Vector2(1 * dir * dashSpeed, rb.velocity.y);
+                    break;
             }
         }
 
@@ -73,6 +76,7 @@ public class MeleeEnemy : Enemy
     private void DashAttack()
     {
         rb.velocity = new Vector2(1 * dir * dashSpeed, rb.velocity.y);
+        state = State.dashing;
         dashHitbox.enabled = true;
         PlayDashSound();
     }
@@ -90,10 +94,12 @@ public class MeleeEnemy : Enemy
         if (hit.distance < meleeRange)
         {
             anim.Play("melee");
+            state = State.attacking;
         }
         else
         {
             anim.Play("dash");
+            state = State.attacking;
         }
     }
 }

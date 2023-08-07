@@ -40,7 +40,7 @@ public abstract class Enemy : MonoBehaviour
 
     public enum State
     {
-        idle, attacking, dead
+        idle, attacking, dashing, dead
     };
 
     public virtual void Start()
@@ -79,7 +79,6 @@ public abstract class Enemy : MonoBehaviour
         {
             if (aggroTime < Time.time)
             {
-                state = State.attacking;
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                 DoAttack(hit);
@@ -92,7 +91,7 @@ public abstract class Enemy : MonoBehaviour
     }
     public void SetStats(float scaler)
     {
-        scaler = 1.2f - scaler;
+        scaler = .7f + scaler;
         damage *= scaler;
         GetComponent<EnemyHealth>().MultiplyHealth(scaler);
     }

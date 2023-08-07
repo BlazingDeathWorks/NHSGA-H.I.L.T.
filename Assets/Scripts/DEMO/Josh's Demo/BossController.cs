@@ -63,6 +63,7 @@ public class BossController : MonoBehaviour
     private int staggerHitCount;
     private AudioManager audioManager;
     private Collider2D handHitboxCollider;
+    private bool activated;
 
     void Start()
     {
@@ -130,7 +131,6 @@ public class BossController : MonoBehaviour
     private void DoStagger()
     {
         staggerTimer += Time.deltaTime;
-        handHitboxCollider.enabled = false;
         if (staggerTimer > staggerTime)
         {
             staggerTimer = 0;
@@ -145,6 +145,8 @@ public class BossController : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             transform.position = new Vector3(transform.position.x, goalPosY);
+            Instantiate(shotPrefab, transform.position + new Vector3(0, .5f), Quaternion.Euler(0, 0, 0));
+            Instantiate(shotPrefab, transform.position + new Vector3(0, .5f), Quaternion.Euler(0, 0, 180));
             SetIdle();
         }
     }
@@ -201,21 +203,29 @@ public class BossController : MonoBehaviour
         staggerHitCount++;
         if(staggerHitCount > hitsToStagger && state != State.staggered && state != State.jumping && Mathf.Abs(transform.position.x - arenaX) < 1f){
             anim.Play("stagger");
+            handHitboxCollider.enabled = false;
+            handHitbox.Play("start");
             state = State.staggered;
         }
     }
 
     private void CheckActivate()
     {
-        if (arenaX - player.transform.position.x < 5f)
+        if (arenaX - player.transform.position.x < 5f && !activated)
         {
-            anim.enabled = true;
             sideWalls.SetActive(true);
-            rb.gravityScale = 2 * jumpHeight / Mathf.Pow(jumpTime / 2, 2) / 9.8f;
-            state = State.staggered;
-            nextAttack = Time.time + 1f + attackCooldown;
-            healthbar.SetActive(true);
+            activated = true;
+            Invoke("Activate", 1f);
         }
+    }
+
+    private void Activate()
+    {
+        anim.enabled = true;
+        rb.gravityScale = 2 * jumpHeight / Mathf.Pow(jumpTime / 2, 2) / 9.8f;
+        state = State.staggered;
+        nextAttack = Time.time + 1f + attackCooldown;
+        healthbar.SetActive(true);
     }
 
     private void SetIdle()

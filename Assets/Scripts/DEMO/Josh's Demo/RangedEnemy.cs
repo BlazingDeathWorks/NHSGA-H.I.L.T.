@@ -25,6 +25,9 @@ public class RangedEnemy : Enemy
                     rb.velocity = new Vector2(speed * dir, rb.velocity.y);
                     FindPlayer();
                     break;
+                case State.dashing:
+                    rb.velocity = new Vector2(1 * Mathf.Sign(transform.position.x - player.transform.position.x) * dashSpeed, rb.velocity.y);
+                    break;
             }
         }
 
@@ -69,6 +72,7 @@ public class RangedEnemy : Enemy
     private void DashAttack()
     {
         rb.velocity = new Vector2(1 * Mathf.Sign(transform.position.x - player.transform.position.x) * dashSpeed, rb.velocity.y);
+        state = State.dashing;
         PlayDashSound();
     }
 
@@ -83,10 +87,12 @@ public class RangedEnemy : Enemy
         if (hit.distance < dashRange)
         {
             anim.Play("dash");
+            state = State.attacking;
         }
         else
         {
             anim.Play("attack");
+            state = State.attacking;
         }
     }
 }
