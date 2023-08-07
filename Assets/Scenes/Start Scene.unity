@@ -1184,7 +1184,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 960, y: -901.06}
-  m_SizeDelta: {x: 313.75, y: 68}
+  m_SizeDelta: {x: 318.85, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &690166877
 MonoBehaviour:
@@ -3171,14 +3171,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4604afb2b1b74b44aa0709126e6ff070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launchPanel: {fileID: 1311045047}
+  clickSound: {fileID: 8300000, guid: 9ba1222ea64f3484aab9de4d50ce96ee, type: 3}
   mainPanel: {fileID: 774188891}
   optionsPanel: {fileID: 316547736}
-  launchPanel: {fileID: 1311045047}
   audioMixer: {fileID: 24100000, guid: 862b1437526d68c4095ec0d117c13129, type: 2}
   masterSlider: {fileID: 1593575523}
   musicSlider: {fileID: 1287998817}
   sfxSlider: {fileID: 1503410725}
-  clickSound: {fileID: 8300000, guid: 9ba1222ea64f3484aab9de4d50ce96ee, type: 3}
 --- !u!1 &1593575521
 GameObject:
   m_ObjectHideFlags: 0
