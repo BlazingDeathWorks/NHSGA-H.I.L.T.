@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  maxSpeed: 35
+  maxSpeed: 32.5
   accelerationRate: 0.5
   slideSpeed: 18
   maxSlideTime: 0.3
