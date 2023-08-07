@@ -15,6 +15,7 @@ public class HackerController : MonoBehaviour
     private void Start()
     {
         volume.profile.TryGet(out chromAb);
+        chromAb.active = !hackerIDE.activeInHierarchy;
     }
     private void Update()
     {
