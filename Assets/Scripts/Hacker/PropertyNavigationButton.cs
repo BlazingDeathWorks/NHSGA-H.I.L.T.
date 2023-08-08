@@ -72,20 +72,20 @@ public class PropertyNavigationButton : NavigationButton
         //Only set isClicked to true if we are currently on Class (Works because we're getting called before changing classes to this)
         if (IDEManager.Instance.CurrentClass != Parent) return;
         isClicked = true;
-
-        if(DefaultButton)
+        /*
+        if(DefaultButton && NOT ACTIVE VALUE)
         {
-            //if(the button is not set) UpgradeLimiter.Instance.RemoveUpgrade();
-        } else
+            UpgradeLimiter.Instance.RemoveUpgrade();
+        } else if (ACTIVE VALUE IS DEFAULT)
         {
             if (UpgradeLimiter.Instance.atLimit)
             {
                 UpgradeLimiter.Instance.PlayError();
                 return;
             }
-
             UpgradeLimiter.Instance.AddUpgrade();
         }
+        */
         //Only to list of objects
         //if (LineOfCode != null) text.color = new Color(240, 235, 216);
         if (parentPropNavButton == null) return;
