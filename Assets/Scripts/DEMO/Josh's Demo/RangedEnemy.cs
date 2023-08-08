@@ -32,6 +32,7 @@ public class RangedEnemy : Enemy
                                 Physics2D.OverlapCircle(transform.position + new Vector3(checkX1, .5f), .3f, tileMask);
                     if (isStopped1)
                     {
+                        dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                         anim.Play("attack");
                         state = State.attacking;
                     }
