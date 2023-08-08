@@ -107,6 +107,8 @@ public class LevelGenerator : MonoBehaviour
         BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 0);
         BoxFill(maps[0], ruleTiles[0], layoutPos + 20, layoutPos + 40, -40, 60);
         Instantiate(doorPrefab, new Vector3(layoutPos + 10, 0), Quaternion.identity);
+        Tilemap holdMap = Instantiate(maps[0], transform);
+        holdMap.gameObject.GetComponent<CompositeCollider2D>().geometryType = CompositeCollider2D.GeometryType.Polygons;
 
         //put it on minimap
         BoxFill(minimap, minimapTiles[0], -60, -10, -60, 60);

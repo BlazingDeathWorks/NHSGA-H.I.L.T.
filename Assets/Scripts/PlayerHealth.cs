@@ -146,6 +146,7 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator SetDeathPanel()
     {
         yield return new WaitForSecondsRealtime(1f);
+        Cursor.lockState = CursorLockMode.None;
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.PlayOneShot(loseSound);
         deathPanel.SetActive(true);

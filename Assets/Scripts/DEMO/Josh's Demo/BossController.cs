@@ -56,6 +56,8 @@ public class BossController : MonoBehaviour
     private AudioClip deathSound;
     [SerializeField]
     private AudioClip explosionSound;
+    [SerializeField]
+    private AudioClip bossSong;
 
     public enum State
     {
@@ -239,6 +241,7 @@ public class BossController : MonoBehaviour
     private void Activate()
     {
         audioManager.PlayOneShot(spawnSound);
+        audioManager.PlaySong(bossSong);
         anim.enabled = true;
         rb.gravityScale = 2 * jumpHeight / Mathf.Pow(jumpTime / 2, 2) / 9.8f;
         state = State.staggered;

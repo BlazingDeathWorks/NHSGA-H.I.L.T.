@@ -13,9 +13,9 @@ public class TrapController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             rb.velocity = new Vector2(-Mathf.Sign(rb.velocity.x), 1) * launchScale;
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
     }
 }
