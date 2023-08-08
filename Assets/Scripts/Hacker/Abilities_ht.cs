@@ -105,9 +105,52 @@ public class Teleport : Ability
 
     }
 
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        PlayerEntity.AbilityTimer += Time.deltaTime;
+    }
+
     public override void Execute()
     {
-        throw new System.NotImplementedException();
+        if (PlayerEntity.AbilityTimer < PlayerEntity.AbilityCooldown) return;
+
+        //check for nearest collision
+        float dist = float.MaxValue;
+        RaycastHit2D hit = Physics2D.Raycast(PlayerEntity.TeleportRaycastPositions[0].position,
+                new Vector2(Mathf.Sign(PlayerEntity.transform.localScale.x), 0), PlayerEntity.TeleportDistance);
+        if (hit.collider)
+        {
+            dist = hit.distance;
+            if (hit.collider.gameObject.CompareTag("Enemy")) {
+                dist = hit.collider.transform.position.x + Mathf.Sign(hit.collider.transform.localScale.x) * -1;
+            }
+        }
+        for (int i=1; i< PlayerEntity.TeleportRaycastPositions.Length; i++)
+        {
+            hit = Physics2D.Raycast(PlayerEntity.TeleportRaycastPositions[i].position, 
+                new Vector2(Mathf.Sign(PlayerEntity.transform.localScale.x), 0), PlayerEntity.TeleportDistance);
+            float holdDist = float.MaxValue;
+            if (hit.collider)
+            {
+                holdDist = hit.distance;
+                if (hit.collider.gameObject.CompareTag("Enemy"))
+                {
+                    holdDist = hit.collider.transform.position.x + Mathf.Sign(hit.collider.transform.localScale.x) * -1;
+                }
+            }
+            dist = Mathf.Min(dist, holdDist);
+        }
+        PlayerEntity.transform.position += Vector3.right * Mathf.Sign(PlayerEntity.transform.localScale.x) * 
+            Mathf.Clamp(dist, 0, PlayerEntity.TeleportDistance);
+        PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Invincible");
+        PlayerEntity.StartCoroutine(ReturnToPlayerLayer());
+        PlayerEntity.AbilityTimer = 0;
+    }
+    private IEnumerator ReturnToPlayerLayer()
+    {
+        yield return new WaitForSecondsRealtime(0.15f);
+        PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 }
 

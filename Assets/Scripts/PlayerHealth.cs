@@ -94,7 +94,7 @@ public class PlayerHealth : MonoBehaviour
         {
             knockback = false;
             rb.AddForce(ForceVector, ForceMode2D.Impulse);
-            playerEntity.enabled = true;
+            if(health > 0) playerEntity.enabled = true;
         }
     }
 
@@ -121,6 +121,8 @@ public class PlayerHealth : MonoBehaviour
 
         if(health <= 0)
         {
+            rb.velocity = Vector2.zero;
+            GetComponent<PlayerEntity>().enabled = false;
             if(TryGetComponent(out Animator anim)) anim.CrossFade("Death", 0, 0);
         }
     }

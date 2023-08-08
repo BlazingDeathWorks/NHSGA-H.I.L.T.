@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1349652611141061497}
   - component: {fileID: 1349652611141061496}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: HitEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1349652611497380829}
   - component: {fileID: 1349652611497380819}
   - component: {fileID: 4941861733737513272}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 6408112348719482539}
   - component: {fileID: 4924731175634984691}
   - component: {fileID: 3968817601432396739}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Batteries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5097,7 +5097,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7569094493118044892}
   - component: {fileID: 4833457832941390723}
-  m_Layer: 1
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

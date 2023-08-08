@@ -43,7 +43,11 @@ public class PlayerEntity : MonoBehaviour
     public float PlatformRaycastDistance => platformRaycastDistance;
     public float CoyoteTime => coyoteTime;
     public float MaxJumpTime => maxJumpTime;
+    public float TeleportDistance => teleportDistance;
+    public float AbilityCooldown => abilityCooldown;
+    public float AbilityTimer;
     public Transform[] GroundRaycastPositions => groundRaycastPositions;
+    public Transform[] TeleportRaycastPositions => teleportRaycastPositions;
     public Transform[] PlatformRaycastPositions => platformRaycastPositions;
     [SerializeField] private float speed = 1;
     [SerializeField] private float maxSpeed = 20;
@@ -54,7 +58,10 @@ public class PlayerEntity : MonoBehaviour
     [SerializeField] private float jumpBuffer = 0.45f;
     [SerializeField] private float coyoteTime = 0.1f;
     [SerializeField] private float maxJumpTime = 1f;
+    [SerializeField] private float teleportDistance = 5f;
+    [SerializeField] private float abilityCooldown = .5f;
     [SerializeField] private Transform[] groundRaycastPositions;
+    [SerializeField] private Transform[] teleportRaycastPositions;
     [SerializeField] private Transform[] platformRaycastPositions;
     [SerializeField] private float groundRaycastDistance = 0.2f;
     [SerializeField] private float platformRaycastDistance = 1;
