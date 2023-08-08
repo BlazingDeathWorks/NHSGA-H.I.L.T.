@@ -121,7 +121,7 @@ public class PlayerHealth : MonoBehaviour
 
         if(health <= 0)
         {
-            if(TryGetComponent(out Animator anim)) anim.Play("death");
+            if(TryGetComponent(out Animator anim)) anim.Play("Death");
         }
     }
 
