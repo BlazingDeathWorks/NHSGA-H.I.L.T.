@@ -190,7 +190,7 @@ TextureImporter:
     weights: []
     secondaryTextures:
     - texture: {fileID: 2800000, guid: f26e517268878431d823237629c07d73, type: 3}
-      name: _MainTexture
+      name: _Emission
     nameFileIdTable:
       BlueTakeHit_0: 1974599463
       BlueTakeHit_1: -1678203318
