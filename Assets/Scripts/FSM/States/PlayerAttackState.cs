@@ -21,9 +21,9 @@ public abstract class PlayerAttackState : State
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(PlayerEntity.Abilities_ht.AbilityInput))
         {
-            FiniteStateMachine.ChangeState(PlayerEntity.PlayerSlideState);
+            PlayerEntity.Abilities_ht.ExecuteAbility();
         }
 
         if (PlayerEntity.FinishedAttacking)

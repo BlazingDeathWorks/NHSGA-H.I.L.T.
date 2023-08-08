@@ -8,6 +8,15 @@ public class PlayerEntity : MonoBehaviour
     public Animator Animator { get; private set; }
     public Rigidbody2D Rb { get; private set; }
     public BulletBurst BulletBurst { get; private set; }
+    public Abilities_ht Abilities_ht { get; private set; }
+
+    //Player Attack Buffers
+    public readonly float BaseGroundAttackBuffer = 0.1f;
+    public float TimeSinceLastBaseGroundAttackInput { get; set; }
+    public readonly float AirAttackBuffer = 0.1f;
+    public float TimeSinceLastAirAttackInput { get; set; }
+    public readonly float SpecialAttackBuffer = 0.1f;
+    public float TimeSinceLastSpecialAttackInput { get; set; }
 
     //Player Attack Cooldowns
     public float BaseGroundAttackCooldown { get; set; } = 0.3f;
@@ -71,6 +80,7 @@ public class PlayerEntity : MonoBehaviour
         Animator = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody2D>();
         BulletBurst = GetComponent<BulletBurst>();
+        Abilities_ht = GetComponent<Abilities_ht>();
 
         speed = speed - 6;
         originalSpeed = speed;
@@ -94,6 +104,20 @@ public class PlayerEntity : MonoBehaviour
 
     private void Update()
     {
+        TimeSinceLastBaseGroundAttackInput += Time.deltaTime;
+        TimeSinceLastAirAttackInput += Time.deltaTime;
+        TimeSinceLastSpecialAttackInput += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            TimeSinceLastBaseGroundAttackInput = 0;
+            TimeSinceLastAirAttackInput = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            TimeSinceLastSpecialAttackInput = 0;
+        }
+
         if (IsGrounded)
         {
             canDoubleJump = allowDoubleJump;
@@ -223,5 +247,21 @@ public class PlayerEntity : MonoBehaviour
     public void SetDoubleJump(bool value)
     {
         allowDoubleJump = value;
+    }
+
+    public void SetSpeeds(float timeScale)
+    {
+        if (timeScale == 1)
+        {
+            speed *= 0.2f;
+            slideSpeed *= 0.2f;
+            jumpPower *= 0.2f;
+        }
+        else
+        {
+            speed /= 0.2f;
+            slideSpeed /= 0.2f;
+            jumpPower /= 0.2f;
+        }
     }
 }

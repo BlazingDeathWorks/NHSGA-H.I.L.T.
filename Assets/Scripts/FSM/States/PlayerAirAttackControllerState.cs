@@ -14,20 +14,16 @@ public abstract class PlayerAirAttackControllerState : State
     {
         base.OnUpdate();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerEntity.CanSlide)
+        if (Input.GetKeyDown(PlayerEntity.Abilities_ht.AbilityInput))
         {
-            FiniteStateMachine.ChangeState(PlayerEntity.PlayerSlideState);
+            PlayerEntity.Abilities_ht.ExecuteAbility();
         }
 
-        //STEP #1 - Create a new input for the new air attack
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (PlayerEntity.TimeSinceLastAirAttack >= PlayerEntity.AirAttackCooldown && PlayerEntity.TimeSinceLastAirAttackInput <= PlayerEntity.AirAttackBuffer)
         {
-            if (PlayerEntity.TimeSinceLastAirAttack >= PlayerEntity.AirAttackCooldown)
-            {
-                PlayerEntity.TimeSinceLastAirAttack = 0;
-                //STEP #2 - Change to that air attack state
-                FiniteStateMachine.ChangeState(PlayerEntity.PlayerBaseAirAttackState);
-            }
+            PlayerEntity.TimeSinceLastAirAttack = 0;
+            //STEP #2 - Change to that air attack state
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerBaseAirAttackState);
         }
     }
 }

@@ -29,9 +29,9 @@ public abstract class PlayerGroundAttackControllerState : State
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerJumpState);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(PlayerEntity.Abilities_ht.AbilityInput))
         {
-            FiniteStateMachine.ChangeState(PlayerEntity.PlayerSlideState);
+            PlayerEntity.Abilities_ht.ExecuteAbility();
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
@@ -40,23 +40,17 @@ public abstract class PlayerGroundAttackControllerState : State
         }
 
         //STEP #1 - Create a new input for the new ground attack
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (PlayerEntity.TimeSinceLastBaseGroundAttack >= PlayerEntity.BaseGroundAttackCooldown && PlayerEntity.TimeSinceLastBaseGroundAttackInput <= PlayerEntity.BaseGroundAttackBuffer)
         {
-            if (PlayerEntity.TimeSinceLastBaseGroundAttack >= PlayerEntity.BaseGroundAttackCooldown)
-            {
-                PlayerEntity.TimeSinceLastBaseGroundAttack = 0;
-                //STEP #2 - Change to that ground attack state
-                FiniteStateMachine.ChangeState(PlayerEntity.PlayerBaseAttackState);
-            }
+            PlayerEntity.TimeSinceLastBaseGroundAttack = 0;
+            //STEP #2 - Change to that ground attack state
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerBaseAttackState);
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (PlayerEntity.TimeSinceLastSpecialGroundAttack >= PlayerEntity.SpecialGroundAttackCooldown && PlayerEntity.TimeSinceLastSpecialAttackInput <= PlayerEntity.SpecialAttackBuffer)
         {
-            if (PlayerEntity.TimeSinceLastSpecialGroundAttack >= PlayerEntity.SpecialGroundAttackCooldown)
-            {
-                PlayerEntity.TimeSinceLastSpecialGroundAttack = 0;
-                FiniteStateMachine.ChangeState(PlayerEntity.PlayerThreeHitAttackState);
-            }
+            PlayerEntity.TimeSinceLastSpecialGroundAttack = 0;
+            FiniteStateMachine.ChangeState(PlayerEntity.PlayerThreeHitAttackState);
         }
     }
 }
