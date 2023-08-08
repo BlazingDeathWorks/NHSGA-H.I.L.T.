@@ -60,6 +60,7 @@ public class Blade_ht : MonoBehaviour
         if (currentBlade.ThreeHitAttackSlash == null) return;
         Slash instance = Instantiate(currentBlade.ThreeHitAttackSlash);
         originalPos = instance.transform.position;
+        instance.damageMod = 1.5f;
         instance.transform.parent = slashSpawnPoint;
         instance.transform.localPosition = originalPos;
         instance.transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x) * Mathf.Abs(instance.transform.localScale.x), instance.transform.localScale.y, instance.transform.localScale.z);
