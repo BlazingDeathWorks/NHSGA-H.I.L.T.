@@ -21,6 +21,11 @@ public class IDEManager : MonoBehaviour
         Instance = this;
     }
 
+    public void IncreaseMaxClamp()
+    {
+        maxClamp += 107f;
+    }
+
     public void ClampContent()
     {
         content.localPosition = new Vector3(content.localPosition.x, Mathf.Clamp(content.localPosition.y, minClamp, maxClamp), content.localPosition.z);
