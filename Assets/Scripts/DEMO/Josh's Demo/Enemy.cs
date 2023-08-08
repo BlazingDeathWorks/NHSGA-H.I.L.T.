@@ -24,6 +24,8 @@ public abstract class Enemy : MonoBehaviour
     protected AudioClip warningSound;
     [SerializeField]
     protected AudioClip dashSound;
+    [SerializeField]
+    protected GameObject mapIcon;
 
     protected GameObject player;
     protected Collider2D playerCollider;
@@ -100,6 +102,7 @@ public abstract class Enemy : MonoBehaviour
         damage *= 1.5f;
         speed *= 1.5f;
         GetComponent<EnemyHealth>().MultiplyHealth(2f);
+        mapIcon.SetActive(true);
         transform.localScale = new Vector3(Mathf.Sign(transform.localScale.x) * 1.2f, 1.2f, 1.2f);
         gameObject.AddComponent<KeyHolder>();
     }

@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b6c7bd7f5b58e47b9ba5895d0d269e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 200
+  value: 400
   pickupSound: {fileID: 8300000, guid: 9ba1222ea64f3484aab9de4d50ce96ee, type: 3}
   minimapIcon: {fileID: 2232019843303219679}
 --- !u!61 &2724636970621400574
