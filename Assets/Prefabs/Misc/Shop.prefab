@@ -190,6 +190,7 @@ MonoBehaviour:
   buySound: {fileID: 8300000, guid: 9ba1222ea64f3484aab9de4d50ce96ee, type: 3}
   errorSound: {fileID: 8300000, guid: cc034c3b81b697047a458c96fe5cc523, type: 3}
   cost: 300
+  lootCard: {fileID: 7885912597910007451, guid: 9a033d224c0c64785b27d35ae625a6ca, type: 3}
   flashRenderer: {fileID: 1349652611141061496}
 --- !u!61 &4941861733737513272
 BoxCollider2D:
@@ -5097,7 +5098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7569094493118044892}
   - component: {fileID: 4833457832941390723}
-  m_Layer: 6
+  m_Layer: 1
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

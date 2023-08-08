@@ -9,9 +9,16 @@ public class ShopController : MonoBehaviour
     [SerializeField] private AudioClip buySound;
     [SerializeField] private AudioClip errorSound;
     [SerializeField] private int cost;
+    [SerializeField] private LootCard lootCard;
 
+    private GameObject player;
+    private List<Loot> loots = new();
     public SpriteRenderer flashRenderer;
 
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
     void Update()
     {
         if (flashRenderer.color.a > 0) {
@@ -21,7 +28,7 @@ public class ShopController : MonoBehaviour
 
     public void OnHit()
     {
-        if (CurrencyManager.Instance.Coins > cost)
+        if (CurrencyManager.Instance.Coins >= cost)
         {
             //subtract from player
             CurrencyManager.Instance.AddCoins(-cost);
@@ -33,8 +40,11 @@ public class ShopController : MonoBehaviour
             holdNum.transform.position = transform.position + Vector3.up * 1.5f;
 
             //do lootcard
-            //TODO
-            Debug.Log("lmao");
+            CodeLootManager.Instance?.GetRandomCollection(loots);
+            LootCard instance = Instantiate(lootCard, transform.position + Vector3.up, Quaternion.identity);
+            instance.Nb = loots[Random.Range(0, loots.Count)].NV;
+            Physics2D.IgnoreCollision(instance.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            instance.ForceVector = new Vector2(Mathf.Sign(transform.position.x - player.transform.position.x) * 3.5f, 13);
 
             coinParticles.Play();
             AudioManager.Instance.PlayOneShot(buySound);
