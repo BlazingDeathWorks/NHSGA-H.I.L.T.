@@ -9,7 +9,6 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField] private KeyCode pauseMenuOpenInput = KeyCode.Escape;
     [SerializeField] private PauseMenuManager pausePanel;
     [SerializeField] private GameObject minimap;
-    [SerializeField] private GameObject ide;
     private void Start()
     {
         pausePanel.SetVolume();
@@ -21,7 +20,7 @@ public class PauseMenuController : MonoBehaviour
             if (!pausePanel.isActiveAndEnabled)
             {
                 pausePanel.gameObject.SetActive(true);
-                pausePanel.Activate(minimap, minimap.activeInHierarchy, ide, ide.activeInHierarchy);
+                pausePanel.Activate(minimap, minimap.activeInHierarchy, IDEManager.Instance.gameObject, IDEManager.Instance.gameObject.activeInHierarchy);
             }
         }
     }
