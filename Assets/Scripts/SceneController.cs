@@ -20,18 +20,29 @@ public class SceneController : MonoBehaviour
     public void NextScene()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        FadeController.Instance.gameObject.SetActive(true);
+        FadeController.Instance.FadeIn();
+        StartCoroutine(ChangeScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void StartScene()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        FadeController.Instance.gameObject.SetActive(true);
+        FadeController.Instance.FadeIn();
+        StartCoroutine(ChangeScene(0));
     }
 
     public void ReloadScene()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        FadeController.Instance.gameObject.SetActive(true);
+        FadeController.Instance.FadeIn();
+        StartCoroutine(ChangeScene(SceneManager.GetActiveScene().buildIndex));
+    }
+    private IEnumerator ChangeScene(int index)
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        SceneManager.LoadScene(index);
     }
 }

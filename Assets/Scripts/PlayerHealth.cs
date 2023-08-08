@@ -128,15 +128,23 @@ public class PlayerHealth : MonoBehaviour
             knockback = false;
             GetComponent<PlayerEntity>().enabled = false;
             isDead = true;
-            if(TryGetComponent(out Animator anim)) anim.CrossFade("Death", 0, 0);
+            healthbar.transform.parent.gameObject.SetActive(false);
+            if (TryGetComponent(out Animator anim)) anim.CrossFade("Death", 0, 0);
         }
     }
 
     public void SetDead()
     {
         Time.timeScale = 0;
+        FadeController.Instance.gameObject.SetActive(true);
+        FadeController.Instance.DoubleFade();
+
+        StartCoroutine(SetDeathPanel());
+    }
+    private IEnumerator SetDeathPanel()
+    {
+        yield return new WaitForSecondsRealtime(1f);
         deathPanel.SetActive(true);
-        healthbar.transform.parent.gameObject.SetActive(false);
     }
 
     public void SetHealAmount(float amount)
