@@ -8,6 +8,8 @@ public class IDEManager : MonoBehaviour
     public static IDEManager Instance { get; private set; }
     public ClassNavigationButton CurrentClass { get => currentClass; }
     [SerializeField] private ClassNavigationButton currentClass;
+    [SerializeField] private RectTransform content;
+    [SerializeField] private float minClamp, maxClamp;
 
     private void Awake()
     {
@@ -17,6 +19,12 @@ public class IDEManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    public void ClampContent()
+    {
+        content.localPosition = new Vector3(content.localPosition.x, Mathf.Clamp(content.localPosition.y, minClamp, maxClamp), content.localPosition.z);
+        if (content.localPosition.y < minClamp || content.localPosition.y > maxClamp) Debug.Log("WTF");
     }
 
     public void SetCurrentClass(ClassNavigationButton newClass)
