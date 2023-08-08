@@ -15,7 +15,7 @@ public class Slash : MonoBehaviour
     {
         if (collision.TryGetComponent(out EnemyHealth enemyHealth))
         {
-            enemyHealth.TakeDamage(Weapon_ht.Instance.Damage);
+            enemyHealth.TakeDamage(Weapon_ht.Instance.Damage, gameObject);
             Ultimate_ht.Instance.InvokeActions(enemyHealth.gameObject);
         }
         if (collision.TryGetComponent(out ShopController shop) && shop.flashRenderer.color.a <= 0)
