@@ -14,7 +14,7 @@ public class PlayerProjectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 1.5f);
     }
 
     private void FixedUpdate()
