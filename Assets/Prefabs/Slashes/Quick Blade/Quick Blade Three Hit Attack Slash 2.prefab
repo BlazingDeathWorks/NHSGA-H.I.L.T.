@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5664661796954336481}
   - component: {fileID: -2052527679736892220}
   m_Layer: 0
-  m_Name: Base Blade Three Hit Attack Slash
+  m_Name: Quick Blade Three Hit Attack Slash 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,9 +29,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5374996938754738993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.314, y: 1.574, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -1.314, y: 2.574, z: 0}
+  m_LocalScale: {x: 4.2, y: 4.2, z: 1.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.4999998, y: 2.503662}
+  m_Size: {x: 2.502444, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -114,18 +114,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2392397, y: -0.6937953}
+  m_Offset: {x: 0.41126066, y: -0.5532086}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.4999998, y: 2.503662}
-    newSize: {x: 2.4999998, y: 2.503662}
+    oldSize: {x: 2.502444, y: 2.5}
+    newSize: {x: 2.502444, y: 2.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 1.874934, y: 0.8701268}
+  m_Size: {x: 1.0464016, y: 0.81966305}
   m_EdgeRadius: 0
 --- !u!50 &5664661796954336481
 Rigidbody2D:
@@ -158,7 +158,7 @@ Animator:
   m_GameObject: {fileID: 5374996938754738993}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 317da0dc747504a2689e9fce12e751c7, type: 2}
+  m_Controller: {fileID: 9100000, guid: a65be29a0ef424dd99c315a6454bc93f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
