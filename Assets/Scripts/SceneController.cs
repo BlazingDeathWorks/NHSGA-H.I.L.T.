@@ -43,6 +43,7 @@ public class SceneController : MonoBehaviour
     private IEnumerator ChangeScene(int index)
     {
         yield return new WaitForSecondsRealtime(1f);
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(index);
     }
 }

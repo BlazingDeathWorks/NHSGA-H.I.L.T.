@@ -24,6 +24,7 @@ public class PauseMenuManager : MonoBehaviour
     private Slider sfxSlider;
 
     private GameObject minimap;
+    private CursorLockMode prevMouseState;
     private bool minimapState;
 
     public void SetVolume()
@@ -67,11 +68,13 @@ public class PauseMenuManager : MonoBehaviour
     {
         minimap = map;
         minimapState = mapState;
+        prevMouseState = Cursor.lockState;
         minimap.SetActive(false);
         mainPanel.SetActive(false);
         optionsPanel.SetActive(false);
         launchPanel.SetActive(true);
         Invoke("EnableSystem", .22f);
+        Cursor.lockState = CursorLockMode.None;
     }
     public void SetInactive()
     {
@@ -81,6 +84,7 @@ public class PauseMenuManager : MonoBehaviour
         launchPanel.SetActive(false);
         Time.timeScale = 1;
         gameObject.SetActive(false);
+        Cursor.lockState = prevMouseState;
     }
     public void EnableSystem()
     {

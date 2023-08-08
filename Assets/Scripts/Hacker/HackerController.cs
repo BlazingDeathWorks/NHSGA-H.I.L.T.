@@ -16,6 +16,7 @@ public class HackerController : MonoBehaviour
     {
         volume.profile.TryGet(out chromAb);
         chromAb.active = !hackerIDE.activeInHierarchy;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     private void Update()
     {
@@ -24,6 +25,7 @@ public class HackerController : MonoBehaviour
             hackerIDE.SetActive(!hackerIDE.activeInHierarchy);
             miniMap.SetActive(!hackerIDE.activeInHierarchy);
             chromAb.active = !hackerIDE.activeInHierarchy;
+            Cursor.lockState = hackerIDE.activeInHierarchy ? CursorLockMode.None : CursorLockMode.Locked;
         }
     }
 }

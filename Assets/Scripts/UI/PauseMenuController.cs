@@ -17,10 +17,7 @@ public class PauseMenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(pauseMenuOpenInput))
         {
-            if (pausePanel.isActiveAndEnabled)
-            {
-                pausePanel.SetInactive();
-            } else
+            if (!pausePanel.isActiveAndEnabled)
             {
                 pausePanel.gameObject.SetActive(true);
                 pausePanel.Activate(minimap, minimap.activeInHierarchy);
