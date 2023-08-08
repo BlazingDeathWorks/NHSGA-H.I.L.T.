@@ -15,9 +15,11 @@ public class Blade_ht : MonoBehaviour
     [SerializeField] private Blade[] blades;
     private Blade currentBlade;
     private Vector2 originalPos;
+    private SpriteRenderer sr;
 
     private void Awake()
     {
+        sr = GetComponent<SpriteRenderer>();
         InitializeBlade();
     }
 
@@ -36,6 +38,7 @@ public class Blade_ht : MonoBehaviour
             colorAdjustments.hueShift.value = currentBlade.HueShiftValue;
         }
         bladeAnimator.runtimeAnimatorController = currentBlade.Ac;
+        sr.material = currentBlade.Costume;
     }
 
     //Hardcode Strategy for faster production
@@ -90,7 +93,8 @@ public struct Blade
     public int HueShiftValue => hueShiftValue;
     [SerializeField] private int hueShiftValue;
 
-    //COLOR FOR MAT
+    public Material Costume => costume;
+    [SerializeField] private Material costume;
 
     public AnimatorController Ac => ac;
     [SerializeField] private AnimatorController ac;
