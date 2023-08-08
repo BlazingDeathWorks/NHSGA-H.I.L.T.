@@ -21,7 +21,10 @@ public class AudioManager : MonoBehaviour
         }
         Instance = this;
     }
-
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
     public void PlayOneShot(AudioClip clip, bool SFX = true)
     {
         if (SFX)

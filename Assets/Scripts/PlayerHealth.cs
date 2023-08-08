@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
     private DamageNumber damageTextPrefab;
     [SerializeField]
     private GameObject deathPanel;
+    [SerializeField]
+    private AudioClip loseSound;
 
     private float immuneTime;
     private bool immune;
@@ -144,6 +146,8 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator SetDeathPanel()
     {
         yield return new WaitForSecondsRealtime(1f);
+        AudioManager.Instance.StopMusic();
+        AudioManager.Instance.PlayOneShot(loseSound);
         deathPanel.SetActive(true);
     }
 
