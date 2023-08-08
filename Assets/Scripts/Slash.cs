@@ -17,7 +17,6 @@ public class Slash : MonoBehaviour
         {
             enemyHealth.TakeDamage(Weapon_ht.Instance.Damage);
             Ultimate_ht.Instance.InvokeActions(enemyHealth.gameObject);
-            //Call stuff like enemyHealth.Stun() and so on for each effect
         }
         if (collision.TryGetComponent(out ShopController shop) && shop.flashRenderer.color.a <= 0)
         {
