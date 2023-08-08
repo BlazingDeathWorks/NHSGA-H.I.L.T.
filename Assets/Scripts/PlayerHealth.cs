@@ -121,9 +121,15 @@ public class PlayerHealth : MonoBehaviour
 
         if(health <= 0)
         {
-            Time.timeScale = 0;
-            deathPanel.SetActive(true);
+            if(TryGetComponent(out Animator anim)) anim.Play("BlueDeath");
         }
+    }
+
+    public void SetDead()
+    {
+        Time.timeScale = 0;
+        deathPanel.SetActive(true);
+        healthbar.transform.parent.gameObject.SetActive(false);
     }
 
     public void SetHealAmount(float amount)
