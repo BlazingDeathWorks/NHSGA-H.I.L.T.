@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a7a3adf154f5c549b767bc863f97144
+guid: bfeda0ff30364464f903332dc3d3c985
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BlueRun_0
+      name: BlueBaseAttack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ae101bfe44528147bbdd9a6374dda4b
-      internalID: 408016297
+      spriteID: b4484fc9fd249ea4c8058823b3138ba0
+      internalID: 1209303831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueRun_1
+      name: BlueBaseAttack_1
       rect:
         serializedVersion: 2
         x: 300
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 236c0c84bc3412e4c935301b87d6813c
-      internalID: 2122706405
+      spriteID: 96b84d16e5c1ba747a640133024b3d5c
+      internalID: 866277416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueRun_2
+      name: BlueBaseAttack_2
       rect:
         serializedVersion: 2
         x: 600
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84fb4ac6078d3904c95a3519163d4983
-      internalID: -329830539
+      spriteID: c0fdefeb2061183468315e018ceb6f92
+      internalID: -688249016
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueRun_3
+      name: BlueBaseAttack_3
       rect:
         serializedVersion: 2
         x: 900
@@ -194,92 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f522aece3ec1e8449a3ba2cd947b424
-      internalID: 1630831571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BlueRun_4
-      rect:
-        serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 300
-        height: 300
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 66ad555e4361ad74b9b9e84c3ab286fc
-      internalID: -403354858
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BlueRun_5
-      rect:
-        serializedVersion: 2
-        x: 1500
-        y: 0
-        width: 300
-        height: 300
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d726c782f28ceea4ea9eef57e501ca32
-      internalID: 763546574
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BlueRun_6
-      rect:
-        serializedVersion: 2
-        x: 1800
-        y: 0
-        width: 300
-        height: 300
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c0ee6c0ed0c0d9489077989a422ade9
-      internalID: -11279857
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BlueRun_7
-      rect:
-        serializedVersion: 2
-        x: 2100
-        y: 0
-        width: 300
-        height: 300
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91ad54b3f0162db4aaf088098cbefc53
-      internalID: 80908032
+      spriteID: b99aecb4bb6cae548bb1d2a63690c82e
+      internalID: 912159327
       vertices: []
       indices: 
       edges: []
@@ -295,14 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BlueRun_0: 408016297
-      BlueRun_1: 2122706405
-      BlueRun_2: -329830539
-      BlueRun_3: 1630831571
-      BlueRun_4: -403354858
-      BlueRun_5: 763546574
-      BlueRun_6: -11279857
-      BlueRun_7: 80908032
+      BlueBaseAttack_0: 1209303831
+      BlueBaseAttack_1: 866277416
+      BlueBaseAttack_2: -688249016
+      BlueBaseAttack_3: 912159327
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

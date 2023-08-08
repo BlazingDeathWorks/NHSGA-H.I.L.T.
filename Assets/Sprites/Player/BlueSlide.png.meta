@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5608723e9a204034fbc4a370aedaaf87
+guid: 024747538f8378e499e187c9bf22cc48
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BlueThreeHitAttack_0
+      name: BlueSlide_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 612fea57168c1c5448fd470f9586c3d2
-      internalID: -245089326
+      spriteID: bafacbc6b73f9094b98bff42b5b43af9
+      internalID: -625219192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueThreeHitAttack_1
+      name: BlueSlide_1
       rect:
         serializedVersion: 2
         x: 300
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d10e28d85a80a3143828360291b70b9f
-      internalID: 2087810042
+      spriteID: 12c2b369a55b1274eb22963868ff714a
+      internalID: 1801381303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueThreeHitAttack_2
+      name: BlueSlide_2
       rect:
         serializedVersion: 2
         x: 600
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bff7e114527c03e4bb427830e60577c6
-      internalID: -840299461
+      spriteID: e919b394d0fd17b4ba98197a5a6ff38a
+      internalID: 1128883185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueThreeHitAttack_3
+      name: BlueSlide_3
       rect:
         serializedVersion: 2
         x: 900
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e37773c049a227f42b68eccaf6f377fd
-      internalID: 2048223031
+      spriteID: fdff1af079eae7c45ac439b972d5561c
+      internalID: 965704250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueThreeHitAttack_4
+      name: BlueSlide_4
       rect:
         serializedVersion: 2
         x: 1200
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee56ec6ea39773346be56ed79f02ad06
-      internalID: 1264779259
+      spriteID: 1af78f82d36653140b5a998182ee3096
+      internalID: 314974536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueThreeHitAttack_5
+      name: BlueSlide_5
       rect:
         serializedVersion: 2
         x: 1500
@@ -236,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af1e6f0bd7a163f4d8f0886231c3acde
-      internalID: 1401201701
+      spriteID: 664f030e45256ab4d85be029fc3a561b
+      internalID: -548412420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueThreeHitAttack_6
+      name: BlueSlide_6
       rect:
         serializedVersion: 2
         x: 1800
@@ -257,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d23fc136e85829744897f9c32ffafbf4
-      internalID: -607479967
+      spriteID: 9c1590289d4499843b0fe4c6534033e5
+      internalID: -2030299082
       vertices: []
       indices: 
       edges: []
@@ -274,13 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BlueThreeHitAttack_0: -245089326
-      BlueThreeHitAttack_1: 2087810042
-      BlueThreeHitAttack_2: -840299461
-      BlueThreeHitAttack_3: 2048223031
-      BlueThreeHitAttack_4: 1264779259
-      BlueThreeHitAttack_5: 1401201701
-      BlueThreeHitAttack_6: -607479967
+      BlueSlide_0: -625219192
+      BlueSlide_1: 1801381303
+      BlueSlide_2: 1128883185
+      BlueSlide_3: 965704250
+      BlueSlide_4: 314974536
+      BlueSlide_5: -548412420
+      BlueSlide_6: -2030299082
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -86,6 +86,8 @@ public struct Blade
     public int HueShiftValue => hueShiftValue;
     [SerializeField] private int hueShiftValue;
 
+    //COLOR FOR MAT
+
     public AnimatorController Ac => ac;
     [SerializeField] private AnimatorController ac;
 
