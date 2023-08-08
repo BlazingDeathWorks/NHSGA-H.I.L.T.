@@ -6,12 +6,12 @@ using UnityEngine.Events;
 
 public class NavigationButton : MonoBehaviour
 {
-    [SerializeField][Tooltip("If true, PNB will be unlocked at the beginning")] private bool defaultButton = false;
+    [SerializeField][Tooltip("If true, PNB will be unlocked at the beginning")] protected bool DefaultButton = false;
     [SerializeField] protected CodeBlock LineOfCode;
 
     protected virtual void Awake()
     {
-        if (defaultButton || LineOfCode == null)
+        if (DefaultButton || LineOfCode == null)
         {
             UnlockButton();
             return;
@@ -35,17 +35,28 @@ public class NavigationButton : MonoBehaviour
 public class PropertyNavigationButton : NavigationButton
 {
     public ClassNavigationButton Parent { get; set; }
+    public Text[] ChildrenTextRecolor => childrenTextRecolor;
+    [SerializeField] private PropertyNavigationButton parentPropNavButton;
+    [SerializeField] private Text[] childrenTextRecolor;
     [SerializeField] private string codeFragment;
     [SerializeField] private UnityEvent onCodeBlockEnabled;
     [SerializeField] private UnityEvent onCodeBlockDisabled;
     private bool isClicked = false;
     private Button button;
+    private Text text;
 
     protected override void Awake()
     {
+        text = GetComponentInChildren<Text>();
+
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
         button.onClick.AddListener(() => IDEManager.Instance.SetCurrentClass(Parent));
+
+        if (DefaultButton)
+        {
+            text.color = Color.yellow;
+        }
 
         base.Awake();
     }
@@ -61,6 +72,19 @@ public class PropertyNavigationButton : NavigationButton
         //Only set isClicked to true if we are currently on Class (Works because we're getting called before changing classes to this)
         if (IDEManager.Instance.CurrentClass != Parent) return;
         isClicked = true;
+
+        //Only to list of objects
+        //if (LineOfCode != null) text.color = new Color(240, 235, 216);
+        if (parentPropNavButton == null) return;
+        for (int i = 0; i < parentPropNavButton.ChildrenTextRecolor.Length; i++)
+        {
+            if (parentPropNavButton.ChildrenTextRecolor[i] == text)
+            {
+                text.color = Color.yellow;
+                continue;
+            }
+            parentPropNavButton.ChildrenTextRecolor[i].color = new Color(240, 235, 216);
+        }
     }
 
     public void OnButtonUnClick()
