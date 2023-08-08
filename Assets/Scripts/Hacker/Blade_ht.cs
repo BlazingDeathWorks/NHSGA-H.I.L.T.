@@ -8,6 +8,7 @@ using UnityEditor.Animations;
 public class Blade_ht : MonoBehaviour
 {
     [SerializeField] private Animator bladeAnimator;
+    [SerializeField] private PlayerAudioController audioController;
     [SerializeField] private Volume volume;
     [SerializeField] private string currentBladeName;
     [SerializeField] private Transform slashSpawnPoint;
@@ -48,6 +49,7 @@ public class Blade_ht : MonoBehaviour
     public void BaseAttackSlash()
     {
         if (currentBlade.BaseAttackSlash == null) return;
+        audioController.PlaySlashSound1();
         Slash instance = Instantiate(currentBlade.BaseAttackSlash);
         originalPos = instance.transform.position;
         instance.transform.parent = slashSpawnPoint;
@@ -58,6 +60,7 @@ public class Blade_ht : MonoBehaviour
     public void ThreeHitAttackSlash()
     {
         if (currentBlade.ThreeHitAttackSlash == null) return;
+        audioController.PlaySlashSound2();
         Slash instance = Instantiate(currentBlade.ThreeHitAttackSlash);
         originalPos = instance.transform.position;
         instance.damageMod = 1.5f;
@@ -69,6 +72,7 @@ public class Blade_ht : MonoBehaviour
     public void AirAttackSlash()
     {
         if (currentBlade.AirAttackSlash == null) return;
+        audioController.PlaySlashSound1();
         Slash instance = Instantiate(currentBlade.AirAttackSlash);
         originalPos = instance.transform.position;
         instance.transform.parent = slashSpawnPoint;

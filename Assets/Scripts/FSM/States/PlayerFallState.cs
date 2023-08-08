@@ -29,6 +29,7 @@ public class PlayerFallState : PlayerAirAttackControllerState
 
         if (PlayerEntity.IsGrounded)
         {
+            PlayerEntity.PlayerAudioController.PlayLandSound();
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerIdleState);
         }
 

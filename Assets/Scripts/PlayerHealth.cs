@@ -113,6 +113,9 @@ public class PlayerHealth : MonoBehaviour
         //do screen shake
         ScreenShake.Instance.noise.m_AmplitudeGain = 5f;
 
+        //sound
+        GetComponent<PlayerAudioController>().PlayDamageSound();
+
         health -= damage;
         flashRenderer.color = new Color(1, 1, 1, 1);
         immuneIndicatorDirection = -1;

@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 5693530175168760992}
   - component: {fileID: 4061155926804917803}
   - component: {fileID: 6220159434078933314}
+  - component: {fileID: 8828454301695229726}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -488,6 +489,7 @@ MonoBehaviour:
   maxJumpTime: 0.3
   teleportDistance: 5
   abilityCooldown: 0.5
+  playerAudioController: {fileID: 8828454301695229726}
   groundRaycastPositions:
   - {fileID: 4698473581479528060}
   - {fileID: 4698473582299364489}
@@ -547,6 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bladeAnimator: {fileID: 0}
+  audioController: {fileID: 8828454301695229726}
   volume: {fileID: 0}
   currentBladeName: Base Blade
   slashSpawnPoint: {fileID: 4698473581883932132}
@@ -612,6 +615,27 @@ MonoBehaviour:
   pauseMenuOpenInput: 27
   pausePanel: {fileID: 0}
   minimap: {fileID: 0}
+--- !u!114 &8828454301695229726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4698473581178981664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33405c6874a5df4d827f5701de769aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageSound: {fileID: 8300000, guid: 062e29856074ffd4593607f91be10dc6, type: 3}
+  footstepSound1: {fileID: 8300000, guid: 06bed5357cc91c24cafc13c70128e20a, type: 3}
+  footstepSound2: {fileID: 8300000, guid: ac4b6f7314f87544b8926182d04d319e, type: 3}
+  landSound1: {fileID: 8300000, guid: 35758bd018114274bbeaa90129f302a9, type: 3}
+  landSound2: {fileID: 8300000, guid: 83648429a380b2347a58ce643d3d4687, type: 3}
+  rollSound: {fileID: 8300000, guid: dcad5872191616a49a672324b1c2e8e6, type: 3}
+  jumpSound: {fileID: 8300000, guid: 07406dbcd3039554a894128caae9f805, type: 3}
+  slashSound1: {fileID: 8300000, guid: 12023b142e05da04fabc1e45c2cc83f2, type: 3}
+  slashSound2: {fileID: 8300000, guid: 27755e63210a31d48a014031c99c0e23, type: 3}
 --- !u!1 &4698473581332646319
 GameObject:
   m_ObjectHideFlags: 0

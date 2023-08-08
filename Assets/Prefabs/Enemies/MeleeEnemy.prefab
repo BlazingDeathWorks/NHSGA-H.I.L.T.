@@ -460,7 +460,7 @@ MonoBehaviour:
   warningSound: {fileID: 8300000, guid: 3ba0929809f385349b3b1076da60d919, type: 3}
   dashSound: {fileID: 8300000, guid: 0c5842f4738bf2c40a3c4c3416bd9300, type: 3}
   mapIcon: {fileID: 2278686005008017875}
-  meleeRange: 2
+  meleeRange: 1.5
   meleeHitbox: {fileID: 5883802211081742636}
   dashHitbox: {fileID: 4313385260509572685}
   meleeSound: {fileID: 8300000, guid: 50474a711126403468e57374b3803496, type: 3}

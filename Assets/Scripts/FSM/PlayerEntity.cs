@@ -47,6 +47,7 @@ public class PlayerEntity : MonoBehaviour
     public float TeleportDistance => teleportDistance;
     public float AbilityCooldown => abilityCooldown;
     public float AbilityTimer;
+    public PlayerAudioController PlayerAudioController => playerAudioController;
     public Transform[] GroundRaycastPositions => groundRaycastPositions;
     public Transform[] TeleportRaycastPositions => teleportRaycastPositions;
     public Transform[] PlatformRaycastPositions => platformRaycastPositions;
@@ -61,6 +62,7 @@ public class PlayerEntity : MonoBehaviour
     [SerializeField] private float maxJumpTime = 1f;
     [SerializeField] private float teleportDistance = 5f;
     [SerializeField] private float abilityCooldown = .5f;
+    [SerializeField] private PlayerAudioController playerAudioController;
     [SerializeField] private Transform[] groundRaycastPositions;
     [SerializeField] private Transform[] teleportRaycastPositions;
     [SerializeField] private Transform[] platformRaycastPositions;

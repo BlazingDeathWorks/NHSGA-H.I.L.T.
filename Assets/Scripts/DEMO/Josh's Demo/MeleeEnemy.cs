@@ -33,7 +33,14 @@ public class MeleeEnemy : Enemy
                     FindPlayer();
                     break;
                 case State.dashing:
-                    rb.velocity = new Vector2(1 * dir * dashSpeed, rb.velocity.y);
+                    rb.velocity = new Vector2(1 * dir * dashSpeed, rb.velocity.y); 
+                    float checkX1 = Mathf.Sign(rb.velocity.x) * .5f;
+                    bool isStopped1 = !Physics2D.OverlapCircle(transform.position + new Vector3(checkX1, 0), .1f, tileMask) ||
+                                Physics2D.OverlapCircle(transform.position + new Vector3(checkX1, .5f), .3f, tileMask);
+                    if (isStopped1)
+                    {
+                        StopAttack();
+                    }
                     break;
             }
         }
