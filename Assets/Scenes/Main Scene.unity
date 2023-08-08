@@ -6157,26 +6157,6 @@ PrefabInstance:
       propertyPath: hackerIDE
       value: 
       objectReference: {fileID: 390945795}
-    - target: {fileID: 4698473581178981673, guid: cbbabe900373140ed88ef05623caa775, type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4698473581178981673, guid: cbbabe900373140ed88ef05623caa775, type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4698473581178981673, guid: cbbabe900373140ed88ef05623caa775, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 550404051, guid: 23a9e2d0cb740f64a937e12a88457e52, type: 3}
-    - target: {fileID: 4698473581178981673, guid: cbbabe900373140ed88ef05623caa775, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4698473581178981674, guid: cbbabe900373140ed88ef05623caa775, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 5a6fa2d270d9eb04c8a1a89fe34a014d, type: 2}
     - target: {fileID: 4698473581178981676, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: health
       value: 100
