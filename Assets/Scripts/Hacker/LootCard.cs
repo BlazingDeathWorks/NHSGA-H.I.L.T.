@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class LootCard : MonoBehaviour
 {
     public Vector2 ForceVector { get; set; }
+    [SerializeField]
+    private AudioClip pickupSound;
     [HideInInspector] public NavigationButton Nb;
     private BoxCollider2D boxCollider;
     private Rigidbody2D rb;
@@ -62,6 +64,7 @@ public class LootCard : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlayOneShot(pickupSound);
             PropertyNavigationButton propertyNavigationButton = (PropertyNavigationButton)Nb;
             if (propertyNavigationButton)
             {

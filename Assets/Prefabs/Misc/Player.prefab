@@ -517,6 +517,7 @@ MonoBehaviour:
   flashRenderer: {fileID: 3869465641745288760}
   damageTextPrefab: {fileID: 1190030877641413292, guid: 4919bd1dfa2d5ac4f8e409a9e9f7dc5a, type: 3}
   deathPanel: {fileID: 0}
+  loseSound: {fileID: 8300000, guid: bb96da3c26b40ea4780595a7dc77a0ec, type: 3}
 --- !u!114 &4698473581178981679
 MonoBehaviour:
   m_ObjectHideFlags: 0

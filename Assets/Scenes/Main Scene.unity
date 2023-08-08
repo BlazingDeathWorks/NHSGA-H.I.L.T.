@@ -4829,6 +4829,7 @@ MonoBehaviour:
   flashRenderer: {fileID: 0}
   damageTextPrefab: {fileID: 0}
   deathPanel: {fileID: 0}
+  loseSound: {fileID: 0}
 --- !u!1 &1843444350
 GameObject:
   m_ObjectHideFlags: 0
@@ -4879,9 +4880,9 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 1
+  m_GeometryType: 0
   m_GenerationType: 0
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.02
   m_ColliderPaths:
   - m_Collider: {fileID: 1843444354}
     m_ColliderPaths: []
@@ -5610,9 +5611,9 @@ CompositeCollider2D:
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 1
+  m_GeometryType: 0
   m_GenerationType: 0
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.02
   m_ColliderPaths:
   - m_Collider: {fileID: 2138530952}
     m_ColliderPaths: []

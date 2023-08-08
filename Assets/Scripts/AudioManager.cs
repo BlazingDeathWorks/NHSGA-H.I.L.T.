@@ -25,14 +25,12 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.Stop();
     }
-    public void PlayOneShot(AudioClip clip, bool SFX = true)
+    public void PlaySong(AudioClip clip)
     {
-        if (SFX)
-        {
-            sfxSource.PlayOneShot(clip);
-        } else
-        {
-            musicSource.PlayOneShot(clip);
-        }
+        musicSource.PlayOneShot(clip);
+    }
+    public void PlayOneShot(AudioClip clip)
+    {
+        sfxSource.PlayOneShot(clip);
     }
 }
