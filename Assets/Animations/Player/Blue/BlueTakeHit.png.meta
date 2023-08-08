@@ -117,64 +117,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blue_Hurt_0
+      name: BlueTakeHit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb4ab8c216a8fbc4686e200689d46386
-      internalID: -210459612
+      spriteID: b19307d270040fd459e21e03e2471653
+      internalID: 1974599463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Hurt_1
+      name: BlueTakeHit_1
       rect:
         serializedVersion: 2
         x: 300
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63844bf10f5678b498d3e8f78a596ebf
-      internalID: 1947549275
+      spriteID: 84e684987a1f2004ab625739f6d1374f
+      internalID: -1678203318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Hurt_2
+      name: BlueTakeHit_2
       rect:
         serializedVersion: 2
         x: 600
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74e435c8751f686499887e0794a6ccda
-      internalID: -1019458744
+      spriteID: db41d8995f319ed44887c5ae432d3f71
+      internalID: -1748244692
       vertices: []
       indices: 
       edges: []
@@ -190,9 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Blue_Hurt_0: -210459612
-      Blue_Hurt_1: 1947549275
-      Blue_Hurt_2: -1019458744
+      BlueTakeHit_0: 1974599463
+      BlueTakeHit_1: -1678203318
+      BlueTakeHit_2: -1748244692
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

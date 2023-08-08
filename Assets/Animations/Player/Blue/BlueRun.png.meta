@@ -117,169 +117,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blue_Run_0
+      name: BlueRun_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a434a97eb0b865849a5167da278f5172
-      internalID: 2089514782
+      spriteID: 3ae101bfe44528147bbdd9a6374dda4b
+      internalID: 408016297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Run_1
+      name: BlueRun_1
       rect:
         serializedVersion: 2
         x: 300
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38f017015da6daa46805d1af77079090
-      internalID: -505369813
+      spriteID: 236c0c84bc3412e4c935301b87d6813c
+      internalID: 2122706405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Run_2
+      name: BlueRun_2
       rect:
         serializedVersion: 2
         x: 600
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9475034b60bf5cd40b0125d00e25c4c2
-      internalID: 1041483291
+      spriteID: 84fb4ac6078d3904c95a3519163d4983
+      internalID: -329830539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Run_3
+      name: BlueRun_3
       rect:
         serializedVersion: 2
         x: 900
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb22396f0125c1449ac81935f025a724
-      internalID: -384586611
+      spriteID: 4f522aece3ec1e8449a3ba2cd947b424
+      internalID: 1630831571
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Run_4
+      name: BlueRun_4
       rect:
         serializedVersion: 2
         x: 1200
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9d836e3374023d43a84f3bbcdf5d2b1
-      internalID: 707729270
+      spriteID: 66ad555e4361ad74b9b9e84c3ab286fc
+      internalID: -403354858
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Run_5
+      name: BlueRun_5
       rect:
         serializedVersion: 2
         x: 1500
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d0174726c1a89249b3869dbad547892
-      internalID: -1132920400
+      spriteID: d726c782f28ceea4ea9eef57e501ca32
+      internalID: 763546574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Run_6
+      name: BlueRun_6
       rect:
         serializedVersion: 2
         x: 1800
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c19f1f109091add46b3fef5cf8a8803a
-      internalID: 1136154404
+      spriteID: 7c0ee6c0ed0c0d9489077989a422ade9
+      internalID: -11279857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Run_7
+      name: BlueRun_7
       rect:
         serializedVersion: 2
         x: 2100
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5382616ae635814196eeb7944efd77b
-      internalID: 773276209
+      spriteID: 91ad54b3f0162db4aaf088098cbefc53
+      internalID: 80908032
       vertices: []
       indices: 
       edges: []
@@ -295,14 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Blue_Run_0: 2089514782
-      Blue_Run_1: -505369813
-      Blue_Run_2: 1041483291
-      Blue_Run_3: -384586611
-      Blue_Run_4: 707729270
-      Blue_Run_5: -1132920400
-      Blue_Run_6: 1136154404
-      Blue_Run_7: 773276209
+      BlueRun_0: 408016297
+      BlueRun_1: 2122706405
+      BlueRun_2: -329830539
+      BlueRun_3: 1630831571
+      BlueRun_4: -403354858
+      BlueRun_5: 763546574
+      BlueRun_6: -11279857
+      BlueRun_7: 80908032
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

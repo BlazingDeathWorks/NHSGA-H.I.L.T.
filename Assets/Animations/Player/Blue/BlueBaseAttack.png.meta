@@ -117,85 +117,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blue_Attack_2_0
+      name: BlueBaseAttack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e713e68da375a24b82a2fedcd426370
-      internalID: 1239434317
+      spriteID: b4484fc9fd249ea4c8058823b3138ba0
+      internalID: 1209303831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Attack_2_1
+      name: BlueBaseAttack_1
       rect:
         serializedVersion: 2
         x: 300
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ceba5b1ba95e5194896267461ef18e2e
-      internalID: 1104782559
+      spriteID: 96b84d16e5c1ba747a640133024b3d5c
+      internalID: 866277416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Attack_2_2
+      name: BlueBaseAttack_2
       rect:
         serializedVersion: 2
         x: 600
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b6e99598fe8a9b48a23b24502d97bc8
-      internalID: -137937731
+      spriteID: c0fdefeb2061183468315e018ceb6f92
+      internalID: -688249016
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Attack_2_3
+      name: BlueBaseAttack_3
       rect:
         serializedVersion: 2
         x: 900
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1407cb0924e1244c8c310af9de27e88
-      internalID: 2115793274
+      spriteID: b99aecb4bb6cae548bb1d2a63690c82e
+      internalID: 912159327
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Blue_Attack_2_0: 1239434317
-      Blue_Attack_2_1: 1104782559
-      Blue_Attack_2_2: -137937731
-      Blue_Attack_2_3: 2115793274
+      BlueBaseAttack_0: 1209303831
+      BlueBaseAttack_1: 866277416
+      BlueBaseAttack_2: -688249016
+      BlueBaseAttack_3: 912159327
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

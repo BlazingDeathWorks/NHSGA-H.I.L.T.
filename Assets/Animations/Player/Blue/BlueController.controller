@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueSlide
+  m_Name: Slide
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -33,7 +33,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueThreeHitAttack
+  m_Name: ThreeHitAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -59,7 +59,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueBaseAirAttack
+  m_Name: BaseAirAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -85,7 +85,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueIdle
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -143,28 +143,28 @@ AnimatorStateMachine:
     m_Position: {x: 340, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9108299429714944355}
-    m_Position: {x: 564.4722, y: 24.238495, z: 0}
+    m_Position: {x: 260, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7906560903183005151}
-    m_Position: {x: 574.4722, y: 34.238495, z: 0}
+    m_Position: {x: 420, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4929818048189129512}
-    m_Position: {x: 584.4722, y: 44.238495, z: 0}
+    m_Position: {x: 380, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5377792472723924745}
-    m_Position: {x: 594.4722, y: 54.238495, z: 0}
+    m_Position: {x: 380, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7141617109995152950}
-    m_Position: {x: 604.4722, y: 64.238495, z: 0}
+    m_Position: {x: 610, y: -30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5886707538793271284}
-    m_Position: {x: 614.4722, y: 74.238495, z: 0}
+    m_Position: {x: 420, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1426745254520072139}
-    m_Position: {x: 624.4722, y: 84.238495, z: 0}
+    m_Position: {x: 590, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6024041728758607866}
-    m_Position: {x: 659.4722, y: 149.2385, z: 0}
+    m_Position: {x: 640, y: 200, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -182,7 +182,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueRun
+  m_Name: Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -208,7 +208,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueJump
+  m_Name: Jump
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -234,7 +234,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueBaseAttack
+  m_Name: BaseAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -260,7 +260,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueDeath
+  m_Name: Death
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -286,7 +286,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueFall
+  m_Name: Fall
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -312,7 +312,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueTakeHit
+  m_Name: TakeHit
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

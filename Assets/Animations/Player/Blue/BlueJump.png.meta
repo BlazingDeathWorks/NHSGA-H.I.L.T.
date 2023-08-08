@@ -117,43 +117,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blue_Jump_0
+      name: BlueJump_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ddf00a01288b5c448fc25b55fd36b6b
-      internalID: 379681361
+      spriteID: 44207ff14634b744eb6b7dc329790a4e
+      internalID: -457910524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Jump_1
+      name: BlueJump_1
       rect:
         serializedVersion: 2
         x: 300
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c58def5fa737b8d4c8a8080d7e352538
-      internalID: 1840508621
+      spriteID: 0e2dad76b6009b94c9973a89b46e9097
+      internalID: 1073214652
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Blue_Jump_0: 379681361
-      Blue_Jump_1: 1840508621
+      BlueJump_0: -457910524
+      BlueJump_1: 1073214652
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

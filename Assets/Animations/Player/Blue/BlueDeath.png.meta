@@ -117,190 +117,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blue_Death_0
+      name: BlueDeath_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b5a764837c5d474b8476f8bb1d71617
-      internalID: 1075708204
+      spriteID: 050d275bb2bc831479b58829a206796b
+      internalID: -1258172190
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Death_1
+      name: BlueDeath_1
       rect:
         serializedVersion: 2
         x: 300
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c745be36a73972e46ab39348317d8e6f
-      internalID: -1787956949
+      spriteID: 22739732b3a7d9844863dfcf1e3633fe
+      internalID: 897344660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Death_2
+      name: BlueDeath_2
       rect:
         serializedVersion: 2
         x: 600
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cca350ced6aa184bbadbab9e04bad58
-      internalID: -721919022
+      spriteID: 1fca117e9e8d06840b9e3999d9ea321d
+      internalID: 191434489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Death_3
+      name: BlueDeath_3
       rect:
         serializedVersion: 2
         x: 900
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75bda8d1a36158643b6004c5b68a642e
-      internalID: -127209795
+      spriteID: 8d71d0d37a75f3c4180bdb9a73f091c8
+      internalID: 1693173149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Death_4
+      name: BlueDeath_4
       rect:
         serializedVersion: 2
         x: 1200
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 023aeda572702c94b8367d1d993b41d5
-      internalID: -674755063
+      spriteID: 0b0613adaac7f314aad6edf00e136364
+      internalID: 758360376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Death_5
+      name: BlueDeath_5
       rect:
         serializedVersion: 2
         x: 1500
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3feb3d75c29c4884d89ccacb13d43f55
-      internalID: -1646971845
+      spriteID: 244a65d3ad0cfde48ba9b7a72d661c19
+      internalID: 1894397450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Death_6
+      name: BlueDeath_6
       rect:
         serializedVersion: 2
         x: 1800
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e54f292adcf5d44f903433f9defcc0d
-      internalID: -1308026778
+      spriteID: aac4a1aa37dd6e34d99161990944626e
+      internalID: -1119463152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Death_7
+      name: BlueDeath_7
       rect:
         serializedVersion: 2
         x: 2100
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 696c7413e34ee0e499bc0ba3c85aed18
-      internalID: 1759647337
+      spriteID: 015b55a2873e55344bc7b9e7561e9033
+      internalID: 1163202153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Death_8
+      name: BlueDeath_8
       rect:
         serializedVersion: 2
         x: 2400
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3717aa3f63936134e87528183559bc1b
-      internalID: -996986284
+      spriteID: f1258e96f82bc1e48bd712bba5926022
+      internalID: -359112930
       vertices: []
       indices: 
       edges: []
@@ -316,15 +316,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Blue_Death_0: 1075708204
-      Blue_Death_1: -1787956949
-      Blue_Death_2: -721919022
-      Blue_Death_3: -127209795
-      Blue_Death_4: -674755063
-      Blue_Death_5: -1646971845
-      Blue_Death_6: -1308026778
-      Blue_Death_7: 1759647337
-      Blue_Death_8: -996986284
+      BlueDeath_0: -1258172190
+      BlueDeath_1: 897344660
+      BlueDeath_2: 191434489
+      BlueDeath_3: 1693173149
+      BlueDeath_4: 758360376
+      BlueDeath_5: 1894397450
+      BlueDeath_6: -1119463152
+      BlueDeath_7: 1163202153
+      BlueDeath_8: -359112930
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -117,148 +117,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blue_Roll_0
+      name: BlueSlide_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4f19318230f3d04f8cd03d6f6700c0c
-      internalID: 1239896016
+      spriteID: bafacbc6b73f9094b98bff42b5b43af9
+      internalID: -625219192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Roll_1
+      name: BlueSlide_1
       rect:
         serializedVersion: 2
         x: 300
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16b76ad8693deb445be56bcebb81becd
-      internalID: 1855055801
+      spriteID: 12c2b369a55b1274eb22963868ff714a
+      internalID: 1801381303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Roll_2
+      name: BlueSlide_2
       rect:
         serializedVersion: 2
         x: 600
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1ced35d09bdd9143b191b7eaefb1d7d
-      internalID: 555663214
+      spriteID: e919b394d0fd17b4ba98197a5a6ff38a
+      internalID: 1128883185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Roll_3
+      name: BlueSlide_3
       rect:
         serializedVersion: 2
         x: 900
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98b58294052cfd14eb796366c21006c5
-      internalID: -357365761
+      spriteID: fdff1af079eae7c45ac439b972d5561c
+      internalID: 965704250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Roll_4
+      name: BlueSlide_4
       rect:
         serializedVersion: 2
         x: 1200
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6f24847e74160d4fb82eb48d252b38e
-      internalID: 487393740
+      spriteID: 1af78f82d36653140b5a998182ee3096
+      internalID: 314974536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Roll_5
+      name: BlueSlide_5
       rect:
         serializedVersion: 2
         x: 1500
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 632ab5e27dfc803419e8d56652a2e3bd
-      internalID: -1964762799
+      spriteID: 664f030e45256ab4d85be029fc3a561b
+      internalID: -548412420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Roll_6
+      name: BlueSlide_6
       rect:
         serializedVersion: 2
         x: 1800
         y: 0
         width: 300
         height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5726ec1ec0a9344cb377c13c5e4f449
-      internalID: 1967022833
+      spriteID: 9c1590289d4499843b0fe4c6534033e5
+      internalID: -2030299082
       vertices: []
       indices: 
       edges: []
@@ -274,13 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Blue_Roll_0: 1239896016
-      Blue_Roll_1: 1855055801
-      Blue_Roll_2: 555663214
-      Blue_Roll_3: -357365761
-      Blue_Roll_4: 487393740
-      Blue_Roll_5: -1964762799
-      Blue_Roll_6: 1967022833
+      BlueSlide_0: -625219192
+      BlueSlide_1: 1801381303
+      BlueSlide_2: 1128883185
+      BlueSlide_3: 965704250
+      BlueSlide_4: 314974536
+      BlueSlide_5: -548412420
+      BlueSlide_6: -2030299082
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
