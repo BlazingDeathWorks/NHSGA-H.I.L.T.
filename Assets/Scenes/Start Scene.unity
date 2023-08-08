@@ -1762,6 +1762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74657fd54756d4647ad74c48d3209e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 4a06eb950c8c83140adb1e75447d7c15, type: 3}
 --- !u!4 &759093678
 Transform:
   m_ObjectHideFlags: 0
@@ -3269,7 +3270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchPanel: {fileID: 1311045047}
-  clickSound: {fileID: 8300000, guid: 9ba1222ea64f3484aab9de4d50ce96ee, type: 3}
+  clickSound: {fileID: 8300000, guid: 4a06eb950c8c83140adb1e75447d7c15, type: 3}
   mainPanel: {fileID: 774188891}
   optionsPanel: {fileID: 316547736}
   audioMixer: {fileID: 24100000, guid: 862b1437526d68c4095ec0d117c13129, type: 2}

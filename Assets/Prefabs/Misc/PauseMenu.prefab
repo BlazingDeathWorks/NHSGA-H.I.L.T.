@@ -2199,7 +2199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchPanel: {fileID: 758875898782900971}
-  clickSound: {fileID: 8300000, guid: 3ba0929809f385349b3b1076da60d919, type: 3}
+  clickSound: {fileID: 8300000, guid: 4a06eb950c8c83140adb1e75447d7c15, type: 3}
   mainPanel: {fileID: 758875897044319958}
   optionsPanel: {fileID: 758875898091913919}
   audioMixer: {fileID: 24100000, guid: 862b1437526d68c4095ec0d117c13129, type: 2}

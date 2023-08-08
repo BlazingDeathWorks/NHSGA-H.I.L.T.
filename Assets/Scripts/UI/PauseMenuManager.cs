@@ -74,6 +74,7 @@ public class PauseMenuManager : MonoBehaviour
         optionsPanel.SetActive(false);
         launchPanel.SetActive(true);
         Invoke("EnableSystem", .22f);
+        AudioManager.Instance.PlayOneShot(clickSound);
         Cursor.lockState = CursorLockMode.None;
     }
     public void SetInactive()
@@ -85,6 +86,7 @@ public class PauseMenuManager : MonoBehaviour
         Time.timeScale = 1;
         gameObject.SetActive(false);
         Cursor.lockState = prevMouseState;
+        AudioManager.Instance.PlayOneShot(clickSound);
     }
     public void EnableSystem()
     {

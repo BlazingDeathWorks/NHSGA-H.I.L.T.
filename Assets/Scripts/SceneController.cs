@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public static SceneController Instance { get; private set; }
+    [SerializeField]
+    private AudioClip clickSound;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class SceneController : MonoBehaviour
 
     public void NextScene()
     {
+        AudioManager.Instance.PlayOneShot(clickSound);
         Time.timeScale = 1;
         FadeController.Instance.gameObject.SetActive(true);
         FadeController.Instance.FadeIn();
@@ -27,6 +30,7 @@ public class SceneController : MonoBehaviour
 
     public void StartScene()
     {
+        AudioManager.Instance.PlayOneShot(clickSound);
         Time.timeScale = 1;
         FadeController.Instance.gameObject.SetActive(true);
         FadeController.Instance.FadeIn();
@@ -35,6 +39,7 @@ public class SceneController : MonoBehaviour
 
     public void ReloadScene()
     {
+        AudioManager.Instance.PlayOneShot(clickSound);
         Time.timeScale = 1;
         FadeController.Instance.gameObject.SetActive(true);
         FadeController.Instance.FadeIn();
