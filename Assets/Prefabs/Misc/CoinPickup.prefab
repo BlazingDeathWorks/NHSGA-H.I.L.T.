@@ -185,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 200
   pickupSound: {fileID: 8300000, guid: 9ba1222ea64f3484aab9de4d50ce96ee, type: 3}
+  minimapIcon: {fileID: 2232019843303219679}
 --- !u!61 &2724636970621400574
 BoxCollider2D:
   m_ObjectHideFlags: 0

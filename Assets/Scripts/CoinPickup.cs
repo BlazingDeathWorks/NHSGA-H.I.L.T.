@@ -16,7 +16,6 @@ public class CoinPickup : MonoBehaviour
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        minimapIcon = GetComponentInChildren<Transform>();
         scaleChange = -1f;
     }
     private void Update()
@@ -27,8 +26,9 @@ public class CoinPickup : MonoBehaviour
             if (sprite.color.a < 0) Destroy(gameObject);
         }
 
-        transform.localScale = new Vector3(transform.localScale.x + scaleChange, 1, 1);
-        if(transform.localScale.x > 1)
+        transform.localScale = new Vector3(transform.localScale.x + scaleChange * Time.deltaTime, 1, 1);
+        if(transform.localScale.x == 0) transform.localScale = new Vector3(scaleChange * Time.deltaTime, 1, 1);
+        if (transform.localScale.x > 1)
         {
             scaleChange = -1;
             transform.localScale = new Vector3(1, 1, 1);
