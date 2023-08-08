@@ -7,6 +7,7 @@ public class PlayerEntity : MonoBehaviour
     public FiniteStateMachine FiniteStateMachine { get; private set; }
     public Animator Animator { get; private set; }
     public Rigidbody2D Rb { get; private set; }
+    public SpriteRenderer Sprite { get; private set; }
     public BulletBurst BulletBurst { get; private set; }
     public Abilities_ht Abilities_ht { get; private set; }
 
@@ -86,6 +87,7 @@ public class PlayerEntity : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody2D>();
+        Sprite = GetComponent<SpriteRenderer>();
         BulletBurst = GetComponent<BulletBurst>();
         Abilities_ht = GetComponent<Abilities_ht>();
 

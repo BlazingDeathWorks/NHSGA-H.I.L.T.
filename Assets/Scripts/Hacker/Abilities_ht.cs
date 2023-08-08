@@ -160,9 +160,23 @@ public class Invisibility : Ability
     {
 
     }
-
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        PlayerEntity.AbilityTimer += Time.deltaTime;
+    }
     public override void Execute()
     {
-        throw new System.NotImplementedException();
+        if (PlayerEntity.AbilityTimer < PlayerEntity.AbilityCooldown) return;
+        PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Invincible");
+        PlayerEntity.Sprite.color = new Color(1, 1, 1, .2f);
+        PlayerEntity.StartCoroutine(ReturnToPlayerLayer());
+        PlayerEntity.AbilityTimer = 0;
+    }
+    private IEnumerator ReturnToPlayerLayer()
+    {
+        yield return new WaitForSecondsRealtime(0.3f);
+        PlayerEntity.Sprite.color = new Color(1, 1, 1, 1);
+        PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 }
