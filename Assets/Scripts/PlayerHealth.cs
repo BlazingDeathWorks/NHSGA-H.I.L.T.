@@ -152,6 +152,7 @@ public class PlayerHealth : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.PlayOneShot(loseSound);
+        ConsoleManager.Instance.gameObject.SetActive(false);
         deathPanel.SetActive(true);
     }
 
