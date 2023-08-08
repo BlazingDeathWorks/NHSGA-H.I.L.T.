@@ -42,6 +42,9 @@ public class MeleeEnemy : Enemy
                         StopAttack();
                     }
                     break;
+                case State.attacking:
+                    rb.velocity = Vector2.zero;
+                    break;
             }
         }
 
