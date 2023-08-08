@@ -8,9 +8,11 @@ public class CoinUIManager : MonoBehaviour
     [SerializeField]
     private float coinChangeRate;
     private TextMeshProUGUI text;
+    private AudioSource coinSound;
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
+        coinSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -20,14 +22,17 @@ public class CoinUIManager : MonoBehaviour
         int goalCount = CurrencyManager.Instance.Coins;
         if (goalCount > coinCount)
         {
+            if (!coinSound.isPlaying) coinSound.Play();
             coinCount += Mathf.CeilToInt(coinChangeRate * Time.deltaTime);
             if (coinCount > goalCount) coinCount = goalCount;
         }
         if (goalCount < coinCount)
         {
+            if (!coinSound.isPlaying) coinSound.Play();
             coinCount -= Mathf.CeilToInt(coinChangeRate * Time.deltaTime);
             if (coinCount < goalCount) coinCount = goalCount;
         }
+        if (coinCount == goalCount) coinSound.Stop();
 
         text.text = ""+coinCount;
     }

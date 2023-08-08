@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33405c6874a5df4d827f5701de769aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageSound: {fileID: 8300000, guid: 062e29856074ffd4593607f91be10dc6, type: 3}
+  damageSound: {fileID: 8300000, guid: 959f4e93bc39c3c4f900cfd9d3f28aa7, type: 3}
   footstepSound1: {fileID: 8300000, guid: 06bed5357cc91c24cafc13c70128e20a, type: 3}
   footstepSound2: {fileID: 8300000, guid: ac4b6f7314f87544b8926182d04d319e, type: 3}
   landSound1: {fileID: 8300000, guid: 35758bd018114274bbeaa90129f302a9, type: 3}
