@@ -11,9 +11,7 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField] private GameObject minimap;
     private void Start()
     {
-        pausePanel.gameObject.SetActive(true);
-        pausePanel.Activate(minimap, minimap.activeInHierarchy);
-        pausePanel.SetInactive();
+        pausePanel.SetVolume();
     }
     private void Update()
     {

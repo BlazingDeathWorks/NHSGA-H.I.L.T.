@@ -26,7 +26,7 @@ public class PauseMenuManager : MonoBehaviour
     private GameObject minimap;
     private bool minimapState;
 
-    void Start()
+    public void SetVolume()
     {
         masterSlider.value = PlayerPrefs.GetFloat("masterVolume", .5f);
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume", 1f);

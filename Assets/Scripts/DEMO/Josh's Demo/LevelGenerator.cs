@@ -156,7 +156,7 @@ public class LevelGenerator : MonoBehaviour
                     int randType = Mathf.FloorToInt(i + enemyPrefabs.Length + Random.Range(-.1f, 1.1f)) % enemyPrefabs.Length;
                     //instantiate
                     GameObject holdEnemy = Instantiate(enemyPrefabs[randType], 
-                        tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), Quaternion.identity);
+                        tempPos + new Vector3(layoutPos - bounds.min.x, .1f), Quaternion.identity);
                     //randomize stats
                     holdEnemy.GetComponent<Enemy>().SetStats(ScalerIncrease + (.5f-layoutCount / holdLayoutCount / 2f));
                     //add to elite calculation
