@@ -25,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
     private int immuneIndicatorDirection;
     private Rigidbody2D rb;
     private PlayerEntity playerEntity;
+    private bool isDead;
 
     //Default - 0
     private float healAmount = 0;
@@ -100,7 +101,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (immune) return;
+        if (immune || isDead) return;
         //do damage number
         DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("DamageNumbers").transform);
         holdNum.SetText(damage);
@@ -122,7 +123,11 @@ public class PlayerHealth : MonoBehaviour
         if(health <= 0)
         {
             rb.velocity = Vector2.zero;
+            GetComponent<Collider2D>().enabled = false;
+            rb.gravityScale = 0;
+            knockback = false;
             GetComponent<PlayerEntity>().enabled = false;
+            isDead = true;
             if(TryGetComponent(out Animator anim)) anim.CrossFade("Death", 0, 0);
         }
     }

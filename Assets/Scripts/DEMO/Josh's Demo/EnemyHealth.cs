@@ -44,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
     private SpriteRenderer flashRenderer;
     private ParticleSystem hitParticles;
     private float poisonNumTime;
+    private GameObject lastDamageSource;
 
     private void Awake()
     {
@@ -169,9 +170,10 @@ public class EnemyHealth : MonoBehaviour
         onFixedUpdate = true;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, GameObject source = null)
     {
-        if (isDead || damage == 0) return;
+        if (isDead || damage == 0 || lastDamageSource == source) return;
+        lastDamageSource = source;
         bool isExplosion = PlayerComboManager.Instance.ComboAdd();
         if (isExplosion)
         {
