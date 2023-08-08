@@ -30,26 +30,24 @@ public class Abilities_ht : MonoBehaviour
         ChangeAbility(RollAbility);
     }
 
-    private void Update()
-    {
-        //Testing Abilities
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            ChangeAbility(RollAbility);
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            ChangeAbility(TeleportAbility);
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            ChangeAbility(InvisibilityAbility);
-        }
-    }
-
     private void FixedUpdate()
     {
         currentAbility.FixedUpdate();
+    }
+
+    public void SwitchToRoll()
+    {
+        ChangeAbility(RollAbility);
+    }
+
+    public void SwitchToTeleport()
+    {
+        ChangeAbility(TeleportAbility);
+    }
+
+    public void SwitchToInvisibility()
+    {
+        ChangeAbility(InvisibilityAbility);
     }
 
     public void ExecuteAbility()
