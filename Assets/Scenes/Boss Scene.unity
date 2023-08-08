@@ -289,6 +289,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6220159434078933314, guid: cbbabe900373140ed88ef05623caa775, type: 3}
+      propertyPath: ide
+      value: 
+      objectReference: {fileID: 385698394}
+    - target: {fileID: 6220159434078933314, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: minimap
       value: 
       objectReference: {fileID: 248088702}

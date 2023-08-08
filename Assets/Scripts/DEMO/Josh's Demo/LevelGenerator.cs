@@ -12,6 +12,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private RuleTile[] ruleTiles;
     [SerializeField]
+    private RuleTile[] actualTiles;
+    [SerializeField]
     private Tilemap[] maps;
     [SerializeField]
     private Tilemap minimap;
@@ -93,19 +95,23 @@ public class LevelGenerator : MonoBehaviour
             layoutPos += bounds.size.x;
             if(layoutCount == 1)
             {
-                BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 0);
+                BoxFill(maps[0], actualTiles[0], layoutPos, layoutPos + 20, -40, 0);
+                BoxFill(maps[0], actualTiles[0], layoutPos + 5, layoutPos + 15, 6, 7);
+                BoxFill(bgMap, actualTiles[3], layoutPos + 5, layoutPos + 15, 0, 6);
                 BoxFill(minimap, minimapTiles[0], layoutPos, layoutPos + 20, -40, 0);
+                BoxFill(minimap, minimapTiles[0], layoutPos + 5, layoutPos + 15, 6, 7);
+                BoxFill(minimap, minimapTiles[3], layoutPos + 5, layoutPos + 15, 0, 6);
                 Instantiate(ShopPrefab, new Vector3(layoutPos + 10, 0), Quaternion.identity);
                 layoutPos += 20;
             }
         }
 
         //Create side walls and floor
-        BoxFill(maps[0], ruleTiles[0], -30, -10, -40, 60);
-        BoxFill(maps[0], ruleTiles[0], -10, 0, -40, 0);
-        BoxFill(maps[0], ruleTiles[0], 0, layoutPos, -40, -14);
-        BoxFill(maps[0], ruleTiles[0], layoutPos, layoutPos + 20, -40, 0);
-        BoxFill(maps[0], ruleTiles[0], layoutPos + 20, layoutPos + 40, -40, 60);
+        BoxFill(maps[0], actualTiles[0], -30, -10, -40, 60);
+        BoxFill(maps[0], actualTiles[0], -10, 0, -40, 0);
+        BoxFill(maps[0], actualTiles[0], 0, layoutPos, -40, -14);
+        BoxFill(maps[0], actualTiles[0], layoutPos, layoutPos + 20, -40, 0);
+        BoxFill(maps[0], actualTiles[0], layoutPos + 20, layoutPos + 40, -40, 60);
         Instantiate(doorPrefab, new Vector3(layoutPos + 10, 0), Quaternion.identity);
         Tilemap holdMap = Instantiate(maps[0], transform);
         holdMap.gameObject.GetComponent<CompositeCollider2D>().geometryType = CompositeCollider2D.GeometryType.Polygons;
@@ -124,7 +130,7 @@ public class LevelGenerator : MonoBehaviour
         //check background
         if (bgTilemap.GetTile(tempPos) == bgTile)
         {
-            bgMap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), bgTile);
+            bgMap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), actualTiles[3]);
             minimap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), minimapTiles[3]);
         }
         //check main tiles
@@ -132,7 +138,7 @@ public class LevelGenerator : MonoBehaviour
         {
             if (tilemap.GetTile(tempPos) == ruleTiles[i])
             {
-                maps[i].SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), ruleTiles[i]);
+                maps[i].SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), actualTiles[i]);
                 minimap.SetTile(tempPos + new Vector3Int(layoutPos - bounds.min.x, 0), minimapTiles[i]);
                 continue;
             }

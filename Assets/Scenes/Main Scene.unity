@@ -3645,6 +3645,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e15037a29bf2ba14d8027703a795ca13, type: 2}
   - {fileID: 11400000, guid: aa4c1f77e10668543a2b962a60ee8ba1, type: 2}
   - {fileID: 11400000, guid: 8b11e4cc69f78e741a6aa2265e5e0d78, type: 2}
+  actualTiles:
+  - {fileID: 11400000, guid: 9183cc2d03dbd53479baa6f087330ce7, type: 2}
+  - {fileID: 11400000, guid: aa4c1f77e10668543a2b962a60ee8ba1, type: 2}
+  - {fileID: 11400000, guid: 04b23f8b52c33dd46815081e07382d36, type: 2}
+  - {fileID: 11400000, guid: e087787b41a31dc40ae95bbc1ac5c316, type: 2}
   maps:
   - {fileID: 1843444356}
   - {fileID: 292242579}
@@ -3685,9 +3690,9 @@ MonoBehaviour:
   - {fileID: 7100485554665957061, guid: 07832bfd739b6e547b65938b37ec1d7e, type: 3}
   pickupTile: {fileID: 11400000, guid: 756db745c6a5f7a4b94feb43282b0bca, type: 2}
   pickupPrefab: {fileID: 6809627194910603618, guid: df69c1d0a0c9fd948b1d8bf7464f827f, type: 3}
-  doorPrefab: {fileID: 5604249527335759141, guid: 289a019a0acd1fb48bb78d7293af4746, type: 3}
+  doorPrefab: {fileID: 5604249527335759141, guid: 39376c4146287004a976f2bf4198a425, type: 3}
   ShopPrefab: {fileID: 1349652611497380830, guid: 963089e3b9360bc4cba3ff3e05a6d278, type: 3}
-  ScalerIncrease: 0
+  ScalerIncrease: -0.3
 --- !u!1 &1504226554
 GameObject:
   m_ObjectHideFlags: 0
@@ -6344,6 +6349,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6220159434078933314, guid: cbbabe900373140ed88ef05623caa775, type: 3}
+      propertyPath: ide
+      value: 
+      objectReference: {fileID: 390945796}
     - target: {fileID: 6220159434078933314, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: minimap
       value: 

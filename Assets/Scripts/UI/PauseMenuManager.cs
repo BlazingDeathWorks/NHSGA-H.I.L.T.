@@ -26,6 +26,8 @@ public class PauseMenuManager : MonoBehaviour
     private GameObject minimap;
     private CursorLockMode prevMouseState;
     private bool minimapState;
+    private GameObject ide;
+    private bool ideState;
 
     public void SetVolume()
     {
@@ -64,12 +66,15 @@ public class PauseMenuManager : MonoBehaviour
         mainPanel.SetActive(false);
         optionsPanel.SetActive(true);
     }
-    public void Activate(GameObject map, bool mapState)
+    public void Activate(GameObject map, bool mapState, GameObject id, bool idState)
     {
         minimap = map;
         minimapState = mapState;
+        ide = id;
+        ideState = idState;
         prevMouseState = Cursor.lockState;
         minimap.SetActive(false);
+        ide.SetActive(false);
         mainPanel.SetActive(false);
         optionsPanel.SetActive(false);
         launchPanel.SetActive(true);
@@ -80,6 +85,7 @@ public class PauseMenuManager : MonoBehaviour
     public void SetInactive()
     {
         minimap.SetActive(minimapState);
+        ide.SetActive(ideState);
         mainPanel.SetActive(false);
         optionsPanel.SetActive(false);
         launchPanel.SetActive(false);
