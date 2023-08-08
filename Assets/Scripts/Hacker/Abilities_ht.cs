@@ -167,7 +167,7 @@ public class Invisibility : Ability
     }
     public override void Execute()
     {
-        if (PlayerEntity.AbilityTimer < PlayerEntity.AbilityCooldown) return;
+        if (PlayerEntity.AbilityTimer < PlayerEntity.AbilityCooldown * 2f) return;
         PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Invincible");
         PlayerEntity.Sprite.color = new Color(1, 1, 1, .2f);
         PlayerEntity.StartCoroutine(ReturnToPlayerLayer());
@@ -175,7 +175,7 @@ public class Invisibility : Ability
     }
     private IEnumerator ReturnToPlayerLayer()
     {
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(0.7f);
         PlayerEntity.Sprite.color = new Color(1, 1, 1, 1);
         PlayerEntity.gameObject.layer = LayerMask.NameToLayer("Player");
     }
