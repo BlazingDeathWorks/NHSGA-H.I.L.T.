@@ -559,15 +559,15 @@ MonoBehaviour:
   - bladeName: Heavy Blade
     hueShiftValue: 140
     ac: {fileID: 9100000, guid: a1907d29d607447e9812a9e7c070e509, type: 2}
-    baseAttackSlash: {fileID: 747045673914548547, guid: 5c9bfb145999e497c8a4d2824d5a8db8, type: 3}
-    threeHitAttackSlash: {fileID: 5374996938754738995, guid: 752ca316b0d9c40d886c5a940f650e76, type: 3}
-    airAttackSlash: {fileID: 2201147196554176385, guid: 913540f527ede499ebefb4d84d788771, type: 3}
+    baseAttackSlash: {fileID: 747045673914548547, guid: a9d9dc0c263c64a6594f9e9d3761eb99, type: 3}
+    threeHitAttackSlash: {fileID: 5374996938754738995, guid: 34bf20285c5934b09a8f5e1ed0c327d9, type: 3}
+    airAttackSlash: {fileID: 2201147196554176385, guid: 9dedcce7a2bd34d0f872c990665d696c, type: 3}
   - bladeName: Quick Blade
     hueShiftValue: 180
     ac: {fileID: 9100000, guid: 456f3150a60b3446eb6b2546890041c4, type: 2}
-    baseAttackSlash: {fileID: 747045673914548547, guid: 5c9bfb145999e497c8a4d2824d5a8db8, type: 3}
-    threeHitAttackSlash: {fileID: 5374996938754738995, guid: 752ca316b0d9c40d886c5a940f650e76, type: 3}
-    airAttackSlash: {fileID: 2201147196554176385, guid: 913540f527ede499ebefb4d84d788771, type: 3}
+    baseAttackSlash: {fileID: 747045673914548547, guid: 81be81927738c4b01a89ae6da3b7023a, type: 3}
+    threeHitAttackSlash: {fileID: 5374996938754738995, guid: f19e83ec88d13453cb011c78fb901f95, type: 3}
+    airAttackSlash: {fileID: 2201147196554176385, guid: da930761ebf25480baa07cd0d4bb18a2, type: 3}
 --- !u!114 &5693530175168760992
 MonoBehaviour:
   m_ObjectHideFlags: 0
