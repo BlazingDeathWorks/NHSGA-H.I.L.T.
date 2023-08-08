@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerFallState : PlayerAirAttackControllerState
 {
     protected override string StringToHash => "Fall";
+    private float soundTime;
 
     public PlayerFallState(PlayerEntity playerEntity, FiniteStateMachine finiteStateMachine) : base(playerEntity, finiteStateMachine)
     {
@@ -29,7 +30,11 @@ public class PlayerFallState : PlayerAirAttackControllerState
 
         if (PlayerEntity.IsGrounded)
         {
-            PlayerEntity.PlayerAudioController.PlayLandSound();
+            if (Time.time > soundTime)
+            {
+                PlayerEntity.PlayerAudioController.PlayLandSound();
+                soundTime = Time.time + .15f;
+            }
             FiniteStateMachine.ChangeState(PlayerEntity.PlayerIdleState);
         }
 

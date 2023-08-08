@@ -12,7 +12,7 @@ public abstract class MenuController : MonoBehaviour
     {
         Time.timeScale = 1;
         launchPanel.SetActive(true);
-        Invoke("EnableSystem", 1f);
+        Invoke("EnableSystem", 2f);
     }
     public void EnableSystem()
     {
