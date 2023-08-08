@@ -52,7 +52,8 @@ public class Blade_ht : MonoBehaviour
         originalPos = instance.transform.position;
         instance.transform.parent = slashSpawnPoint;
         instance.transform.localPosition = originalPos;
-        instance.GetComponent<SpriteRenderer>().flipX = Mathf.Sign(transform.localScale.x) == 1 ? false : true;
+        instance.transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x) * Mathf.Abs(instance.transform.localScale.x), instance.transform.localScale.y, instance.transform.localScale.z);
+        if (Mathf.Sign(instance.transform.localScale.x) == -1) instance.transform.localScale = new Vector3(-instance.transform.localScale.x, instance.transform.localScale.y, instance.transform.localScale.z);
     }
     public void ThreeHitAttackSlash()
     {
@@ -61,7 +62,8 @@ public class Blade_ht : MonoBehaviour
         originalPos = instance.transform.position;
         instance.transform.parent = slashSpawnPoint;
         instance.transform.localPosition = originalPos;
-        instance.GetComponent<SpriteRenderer>().flipX = Mathf.Sign(transform.localScale.x) == 1 ? false : true;
+        instance.transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x) * Mathf.Abs(instance.transform.localScale.x), instance.transform.localScale.y, instance.transform.localScale.z);
+        if (Mathf.Sign(instance.transform.localScale.x) == -1) instance.transform.localScale = new Vector3(-instance.transform.localScale.x, instance.transform.localScale.y, instance.transform.localScale.z);
     }
     public void AirAttackSlash()
     {
