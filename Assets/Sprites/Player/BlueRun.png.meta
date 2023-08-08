@@ -293,7 +293,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 65c381375c2b349d4a80d199b003c91c, type: 3}
+      name: _MainTexture
     nameFileIdTable:
       BlueRun_0: 408016297
       BlueRun_1: 2122706405

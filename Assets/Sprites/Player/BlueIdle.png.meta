@@ -272,7 +272,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: e8ee7d0612e34449aa63b437b1d788d6, type: 3}
+      name: _MainTexture
     nameFileIdTable:
       BlueIdle_0: 550404051
       BlueIdle_1: -2067236450
