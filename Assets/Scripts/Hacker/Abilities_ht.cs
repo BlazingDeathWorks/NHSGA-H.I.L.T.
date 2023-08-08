@@ -47,6 +47,11 @@ public class Abilities_ht : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        currentAbility.FixedUpdate();
+    }
+
     public void ExecuteAbility()
     {
         currentAbility.Execute();
@@ -69,6 +74,10 @@ public abstract class Ability
     }
 
     public abstract void Execute();
+    public virtual void FixedUpdate()
+    {
+
+    }
     public virtual void Exit()
     {
 
