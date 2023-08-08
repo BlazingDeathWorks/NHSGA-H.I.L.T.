@@ -38,6 +38,14 @@ public class PauseMenuManager : MonoBehaviour
         audioMixer.SetFloat("musicVolume", Mathf.Log10(musicSlider.value) * 20);
         audioMixer.SetFloat("sfxVolume", Mathf.Log10(sfxSlider.value) * 20);
     }
+    public void Update()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            minimap.SetActive(false);
+            ide.SetActive(false);
+        }
+    }
 
     public void SetMasterVolume(float volume)
     {

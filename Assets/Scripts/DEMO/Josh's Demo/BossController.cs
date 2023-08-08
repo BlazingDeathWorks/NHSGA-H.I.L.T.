@@ -233,6 +233,7 @@ public class BossController : MonoBehaviour
         if (arenaX - player.transform.position.x < 5f && !activated)
         {
             sideWalls.SetActive(true);
+            audioManager.PlaySong(bossSong);
             activated = true;
             Invoke("Activate", 1f);
         }
@@ -241,7 +242,6 @@ public class BossController : MonoBehaviour
     private void Activate()
     {
         audioManager.PlayOneShot(spawnSound);
-        audioManager.PlaySong(bossSong);
         anim.enabled = true;
         rb.gravityScale = 2 * jumpHeight / Mathf.Pow(jumpTime / 2, 2) / 9.8f;
         state = State.staggered;
