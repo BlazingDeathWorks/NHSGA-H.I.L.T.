@@ -3563,6 +3563,7 @@ MonoBehaviour:
   masterSlider: {fileID: 1593575523}
   musicSlider: {fileID: 1287998817}
   sfxSlider: {fileID: 1503410725}
+  modeToggle: {fileID: 1938425360}
 --- !u!1 &1549192984
 GameObject:
   m_ObjectHideFlags: 0

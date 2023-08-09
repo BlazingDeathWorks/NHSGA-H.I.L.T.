@@ -18,6 +18,8 @@ public class MainMenuController : MenuController
     private Slider musicSlider;
     [SerializeField]
     private Slider sfxSlider;
+    [SerializeField]
+    private Toggle modeToggle;
 
     public override void Start()
     {
@@ -32,6 +34,7 @@ public class MainMenuController : MenuController
         audioMixer.SetFloat("sfxVolume", Mathf.Log10(sfxSlider.value) * 20);
 
         PlayerPrefs.SetInt("mode", PlayerPrefs.GetInt("mode", 0));
+        modeToggle.isOn = PlayerPrefs.GetInt("mode") == 1;
     }
     public void SetMasterVolume(float volume)
     {
