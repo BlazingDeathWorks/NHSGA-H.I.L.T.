@@ -189,7 +189,7 @@ MonoBehaviour:
   coinParticles: {fileID: 4924731175634984691}
   buySound: {fileID: 8300000, guid: af0ca440307e5ca4a9d80a16ef7143fd, type: 3}
   errorSound: {fileID: 8300000, guid: 5d1c002bd1c90b94d9f39873da8548d0, type: 3}
-  cost: 300
+  cost: 1000
   lootCard: {fileID: 7885912597910007451, guid: 9a033d224c0c64785b27d35ae625a6ca, type: 3}
   flashRenderer: {fileID: 1349652611141061496}
 --- !u!61 &4941861733737513272
