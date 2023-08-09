@@ -655,6 +655,10 @@ PrefabInstance:
       propertyPath: onCodeBlockEnabled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1964100005}
+    - target: {fileID: 341649131725594545, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: maxClamp
+      value: -650
+      objectReference: {fileID: 0}
     - target: {fileID: 341649131725594557, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
       propertyPath: m_IsActive
       value: 1
