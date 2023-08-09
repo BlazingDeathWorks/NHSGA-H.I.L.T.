@@ -24,6 +24,7 @@ public class CodeLoot : MonoBehaviour
                 return null;
             }
         }
+        if (loots[randomIndex].NV.Unlocked) return null;
         return loots[randomIndex].NV;
         //loots[randomIndex].NV?.UnlockButton();
     }

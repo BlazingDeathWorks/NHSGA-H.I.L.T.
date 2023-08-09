@@ -14,6 +14,19 @@ public class ClassNavigationButton : MonoBehaviour
 
     private PropertyNavigationButton defaultButton;
 
+    private void Start()
+    {
+        if (this == IDEManager.Instance.CurrentClass) return;
+        for (int i = 0; i < LinesOfCode.Length; i++)
+        {
+            LinesOfCode[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < PropertyNavigationButtons.Length; i++)
+        {
+            PropertyNavigationButtons[i].gameObject.SetActive(false);
+        }
+    }
+
     public void Init()
     {
         for (int i = 0; i < propertyNavigationButtons.Length; i++)
@@ -24,6 +37,7 @@ public class ClassNavigationButton : MonoBehaviour
         }
         button = GetComponent<Button>();
         button.onClick.AddListener(() => IDEManager.Instance.SetCurrentClass(this));
+        button.onClick.AddListener(() => IDEManager.Instance.ResetContent());
     }
 
     public void SetActivatePNB(PropertyNavigationButton pnb)

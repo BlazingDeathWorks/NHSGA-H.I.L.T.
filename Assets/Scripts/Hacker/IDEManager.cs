@@ -23,13 +23,18 @@ public class IDEManager : MonoBehaviour
 
     public void IncreaseMaxClamp()
     {
-        maxClamp += 107.4f;
+        maxClamp += 130f;
     }
 
     public void ClampContent()
     {
         content.localPosition = new Vector3(content.localPosition.x, Mathf.Clamp(content.localPosition.y, minClamp, maxClamp), content.localPosition.z);
-        if (content.localPosition.y < minClamp || content.localPosition.y > maxClamp) Debug.Log("WTF");
+        //if (content.localPosition.y < minClamp || content.localPosition.y > maxClamp) Debug.Log("WTF");
+    }
+
+    public void ResetContent()
+    {
+        content.localPosition = new Vector3(content.localPosition.x, minClamp, content.localPosition.z);
     }
 
     public void SetCurrentClass(ClassNavigationButton newClass)
@@ -38,13 +43,20 @@ public class IDEManager : MonoBehaviour
         for (int i = 0; i < currentClass.LinesOfCode.Length; i++)
         {
             currentClass.LinesOfCode[i].gameObject.SetActive(false);
-            //currentClass.PropertyNavigationButtons[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < currentClass.PropertyNavigationButtons.Length; i++)
+        {
+            currentClass.PropertyNavigationButtons[i].gameObject.SetActive(false);
         }
 
         for (int i = 0; i < newClass.LinesOfCode.Length; i++)
         {
             newClass.LinesOfCode[i].gameObject.SetActive(true);
-            //newClass.PropertyNavigationButtons[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < newClass.PropertyNavigationButtons.Length; i++)
+        {
+            if (!newClass.PropertyNavigationButtons[i].Unlocked) continue;
+            newClass.PropertyNavigationButtons[i].gameObject.SetActive(true);
         }
         currentClass = newClass;
     }
