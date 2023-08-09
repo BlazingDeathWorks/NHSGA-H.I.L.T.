@@ -19,9 +19,9 @@ public class PlayerDataManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SavePlayerData(int coins, List<PropertyNavigationButton> pnbs)
+    public void SavePlayerData(List<PropertyNavigationButton> pnbs)
     {
-        PlayerData data = new PlayerData(coins, pnbs);
+        PlayerData data = new PlayerData(pnbs);
         BinarySaveSystem.SaveSystem(data, Application.persistentDataPath + FILE_NAME);
     }
 

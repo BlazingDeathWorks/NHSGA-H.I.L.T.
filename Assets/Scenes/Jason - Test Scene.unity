@@ -7193,6 +7193,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6074552173883062199, guid: 257712bb9f4f24951b441f46c447e84b, type: 3}
+      propertyPath: classes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1313584097}
+    - target: {fileID: 6074552173883062199, guid: 257712bb9f4f24951b441f46c447e84b, type: 3}
+      propertyPath: classes.Array.data[1]
+      value: 
+      objectReference: {fileID: 545123487}
+    - target: {fileID: 6074552173883062199, guid: 257712bb9f4f24951b441f46c447e84b, type: 3}
+      propertyPath: classes.Array.data[2]
+      value: 
+      objectReference: {fileID: 1153413247}
+    - target: {fileID: 6074552173883062199, guid: 257712bb9f4f24951b441f46c447e84b, type: 3}
+      propertyPath: classes.Array.data[3]
+      value: 
+      objectReference: {fileID: 1656932900}
     - target: {fileID: 8869281450250282427, guid: 257712bb9f4f24951b441f46c447e84b, type: 3}
       propertyPath: m_RootOrder
       value: 20
