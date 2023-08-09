@@ -49,6 +49,7 @@ public class NavigationButton : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public class PropertyNavigationButton : NavigationButton
 {
     public ClassNavigationButton Parent { get; set; }
