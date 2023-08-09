@@ -26,7 +26,7 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (collision.TryGetComponent(out EnemyHealth health))
         {
-            health.TakeDamage(damage);
+            health.TakeDamage(damage, gameObject);
             Destroy(gameObject);
         }
     }
