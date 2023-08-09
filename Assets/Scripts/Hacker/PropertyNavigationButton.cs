@@ -29,7 +29,11 @@ public class NavigationButton : MonoBehaviour
     {
         if (gameObject == null) return;
         PropertyNavigationButton pnb = (PropertyNavigationButton)this;
-        if (awake || pnb.Parent == IDEManager.Instance.CurrentClass) gameObject?.SetActive(true);
+        if (awake || pnb.Parent == IDEManager.Instance.CurrentClass)
+        {
+            Debug.Log("Hwhy");
+            gameObject?.SetActive(true);
+        }
         Unlocked = true;
     }
 
