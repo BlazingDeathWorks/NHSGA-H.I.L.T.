@@ -25,6 +25,10 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.Stop();
     }
+    public void MuteMusic(bool shouldMute)
+    {
+        musicSource.volume = shouldMute ? 0 : 1;
+    }
     public void PlaySong(AudioClip clip)
     {
         musicSource.PlayOneShot(clip);

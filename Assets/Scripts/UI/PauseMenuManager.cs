@@ -23,11 +23,16 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField]
     private Slider sfxSlider;
 
+    public bool active;
+
     private GameObject minimap;
     private CursorLockMode prevMouseState;
     private bool minimapState;
     private GameObject ide;
     private bool ideState;
+    private AudioSource IDEMusic;
+    private float IDEVolume;
+    private float prevTimeScale;
 
     public void SetVolume()
     {
@@ -74,37 +79,45 @@ public class PauseMenuManager : MonoBehaviour
         mainPanel.SetActive(false);
         optionsPanel.SetActive(true);
     }
-    public void Activate(GameObject map, bool mapState, GameObject id, bool idState)
+    public void Activate(GameObject map, bool mapState, GameObject id, bool idState, AudioSource ideMusic)
     {
         minimap = map;
         minimapState = mapState;
         ide = id;
         ideState = idState;
+        IDEMusic = ideMusic;
+        IDEVolume = IDEMusic.volume;
+        IDEMusic.volume = 0;
+        prevTimeScale = Time.timeScale;
         prevMouseState = Cursor.lockState;
         minimap.SetActive(false);
         ide.SetActive(false);
         mainPanel.SetActive(false);
         optionsPanel.SetActive(false);
         launchPanel.SetActive(true);
-        Invoke("EnableSystem", .22f);
+        StartCoroutine(EnableSystem());
         AudioManager.Instance.PlayOneShot(clickSound);
+        active = true;
         Cursor.lockState = CursorLockMode.None;
     }
     public void SetInactive()
     {
         minimap.SetActive(minimapState);
         ide.SetActive(ideState);
+        IDEMusic.volume = IDEVolume;
         mainPanel.SetActive(false);
         optionsPanel.SetActive(false);
         launchPanel.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = prevTimeScale;
         gameObject.SetActive(false);
         Cursor.lockState = prevMouseState;
         AudioManager.Instance.PlayOneShot(clickSound);
+        active = false;
     }
-    public void EnableSystem()
+public IEnumerator EnableSystem()
     {
-        if(gameObject.activeInHierarchy) Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(.22f);
+        if (gameObject.activeInHierarchy) Time.timeScale = 0;
         mainPanel.SetActive(true);
         launchPanel.SetActive(false);
     }
