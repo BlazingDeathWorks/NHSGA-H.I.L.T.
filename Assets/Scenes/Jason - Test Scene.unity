@@ -651,6 +651,10 @@ PrefabInstance:
       propertyPath: onCodeBlockEnabled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1964100005}
+    - target: {fileID: 341649131725594545, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
+      propertyPath: maxClamp
+      value: -780
+      objectReference: {fileID: 0}
     - target: {fileID: 341649131725594557, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5251,11 +5255,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 758875897248295773, guid: 060bc114b5cdea34ea74c6f28445bef4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 351
+      value: 351.00003
       objectReference: {fileID: 0}
     - target: {fileID: 758875897814979810, guid: 060bc114b5cdea34ea74c6f28445bef4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 393.5703
+      value: 393.57034
       objectReference: {fileID: 0}
     - target: {fileID: 758875897814979810, guid: 060bc114b5cdea34ea74c6f28445bef4, type: 3}
       propertyPath: m_AnchoredPosition.y
