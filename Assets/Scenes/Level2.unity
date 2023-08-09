@@ -5288,7 +5288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deba696c6c0797a4cbd23bc34469e208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layoutCount: 6
+  layoutCount: 5
   ruleTiles:
   - {fileID: 11400000, guid: e15037a29bf2ba14d8027703a795ca13, type: 2}
   - {fileID: 11400000, guid: aa4c1f77e10668543a2b962a60ee8ba1, type: 2}
@@ -5334,6 +5334,7 @@ MonoBehaviour:
   doorPrefab: {fileID: 5604249527335759141, guid: 5dbd87929ef358b41b79e1406ab8101b, type: 3}
   ShopPrefab: {fileID: 1349652611497380830, guid: 963089e3b9360bc4cba3ff3e05a6d278, type: 3}
   ScalerIncrease: 0
+  canTank: 1
 --- !u!1 &1637435573
 GameObject:
   m_ObjectHideFlags: 0
