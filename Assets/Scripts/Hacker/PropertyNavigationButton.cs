@@ -7,17 +7,12 @@ using UnityEngine.Events;
 public class NavigationButton : MonoBehaviour
 {
     public bool Unlocked { get; private set; }
-    protected PlayerData PlayerData { get; private set; }
+    protected PlayerData PlayerData { get; set; }
     [SerializeField][Tooltip("If true, PNB will be unlocked at the beginning")] public bool DefaultButton = false;
     [SerializeField] protected CodeBlock LineOfCode;
 
     protected virtual void Awake()
     {
-        if (PlayerDataManager.Instance.LoadLoot)
-        {
-            PlayerData = PlayerDataManager.Instance.LoadPlayerData();
-        }
-
         if (DefaultButton || LineOfCode == null)
         {
             UnlockButton(true);
@@ -27,10 +22,6 @@ public class NavigationButton : MonoBehaviour
         //Only do this if PlayerDataManager.LoadLoot == true
         //Do a for loop that checks the list of selected properties from the loaded data and if matched then UnlockButton
         //OnButtonClick() - Do all this in the overriding awake
-        if (PlayerDataManager.Instance.LoadLoot)
-        {
-            return;
-        }
         gameObject.SetActive(false);
     }
 
@@ -73,11 +64,7 @@ public class PropertyNavigationButton : NavigationButton
         button.onClick.AddListener(OnButtonClick);
         button.onClick.AddListener(() => IDEManager.Instance.SetCurrentClass(Parent));
 
-        //Only do this if PlayerDataManager.LoadLoot == false
-        if (DefaultButton && PlayerDataManager.Instance.LoadLoot == false)
-        {
-            text.color = Color.yellow;
-        }
+        
         //Else do a for loop that checks the list of selected properties from the loaded data and if matched then highlight
         //else
         //{
@@ -90,8 +77,20 @@ public class PropertyNavigationButton : NavigationButton
         //        }
         //    }
         //}
+    }
+
+    private void Start()
+    {
+        //Only do this if PlayerDataManager.LoadLoot == false
+        if (DefaultButton && PlayerDataManager.Instance.LoadLoot == false)
+        {
+            text.color = Color.yellow;
+        }
+
         if (PlayerDataManager.Instance.LoadLoot)
         {
+            PlayerData = PlayerDataManager.Instance.LoadPlayerData();
+
             for (int i = 0; i < PlayerData.PropertyNavigationButtons.Count; i++)
             {
                 if (gameObject.name == PlayerData.PropertyNavigationButtons[i])
