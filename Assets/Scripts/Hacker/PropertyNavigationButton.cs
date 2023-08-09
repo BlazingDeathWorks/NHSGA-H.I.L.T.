@@ -99,7 +99,7 @@ public class PropertyNavigationButton : NavigationButton
             {
                 if (gameObject.name == PlayerData.PropertyNavigationButtons[i])
                 {
-                    UnlockButton();
+                    UnlockButton(true);
                     OnButtonClick();
                     for (int j = 0; j < CodeLootManager.Instance.Loots.Length; j++)
                     {
@@ -108,7 +108,7 @@ public class PropertyNavigationButton : NavigationButton
                             for (int k = 0; k < CodeLootManager.Instance.Loots[j].CheckSequence.Length; k++)
                             {
                                 PropertyNavigationButton pnb = (PropertyNavigationButton)CodeLootManager.Instance.Loots[j].CheckSequence[k];
-                                pnb.UnlockButton();
+                                pnb.UnlockButton(true);
                             }
                         }
                     }
