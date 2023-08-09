@@ -42,8 +42,8 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
-            minimap.SetActive(false);
-            ide.SetActive(false);
+            minimap?.SetActive(false);
+            ide?.SetActive(false);
         }
     }
 
