@@ -31,7 +31,7 @@ public class UpgradeLimiter : MonoBehaviour
     {
         upgradeCount++;
         upgradeSlider.value++;
-        atLimit = upgradeCount == upgradeLimit;
+        atLimit = upgradeSlider.value == upgradeLimit;
     }
     public void RemoveUpgrade()
     {
