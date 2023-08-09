@@ -86,6 +86,7 @@ public class PropertyNavigationButton : NavigationButton
                     if (PlayerData.PropertyNavigationButtons[pnbName])
                     {
                         text.color = Color.yellow;
+                        if (!DefaultButton) UpgradeLimiter.Instance.AddUpgrade();
                         OnButtonClick();
                     }
                     return;
