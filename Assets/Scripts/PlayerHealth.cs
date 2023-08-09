@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
     private bool isDead;
 
     //Default - 0
-    private float healAmount = 0;
+    private float healAmount = 5;
     private bool knockback = false;
 
     private void Awake()
