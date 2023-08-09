@@ -15,7 +15,7 @@ public class UpgradeLimiter : MonoBehaviour
     private int upgradeLimit;
     [SerializeField]
     private AudioClip errorSound;
-    void Start()
+    void Awake()
     {
         if (Instance != null)
         {

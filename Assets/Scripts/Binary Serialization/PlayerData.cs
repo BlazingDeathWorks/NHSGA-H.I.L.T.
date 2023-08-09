@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public readonly List<string> PropertyNavigationButtons = new List<string>();
+    public readonly Dictionary<string, bool> PropertyNavigationButtons = new Dictionary<string, bool>();
 
-    public PlayerData(List<string> pnbs)
+    public PlayerData(Dictionary<string, bool> pnbs)
     {
         PropertyNavigationButtons = pnbs;
     }

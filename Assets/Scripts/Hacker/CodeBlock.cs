@@ -57,6 +57,7 @@ public class CodeBlock : MonoBehaviour
     public string GetCodeFragment()
     {
         int index = codeTemplate.IndexOf("!");
+        if (!lineOfCode) return "";
         return lineOfCode.text.Substring(index).Trim();
     }
     public void ReplaceCodeFragment(string newFragment)

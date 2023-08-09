@@ -19,6 +19,12 @@ public class IDEManager : MonoBehaviour
             return;
         }
         Instance = this;
+        Invoke("SetInactive", .1f);
+    }
+    private void SetInactive()
+    {
+        SetCurrentClass(DoorManager.Instance.classes[0]);
+        ResetContent();
         gameObject.SetActive(false);
     }
 

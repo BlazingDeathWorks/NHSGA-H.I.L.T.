@@ -19,10 +19,10 @@ public class NavigationButton : MonoBehaviour
             return;
         }
 
+        gameObject.SetActive(false);
         //Only do this if PlayerDataManager.LoadLoot == true
         //Do a for loop that checks the list of selected properties from the loaded data and if matched then UnlockButton
         //OnButtonClick() - Do all this in the overriding awake
-        gameObject.SetActive(false);
     }
 
     public void UnlockButton(bool awake = false)
@@ -69,7 +69,31 @@ public class PropertyNavigationButton : NavigationButton
         button.onClick.AddListener(OnButtonClick);
         button.onClick.AddListener(() => IDEManager.Instance.SetCurrentClass(Parent));
 
-        
+        if (DefaultButton && PlayerDataManager.Instance.LoadLoot == false)
+        {
+            text.color = Color.yellow;
+        }
+        if (PlayerDataManager.Instance.LoadLoot)
+        {
+            PlayerData = PlayerDataManager.Instance.LoadPlayerData();
+            IDEManager.Instance.SetCurrentClass(IDEManager.Instance.CurrentClass);
+            IDEManager.Instance.ResetContent();
+            foreach (string pnbName in PlayerData.PropertyNavigationButtons.Keys)
+            {
+                if (gameObject.name.Equals(pnbName))
+                {
+                    UnlockButton(true);
+                    if (PlayerData.PropertyNavigationButtons[pnbName])
+                    {
+                        text.color = Color.yellow;
+                        OnButtonClick();
+                    }
+                    return;
+                }
+            }
+
+        }
+
         //Else do a for loop that checks the list of selected properties from the loaded data and if matched then highlight
         //else
         //{
@@ -82,43 +106,6 @@ public class PropertyNavigationButton : NavigationButton
         //        }
         //    }
         //}
-    }
-
-    private void Start()
-    {
-        //Only do this if PlayerDataManager.LoadLoot == false
-        if (DefaultButton && PlayerDataManager.Instance.LoadLoot == false)
-        {
-            text.color = Color.yellow;
-        }
-
-        if (PlayerDataManager.Instance.LoadLoot)
-        {
-            PlayerData = PlayerDataManager.Instance.LoadPlayerData();
-
-            for (int i = 0; i < PlayerData.PropertyNavigationButtons.Count; i++)
-            {
-                if (gameObject.name == PlayerData.PropertyNavigationButtons[i])
-                {
-                    UnlockButton(true);
-                    OnButtonClick();
-                    IDEManager.Instance.SetCurrentClass(Parent);
-                    for (int j = 0; j < CodeLootManager.Instance.Loots.Length; j++)
-                    {
-                        if (this == CodeLootManager.Instance.Loots[j].NV)
-                        {
-                            for (int k = 0; k < CodeLootManager.Instance.Loots[j].CheckSequence.Length; k++)
-                            {
-                                PropertyNavigationButton pnb = (PropertyNavigationButton)CodeLootManager.Instance.Loots[j].CheckSequence[k];
-                                pnb.UnlockButton(true);
-                                IDEManager.Instance.SetCurrentClass(Parent);
-                            }
-                        }
-                    }
-                    return;
-                }
-            }
-        }
     }
 
     //Nothing has to be added to Unity's Button Component OnClick()
