@@ -20,6 +20,7 @@ public class IDEManager : MonoBehaviour
         }
         Instance = this;
         gameObject.SetActive(false);
+        SetCurrentClass(currentClass);
     }
 
     public void IncreaseMaxClamp()
