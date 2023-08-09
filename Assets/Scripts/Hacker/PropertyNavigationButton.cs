@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class NavigationButton : MonoBehaviour
 {
-    [SerializeField][Tooltip("If true, PNB will be unlocked at the beginning")] protected bool DefaultButton = false;
+    [SerializeField][Tooltip("If true, PNB will be unlocked at the beginning")] public bool DefaultButton = false;
     [SerializeField] protected CodeBlock LineOfCode;
 
     protected virtual void Awake()
@@ -44,6 +44,7 @@ public class PropertyNavigationButton : NavigationButton
     private bool isClicked = false;
     private Button button;
     private Text text;
+    public PropertyNavigationButton DefaultButtonGameObject;
 
     protected override void Awake()
     {
@@ -65,27 +66,27 @@ public class PropertyNavigationButton : NavigationButton
     public void OnButtonClick()
     {
         if (isClicked) return;
-        onCodeBlockEnabled.Invoke();
-        LineOfCode?.ReplaceCodeFragment(codeFragment);
         Parent.SetActivatePNB(this);
 
         //Only set isClicked to true if we are currently on Class (Works because we're getting called before changing classes to this)
-        if (IDEManager.Instance.CurrentClass != Parent) return;
+        if (IDEManager.Instance.CurrentClass != Parent || !LineOfCode) return;
         isClicked = true;
-        /*
-        if(DefaultButton && NOT ACTIVE VALUE)
+        if(DefaultButton)
         {
-            UpgradeLimiter.Instance.RemoveUpgrade();
-        } else if (ACTIVE VALUE IS DEFAULT)
+            if(!LineOfCode.GetCodeFragment().Equals(codeFragment)) UpgradeLimiter.Instance.RemoveUpgrade();
+        } else if (LineOfCode.GetCodeFragment().Equals(DefaultButtonGameObject.codeFragment))
         {
             if (UpgradeLimiter.Instance.atLimit)
             {
                 UpgradeLimiter.Instance.PlayError();
+                isClicked = false;
                 return;
             }
             UpgradeLimiter.Instance.AddUpgrade();
         }
-        */
+        onCodeBlockEnabled.Invoke();
+        LineOfCode?.ReplaceCodeFragment(codeFragment);
+
         //Only to list of objects
         //if (LineOfCode != null) text.color = new Color(240, 235, 216);
         if (parentPropNavButton == null) return;
