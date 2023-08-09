@@ -68,7 +68,7 @@ public class LootCard : MonoBehaviour
             PropertyNavigationButton propertyNavigationButton = (PropertyNavigationButton)Nb;
             if (propertyNavigationButton)
             {
-                IDEManager.Instance.IncreaseMaxClamp();
+                if(!propertyNavigationButton.isActiveAndEnabled) IDEManager.Instance.IncreaseMaxClamp();
                 ConsoleManager.Instance.RequestMessage($"New Upgrade For {propertyNavigationButton?.Parent.GetComponentInChildren<Text>().text}");
             }
             else ConsoleManager.Instance.RequestMessage("Known or Sealed Code Found");
