@@ -5334,6 +5334,7 @@ MonoBehaviour:
   doorPrefab: {fileID: 5604249527335759141, guid: 39376c4146287004a976f2bf4198a425, type: 3}
   ShopPrefab: {fileID: 1349652611497380830, guid: 963089e3b9360bc4cba3ff3e05a6d278, type: 3}
   ScalerIncrease: -0.3
+  canTank: 0
 --- !u!1 &1637435573
 GameObject:
   m_ObjectHideFlags: 0

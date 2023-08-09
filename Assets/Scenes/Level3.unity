@@ -6331,6 +6331,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6185101086526188397, guid: cbbabe900373140ed88ef05623caa775, type: 3}
+      propertyPath: loadLoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6220159434078933314, guid: cbbabe900373140ed88ef05623caa775, type: 3}
       propertyPath: minimap
       value: 
