@@ -4349,7 +4349,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -993327008779048062, guid: 6e88d93eca0fb4aa08ba123d8a5c6d43, type: 3}
       propertyPath: codeTemplate
-      value: '*int* HealthAmount = !'
+      value: '*int* HealAmount = !'
       objectReference: {fileID: 0}
     - target: {fileID: -993327008779048062, guid: 6e88d93eca0fb4aa08ba123d8a5c6d43, type: 3}
       propertyPath: initialTabCount

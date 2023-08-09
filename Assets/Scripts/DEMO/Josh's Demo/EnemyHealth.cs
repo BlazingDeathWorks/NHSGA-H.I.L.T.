@@ -45,6 +45,7 @@ public class EnemyHealth : MonoBehaviour
     private ParticleSystem hitParticles;
     private float poisonNumTime;
     private GameObject lastDamageSource;
+    private float damageSourceTimer;
 
     private void Awake()
     {
@@ -118,6 +119,10 @@ public class EnemyHealth : MonoBehaviour
             }
         }
 
+        //reset damage source
+        damageSourceTimer += Time.deltaTime;
+        if (damageSourceTimer > .15f) lastDamageSource = null;
+
         //smooth healthbar value change
         float healthbarVal = healthbar.value;
         if (health > healthbarVal)
@@ -172,8 +177,9 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage, GameObject source = null)
     {
-        if (isDead || damage == 0 || lastDamageSource == source) return;
+        if (isDead || damage == 0 || (lastDamageSource == source)) return;
         lastDamageSource = source;
+        damageSourceTimer = 0;
         bool isExplosion = PlayerComboManager.Instance.ComboAdd();
         if (isExplosion)
         {

@@ -23,7 +23,7 @@ public class IDEManager : MonoBehaviour
 
     public void IncreaseMaxClamp()
     {
-        maxClamp += 107f;
+        maxClamp += 107.4f;
     }
 
     public void ClampContent()
