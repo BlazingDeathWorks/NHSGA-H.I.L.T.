@@ -32,10 +32,12 @@ public class RangedEnemy : Enemy
                                 Physics2D.OverlapCircle(transform.position + new Vector3(checkX1, .5f), .3f, tileMask);
                     if (isStopped1)
                     {
-                        dir = Mathf.Sign(player.transform.position.x - transform.position.x);
                         anim.Play("attack");
                         state = State.attacking;
                     }
+                    dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+                    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * dir, transform.localScale.y, transform.localScale.z);
+
                     break;
                 case State.attacking:
                     rb.velocity = Vector2.zero;
@@ -43,14 +45,17 @@ public class RangedEnemy : Enemy
             }
         }
 
-        //stop at walls and cliffs
-        float checkX = Mathf.Sign(rb.velocity.x) * .5f;
-        bool isStopped = !Physics2D.OverlapCircle(transform.position + new Vector3(checkX, 0), .1f, tileMask) ||
-                    Physics2D.OverlapCircle(transform.position + new Vector3(checkX, .5f), .3f, tileMask);
-        if (isStopped)
+        if(state == State.idle)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            dir *= -1;
+            //stop at walls and cliffs
+            float checkX = Mathf.Sign(rb.velocity.x) * .5f;
+            bool isStopped = !Physics2D.OverlapCircle(transform.position + new Vector3(checkX, 0), .1f, tileMask) ||
+                        Physics2D.OverlapCircle(transform.position + new Vector3(checkX, .5f), .3f, tileMask);
+            if (isStopped)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                dir *= -1;
+            }
         }
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * dir, transform.localScale.y, transform.localScale.z);
 
@@ -73,6 +78,8 @@ public class RangedEnemy : Enemy
     {
         rb.velocity = new Vector2(0, rb.velocity.y);
         dir = Mathf.Sign(player.transform.position.x - transform.position.x);
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * dir, transform.localScale.y, transform.localScale.z);
+
         Quaternion angle = dir > 0 ? Quaternion.Euler(0, 0, 42) : Quaternion.Euler(0, 0, 222);
         EnemyProjectileController projectile = Instantiate(laserPrefab, projectileOrigin.transform.position, angle);
         projectile.damage = damage;

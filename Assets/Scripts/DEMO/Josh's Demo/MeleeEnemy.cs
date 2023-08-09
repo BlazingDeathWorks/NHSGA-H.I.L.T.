@@ -48,20 +48,20 @@ public class MeleeEnemy : Enemy
             }
         }
 
-
-        //stop at walls and cliffs
-        float checkX = Mathf.Sign(rb.velocity.x) * .5f;
-        bool isStopped = !Physics2D.OverlapCircle(transform.position + new Vector3(checkX, 0), .1f, tileMask) ||
-                    Physics2D.OverlapCircle(transform.position + new Vector3(checkX, .5f), .3f, tileMask);
-        if (isStopped)
+        if (rb.velocity.x != 0)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            dir *= -1;
+            //stop at walls and cliffs
+            float checkX = Mathf.Sign(rb.velocity.x) * .5f;
+            bool isStopped = !Physics2D.OverlapCircle(transform.position + new Vector3(checkX, 0), .1f, tileMask) ||
+                        Physics2D.OverlapCircle(transform.position + new Vector3(checkX, .5f), .3f, tileMask);
+            if (isStopped)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                dir *= -1;
+            }
         }
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * dir, transform.localScale.y, transform.localScale.z);
 
-        flashRenderer.sprite = sprite.sprite;
-        flashRenderer.color -= new Color(0, 0, 0, 2f * Time.deltaTime);
     }
 
     private void PlayWarningSound()

@@ -448,7 +448,7 @@ MonoBehaviour:
   flashRenderer: {fileID: 4553862273244044413}
   speed: 3.5
   damage: 20
-  dashSpeed: 15
+  dashSpeed: 20
   attackCooldown: 1
   aggroDistance: 10
   tileMask:

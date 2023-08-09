@@ -15,20 +15,20 @@ public class Notification : MonoBehaviour
         image = GetComponentInChildren<Image>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        timeSinceAlive += Time.fixedDeltaTime;
+        timeSinceAlive += Time.unscaledDeltaTime;
 
         if (timeSinceAlive >= 3f)
         {
-            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - 6 * Time.fixedDeltaTime);
-            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - 6 * Time.fixedDeltaTime);
+            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - 6 * Time.unscaledDeltaTime);
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - 6 * Time.unscaledDeltaTime);
             if (text.color.a <= 0 || image.color.a <= 0) Destroy(gameObject);
         }
         else
         {
-            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a + 5 * Time.fixedDeltaTime);
-            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a + 5 * Time.fixedDeltaTime);
+            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a + 5 * Time.unscaledDeltaTime);
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a + 5 * Time.unscaledDeltaTime);
         }
     }
 
