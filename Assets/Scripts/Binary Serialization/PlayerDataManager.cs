@@ -19,9 +19,8 @@ public class PlayerDataManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SavePlayerData(List<string> pnbs)
+    public void SavePlayerData(PlayerData data)
     {
-        PlayerData data = new PlayerData(pnbs);
         BinarySaveSystem.SaveSystem(data, Application.persistentDataPath + FILE_NAME);
     }
 

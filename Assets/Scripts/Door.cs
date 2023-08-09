@@ -32,7 +32,15 @@ public class Door : MonoBehaviour
         {
             GetComponent<Collider2D>().enabled = false;
             //Save Data
-            PlayerDataManager.Instance?.SavePlayerData(DoorManager.Instance.PNBS);
+            PlayerData data = new PlayerData(new List<string>());
+            for (int i = 0; i < DoorManager.Instance.PNBS.Count; i++)
+            {
+                if (DoorManager.Instance.PNBS[i].Text.color == Color.yellow)
+                {
+                    data.PropertyNavigationButtons.Add(DoorManager.Instance.PNBS[i].gameObject.name);
+                }
+            }
+            PlayerDataManager.Instance?.SavePlayerData(data);
             SceneController.Instance.NextScene();
         }
     }

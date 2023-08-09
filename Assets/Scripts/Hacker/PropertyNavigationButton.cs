@@ -49,6 +49,7 @@ public class PropertyNavigationButton : NavigationButton
     public ClassNavigationButton Parent { get; set; }
     public Text[] ChildrenTextRecolor => childrenTextRecolor;
     public bool IsClicked { get; set; } = false;
+    public Text Text => text;
     [SerializeField] private PropertyNavigationButton parentPropNavButton;
     [SerializeField] private Text[] childrenTextRecolor;
     [SerializeField] private string codeFragment;
@@ -101,6 +102,7 @@ public class PropertyNavigationButton : NavigationButton
                 {
                     UnlockButton(true);
                     OnButtonClick();
+                    IDEManager.Instance.SetCurrentClass(Parent);
                     for (int j = 0; j < CodeLootManager.Instance.Loots.Length; j++)
                     {
                         if (this == CodeLootManager.Instance.Loots[j].NV)
@@ -109,6 +111,7 @@ public class PropertyNavigationButton : NavigationButton
                             {
                                 PropertyNavigationButton pnb = (PropertyNavigationButton)CodeLootManager.Instance.Loots[j].CheckSequence[k];
                                 pnb.UnlockButton(true);
+                                IDEManager.Instance.SetCurrentClass(Parent);
                             }
                         }
                     }
