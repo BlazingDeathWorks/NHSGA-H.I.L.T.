@@ -20,6 +20,11 @@ public class CurrencyManager : MonoBehaviour
 
     public void AddCoins(int value)
     {
+        StartCoroutine(AddCoinsToCounter(value));
+    }
+    private IEnumerator AddCoinsToCounter(int value)
+    {
+        yield return new WaitForSecondsRealtime(.5f);
         Coins += value;
     }
 

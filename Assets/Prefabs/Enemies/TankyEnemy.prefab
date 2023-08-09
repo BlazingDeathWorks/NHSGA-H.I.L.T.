@@ -225,6 +225,7 @@ MonoBehaviour:
   warningSound: {fileID: 8300000, guid: 3ba0929809f385349b3b1076da60d919, type: 3}
   dashSound: {fileID: 8300000, guid: 587ca7b2cf5ebab4b82215ebad10ac2a, type: 3}
   mapIcon: {fileID: 5682625032871732423}
+  deathSound: {fileID: 8300000, guid: 514f8d1eb4fb25040afab753a8a3c7cd, type: 3}
   dashHitbox: {fileID: 1900200807120145579}
 --- !u!1 &4836321338461502838
 GameObject:

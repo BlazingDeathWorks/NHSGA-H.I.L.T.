@@ -26,6 +26,8 @@ public abstract class Enemy : MonoBehaviour
     protected AudioClip dashSound;
     [SerializeField]
     protected GameObject mapIcon;
+    [SerializeField]
+    protected AudioClip deathSound;
 
     protected GameObject player;
     protected Collider2D playerCollider;
@@ -114,6 +116,7 @@ public abstract class Enemy : MonoBehaviour
 
     public void Die()
     {
+        audioManager.PlayOneShot(deathSound);
         anim.Play("death");
         state = State.dead;
         enabled = false;
