@@ -176,11 +176,12 @@ public class PlayerEntity : MonoBehaviour
             IsJumping = true;
             timeSinceJumpPressed = 0;
         }
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) && !IsGrounded && IsFalling && canDoubleJump)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) && !IsGrounded && canDoubleJump)
         {
             IsJumping = true;
             timeSinceJumpPressed = 0;
             canDoubleJump = false;
+            PlayerJumpState.timeSinceJump = 0;
             IsDoubleJumping = true;
             Debug.Log("hoop");
         }
