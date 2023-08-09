@@ -3530,6 +3530,8 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 3396c4d5457b91e47a73d956e6818a79, type: 3}
   explosionSound: {fileID: 8300000, guid: cc034c3b81b697047a458c96fe5cc523, type: 3}
   bossSong: {fileID: 8300000, guid: e7a295f0d2f9c1a4f9badc4963834de6, type: 3}
+  bossSong2: {fileID: 8300000, guid: 11135f496352aa141a6987f23966c3a8, type: 3}
+  phase2Particles: {fileID: 1470340725}
 --- !u!61 &849776835
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45210,6 +45212,11 @@ PrefabInstance:
 --- !u!4 &1470340723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2346776160953055592, guid: c77d132d18088c3439822d3ba1820e8e, type: 3}
+  m_PrefabInstance: {fileID: 1470340722}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1470340725 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4334561464033337648, guid: c77d132d18088c3439822d3ba1820e8e, type: 3}
   m_PrefabInstance: {fileID: 1470340722}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1479048119

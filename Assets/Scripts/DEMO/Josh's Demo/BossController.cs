@@ -58,6 +58,10 @@ public class BossController : MonoBehaviour
     private AudioClip explosionSound;
     [SerializeField]
     private AudioClip bossSong;
+    [SerializeField]
+    private AudioClip bossSong2;
+    [SerializeField]
+    private ParticleSystem phase2Particles;
 
     public enum State
     {
@@ -84,6 +88,7 @@ public class BossController : MonoBehaviour
     private Collider2D handHitboxCollider;
     private bool activated;
     private float jumpTimer;
+    private bool phaseTwo;
 
     void Start()
     {
@@ -136,6 +141,18 @@ public class BossController : MonoBehaviour
     {
         if (healthScript.GetPortionHealth() < .5f)
         {
+            if (!phaseTwo)
+            {
+                audioManager.PlayOneShot(deathSound);
+                anim.Play("stagger");
+                handHitboxCollider.enabled = false;
+                handHitbox.Play("start");
+                state = State.staggered;
+                phase2Particles.Play();
+                audioManager.StopMusic();
+                phaseTwo = true;
+                Invoke("EnableSecondSong", 2f);
+            }
             passiveAttack.transform.position += Vector3.right * passiveAttackSpeed * Time.deltaTime;
             if (Mathf.Abs(passiveAttack.transform.position.x) > passiveAttackRange)
             {
@@ -145,6 +162,14 @@ public class BossController : MonoBehaviour
                 passiveAttackSpeed = Mathf.Abs(passiveAttackSpeed) * newDir;
             }
         }
+    }
+    private void EnableSecondSong()
+    {
+        audioManager.PlaySong(bossSong2);
+    }
+    private void EnableFirstSong()
+    {
+        audioManager.PlaySong(bossSong);
     }
 
     private void DoStagger()
@@ -226,6 +251,7 @@ public class BossController : MonoBehaviour
             handHitboxCollider.enabled = false;
             handHitbox.Play("start");
             state = State.staggered;
+            audioManager.PlayOneShot(deathSound);
         }
     }
 
@@ -234,7 +260,7 @@ public class BossController : MonoBehaviour
         if (arenaX - player.transform.position.x < 5f && !activated)
         {
             sideWalls.SetActive(true);
-            audioManager.PlaySong(bossSong);
+            Invoke("EnableFirstSong", 2f);
             activated = true;
             Invoke("Activate", 1f);
         }
@@ -261,7 +287,7 @@ public class BossController : MonoBehaviour
     {
         audioManager.PlayOneShot(throwSound);
         Invoke("PlayExplosionSound", bombTime);
-        int bombCount = 5 - Mathf.FloorToInt(healthScript.GetPortionHealth()*3) * 2;
+        int bombCount = 5 - Mathf.FloorToInt(healthScript.GetPortionHealth()*3-.01f) * 2;
         for (int i = 0; i < bombCount; i++)
         {
             CreateBomb();
