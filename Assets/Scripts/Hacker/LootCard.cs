@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class LootCard : MonoBehaviour
 {
+    public NavigationButton Nb;
     public Vector2 ForceVector { get; set; }
     [SerializeField]
     private AudioClip pickupSound;
-    [HideInInspector] public NavigationButton Nb;
     private BoxCollider2D boxCollider;
     private Rigidbody2D rb;
     private bool launched;
