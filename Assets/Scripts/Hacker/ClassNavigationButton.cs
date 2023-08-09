@@ -11,11 +11,15 @@ public class ClassNavigationButton : MonoBehaviour
     private Button button;
     private PropertyNavigationButton activePropNavButton;
 
+    private PropertyNavigationButton defaultButton;
+
     public void Init()
     {
         for (int i = 0; i < propertyNavigationButtons.Length; i++)
         {
             propertyNavigationButtons[i].Parent = this;
+            if (propertyNavigationButtons[i].DefaultButton) defaultButton = propertyNavigationButtons[i];
+            if (defaultButton) propertyNavigationButtons[i].DefaultButtonGameObject = defaultButton;
         }
         button = GetComponent<Button>();
         button.onClick.AddListener(() => IDEManager.Instance.SetCurrentClass(this));

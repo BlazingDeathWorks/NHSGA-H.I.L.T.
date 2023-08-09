@@ -54,6 +54,11 @@ public class CodeBlock : MonoBehaviour
     }
 
     //Call on PNB
+    public string GetCodeFragment()
+    {
+        int index = codeTemplate.IndexOf("!");
+        return lineOfCode.text.Substring(index).Trim();
+    }
     public void ReplaceCodeFragment(string newFragment)
     {
         if (lineOfCode == null) return;

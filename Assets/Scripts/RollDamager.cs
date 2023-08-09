@@ -19,7 +19,7 @@ public class RollDamager : MonoBehaviour
             //Check if we are sliding rn
             if (playerEntity.CanSlide) return;
             if (rollDamage == 0) return;
-            enemyHealth.TakeDamage(rollDamage);
+            enemyHealth.TakeDamage(rollDamage, gameObject);
         }
     }
 
