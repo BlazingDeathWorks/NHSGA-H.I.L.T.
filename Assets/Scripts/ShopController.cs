@@ -28,7 +28,7 @@ public class ShopController : MonoBehaviour
 
     public void OnHit()
     {
-        if (CurrencyManager.Instance.Coins >= cost)
+        if (CurrencyManager.Coins >= cost)
         {
             //subtract from player
             CurrencyManager.Instance.AddCoins(-cost);

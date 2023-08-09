@@ -5,7 +5,7 @@ using UnityEngine;
 public class CurrencyManager : MonoBehaviour
 {
     public static CurrencyManager Instance { get; private set; }
-    public int Coins { get; private set; }
+    public static int Coins { get; private set; }
 
     private void Awake()
     {
@@ -15,7 +15,6 @@ public class CurrencyManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void AddCoins(int value)

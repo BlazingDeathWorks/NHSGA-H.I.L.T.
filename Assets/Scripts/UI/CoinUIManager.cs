@@ -12,7 +12,7 @@ public class CoinUIManager : MonoBehaviour
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
-        text.text = "" + CurrencyManager.Instance.Coins;
+        text.text = "" + CurrencyManager.Coins;
         coinSound = GetComponent<AudioSource>();
     }
 
@@ -20,7 +20,7 @@ public class CoinUIManager : MonoBehaviour
     {
         //smooth coin change
         int coinCount = int.Parse(text.text);
-        int goalCount = CurrencyManager.Instance.Coins;
+        int goalCount = CurrencyManager.Coins;
         if (goalCount > coinCount)
         {
             if (!coinSound.isPlaying) coinSound.Play();
