@@ -28,7 +28,8 @@ public class IDEManager : MonoBehaviour
 
     public void ClampContent()
     {
-        content.localPosition = new Vector3(content.localPosition.x, Mathf.Clamp(content.localPosition.y, minClamp, maxClamp), content.localPosition.z);
+        float holdMax = Mathf.Clamp(maxClamp, 0, float.MaxValue);
+        content.localPosition = new Vector3(content.localPosition.x, Mathf.Clamp(content.localPosition.y, minClamp, holdMax), content.localPosition.z);
         //if (content.localPosition.y < minClamp || content.localPosition.y > maxClamp) Debug.Log("WTF");
     }
 
@@ -46,6 +47,7 @@ public class IDEManager : MonoBehaviour
         }
         for (int i = 0; i < currentClass.PropertyNavigationButtons.Length; i++)
         {
+            if(currentClass.PropertyNavigationButtons[i].gameObject.activeInHierarchy) maxClamp -= 130f;
             currentClass.PropertyNavigationButtons[i].gameObject.SetActive(false);
         }
 
@@ -56,6 +58,7 @@ public class IDEManager : MonoBehaviour
         for (int i = 0; i < newClass.PropertyNavigationButtons.Length; i++)
         {
             if (!newClass.PropertyNavigationButtons[i].Unlocked) continue;
+            if (!newClass.PropertyNavigationButtons[i].gameObject.activeInHierarchy) maxClamp += 130f;
             newClass.PropertyNavigationButtons[i].gameObject.SetActive(true);
         }
         currentClass = newClass;
