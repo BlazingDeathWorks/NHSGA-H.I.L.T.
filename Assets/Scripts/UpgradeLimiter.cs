@@ -6,7 +6,6 @@ public class UpgradeLimiter : MonoBehaviour
 {
     public static UpgradeLimiter Instance { get; private set; }
     public bool atLimit;
-    public int UpgradeCount => upgradeCount;
     [SerializeField]
     private int upgradeCount;
 

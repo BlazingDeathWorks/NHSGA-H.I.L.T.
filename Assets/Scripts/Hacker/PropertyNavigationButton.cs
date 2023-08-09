@@ -6,15 +6,29 @@ using UnityEngine.Events;
 
 public class NavigationButton : MonoBehaviour
 {
+    public bool Unlocked { get; private set; }
+    protected PlayerData PlayerData { get; private set; }
     [SerializeField][Tooltip("If true, PNB will be unlocked at the beginning")] public bool DefaultButton = false;
     [SerializeField] protected CodeBlock LineOfCode;
-    public bool Unlocked { get; private set; }
 
     protected virtual void Awake()
     {
+        if (PlayerDataManager.Instance.LoadLoot)
+        {
+            PlayerData = PlayerDataManager.Instance.LoadPlayerData();
+        }
+
         if (DefaultButton || LineOfCode == null)
         {
             UnlockButton(true);
+            return;
+        }
+
+        //Only do this if PlayerDataManager.LoadLoot == true
+        //Do a for loop that checks the list of selected properties from the loaded data and if matched then UnlockButton
+        //OnButtonClick() - Do all this in the overriding awake
+        if (PlayerDataManager.Instance.LoadLoot)
+        {
             return;
         }
         gameObject.SetActive(false);
@@ -39,12 +53,12 @@ public class PropertyNavigationButton : NavigationButton
 {
     public ClassNavigationButton Parent { get; set; }
     public Text[] ChildrenTextRecolor => childrenTextRecolor;
+    public bool IsClicked { get; set; } = false;
     [SerializeField] private PropertyNavigationButton parentPropNavButton;
     [SerializeField] private Text[] childrenTextRecolor;
     [SerializeField] private string codeFragment;
     [SerializeField] private UnityEvent onCodeBlockEnabled;
     [SerializeField] private UnityEvent onCodeBlockDisabled;
-    private bool isClicked = false;
     private Button button;
     private Text text;
     public PropertyNavigationButton DefaultButtonGameObject;
@@ -59,21 +73,45 @@ public class PropertyNavigationButton : NavigationButton
         button.onClick.AddListener(OnButtonClick);
         button.onClick.AddListener(() => IDEManager.Instance.SetCurrentClass(Parent));
 
-        if (DefaultButton)
+        //Only do this if PlayerDataManager.LoadLoot == false
+        if (DefaultButton && PlayerDataManager.Instance.LoadLoot == false)
         {
             text.color = Color.yellow;
+        }
+        //Else do a for loop that checks the list of selected properties from the loaded data and if matched then highlight
+        //else
+        //{
+        //    for (int i = 0; i < PlayerData.PropertyNavigationButtons.Count; i++)
+        //    {
+        //        if (this == PlayerData.PropertyNavigationButtons[i])
+        //        {
+        //            text.color = Color.yellow;
+        //            break;
+        //        }
+        //    }
+        //}
+        if (PlayerDataManager.Instance.LoadLoot)
+        {
+            for (int i = 0; i < PlayerData.PropertyNavigationButtons.Count; i++)
+            {
+                if (this == PlayerData.PropertyNavigationButtons[i])
+                {
+                    UnlockButton();
+                    OnButtonClick();
+                }
+            }
         }
     }
 
     //Nothing has to be added to Unity's Button Component OnClick()
     public void OnButtonClick()
     {
-        if (isClicked) return;
+        if (IsClicked) return;
         Parent.SetActivatePNB(this);
 
-        //Only set isClicked to true if we are currently on Class (Works because we're getting called before changing classes to this)
+        //Only set isClicked to true if we are currently on Class (Works because we're getting called before changing classes to this) - Basically ignore
         if (!LineOfCode) return;
-        isClicked = true;
+        IsClicked = true;
         if(DefaultButton)
         {
             if(!LineOfCode.GetCodeFragment().Equals(codeFragment)) UpgradeLimiter.Instance.RemoveUpgrade();
@@ -82,7 +120,7 @@ public class PropertyNavigationButton : NavigationButton
             if (UpgradeLimiter.Instance.atLimit)
             {
                 UpgradeLimiter.Instance.PlayError();
-                isClicked = false;
+                IsClicked = false;
                 return;
             }
             UpgradeLimiter.Instance.AddUpgrade();
@@ -109,6 +147,6 @@ public class PropertyNavigationButton : NavigationButton
     public void OnButtonUnClick()
     {
         onCodeBlockDisabled.Invoke();
-        isClicked = false;
+        IsClicked = false;
     }
 }

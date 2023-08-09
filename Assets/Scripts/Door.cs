@@ -31,6 +31,8 @@ public class Door : MonoBehaviour
         if (keysCollected >= keysNeeded)
         {
             GetComponent<Collider2D>().enabled = false;
+            //Save Data
+            PlayerDataManager.Instance.SavePlayerData(CurrencyManager.Instance.Coins, DoorManager.Instance.PNBS);
             SceneController.Instance.NextScene();
         }
     }
