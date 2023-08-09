@@ -98,6 +98,18 @@ public class PropertyNavigationButton : NavigationButton
                 {
                     UnlockButton();
                     OnButtonClick();
+                    for (int j = 0; j < CodeLootManager.Instance.Loots.Length; j++)
+                    {
+                        if (this == CodeLootManager.Instance.Loots[j].NV)
+                        {
+                            for (int k = 0; k < CodeLootManager.Instance.Loots[j].CheckSequence.Length; k++)
+                            {
+                                PropertyNavigationButton pnb = (PropertyNavigationButton)CodeLootManager.Instance.Loots[j].CheckSequence[k];
+                                pnb.UnlockButton();
+                            }
+                        }
+                    }
+                    return;
                 }
             }
         }

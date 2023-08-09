@@ -5,6 +5,7 @@ using UnityEngine;
 public class CodeLootManager : MonoBehaviour
 {
     public static CodeLootManager Instance { get; private set; }
+    public Loot[] Loots => loots;
     [SerializeField] private Loot[] loots;
     [SerializeField] private int min = 3, max = 5;
 
