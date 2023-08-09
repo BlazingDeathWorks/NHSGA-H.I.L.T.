@@ -27,6 +27,20 @@ public class SceneController : MonoBehaviour
         FadeController.Instance.FadeIn();
         StartCoroutine(ChangeScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
+    public void QuitGame()
+    {
+        Time.timeScale = 1;
+        FadeController.Instance.gameObject.SetActive(true);
+        FadeController.Instance.FadeIn();
+        AudioManager.Instance.PlayOneShot(clickSound);
+        StartCoroutine(CloseGame());
+    }
+
+    private IEnumerator CloseGame()
+    {
+        yield return new WaitForSecondsRealtime(.5f);
+        Application.Quit();
+    }
 
     public void StartScene()
     {
