@@ -38,11 +38,13 @@ public class IDEManager : MonoBehaviour
         for (int i = 0; i < currentClass.LinesOfCode.Length; i++)
         {
             currentClass.LinesOfCode[i].gameObject.SetActive(false);
+            //currentClass.PropertyNavigationButtons[i].gameObject.SetActive(false);
         }
 
         for (int i = 0; i < newClass.LinesOfCode.Length; i++)
         {
             newClass.LinesOfCode[i].gameObject.SetActive(true);
+            //newClass.PropertyNavigationButtons[i].gameObject.SetActive(false);
         }
         currentClass = newClass;
     }

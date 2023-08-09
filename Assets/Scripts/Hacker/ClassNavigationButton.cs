@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ClassNavigationButton : MonoBehaviour
 {
     public CodeBlock[] LinesOfCode => linesOfCode;
+    public PropertyNavigationButton[] PropertyNavigationButtons => propertyNavigationButtons;
     [SerializeField] private PropertyNavigationButton[] propertyNavigationButtons;
     [SerializeField] private CodeBlock[] linesOfCode;
     private Button button;
