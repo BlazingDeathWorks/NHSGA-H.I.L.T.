@@ -94,7 +94,7 @@ public class PropertyNavigationButton : NavigationButton
         {
             for (int i = 0; i < PlayerData.PropertyNavigationButtons.Count; i++)
             {
-                if (this == PlayerData.PropertyNavigationButtons[i])
+                if (gameObject.name == PlayerData.PropertyNavigationButtons[i])
                 {
                     UnlockButton();
                     OnButtonClick();
