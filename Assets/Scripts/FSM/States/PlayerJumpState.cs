@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerJumpState : PlayerAirAttackControllerState
 {
     protected override string StringToHash => "Jump";
-    private float timeSinceJump;
+    public float timeSinceJump;
 
     public PlayerJumpState(PlayerEntity playerEntity, FiniteStateMachine finiteStateMachine) : base(playerEntity, finiteStateMachine)
     {
@@ -58,7 +58,7 @@ public class PlayerJumpState : PlayerAirAttackControllerState
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        if (PlayerEntity.IsJumping)
+        if (PlayerEntity.IsJumping || PlayerEntity.IsDoubleJumping)
         {
             PlayerEntity.IsJumping = timeSinceJump < PlayerEntity.MaxJumpTime;
             PlayerEntity.IsCoyoteTime = PlayerEntity.IsJumping;
