@@ -72,7 +72,7 @@ public class PropertyNavigationButton : NavigationButton
         Parent.SetActivatePNB(this);
 
         //Only set isClicked to true if we are currently on Class (Works because we're getting called before changing classes to this)
-        if (IDEManager.Instance.CurrentClass != Parent || !LineOfCode) return;
+        if (!LineOfCode) return;
         isClicked = true;
         if(DefaultButton)
         {
