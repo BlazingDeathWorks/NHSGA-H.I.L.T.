@@ -32,7 +32,7 @@ public class CodeLootManager : MonoBehaviour
                 pass = true;
                 for (int j = 0; j < indexesUsed.Count; j++)
                 {
-                    if (indexesUsed[i] == index)
+                    if (indexesUsed[j] == index)
                     {
                         pass = false;
                         break;

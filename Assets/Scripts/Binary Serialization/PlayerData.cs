@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public readonly List<PropertyNavigationButton> PropertyNavigationButtons;
+    public readonly List<PropertyNavigationButton> PropertyNavigationButtons = new List<PropertyNavigationButton>();
 
     public PlayerData(List<PropertyNavigationButton> pnbs)
     {

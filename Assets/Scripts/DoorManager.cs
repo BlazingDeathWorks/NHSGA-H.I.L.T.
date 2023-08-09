@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorManager : MonoBehaviour
 {
     public static DoorManager Instance { get; private set; }
-    public List<PropertyNavigationButton> PNBS { get; private set; }
+    public List<PropertyNavigationButton> PNBS { get; private set; } = new List<PropertyNavigationButton>();
     [SerializeField] private ClassNavigationButton[] classes;
 
     private void Awake()
