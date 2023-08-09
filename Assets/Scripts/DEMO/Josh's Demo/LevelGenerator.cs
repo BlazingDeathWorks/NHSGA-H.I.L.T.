@@ -52,6 +52,11 @@ public class LevelGenerator : MonoBehaviour
     {
 
         layoutPos = 0;
+        if (PlayerPrefs.GetInt("mode") == 1)
+        {
+            layoutCount = 3;
+            ScalerIncrease *= .6f;
+        }
         holdLayoutCount = layoutCount;
         layoutSeed = new int[layouts.Length];
         for (int i = 0; i < layoutSeed.Length; i++)

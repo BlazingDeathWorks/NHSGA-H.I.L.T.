@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
     private int immuneIndicatorDirection;
     private Rigidbody2D rb;
     private PlayerEntity playerEntity;
-    private bool isDead;
+    public bool isDead;
 
     //Default - 0
     private float healAmount = 5;

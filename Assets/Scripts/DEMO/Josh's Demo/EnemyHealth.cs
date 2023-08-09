@@ -76,6 +76,7 @@ public class EnemyHealth : MonoBehaviour
         if (bossScript)
         {
             healthbar = healthBarPrefab;
+            if (PlayerPrefs.GetInt("mode") == 1) health = 1200;
             flashRenderer = bossScript.GetFlashRenderer();
         }
         healthbar.minValue = 0;

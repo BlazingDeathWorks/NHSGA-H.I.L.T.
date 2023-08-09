@@ -27,6 +27,8 @@ public class HackerController : MonoBehaviour
             hackerIDE.SetActive(!hackerIDE.activeInHierarchy);
             HackMusic.volume = hackerIDE.activeInHierarchy ? 1 : 0;
             Time.timeScale = hackerIDE.activeInHierarchy ? 0 : 1;
+            IDEManager.Instance.SetCurrentClass(IDEManager.Instance.CurrentClass);
+            IDEManager.Instance.ResetContent();
             AudioManager.Instance.MuteMusic(hackerIDE.activeInHierarchy);
             miniMap.SetActive(!hackerIDE.activeInHierarchy);
             chromAb.active = !hackerIDE.activeInHierarchy;

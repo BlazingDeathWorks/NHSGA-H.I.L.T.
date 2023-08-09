@@ -840,7 +840,7 @@ MonoBehaviour:
   currentClass: {fileID: 7679548716590203143}
   content: {fileID: 4011964767675875407}
   minClamp: 0
-  maxClamp: -780
+  maxClamp: -910
 --- !u!1 &341649131784327621
 GameObject:
   m_ObjectHideFlags: 0

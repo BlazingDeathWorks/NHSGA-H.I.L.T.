@@ -43,8 +43,6 @@ public class TankEnemy : Enemy
             }
         }
 
-        rb.AddForce(Vector2.up * .1f, ForceMode2D.Force);
-
         //stop at walls and cliffs
 
         float checkX = Mathf.Sign(rb.velocity.x) * 1f;

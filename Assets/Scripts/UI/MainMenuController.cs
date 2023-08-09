@@ -30,6 +30,8 @@ public class MainMenuController : MenuController
         audioMixer.SetFloat("masterVolume", Mathf.Log10(masterSlider.value) * 20);
         audioMixer.SetFloat("musicVolume", Mathf.Log10(musicSlider.value) * 20);
         audioMixer.SetFloat("sfxVolume", Mathf.Log10(sfxSlider.value) * 20);
+
+        PlayerPrefs.SetInt("mode", PlayerPrefs.GetInt("mode", 0));
     }
     public void SetMasterVolume(float volume)
     {
@@ -57,5 +59,9 @@ public class MainMenuController : MenuController
         AudioManager.Instance.PlayOneShot(clickSound);
         mainPanel.SetActive(false);
         optionsPanel.SetActive(true);
+    }
+    public void SetMode(bool mode)
+    {
+        PlayerPrefs.SetInt("mode", mode ? 1 : 0);
     }
 }
