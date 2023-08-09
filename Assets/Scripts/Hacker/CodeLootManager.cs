@@ -25,10 +25,11 @@ public class CodeLootManager : MonoBehaviour
         for (int i = 0; i < randomCollectionAmount; i++)
         {
             if (this.loots == null || this.loots.Length < randomCollectionAmount) return;
-            int index = Random.Range(0, this.loots.Length);
+            int index;
             bool pass;
             do
             {
+                index = Random.Range(0, this.loots.Length);
                 pass = true;
                 for (int j = 0; j < indexesUsed.Count; j++)
                 {
