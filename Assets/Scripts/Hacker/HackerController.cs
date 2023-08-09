@@ -11,7 +11,7 @@ public class HackerController : MonoBehaviour
     [SerializeField] private GameObject miniMap;
     [SerializeField] private Volume volume;
     [SerializeField] private AudioSource HackMusic;
-    [SerializeField] private PauseMenuManager pauseMenu;
+    [SerializeField] private PauseMenuController pauseMenu;
 
     private ChromaticAberration chromAb;
     private void Start()
@@ -22,7 +22,7 @@ public class HackerController : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(hackerInterfaceOpenInput) && !pauseMenu.active)
+        if (Input.GetKeyDown(hackerInterfaceOpenInput) && !pauseMenu.pausePanel.active)
         {
             hackerIDE.SetActive(!hackerIDE.activeInHierarchy);
             HackMusic.volume = hackerIDE.activeInHierarchy ? 1 : 0;

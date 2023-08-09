@@ -539,6 +539,7 @@ MonoBehaviour:
   miniMap: {fileID: 0}
   volume: {fileID: 0}
   HackMusic: {fileID: 1073556777805628429}
+  pauseMenu: {fileID: 6220159434078933314}
 --- !u!114 &4698473581178981678
 MonoBehaviour:
   m_ObjectHideFlags: 0

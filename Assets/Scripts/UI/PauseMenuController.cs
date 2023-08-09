@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] private KeyCode pauseMenuOpenInput = KeyCode.Escape;
-    [SerializeField] private PauseMenuManager pausePanel;
+    public PauseMenuManager pausePanel;
     [SerializeField] private GameObject minimap;
     [SerializeField] private AudioSource IDEMusic;
     private void Start()
