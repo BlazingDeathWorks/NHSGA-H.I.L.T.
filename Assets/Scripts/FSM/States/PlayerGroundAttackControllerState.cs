@@ -13,7 +13,7 @@ public abstract class PlayerGroundAttackControllerState : State
     public override void OnEnter()
     {
         base.OnEnter();
-        PlayerEntity.TimeSinceStartFall = 0;
+        if(PlayerEntity.Rb.velocity.y <= .1f) PlayerEntity.TimeSinceStartFall = 0;
         PlayerEntity.CanSlide = true;
     }
 
