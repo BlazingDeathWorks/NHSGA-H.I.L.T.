@@ -3832,6 +3832,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655d5fe98a9db46eb9d63fb83c301d25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &793722864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 793722866}
+  - component: {fileID: 793722865}
+  m_Layer: 0
+  m_Name: UpgradeLimiter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &793722865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793722864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 900daa505dab4984184064e5bbecfe09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atLimit: 0
+  upgradeCount: 0
+  upgradeLimit: 6
+  errorSound: {fileID: 8300000, guid: 5d1c002bd1c90b94d9f39873da8548d0, type: 3}
+--- !u!4 &793722866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793722864}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &795148262 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3065632574234956401, guid: 4151de9f4b5724b2a919ccd406065cd6, type: 3}
