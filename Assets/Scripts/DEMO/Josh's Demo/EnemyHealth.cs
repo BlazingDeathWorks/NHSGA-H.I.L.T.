@@ -194,9 +194,7 @@ public class EnemyHealth : MonoBehaviour
         if (Time.time > stunCooldown)
         {
             stunTimer = Time.time + stunTime;
-            if (enemyScript) enemyScript.enabled = false;
-            if (bossScript) bossScript.enabled = false;
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            Invoke("SetStun", .1f);
             stunCooldown = Time.time + 5f;
         }
         //set poison
@@ -209,6 +207,13 @@ public class EnemyHealth : MonoBehaviour
         ExecuteKnockback();
 
         Die();
+    }
+
+    private void SetStun()
+    {
+        if (enemyScript) enemyScript.enabled = false;
+        if (bossScript) bossScript.enabled = false;
+        rb.velocity = new Vector2(0, 0);
     }
 
     private void Die()
