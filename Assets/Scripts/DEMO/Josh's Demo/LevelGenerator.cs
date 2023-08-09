@@ -160,7 +160,7 @@ public class LevelGenerator : MonoBehaviour
             if (tilemap.GetTile(tempPos) == enemyTiles[i])
             {
                 //randomize existence
-                if(i == 2 && !canTank)
+                if (i == 2 && !canTank) continue;
                 if (Random.Range(0f, 1f) > layoutCount / holdLayoutCount * .7f)
                 {
                     //randomize type
