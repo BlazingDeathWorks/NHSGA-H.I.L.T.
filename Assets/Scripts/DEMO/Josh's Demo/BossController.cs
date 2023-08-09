@@ -83,6 +83,7 @@ public class BossController : MonoBehaviour
     private AudioManager audioManager;
     private Collider2D handHitboxCollider;
     private bool activated;
+    private float jumpTimer;
 
     void Start()
     {
@@ -115,7 +116,7 @@ public class BossController : MonoBehaviour
                 Idle();
                 break;
             case State.jumping:
-                CheckJump();
+                CheckJump(Time.time > jumpTimer);
                 break;
             case State.defeated:
                 break;
@@ -157,9 +158,9 @@ public class BossController : MonoBehaviour
         }
     }
 
-    private void CheckJump()
+    private void CheckJump(bool forceChange)
     {
-        if (transform.position.y <= goalPosY && rb.velocity.y < 0)
+        if (forceChange || transform.position.y <= goalPosY && rb.velocity.y < 0)
         {
             audioManager.PlayOneShot(landSound);
             rb.velocity = Vector2.zero;
@@ -297,6 +298,7 @@ public class BossController : MonoBehaviour
     public void Die()
     {
         audioManager.PlayOneShot(deathSound);
+        audioManager.StopMusic();
         anim.Play("death");
         passiveAttack.SetActive(false);
         sideWalls.SetActive(false);
@@ -316,6 +318,7 @@ public class BossController : MonoBehaviour
     {
         audioManager.PlayOneShot(jumpSound);
         anim.Play("jump");
+        jumpTimer = Time.time + 3f;
         state = State.jumping;
         goalPosY = transform.position.y - (Mathf.Abs(transform.position.y - arenaY) > 1f ? 6f : 0);
         goalPosX = arenaX + (Mathf.Abs(transform.position.y - arenaY) < 1f ? (1 + Random.Range(-1, 1) * 2) * 11: 0);

@@ -9,9 +9,9 @@ public class TrapController : MonoBehaviour
     [SerializeField]
     private float damage;
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.layer != LayerMask.NameToLayer("Invincible"))
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             rb.velocity = new Vector2(-Mathf.Sign(rb.velocity.x), 1) * launchScale;
