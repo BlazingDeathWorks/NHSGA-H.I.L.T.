@@ -152,6 +152,13 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         Cursor.lockState = CursorLockMode.None;
         AudioManager.Instance.StopMusic();
+        if (GameObject.Find("Boss"))
+        {
+            foreach (AudioSource a in GameObject.Find("Boss").GetComponents<AudioSource>())
+            {
+                a.Stop();
+            }
+        }
         AudioManager.Instance.PlayOneShot(loseSound);
         ConsoleManager.Instance.gameObject.SetActive(false);
         deathPanel.SetActive(true);
