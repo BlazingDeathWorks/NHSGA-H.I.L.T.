@@ -82,12 +82,14 @@ public class PropertyNavigationButton : NavigationButton
             {
                 if (gameObject.name.Equals(pnbName))
                 {
+                    Parent.SetActivatePNB(this);
                     UnlockButton(true);
                     if (PlayerData.PropertyNavigationButtons[pnbName])
                     {
                         text.color = Color.yellow;
                         if (!DefaultButton) UpgradeLimiter.Instance.AddUpgrade();
                         OnButtonClick();
+                        onCodeBlockEnabled.Invoke();
                     }
                     return;
                 }
