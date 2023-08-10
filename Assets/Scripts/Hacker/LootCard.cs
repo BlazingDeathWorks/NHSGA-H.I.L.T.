@@ -75,7 +75,7 @@ public class LootCard : MonoBehaviour
             else
             {
                 CurrencyManager.Instance.AddCoins(50);
-                ConsoleManager.Instance.RequestMessage("Known or Sealed Code Found");
+                ConsoleManager.Instance.RequestMessage("+50 Batteries");
             }
             Nb?.UnlockButton();
             Destroy(gameObject);

@@ -58,6 +58,7 @@ public class PropertyNavigationButton : NavigationButton
     private Button button;
     private Text text;
     public PropertyNavigationButton DefaultButtonGameObject;
+    private bool debugger;
 
     protected override void Awake()
     {
@@ -87,9 +88,7 @@ public class PropertyNavigationButton : NavigationButton
                     if (PlayerData.PropertyNavigationButtons[pnbName])
                     {
                         text.color = Color.yellow;
-                        if (!DefaultButton) UpgradeLimiter.Instance.AddUpgrade();
-                        OnButtonClick();
-                        onCodeBlockEnabled.Invoke();
+                        Invoke("SetActiveButton", .08f);
                     }
                     return;
                 }
@@ -111,6 +110,13 @@ public class PropertyNavigationButton : NavigationButton
         //}
     }
 
+    private void SetActiveButton()
+    {
+        if (!DefaultButton) UpgradeLimiter.Instance.AddUpgrade();
+        OnButtonClick();
+        onCodeBlockEnabled.Invoke();
+    }
+
     //Nothing has to be added to Unity's Button Component OnClick()
     public void OnButtonClick()
     {
@@ -123,8 +129,10 @@ public class PropertyNavigationButton : NavigationButton
         if(DefaultButton)
         {
             if(!text.color.Equals(Color.yellow)) UpgradeLimiter.Instance.RemoveUpgrade();
-        } else if (DefaultButtonGameObject && DefaultButtonGameObject.text.color.Equals(Color.yellow))
+        } else if (!debugger && DefaultButtonGameObject && DefaultButtonGameObject.text.color.Equals(Color.yellow) || 
+            debugger && LineOfCode.GetCodeFragment().Equals(DefaultButtonGameObject.codeFragment))
         {
+            debugger = true;
             if (UpgradeLimiter.Instance.atLimit)
             {
                 UpgradeLimiter.Instance.PlayError();

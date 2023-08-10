@@ -48,6 +48,7 @@ public class SceneController : MonoBehaviour
         Time.timeScale = 1;
         FadeController.Instance.gameObject.SetActive(true);
         FadeController.Instance.FadeIn();
+        CurrencyManager.Instance.ResetCoins();
         StartCoroutine(ChangeScene(0));
     }
 

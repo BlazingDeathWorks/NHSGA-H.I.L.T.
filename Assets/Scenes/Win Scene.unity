@@ -1357,6 +1357,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPanel: {fileID: 1311045047}
   clickSound: {fileID: 8300000, guid: 4a06eb950c8c83140adb1e75447d7c15, type: 3}
+--- !u!1001 &1666887597
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420556, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169560020716420558, guid: 3148332da207444be938fe7823ffab26, type: 3}
+      propertyPath: m_Name
+      value: Currency Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3148332da207444be938fe7823ffab26, type: 3}
 --- !u!1 &1718989411
 GameObject:
   m_ObjectHideFlags: 0
