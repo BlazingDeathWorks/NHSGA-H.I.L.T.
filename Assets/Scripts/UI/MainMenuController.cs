@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -19,7 +20,7 @@ public class MainMenuController : MenuController
     [SerializeField]
     private Slider sfxSlider;
     [SerializeField]
-    private Toggle modeToggle;
+    private TMP_Dropdown difficultyDropdown;
 
     public override void Start()
     {
@@ -33,8 +34,8 @@ public class MainMenuController : MenuController
         audioMixer.SetFloat("musicVolume", Mathf.Log10(musicSlider.value) * 20);
         audioMixer.SetFloat("sfxVolume", Mathf.Log10(sfxSlider.value) * 20);
 
-        PlayerPrefs.SetInt("mode", PlayerPrefs.GetInt("mode", 0));
-        modeToggle.isOn = PlayerPrefs.GetInt("mode") == 1;
+        PlayerPrefs.SetInt("difficulty", PlayerPrefs.GetInt("difficulty", 1));
+        difficultyDropdown.value = PlayerPrefs.GetInt("difficulty");
     }
     public void SetMasterVolume(float volume)
     {
@@ -63,8 +64,8 @@ public class MainMenuController : MenuController
         mainPanel.SetActive(false);
         optionsPanel.SetActive(true);
     }
-    public void SetMode(bool mode)
+    public void SetDifficulty(int mode)
     {
-        PlayerPrefs.SetInt("mode", mode ? 1 : 0);
+        PlayerPrefs.SetInt("difficulty", mode);
     }
 }

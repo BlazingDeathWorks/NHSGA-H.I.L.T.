@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2201147196554176384}
   - component: {fileID: 1911553115112128595}
   - component: {fileID: -5172190213839705887}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Base Blade Air Attack Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 0.3
+  damageMod: 1
 --- !u!61 &2201147196554176384
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -130,6 +130,11 @@ public class BossController : MonoBehaviour
                 break;
         }
 
+        if(state != State.jumping)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+
         PassiveAttack();
 
         flashRenderer.sprite = sprite.sprite;

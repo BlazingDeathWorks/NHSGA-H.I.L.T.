@@ -46,6 +46,7 @@ public class EnemyHealth : MonoBehaviour
     private float poisonNumTime;
     private GameObject lastDamageSource;
     private float damageSourceTimer;
+    private float knockbackTimer;
 
     private void Awake()
     {
@@ -76,7 +77,21 @@ public class EnemyHealth : MonoBehaviour
         if (bossScript)
         {
             healthbar = healthBarPrefab;
-            if (PlayerPrefs.GetInt("mode") == 1) health = 1200;
+            switch (PlayerPrefs.GetInt("difficulty"))
+            {
+                case 0:
+                    health = 2000;
+                    break;
+                case 1:
+                    health = 3000;
+                    break;
+                case 2:
+                    health = 4000;
+                    break;
+                case 3:
+                    health = 5000;
+                    break;
+            }
             flashRenderer = bossScript.GetFlashRenderer();
         }
         healthbar.minValue = 0;
@@ -94,11 +109,11 @@ public class EnemyHealth : MonoBehaviour
             if (poisonDamage != 0 && Time.time > poisonNumTime)
             {
                 DamageNumber holdNum = Instantiate(damageTextPrefab, GameObject.Find("Canvas").transform);
-                holdNum.SetText(poisonDamage / 10f);
+                holdNum.SetText(poisonDamage / 5f);
                 holdNum.SetColor(Color.magenta);
                 holdNum.transform.position = transform.position + Vector3.up * 1.5f;
                 flashRenderer.color = new Color(.75f, .75f, .75f, 1);
-                poisonNumTime += .1f;
+                poisonNumTime += .2f;
             }
             Die();
         }
@@ -119,10 +134,11 @@ public class EnemyHealth : MonoBehaviour
                 onFixedUpdate = false;
             }
         }
+        knockbackTimer += Time.deltaTime;
 
         //reset damage source
         damageSourceTimer += Time.deltaTime;
-        if (damageSourceTimer > .15f) lastDamageSource = null;
+        if (damageSourceTimer > .25f) lastDamageSource = null;
 
         //smooth healthbar value change
         float healthbarVal = healthbar.value;
@@ -207,11 +223,15 @@ public class EnemyHealth : MonoBehaviour
         //set poison
         if (poisonDamage != 0)
         {
-            poisonNumTime = Time.time + .1f;
+            poisonNumTime = Time.time + .2f;
             poisonTimer = Time.time + poisonTime;
         }
         //set knockback
-        ExecuteKnockback();
+        if(knockbackTimer > 5f)
+        {
+            ExecuteKnockback();
+            knockbackTimer = 0f;
+        }
 
         Die();
     }

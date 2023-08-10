@@ -25,6 +25,7 @@ public class TutorialManager : MonoBehaviour
                     }
                 }
             }
+            PlayerDataManager.Instance?.SavePlayerData(data);
             SceneController.Instance.NextScene();
             skipActivated = true;
         }

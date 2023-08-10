@@ -18,6 +18,10 @@ public class MeleeEnemy : Enemy
         base.Start();
         meleeHitbox.enabled = false;
         dashHitbox.enabled = false;
+        foreach (EnemyProjectileController hitbox in GetComponentsInChildren<EnemyProjectileController>())
+        {
+            hitbox.damage = damage;
+        }
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), dashHitbox);
     }
 

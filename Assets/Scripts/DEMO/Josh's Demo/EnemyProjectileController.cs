@@ -25,7 +25,7 @@ public class EnemyProjectileController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Invincible") || collision.TryGetComponent(out RollDamager roll)) return;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Slash") || collision.gameObject.layer == LayerMask.NameToLayer("Invincible") || collision.TryGetComponent(out RollDamager roll)) return;
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth health = collision.gameObject.GetComponent<PlayerHealth>();

@@ -141,6 +141,7 @@ public class PlayerHealth : MonoBehaviour
     public void SetDead()
     {
         Time.timeScale = 0;
+        CurrencyManager.Instance.ResetCoins();
         FadeController.Instance.gameObject.SetActive(true);
         FadeController.Instance.DoubleFade();
 

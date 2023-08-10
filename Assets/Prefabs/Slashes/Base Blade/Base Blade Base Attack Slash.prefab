@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 747045673914548546}
   - component: {fileID: -8190584488035424623}
   - component: {fileID: 2070203349348670605}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Base Blade Base Attack Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 0.3
+  damageMod: 1
 --- !u!61 &747045673914548546
 BoxCollider2D:
   m_ObjectHideFlags: 0

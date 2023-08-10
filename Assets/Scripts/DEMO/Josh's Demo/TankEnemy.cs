@@ -10,6 +10,7 @@ public class TankEnemy : Enemy
     {
         base.Start();
         dashHitbox.enabled = false;
+        GetComponentInChildren<EnemyProjectileController>().damage = damage;
     }
     public override void Update()
     {
