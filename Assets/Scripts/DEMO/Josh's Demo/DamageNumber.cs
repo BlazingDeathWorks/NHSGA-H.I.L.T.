@@ -26,7 +26,7 @@ public class DamageNumber : MonoBehaviour
 
     void Update()
     {
-        text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - 2 * Time.deltaTime);
+        text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - 2 * Time.unscaledDeltaTime);
         if (text.color.a < 0) Destroy(gameObject);
     }
 }
