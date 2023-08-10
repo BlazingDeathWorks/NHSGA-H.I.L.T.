@@ -42,7 +42,13 @@ public class ShopController : MonoBehaviour
             //do lootcard
             CodeLootManager.Instance?.GetRandomCollection(loots);
             LootCard instance = Instantiate(lootCard, transform.position + Vector3.up, Quaternion.identity);
-            instance.Nb = loots[Random.Range(0, loots.Count)].NV;
+            List<Loot> newUpgrades = new List<Loot>();
+            foreach (Loot getLoot in loots)
+            {
+                if (!getLoot.NV.Unlocked) newUpgrades.Add(getLoot);
+            }
+            if (newUpgrades.Count == 0) newUpgrades.Add(loots[0]);
+            instance.Nb = newUpgrades[Random.Range(0, newUpgrades.Count)].NV;
             Physics2D.IgnoreCollision(instance.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             instance.ForceVector = new Vector2(Mathf.Sign(transform.position.x - player.transform.position.x) * 3.5f, 13);
 

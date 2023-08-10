@@ -67,12 +67,16 @@ public class LootCard : MonoBehaviour
             PropertyNavigationButton propertyNavigationButton = (PropertyNavigationButton)Nb;
             if (propertyNavigationButton && !Nb.Unlocked)
             {
-                if(!propertyNavigationButton.isActiveAndEnabled && IDEManager.Instance.CurrentClass == propertyNavigationButton.Parent) IDEManager.Instance.IncreaseMaxClamp();
+                if (!propertyNavigationButton.isActiveAndEnabled && IDEManager.Instance.CurrentClass == propertyNavigationButton.Parent) IDEManager.Instance.IncreaseMaxClamp();
                 ConsoleManager.Instance.RequestMessage($"New Upgrade For {propertyNavigationButton?.Parent.GetComponentInChildren<Text>().text}");
 
                 AudioManager.Instance.PlayOneShot(pickupSound);
             }
-            else ConsoleManager.Instance.RequestMessage("Known or Sealed Code Found");
+            else
+            {
+                CurrencyManager.Instance.AddCoins(50);
+                ConsoleManager.Instance.RequestMessage("Known or Sealed Code Found");
+            }
             Nb?.UnlockButton();
             Destroy(gameObject);
         }

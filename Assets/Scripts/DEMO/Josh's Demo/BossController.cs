@@ -57,9 +57,9 @@ public class BossController : MonoBehaviour
     [SerializeField]
     private AudioClip explosionSound;
     [SerializeField]
-    private AudioClip bossSong;
+    private AudioSource bossSong;
     [SerializeField]
-    private AudioClip bossSong2;
+    private AudioSource bossSong2;
     [SerializeField]
     private ParticleSystem phase2Particles;
 
@@ -154,7 +154,7 @@ public class BossController : MonoBehaviour
                 handHitbox.Play("start");
                 state = State.staggered;
                 phase2Particles.Play();
-                audioManager.StopMusic();
+                bossSong.Stop();
                 phaseTwo = true;
                 Invoke("EnableSecondSong", 2f);
             }
@@ -170,11 +170,11 @@ public class BossController : MonoBehaviour
     }
     private void EnableSecondSong()
     {
-        audioManager.PlaySong(bossSong2);
+        bossSong2.Play();
     }
     private void EnableFirstSong()
     {
-        audioManager.PlaySong(bossSong);
+        bossSong.Play();
     }
 
     private void DoStagger()
@@ -329,7 +329,7 @@ public class BossController : MonoBehaviour
     public void Die()
     {
         audioManager.PlayOneShot(deathSound);
-        audioManager.StopMusic();
+        bossSong2.Stop();
         anim.Play("death");
         passiveAttack.SetActive(false);
         sideWalls.SetActive(false);
