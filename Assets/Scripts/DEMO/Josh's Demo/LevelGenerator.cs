@@ -203,13 +203,4 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-        //Camera.main.transform.position = GameObject.Find("Player").transform.position + new Vector3(0, 0, -10);
-    }
 }
