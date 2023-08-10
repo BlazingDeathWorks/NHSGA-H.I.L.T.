@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using UnityEditor.Animations;
 
 public class Blade_ht : MonoBehaviour
 {
@@ -96,8 +95,8 @@ public struct Blade
     public Material Costume => costume;
     [SerializeField] private Material costume;
 
-    public AnimatorController Ac => ac;
-    [SerializeField] private AnimatorController ac;
+    public RuntimeAnimatorController Ac => ac;
+    [SerializeField] private RuntimeAnimatorController ac;
 
     //Slash Variables Expand As More Moves Are Created
     public Slash BaseAttackSlash => baseAttackSlash;

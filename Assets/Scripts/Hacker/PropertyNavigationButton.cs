@@ -120,7 +120,7 @@ public class PropertyNavigationButton : NavigationButton
         IsClicked = true;
         if(DefaultButton)
         {
-            if(!LineOfCode.GetCodeFragment().Equals(codeFragment)) UpgradeLimiter.Instance.RemoveUpgrade();
+            if(!text.color.Equals(Color.yellow)) UpgradeLimiter.Instance.RemoveUpgrade();
         } else if (LineOfCode.GetCodeFragment().Equals(DefaultButtonGameObject.codeFragment))
         {
             if (UpgradeLimiter.Instance.atLimit)
