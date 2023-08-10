@@ -63,7 +63,7 @@ public class LevelGenerator : MonoBehaviour
                 ScalerIncrease += .5f;
                 break;
             case 3:
-                ScalerIncrease += 1.2f;
+                ScalerIncrease += 1f;
                 break;
         }
         holdLayoutCount = layoutCount;
