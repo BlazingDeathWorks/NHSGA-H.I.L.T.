@@ -5392,7 +5392,7 @@ MonoBehaviour:
   - {fileID: 7100485554665957061, guid: 07832bfd739b6e547b65938b37ec1d7e, type: 3}
   pickupTile: {fileID: 11400000, guid: 756db745c6a5f7a4b94feb43282b0bca, type: 2}
   pickupPrefab: {fileID: 6809627194910603618, guid: df69c1d0a0c9fd948b1d8bf7464f827f, type: 3}
-  doorPrefab: {fileID: 5604249527335759141, guid: 5dbd87929ef358b41b79e1406ab8101b, type: 3}
+  doorPrefab: {fileID: 5604249527335759141, guid: 289a019a0acd1fb48bb78d7293af4746, type: 3}
   ShopPrefab: {fileID: 1349652611497380830, guid: 963089e3b9360bc4cba3ff3e05a6d278, type: 3}
   ScalerIncrease: 0
   canTank: 1

@@ -121,7 +121,7 @@ public class PropertyNavigationButton : NavigationButton
         if(DefaultButton)
         {
             if(!text.color.Equals(Color.yellow)) UpgradeLimiter.Instance.RemoveUpgrade();
-        } else if (DefaultButtonGameObject.text.color.Equals(Color.yellow))
+        } else if (DefaultButtonGameObject && DefaultButtonGameObject.text.color.Equals(Color.yellow))
         {
             if (UpgradeLimiter.Instance.atLimit)
             {
